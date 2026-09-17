@@ -1,13 +1,13 @@
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright'),assert=require('node:assert/strict'),fs=require('fs');
 const {createServer}=require('../scripts/serve.cjs');const server=createServer();let browser;
 (async()=>{
- const {getLesson}=await import('../src/lessons.js');const l=getLesson('g7b-gp-w01-2');
+ const {getLesson}=await import('../src/lessons.js');const classId=process.env.LEARN_CLASS||'7b',l=getLesson('g'+classId+'-gp-w01-2');
  await new Promise(r=>server.listen(4185,'127.0.0.1',r));browser=await chromium.launch({headless:true});
  const page=await browser.newPage({viewport:{width:1280,height:720}}),errors=[];
  page.on('pageerror',e=>errors.push(e.message));await page.goto(process.env.LEARN_URL||'http://127.0.0.1:4185/learn/');
  fs.mkdirSync('output/playwright',{recursive:true});
  const a=n=>page.locator('[data-action="'+n+'"]').first().click();
- await a('choose-lesson');await page.locator('[data-id="7b"]').click();await page.locator('[data-id="global-perspectives"]').click();await page.locator('[data-lesson="'+l.id+'"]').click();await a('picker-start');await a('timer');
+ await a('choose-lesson');await page.locator('[data-id="'+classId+'"]').click();await page.locator('[data-id="global-perspectives"]').click();await page.locator('[data-lesson="'+l.id+'"]').click();await a('picker-start');await a('timer');
  async function bounds(label){
   assert.deepEqual(await page.evaluate(()=>{
    const limit=document.querySelector('.step-controls').getBoundingClientRect().top;

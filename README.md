@@ -174,3 +174,8 @@ The 269 curriculum teaching sessions now open with visual challenges. Explore an
 “What is an Issue and a Perspective?” is a bespoke 40-minute lesson: observe a shared playground, distinguish an issue from a perspective and a fact, explain two pupils’ reasons, consider missing voices, answer three four-option checks, then transfer the skill to a library case. Six inline SVG illustrations use teacher-controlled focus steps and enlarged views. All scenarios are fictional. The rewritten lesson resets only its obsolete checkpoint while retaining class preferences; other lessons keep their saved progress.
 
 Validation: `npm test`; `node tests/issue-perspective-browser.cjs` (set `PLAYWRIGHT_MODULE` if Playwright is outside the project). Browser checks cover every lesson frame, answer reveals, diagram focus/enlargement, summary, reload, and responsive layout. The existing visual-controls and 7B workflow checks also pass.
+
+
+## 7A GP Lesson 2 (v1.7.3)
+
+7A now uses the same illustrated issue/perspective story, adapted for Grade 7 with a fictional survey, evidence versus argument, missing voices, and explicit personal/local/global connections. It retains 40 minutes and separate class progress. Validated with all 33 unit tests and all 17 frames through the browser workflow (`LEARN_CLASS=7a`), including answer reveals, enlargement, summary, reload and responsive layouts.
