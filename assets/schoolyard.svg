@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 580" role="img" aria-labelledby="title desc">
+<title id="title">An imaginary schoolyard</title><desc id="desc">A school building, one tree, a bench beside the tree, a path with a puddle, and a closed umbrella beside the bench. No people are shown.</desc>
+<defs><pattern id="windows" width="65" height="80" patternUnits="userSpaceOnUse"><rect x="10" y="12" width="42" height="52" rx="4" fill="#a4c4cc"/><path d="M31 12v52M10 38h42" stroke="#fff4dd" stroke-width="4"/></pattern></defs>
+<rect width="760" height="580" rx="24" fill="#e2eee9"/>
+<path d="M0 307Q175 275 343 308T760 295V580H0Z" fill="#cad8b3"/>
+<path d="M383 269L486 269L664 580H170Z" fill="#e7d7b9"/>
+<path d="M375 281L475 281" stroke="#b5a88b" stroke-width="4"/>
+<rect x="350" y="98" width="332" height="210" rx="5" fill="#e5b289"/>
+<path d="M326 98L516 41L703 98Z" fill="#526e68"/>
+<rect x="369" y="120" width="293" height="151" fill="url(#windows)"/>
+<rect x="482" y="225" width="62" height="84" rx="4" fill="#496862"/><path d="M513 227v82" stroke="#dedccb" stroke-width="3"/>
+<rect x="461" y="90" width="99" height="32" rx="5" fill="#fff6df"/><text x="510" y="112" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="18" fill="#284b43">SCHOOL</text>
+<path d="M160 167L170 344H199L194 174Z" fill="#8a7051"/>
+<path d="M183 262L124 210M185 227L236 182" stroke="#8a7051" stroke-width="15" stroke-linecap="round"/>
+<path d="M75 142C75 89 129 74 153 83C174 35 247 63 245 102C299 91 325 166 277 189C266 237 211 242 181 220C146 247 92 221 94 190C61 187 55 157 75 142Z" fill="#668775"/>
+<path d="M95 140Q165 98 204 130T267 143" fill="none" stroke="#809d81" stroke-width="21" stroke-linecap="round"/>
+<g stroke="#70563e" stroke-width="8" stroke-linejoin="round"><path d="M203 300h158v14H203Z" fill="#bd8d60"/><path d="M207 270h144v17H207Z" fill="#bd8d60"/><path d="M215 263v76M343 263v76"/><path d="M216 313l-7 38M342 313l10 38"/></g>
+<g transform="translate(358 295) rotate(24)"><path d="M0 0Q-12 25-13 64L0 73L13 64Q12 25 0 0Z" fill="#c76d50"/><path d="M0-8v92q0 14 12 12q9-1 8-10" stroke="#3f5352" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M-12 62L12 62" stroke="#f4d4ac" stroke-width="4"/></g>
+<path d="M345 431C365 409 408 419 427 409C452 395 481 411 479 424C507 423 535 444 509 456C487 468 458 463 444 475C422 487 398 472 376 475C342 479 318 458 345 431Z" fill="#81afbd" stroke="#5d91a3" stroke-width="3"/>
+<path d="M361 443Q387 429 410 439M441 452Q463 441 488 447" stroke="#d9edf0" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M56 415l5-18 5 18M690 410l6-23 6 23M119 500l5-18 5 18" stroke="#96ae89" stroke-width="4" fill="none"/>
+</svg>
