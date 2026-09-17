@@ -15,7 +15,7 @@ const {createServer}=require('../scripts/serve.cjs');const server=createServer()
  await page.locator('[data-quarter="Q4"]').click();await page.screenshot({path:'output/playwright/g7-weekly-plan.png'});
  await page.locator('[data-action="g7-open"][data-lesson="g7a-geo-w29-1"]').click();
  assert.equal(await page.locator('[data-lesson="g7a-geo-w29-1"]').getAttribute('aria-pressed'),'true');
- await a('picker-start');await a('next-stage');await a('next-step');await a('next-step');
+ await a('picker-start');await a('next-stage');await a('next-stage');await a('next-step');await a('next-step');
  await page.locator('.lesson-visual svg,.gp-diagram').evaluate(async img=>{if(img.tagName==='IMG'){await img.decode();if(!img.naturalWidth)throw Error('Diagram failed to load');}});await page.screenshot({path:'output/playwright/g7-grid-board.png'});
  await a('switch-class');await page.locator('[data-quarter="Q4"]').click();await page.locator('[data-lesson="g7a-geo-w36-1"]').click();await a('picker-start');
  const [paper]=await Promise.all([context.waitForEvent('page'),page.locator('.copy .exam-link').click()]);

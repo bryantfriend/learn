@@ -1,4 +1,4 @@
-import { createIssuePerspectiveLesson } from './issue-perspective.js';
+import { pilotLessons } from './pilot.js';
 import { grade7BCourses } from '../plans/grade7b.js';
 import { content as geo } from './g7b-geo-content.js';
 import { content as gp } from './g7b-gp-content.js';
@@ -13,7 +13,7 @@ export const grade7BLessons=grade7BCourses.flatMap(course=>{
    catalog:{subjectId:course.subjectId,grades:[7],classes:['7b'],quarter:entry.quarter,unit:'Week '+entry.week+' · Lesson '+entry.slot,order:index+1},
    openingScript:'Stage 6 support. '+row.objective+' Source: '+entry.sourceFile+' / '+entry.sourceSheet+' / row '+row.sourceRow};
   const notes=[row.title,'Objective: '+row.objective,'Vocabulary: '+row.vocabulary,'Starter: '+row.starter,'Teaching: '+row.teaching,'Practice: '+row.practice,'Plenary: '+row.plenary,'Homework: '+row.homework,'Resources: '+row.resources,'Notes: '+row.notes,'40-minute core lesson. Any original 45-minute slot can use the extra five minutes for extension. Original textbook/pack resources are optional; on-screen sources supply the core example.'].join('\n\n');
-  if(entry.id==='g7b-gp-w01-2')return createIssuePerspectiveLesson(common);
+  if(pilotLessons[entry.id])return pilotLessons[entry.id](common);
   if(entry.examCode)return {...common,summary:false,examId:'7B-'+(geography?'GEO':'GP')+'-'+entry.examCode,stages:[
    s('prepare','Prepare',5,0,notes+'\nUse the 12-question paper. Read instructions aloud if helpful, without explaining answers. Baseline identifies starting points; it is not expected mastery.',[f(subject+' assessment','listen',['12 questions. Four choices each.','Circle one answer for each question.'],{printExam:true}),f('Ready to begin','listen',['Write your name, class and date.','Work independently. Ask if an instruction is unclear.'])]),
    s('test','Independent work',25,5,'Start the timer only when the class is ready. No scores or names are saved here.',[f('Read, think, choose','think',['Read the short source carefully.','Circle A, B, C or D.','Check before handing in.'],{timerSeconds:1500,printExam:true})]),

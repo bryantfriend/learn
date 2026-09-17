@@ -179,3 +179,26 @@ Validation: `npm test`; `node tests/issue-perspective-browser.cjs` (set `PLAYWRI
 ## 7A GP Lesson 2 (v1.7.3)
 
 7A now uses the same illustrated issue/perspective story, adapted for Grade 7 with a fictional survey, evidence versus argument, missing voices, and explicit personal/local/global connections. It retains 40 minutes and separate class progress. Validated with all 33 unit tests and all 17 frames through the browser workflow (`LEARN_CLASS=7a`), including answer reveals, enlargement, summary, reload and responsive layouts.
+
+## Decision-first pilot (v1.8.0)
+
+The ten topics in the supplied review now use explicit, objective-matched visuals and purposeful tasks across **15 scheduled lessons**. Existing teaching controls, print assessments, class selection and course IDs are retained. Rewritten checkpoints restart only those lessons; other saved progress remains available.
+
+| Stream | Topic | New task | Scheduled sessions |
+| --- | --- | --- | --- |
+| 7A Geography | Command words / linked explanation | Diagnose and repair the explorer's answer; apply claim/evidence/reasoning to shop counts | Weeks 11, 12 |
+| 7A Geography | Aerial views and maps / grid references | Draw a map that a partner can actually use; test a precise meeting point | Weeks 25, 29 |
+| 7A GP | Learning settings / access | Fit a setting to a learner's task, revise after a constraint; cost an access trial | Weeks 10–11 |
+| 7A GP | Association versus cause / trustworthy claims | Judge a headline, open the study, inspect missing evidence, rewrite | Week 12 |
+| 7B Geography | International connections | Trace a cross-border supply network; repair a road closure, then a failed message | Week 12, both lessons |
+| 7B Geography | Water cycle | Predict a drop's route, name the processes, change the surface and revise | Week 25, lesson 2 |
+| 7B GP | Issue and perspective | Initial playground plan, role swap, new access need, revision, library transfer | Week 1, lesson 2 |
+| 7B GP | Neutral surveys | Repair different flawed questions, swap, test and revise with invented respondents | Week 4 lesson 3; week 5 lesson 1 |
+| Grade 8 GP | Town hall | Negotiate a labelled layout using role priorities and concessions; test a new constraint | Topic 4.6 |
+| Grade 8 GP | Future Bishkek | Make a proposal before the model, check evidence and budget, hear missing voices, revise | Topic 6.6 |
+
+Each student attempts a decision or prediction before the board reveal. Pair/group roles require complementary contributions, then rotation or checking. Checks use plausible misconceptions, and endings require a concrete independent product or tested result. Figures, learners, budgets and planning grids are fictional. Grade 8 model proposals appear after the first attempt and revision.
+
+Teacher notes include a short pilot observation: can everyone start, do both partners contribute, and can quieter pupils transfer the skill independently? Reaching the final screen is not evidence of mastery. Classroom engagement has not been measured by browser tests.
+
+Validation: 35 unit tests; `npm run test:pilot` covers 168 frames, hidden answers, all reveals, focus and enlarged views, summaries, reload and responsive layouts. Existing visual-control, Grade 7A/7B plan/print and Grade 8 plan/print workflows also pass. Set `PLAYWRIGHT_MODULE` when using a shared Playwright installation; `LEARN_URL` runs the same browser checks against the published site.

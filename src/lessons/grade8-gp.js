@@ -1,3 +1,4 @@
+import { pilotLessons } from './pilot.js';
 import { grade8GPPlan } from '../plans/grade8-gp.js';
 import { gpContent } from './gp-content.js';
 import { gpExams } from './gp-exams.js';
@@ -7,6 +8,7 @@ export const gpLessons=grade8GPPlan.entries.map(function(entry,index){
  const common={id:entry.id,title:entry.title,durationMinutes:40,gp:true,summary:true,eyebrow:'8th Grade - Global Perspectives Lesson '+(index+1),
  catalog:{subjectId:'global-perspectives',grades:[8],unit:['Assessment','Review'].includes(entry.unit)?entry.unit:'Unit '+entry.unit,order:index+1,quarter:entry.quarter,month:entry.month},
  openingScript:'Objective: '+entry.objective+' References from your plan: '+entry.objectives};
+ if(pilotLessons[entry.id])return pilotLessons[entry.id](common);
  if(entry.unit==='Assessment'){
   const exam=gpExams[entry.code];
   return {...common,examId:entry.code,summary:false,stages:[

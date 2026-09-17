@@ -1,6 +1,6 @@
 {
   "name": "learn",
-  "version": "1.7.3",
+  "version": "1.8.0",
   "private": true,
   "type": "module",
   "description": "A teacher-operated whole-class lesson player for Mr. Friend.",
@@ -14,6 +14,7 @@
     "test:gp": "node tests/gp-browser.cjs",
     "test:grade7": "node tests/grade7-browser.cjs",
     "test:grade7b": "node tests/grade7b-browser.cjs",
-    "test:visuals": "node tests/visuals-browser.cjs"
+    "test:visuals": "node tests/visuals-browser.cjs",
+    "test:pilot": "node tests/pilot-browser.cjs"
   }
 }

@@ -1,3 +1,4 @@
+import { pilotLessons } from './pilot.js';
 import { createGrade7AIssuePerspectiveLesson } from './issue-perspective-7a.js';
 import { grade7ACourses } from '../plans/grade7a.js';
 import { content as geo } from './g7-geo-content.js';
@@ -10,6 +11,7 @@ export const grade7Lessons=grade7ACourses.flatMap(course=>course.lessons.map((en
   eyebrow:'7A - '+subject+' Lesson '+(index+1),
   catalog:{subjectId:course.subjectId,grades:[7],classes:['7a'],quarter:entry.quarter,unit:'Week '+entry.week,order:index+1,weekStart:entry.weekStart},
   openingScript:'Adapted to '+course.sessionsPerWeek+' lesson(s) per week. Week beginning '+entry.weekStart+'. Source: '+entry.sourceFile+'. '+entry.rows.map(r=>r.objective).join(' / ')};
+ if(pilotLessons[entry.id])return pilotLessons[entry.id](common);
  const notes=entry.rows.map(r=>r.title+'\nObjective: '+r.objective+'\nVocabulary: '+r.vocabulary+'\nOriginal starter: '+r.starter+'\nOriginal teaching: '+r.teaching+'\nOriginal practice / optional extension: '+r.practice+'\nOriginal plenary: '+r.plenary+'\nHomework: '+r.homework+'\nResources in original plan: '+r.resources).join('\n\n');
  if(entry.id==='g7a-gp-w01-2')return createGrade7AIssuePerspectiveLesson(common);
  if(entry.examCode){

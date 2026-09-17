@@ -41,11 +41,11 @@ const {createServer}=require('../scripts/serve.cjs');const server=createServer()
   if(si<l.stages.length-1)await a('next-stage');
  }
  await page.reload();await a('resume-saved');assert.equal(await page.locator('#student-title').innerText(),l.stages.at(-1).frames.at(-1).title);
- await a('summary');assert.match(await page.locator('#panel').innerText(),/5 of 5|5 \/ 5/);await page.keyboard.press('Escape');
- await a('back-stage');await a('back-stage');await a('back-stage');await a('back-stage');
+ await a('summary');assert.match(await page.locator('#panel').innerText(),new RegExp(l.stages.length+' of '+l.stages.length+'|'+l.stages.length+' / '+l.stages.length));await page.keyboard.press('Escape');
+ for(let i=0;i<l.stages.length-1;i++)await a('back-stage');
  for(const [width,height]of [[1366,768],[1920,1080],[390,844]]){
   await page.setViewportSize({width,height});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
   if(width>900)await bounds('responsive '+width);
  }
- assert.deepEqual(errors,[]);console.log('PASS '+count+' frames, six diagrams, all answer reveals, summary, save/reload and responsive layout');
+ assert.deepEqual(errors,[]);console.log('PASS '+count+' frames, all diagrams and answer reveals, summary, save/reload and responsive layout');
 })().catch(e=>{console.error(e);process.exitCode=1}).finally(async()=>{if(browser)await browser.close();server.close()});
