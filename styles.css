@@ -300,3 +300,5 @@ dialog.overlay-panel { width:100vw; max-width:none; height:100dvh; max-height:no
 @media(min-height:900px) { .gp-content .instructions p { font-size:34px; } .gp-content .copy h1 { font-size:42px; } }
 
 .gp-diagram { display:block; max-width:100%; width:620px; height:250px; object-fit:contain; margin:8px auto; }
+
+.lesson-context { text-transform:none; letter-spacing:.4px; }

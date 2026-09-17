@@ -6,7 +6,7 @@ function s(id,title,time,start,notes,frames){return {id,title,durationMinutes:ti
 export const grade7Lessons=grade7ACourses.flatMap(course=>course.lessons.map((entry,index)=>{
  const geography=course.subjectId==='geography',subject=geography?'Geography':'Global Perspectives';
  const common={id:entry.id,title:entry.title,durationMinutes:40,gp:true,summary:true,
-  eyebrow:'7A · '+subject.toUpperCase()+' · WEEK '+entry.week,
+  eyebrow:'7A - '+subject+' Lesson '+(index+1),
   catalog:{subjectId:course.subjectId,grades:[7],classes:['7a'],quarter:entry.quarter,unit:'Week '+entry.week,order:index+1,weekStart:entry.weekStart},
   openingScript:'Adapted to '+course.sessionsPerWeek+' lesson(s) per week. Week beginning '+entry.weekStart+'. Source: '+entry.sourceFile+'. '+entry.rows.map(r=>r.objective).join(' / ')};
  const notes=entry.rows.map(r=>r.title+'\nObjective: '+r.objective+'\nVocabulary: '+r.vocabulary+'\nOriginal starter: '+r.starter+'\nOriginal teaching: '+r.teaching+'\nOriginal practice / optional extension: '+r.practice+'\nOriginal plenary: '+r.plenary+'\nHomework: '+r.homework+'\nResources in original plan: '+r.resources).join('\n\n');

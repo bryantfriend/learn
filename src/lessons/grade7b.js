@@ -8,7 +8,7 @@ export const grade7BLessons=grade7BCourses.flatMap(course=>{
  const visits={};
  return course.lessons.map((entry,index)=>{
   const geography=course.subjectId==='geography',subject=geography?'Geography':'Global Perspectives',row=entry.rows[0];
-  const common={id:entry.id,title:entry.title,durationMinutes:40,gp:true,summary:true,eyebrow:'7B · '+subject.toUpperCase()+' · WEEK '+entry.week,
+  const common={id:entry.id,title:entry.title,durationMinutes:40,gp:true,summary:true,eyebrow:'7B - '+subject+' Lesson '+(index+1),
    catalog:{subjectId:course.subjectId,grades:[7],classes:['7b'],quarter:entry.quarter,unit:'Week '+entry.week+' · Lesson '+entry.slot,order:index+1},
    openingScript:'Stage 6 support. '+row.objective+' Source: '+entry.sourceFile+' / '+entry.sourceSheet+' / row '+row.sourceRow};
   const notes=[row.title,'Objective: '+row.objective,'Vocabulary: '+row.vocabulary,'Starter: '+row.starter,'Teaching: '+row.teaching,'Practice: '+row.practice,'Plenary: '+row.plenary,'Homework: '+row.homework,'Resources: '+row.resources,'Notes: '+row.notes,'40-minute core lesson. Any original 45-minute slot can use the extra five minutes for extension. Original textbook/pack resources are optional; on-screen sources supply the core example.'].join('\n\n');

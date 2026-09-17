@@ -4,7 +4,7 @@ import { gpExams } from './gp-exams.js';
 function f(title,mode,lines=[],extra={}) { return {title,mode,lines,...extra}; }
 function s(id,title,minutes,start,notes,frames) { return {id,title,durationMinutes:minutes,timeRange:start+'–'+(start+minutes)+' min',notes,frames}; }
 export const gpLessons=grade8GPPlan.entries.map(function(entry,index){
- const common={id:entry.id,title:entry.title,durationMinutes:40,gp:true,summary:true,eyebrow:'GLOBAL PERSPECTIVES · '+entry.code,
+ const common={id:entry.id,title:entry.title,durationMinutes:40,gp:true,summary:true,eyebrow:'8th Grade - Global Perspectives Lesson '+(index+1),
  catalog:{subjectId:'global-perspectives',grades:[8],unit:['Assessment','Review'].includes(entry.unit)?entry.unit:'Unit '+entry.unit,order:index+1,quarter:entry.quarter,month:entry.month},
  openingScript:'Objective: '+entry.objective+' References from your plan: '+entry.objectives};
  if(entry.unit==='Assessment'){

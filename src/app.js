@@ -174,7 +174,7 @@ function renderPlayer() {
         ])
     ]);
     const copy = element('div', { className: 'copy' }, []);
-    copy.append(element('p', { className: 'eyebrow' }, [frame.kicker || (frame.final ? 'LESSON COMPLETE' : lesson.eyebrow || 'NOTICE · THINK · EXPLAIN')]));
+    copy.append(element('p', { className: 'eyebrow' + (lesson.catalog ? ' lesson-context' : '') }, [frame.kicker || (frame.final ? 'LESSON COMPLETE' : lesson.eyebrow || 'NOTICE · THINK · EXPLAIN')]));
     copy.append(element('h1', { id: 'student-title', tabindex: '-1' }, [graphic?.intro && lesson.catalog?.classes ? graphic.title : frame.title]));
     if (frame.quote) copy.append(element('blockquote', {}, [frame.quote]));
     if (frame.choices) copy.append(element('ol', { className: 'opening-choices' + (frame.choiceLayout === 'grid' ? ' choice-grid' : '') }, frame.choices.map(function(choice) { return element('li', {}, [choice]); })));
