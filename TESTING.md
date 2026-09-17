@@ -61,3 +61,8 @@ GitHub Pages deployment succeeded. The actual published application returned HTT
 - Screenshots were visually inspected for home, memory, quiz and summary. No console errors were found.
 
 Practice-browser tests use port 4174; the original suite uses 4173. The remaining physical-board checks are touch/fullscreen support, emoji rendering, back-row legibility and real-class transition timing.
+
+
+## Version 1.2.0 — classroom shell
+
+17 unit tests; both existing lesson browser suites; and npm run test:classroom cover independent class/subject checkpoints, migration, restart/clear isolation, touch selection and responsive picker geometry. See docs/classroom-shell.md.

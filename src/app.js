@@ -1,7 +1,8 @@
-import { lesson as firstLesson, lessons, getLesson, modes, questionOptions } from './lessons.js';
+import { lesson as firstLesson, getLesson, modes, questionOptions } from './lessons.js';
 import { frameKey, responseKeyFor, summarizeSession } from './progress.js';
 import { prepareTimer, remainingTime, startTimer, pauseTimer, resetTimer, addTime, formatTime } from './timer.js';
 import { createStorage, SCHEMA } from './storage.js';
+import { classes, subjects, getClass, contextLabel, lessonsFor } from './catalog.js';
 
 const app = document.getElementById('app');
 const panel = document.getElementById('panel');
@@ -11,7 +12,9 @@ const loaded = storage.load();
 let session = loaded.session;
 let lesson = session ? getLesson(session.lessonId) : firstLesson;
 let selectedLessonId = lesson.id;
-let homeClassLabel = session ? session.classLabel : '';
+let selectedClassId = session?.classId || null;
+let selectedSubjectId = session?.subjectId || null;
+let picker = null;
 let inLesson = false;
 let dialogKind = '';
 let confirmation = null;
@@ -78,11 +81,11 @@ function recordCurrentFrame() {
 function prepareCurrentTimer() {
     session.timer = prepareTimer(currentFrame().timerSeconds || currentStage().durationMinutes * 60);
 }
-function newSession(classLabel, lessonId = selectedLessonId) {
+function newSession(classLabel, lessonId = selectedLessonId, classId = selectedClassId, subjectId = selectedSubjectId) {
     lesson = getLesson(lessonId) || firstLesson;
     selectedLessonId = lesson.id;
     session = {
-        schemaVersion: SCHEMA, lessonId: lesson.id, classLabel: classLabel.trim().slice(0, 30),
+        schemaVersion: SCHEMA, lessonId: lesson.id, classId, subjectId, classLabel: classLabel.trim().slice(0, 30),
         stage: 0, steps: lesson.stages.map(function() { return 0; }), responses: {},
         stars: 0, modeOverride: null, preferences: { starsVisible: false, timerVisible: false },
         timer: prepareTimer(lesson.stages[0].frames[0].timerSeconds || lesson.stages[0].durationMinutes * 60),
@@ -101,10 +104,10 @@ function brand() {
     ]);
 }
 function renderHome() {
-    const chosenLesson = getLesson(selectedLessonId) || firstLesson;
-    const start = button('Start new lesson →', 'start-new', 'primary');
+
+    const start = button('Choose class & lesson →', 'choose-lesson', 'primary');
     const actions = [start];
-    if (session) actions.unshift(button('Resume lesson →', 'resume-saved', 'primary'));
+    if (session) actions.unshift(button('Resume last class →', 'resume-saved', 'subtle'));
     app.replaceChildren(element('main', { className: 'home' }, [
         element('header', { className: 'home-header' }, [brand(), element('span', {}, ['Mr. Friend'])]),
         element('section', { className: 'home-grid' }, [
@@ -113,14 +116,12 @@ function renderHome() {
                 element('h1', {}, ['Clear routines.', element('br'), element('em', {}, ['Active learning.'])]),
                 element('p', { className: 'home-intro' }, ['A shared screen. A fresh start. A whole class ready to think.']),
                 element('div', { className: 'lesson-card' }, [
-                    element('div', { className: 'lesson-picker-row' }, [element('p', { className: 'eyebrow' }, ['TODAY’S LESSON']), button('Choose lesson ▾', 'choose-lesson', 'text-button')]),
-                    element('h2', {}, [chosenLesson.title]),
-                    ...(chosenLesson.subtitle ? [element('p', { className: 'lesson-subtitle' }, [chosenLesson.subtitle])] : []),
-                    element('p', { className: 'meta' }, [chosenLesson.durationMinutes + ' minutes · Whole class · No student devices']),
-                    element('label', { for: 'class-label' }, ['Class label ', element('span', { className: 'muted' }, ['(optional)'])]),
-                    element('input', { id: 'class-label', maxlength: '30', placeholder: 'e.g. 7A', value: homeClassLabel, autocomplete: 'off' }),
+                    element('div', { className: 'lesson-picker-row' }, [element('p', { className: 'eyebrow' }, ['YOUR CLASSROOM']), element('span', { className: 'catalog-count' }, ['3 classes · 2 subjects'])]),
+                    element('h2', {}, [session ? contextLabel(session) : 'Where are we learning today?']),
+                    element('p', { className: 'lesson-subtitle' }, [session ? lesson.title : '7A · 7B · 8th Grade']),
+                    element('p', { className: 'meta' }, ['Geography · Global Perspectives']),
                     element('div', { className: 'home-actions' }, actions),
-                    session ? element('p', { className: 'saved-hint' }, ['Saved: ' + lesson.title + ' · ' + currentStage().title + ' · step ' + (session.steps[session.stage] + 1) + '. Timer resumes paused.']) : element('p', { className: 'saved-hint' }, ['No setup needed. Start when your class is ready.'])
+                    session ? element('p', { className: 'saved-hint' }, ['Saved: ' + currentStage().title + ' · step ' + (session.steps[session.stage] + 1) + '. Timer resumes paused.']) : element('p', { className: 'saved-hint' }, ['Choose your class, subject, and lesson. Your place is saved separately for each.'])
                 ])
             ]),
             element('div', { className: 'home-art' }, [element('div', { className: 'art-note' }, ['LOOK CLOSELY. THINK CLEARLY.']), schoolyard, element('p', {}, ['What can we see? What might we explain?'])])
@@ -145,7 +146,7 @@ function renderPlayer() {
     const header = element('header', { className: 'player-header' }, [
         brand(),
         element('div', { className: 'header-right' }, [
-            ...(session.classLabel ? [element('span', { className: 'class-label' }, [session.classLabel])] : []),
+            button(contextLabel(session) + ' ▾', 'switch-class', 'class-label', { 'aria-label': 'Switch class or lesson' }),
             ...(session.preferences.starsVisible ? [button('★ Class stars · ' + session.stars, 'tools', 'star-count')] : []),
             element('span', { className: 'teacher-name' }, ['Mr. Friend'])
         ])
@@ -260,7 +261,7 @@ function render() {
 function openPanel(title, children, kind = 'panel') {
     if (panel.open) panel.close();
     dialogKind = kind;
-    panel.className = kind === 'attention' || kind === 'pause' ? 'overlay-panel' : '';
+    panel.className = kind === 'attention' || kind === 'pause' ? 'overlay-panel' : kind === 'picker' ? 'class-picker' : '';
     panel.replaceChildren(element('div', { className: 'panel-header' }, [
         element('h2', { id: 'panel-title' }, [title]),
         ...(kind === 'attention' || kind === 'pause' ? [] : [button('Close ×', 'close-panel', 'subtle')])
@@ -282,7 +283,7 @@ function confirmAction(title, message, callback, label) {
 function showHelp() {
     openPanel('Ready for your classroom', [
         element('p', {}, ['Operate the board yourself. Students think, talk, point, or use agreed gestures from their seats. No student devices are needed.']),
-        element('p', {}, ['Progress is saved only in this browser. It does not sync between your laptop and the classroom board.']),
+        element('p', {}, ['Progress is saved separately for each class, subject, and lesson in this browser. It does not sync between your laptop and the classroom board.']),
         element('p', {}, ['Attention pauses the timer and covers the lesson. Resume restores the same screen. Next step reveals content; Next stage moves to a new section. Nothing advances automatically.']),
         element('p', {}, ['All lesson content loads at startup. Moving through a loaded lesson needs no new content requests. A first visit or page reload still needs a connection.']),
         element('p', {}, ['Teacher notes and tools are visible to anyone looking at this shared screen. They are not private or password protected. Use only a class label, never student names.']),
@@ -290,13 +291,68 @@ function showHelp() {
     ]);
 }
 function chooseLesson() {
-    homeClassLabel = document.getElementById('class-label').value;
-    openPanel('Choose a lesson', [
-        element('p', {}, ['Your saved lesson stays available until you confirm starting a new session.']),
-        ...lessons.map(function(item) {
-            return button(item.title + ' · ' + item.durationMinutes + ' minutes', 'select-lesson', item.id === selectedLessonId ? 'selected' : '', { 'data-lesson': item.id });
-        })
-    ]);
+    picker = { classId: selectedClassId, subjectId: selectedSubjectId, lessonId: selectedLessonId };
+    showPicker();
+}
+function showPicker(focusSelector) {
+    const available = lessonsFor(picker.classId, picker.subjectId);
+    if (!available.some(function(item) { return item.id === picker.lessonId; })) picker.lessonId = null;
+    const saved = picker.lessonId ? storage.find(picker) : null;
+    function group(title, items, key, action) {
+        return element('section', { className: 'picker-section', 'aria-label': title }, [
+            element('h3', {}, [title]),
+            element('div', { className: 'picker-options' }, items.map(function(item) {
+                return button(item.label, action, picker[key] === item.id ? 'selected' : '', { 'data-id': item.id, 'aria-pressed': String(picker[key] === item.id) });
+            }))
+        ]);
+    }
+    const subjectLessons = available.filter(function(item) { return item.catalog; });
+    const shared = available.filter(function(item) { return !item.catalog; });
+    function lessonButton(item) {
+        const checkpoint = storage.find({ ...picker, lessonId: item.id });
+        return element('button', { type: 'button', 'data-action': 'select-lesson', 'data-lesson': item.id, className: 'lesson-option' + (picker.lessonId === item.id ? ' selected' : ''), 'aria-pressed': String(picker.lessonId === item.id) }, [
+            element('strong', {}, [item.title]),
+            element('span', {}, [(item.catalog?.unit ? item.catalog.unit + ' · ' : '') + item.durationMinutes + ' min' + (checkpoint ? ' · Saved at stage ' + (checkpoint.stage + 1) : '')])
+        ]);
+    }
+    const ready = !!picker.classId && !!picker.subjectId;
+    openPanel('Choose class & lesson', [
+        element('p', { className: 'panel-hint' }, ['A quick start for every class. Saved progress stays with its class, subject, and lesson.']),
+        element('div', { className: 'picker-context' }, [
+            group('1 · Class', classes, 'classId', 'select-class'),
+            group('2 · Subject', subjects, 'subjectId', 'select-subject')
+        ]),
+        element('section', { className: 'picker-lessons', 'aria-label': '3 · Lesson' }, [
+            element('h3', {}, ['3 · Lesson']),
+            ...storage.unassigned().map(function(value) { return button('Resume earlier unassigned lesson: ' + getLesson(value.lessonId).title, 'resume-earlier', 'subtle', { 'data-lesson': value.lessonId }); }),
+            ...(!ready ? [element('p', { className: 'empty-curriculum' }, ['Choose a class and subject to see lessons.'])] : [
+                ...(subjectLessons.length ? subjectLessons.map(lessonButton) : [element('p', { className: 'empty-curriculum' }, ['Your subject lessons will appear here once we add your plans.'])]),
+                ...(shared.length ? [element('p', { className: 'eyebrow' }, ['SHARED STARTER LESSONS']), ...shared.map(lessonButton)] : [])
+            ])
+        ]),
+        element('div', { className: 'picker-footer' }, [
+            element('p', { className: 'picker-status', role: 'status' }, [saved ? contextLabel(saved) + ' · Stage ' + (saved.stage + 1) + ', step ' + (saved.steps[saved.stage] + 1) + ' · Timer paused' : ready ? contextLabel(picker) + (picker.lessonId ? ' · Ready to begin' : ' · Choose a lesson to begin') : 'Three classes. One familiar lesson player.']),
+            element('div', { className: 'dialog-actions' }, [
+                ...(saved ? [button('Resume lesson →', 'picker-resume', 'primary')] : []),
+                button(saved ? 'Start again' : 'Start lesson →', 'picker-start', saved ? 'subtle' : 'primary', picker.lessonId ? {} : { disabled: '' })
+            ])
+        ])
+    ], 'picker');
+    if (focusSelector) panel.querySelector(focusSelector)?.focus({ preventScroll: true });
+}
+function startSelection(resume) {
+    if (!picker || !lessonsFor(picker.classId, picker.subjectId).some(function(item) { return item.id === picker.lessonId; })) return;
+    const selection = { ...picker };
+    const saved = storage.find(selection);
+    function start() {
+        selectedClassId = selection.classId; selectedSubjectId = selection.subjectId; selectedLessonId = selection.lessonId;
+        closePanel();
+        if (resume && saved) {
+            session = saved; lesson = getLesson(session.lessonId); inLesson = true; save(); render();
+        } else newSession(getClass(selection.classId).label, selection.lessonId, selection.classId, selection.subjectId);
+    }
+    if (saved && !resume) confirmAction('Start this lesson again?', 'This resets only ' + contextLabel(selection) + '’s progress for this lesson. Other saved lessons are kept.', start, 'Start again');
+    else start();
 }
 function showNotes() {
     const stage = currentStage();
@@ -341,6 +397,7 @@ function showTools() {
             ] : [])
         ]),
         button('Help & browser storage', 'help'),
+        button('Switch class or lesson', 'switch-class'),
         button('Return home', 'home'),
         element('hr'),
         button('Restart lesson', 'restart'),
@@ -411,13 +468,13 @@ async function fullscreen() {
 }
 function home() {
     if (session) { session.timer = pauseTimer(session.timer); save(); }
-    if (session) homeClassLabel = session.classLabel;
+    if (session) { selectedClassId = session.classId; selectedSubjectId = session.subjectId; selectedLessonId = session.lessonId; }
     closePanel(); inLesson = false; render();
 }
 function clearSession() {
-    confirmAction('Clear saved session?', 'This removes this browser’s lesson progress, class label, reveals, timer, and stars, and returns home.', function() {
-        const cleared = storage.clear();
-        session = null; homeClassLabel = ''; inLesson = false; render();
+    confirmAction('Clear saved session?', 'This removes only the current class, subject, and lesson’s progress, reveals, timer, and stars. Other saved lessons are kept.', function() {
+        const cleared = storage.clear(session);
+        session = null; inLesson = false; render();
         if (!cleared) notify('Browser storage could not be cleared. Use browser settings to remove any older saved progress.');
     }, 'Clear saved session');
 }
@@ -426,16 +483,21 @@ function handleAction(event) {
     if (!target || target.disabled) return;
     const action = target.dataset.action;
     if (action === 'choose-lesson' && !inLesson) chooseLesson();
-    else if (action === 'select-lesson' && !inLesson) {
-        if (!getLesson(target.dataset.lesson)) return;
-        selectedLessonId = target.dataset.lesson;
-        closePanel(); render();
-    } else if (action === 'start-new') {
-        const label = document.getElementById('class-label').value;
-        if (session) confirmAction('Start a new lesson?', 'This clears the saved lesson’s progress, reveals, timer, and stars.', function() { newSession(label); }, 'Start new lesson');
-        else newSession(label);
-    } else if (action === 'resume-saved') {
+    else if (action === 'switch-class') { home(); chooseLesson(); }
+    else if (action === 'select-class' && dialogKind === 'picker') {
+        picker.classId = target.dataset.id; showPicker('[data-action="select-class"][data-id="' + picker.classId + '"]');
+    } else if (action === 'select-subject' && dialogKind === 'picker') {
+        picker.subjectId = target.dataset.id; showPicker('[data-action="select-subject"][data-id="' + picker.subjectId + '"]');
+    } else if (action === 'select-lesson' && dialogKind === 'picker') {
+        picker.lessonId = target.dataset.lesson; showPicker('[data-lesson="' + picker.lessonId + '"]');
+    } else if (action === 'picker-start' || action === 'picker-resume') startSelection(action === 'picker-resume');
+    else if (action === 'resume-earlier' && dialogKind === 'picker') {
+        const earlier = storage.find({ classId: null, subjectId: null, lessonId: target.dataset.lesson });
+        if (!earlier) return;
+        session = earlier; lesson = getLesson(session.lessonId); inLesson = true; closePanel(); save(); render();
+    } else if (action === 'resume-saved' && session) {
         lesson = getLesson(session.lessonId);
+        selectedClassId = session.classId; selectedSubjectId = session.subjectId; selectedLessonId = session.lessonId;
         inLesson = true; render();
     } else if (action === 'confirm') {
         const callback = confirmation;
@@ -489,7 +551,7 @@ function handleAction(event) {
         session.stars = Math.min(10000, Math.max(0, session.stars + (action === 'add-star' ? 1 : -1)));
         save(); render(); showTools();
     } else if (action === 'restart') {
-        confirmAction('Restart this lesson?', 'This clears all current progress, reveals, timer, and stars. Your class label is kept.', function() { newSession(session.classLabel, session.lessonId); }, 'Restart lesson');
+        confirmAction('Restart this lesson?', 'This clears all current progress, reveals, timer, and stars. Your class label is kept.', function() { newSession(session.classLabel, session.lessonId, session.classId, session.subjectId); }, 'Restart lesson');
     } else if (action === 'home') home();
 }
 function tick() {

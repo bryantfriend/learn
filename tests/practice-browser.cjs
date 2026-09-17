@@ -20,8 +20,10 @@ async function state() { return page.evaluate(function() { return JSON.parse(loc
 async function jump(index) { await action('stages'); await page.locator('[data-stage="' + index + '"]').click(); }
 async function startPractice() {
     await action('choose-lesson');
+    await page.locator('[data-action="select-class"][data-id="7a"]').click();
+    await page.locator('[data-action="select-subject"][data-id="geography"]').click();
     await page.locator('[data-lesson="system-practice-01"]').click();
-    await action('start-new');
+    await action('picker-start');
     if (await page.locator('[data-action="confirm"]:visible').count()) await action('confirm');
 }
 async function geometry() {
@@ -54,11 +56,13 @@ async function geometry() {
     await page.goto('http://127.0.0.1:4174/learn/');
     await check('practice lesson selector, title, subtitle and opening scripts', async function() {
         await action('choose-lesson');
+        await page.locator('[data-action="select-class"][data-id="7a"]').click();
+        await page.locator('[data-action="select-subject"][data-id="geography"]').click();
         assert.equal(await page.locator('[data-action="select-lesson"]').count(),2);
         await page.locator('[data-lesson="system-practice-01"]').tap();
-        assert.match(await page.locator('.lesson-card').innerText(),/A practice lesson for our new classroom system/);
+        assert.match(await page.locator('#panel').innerText(),/Mission: Learn How We Learn/);
         await page.screenshot({path:path.join(output,'practice-home-1280.png')});
-        await action('start-new');
+        await action('picker-start');
         assert.match(await page.locator('#student-title').innerText(),/WELCOME TO YOUR FIRST MISSION/);
         assert.match(await page.locator('.voice-level').innerText(),/0/);
         assert.equal(await page.locator('.star-count').count(),0);
@@ -163,12 +167,13 @@ async function geometry() {
         await action('tools');await action('home');
         const before=await state();
         await action('choose-lesson');await page.locator('[data-lesson="ready-to-learn-v1"]').click();
-        await action('start-new');await action('cancel-confirm');
+        await action('close-panel');
         assert.deepEqual(await state(),before);
         await action('resume-saved');
         assert.equal((await state()).lessonId,'system-practice-01');
         assert.equal(await page.locator('.stage-dots span').count(),9);
-        await action('tools');await action('home');await action('start-new');await action('confirm');
+        await action('tools');await action('home');await action('choose-lesson');
+        await page.locator('[data-lesson="ready-to-learn-v1"]').click();await action('picker-start');
         assert.equal((await state()).lessonId,'ready-to-learn-v1');
         assert.equal(await page.locator('.stage-dots span').count(),8);
         assert.equal(await page.locator('.voice-level').count(),0);

@@ -14,7 +14,16 @@ async function check(name, run) {
     console.log('PASS ' + name);
 }
 async function action(page, name) {
-    await page.locator('[data-action="' + name + '"]:visible').first().click();
+    if (name === 'start-new') {
+        await action(page, 'choose-lesson');
+        await page.locator('[data-action="select-class"][data-id="7a"]').click();
+        await page.locator('[data-action="select-subject"][data-id="geography"]').click();
+        await page.locator('[data-lesson="ready-to-learn-v1"]').click();
+        await action(page, 'picker-start');
+        return;
+    }
+    const root = await page.locator('#panel[open]').count() ? page.locator('#panel') : page;
+    await root.locator('[data-action="' + name + '"]:visible').first().click();
 }
 async function stage(page, index) {
     await action(page, 'stages');
@@ -54,13 +63,13 @@ async function geometry(page) {
     page.on('console', function(message) { if (message.type() === 'error') errors.push(message.text()); });
     page.on('request', function(request) { requests.push(request.url()); });
     await page.goto('http://127.0.0.1:4173/learn/');
-    await page.waitForSelector('[data-action="start-new"]');
+    await page.waitForSelector('[data-action="choose-lesson"]');
     await page.screenshot({ path: path.join(output, 'home-1280.png') });
     const initialRequests = requests.length;
     await check('fresh startup without typing; all eight stages and six explanations; final screen', async function() {
         assert.equal(await page.locator('[data-action="resume-saved"]').count(), 0);
         await action(page, 'start-new');
-        assert.equal((await state(page)).classLabel, '');
+        assert.equal((await state(page)).classLabel, '7A');
         for (let index = 0; index < 8; index += 1) {
             if (index) await action(page, 'next-stage');
             let steps = 0;
@@ -202,7 +211,7 @@ async function geometry(page) {
         const p = await context.newPage();
         await p.clock.install();
         await p.goto('http://127.0.0.1:4173/learn/');
-        await p.locator('[data-action="start-new"]').tap();
+        await action(p, 'start-new');
         await stage(p, 2);
         await p.locator('[data-action="timer"]').tap();
         await p.locator('[data-action="toggle-timer"]').tap();

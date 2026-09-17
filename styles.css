@@ -237,3 +237,31 @@ dialog.overlay-panel { width:100vw; max-width:none; height:100dvh; max-height:no
     .lesson-picker-row { align-items:flex-start; }
     .summary-stats { font-size:19px; }
 }
+
+/* Class shell: broad touch targets and an independently scrollable lesson list. */
+.catalog-count { color:var(--muted); font-size:14px; }
+.class-picker[open] { display:flex; flex-direction:column; width:min(980px,calc(100% - 32px)); max-width:980px; max-height:calc(100dvh - 32px); padding:24px; gap:12px; overflow:hidden; }
+.class-picker .panel-header { flex-shrink:0; }
+.class-picker .panel-hint { margin:0; font-size:16px; }
+.picker-context { display:grid; grid-template-columns:1fr 1.5fr; gap:24px; flex-shrink:0; }
+.picker-section h3,.picker-lessons h3 { margin:0 0 10px; font-size:18px; }
+.picker-options { display:flex; gap:8px; }
+.picker-options button { flex:1; min-height:56px; margin:0; padding:10px 14px; }
+.picker-lessons { overflow:auto; min-height:100px; padding:4px 4px 4px 0; }
+.class-picker .empty-curriculum { padding:14px 18px; margin:0 0 16px; background:#f0f2e9; border-radius:12px; font-size:16px; color:#536148; }
+.class-picker .eyebrow { margin:10px 0; font-size:12px; }
+.class-picker .lesson-option { display:flex; flex-direction:column; align-items:flex-start; text-align:left; gap:4px; width:100%; margin:0 0 8px; padding:14px 18px; }
+.lesson-option strong { font-size:20px; }
+.lesson-option span { font-size:14px; font-weight:400; }
+.picker-footer { border-top:1px solid var(--line); padding-top:12px; flex-shrink:0; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.picker-status { font-size:14px; margin:0; max-width:440px; }
+.picker-footer .dialog-actions { margin:0; flex-shrink:0; }
+.player-header .class-label { max-width:360px; min-height:44px; font-size:16px; white-space:normal; }
+@media (max-width:760px) {
+ .picker-context { grid-template-columns:1fr; gap:12px; }
+ .class-picker[open] { padding:16px; gap:10px; }
+ .picker-footer { align-items:stretch; flex-direction:column; gap:8px; }
+ .picker-footer .dialog-actions { justify-content:flex-end; }
+ .class-picker .panel-header h2 { font-size:22px; }
+ .class-picker .panel-hint { display:none; }
+}

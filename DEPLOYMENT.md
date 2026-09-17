@@ -20,3 +20,8 @@ For future changes, commit reviewed files and push origin main, wait for the Pag
 ## Version 1.1.0 — classroom system practice
 
 Adds Mission: Learn How We Learn to the existing home picker. The same main-branch Pages deployment publishes both lessons. See docs/system-practice.md for the complete lesson, compatibility details and classroom checklist.
+
+## Version 1.2.0 — classroom shell
+
+Adds the class/subject/lesson modal for 7A, 7B and 8th Grade; Geography and Global Perspectives; independent saved checkpoints; and migration of earlier sessions. Keeps both existing lessons as shared starters. Verified locally with 17 unit tests and all three browser suites. Publish from main using the existing Pages workflow.
+

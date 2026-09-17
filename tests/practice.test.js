@@ -8,7 +8,7 @@ import { prepareTimer } from '../src/timer.js';
 function sessionFor(selected = practiceLesson) {
     return {
         schemaVersion: SCHEMA, lessonId: selected.id, stage: 0, steps: selected.stages.map(function() { return 0; }),
-        classLabel: '', responses: {}, stars: 0, modeOverride: null,
+        classId: null, subjectId: null, classLabel: '', responses: {}, stars: 0, modeOverride: null,
         preferences: { starsVisible: false, timerVisible: false }, timer: prepareTimer(30),
         seenFrames: { '0:0': true }, attentionReturns: {}, discussedQuestions: [], startedAt: 1000, finishedAt: null
     };
@@ -58,7 +58,7 @@ test('old eight-stage sessions migrate without losing saved reveal or timer stat
     old.steps[5] = 2;
     old.timer = { durationMs: 80000, remainingMs: 80000, running: true, deadline: 5000 };
     const recovered = validateSession(old, 2000);
-    assert.equal(recovered.schemaVersion, 2);
+    assert.equal(recovered.schemaVersion, SCHEMA);
     assert.equal(recovered.lessonId, lesson.id);
     assert.equal(recovered.stage, 5);
     assert.equal(recovered.steps[5], 2);

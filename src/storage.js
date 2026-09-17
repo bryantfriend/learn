@@ -1,9 +1,11 @@
 import { lesson as firstLesson, getLesson, modes, questionOptions } from './lessons.js';
 import { recoverTimer } from './timer.js';
 import { frameKey } from './progress.js';
+import { getClass, getSubject, lessonsFor, sessionKey } from './catalog.js';
 // Keep the existing key so the first release's saved lesson can be migrated in place.
 export const STORAGE_KEY = 'learn.session.v1';
-export const SCHEMA = 2;
+export const SCHEMA = 3;
+export const SESSIONS_KEY = 'learn.sessions.v1';
 function integer(value, minimum, maximum) {
     return Number.isInteger(value) && value >= minimum && value <= maximum;
 }
@@ -24,7 +26,7 @@ function validFrameFlags(value, lesson, attentionOnly = false) {
     return result;
 }
 export function validateSession(value, now = Date.now()) {
-    if (!value || ![1, SCHEMA].includes(value.schemaVersion)) return null;
+    if (!value || ![1, 2, SCHEMA].includes(value.schemaVersion)) return null;
     const lesson = getLesson(value.lessonId);
     if (!lesson || (value.schemaVersion === 1 && lesson.id !== firstLesson.id)) return null;
     if (!integer(value.stage, 0, lesson.stages.length - 1) || !Array.isArray(value.steps) || value.steps.length !== lesson.stages.length) return null;
@@ -32,6 +34,9 @@ export function validateSession(value, now = Date.now()) {
         if (!integer(value.steps[index], 0, lesson.stages[index].frames.length - 1)) return null;
     }
     if (typeof value.classLabel !== 'string' || value.classLabel.length > 30 || !integer(value.stars, 0, 10000)) return null;
+    const classId = value.schemaVersion < 3 ? null : value.classId;
+    const subjectId = value.schemaVersion < 3 ? null : value.subjectId;
+    if (!(classId === null && subjectId === null) && (!getClass(classId) || !getSubject(subjectId) || !lessonsFor(classId, subjectId).some(function(item) { return item.id === lesson.id; }))) return null;
     const timer = value.timer;
     if (!timer || !Number.isFinite(timer.durationMs) || timer.durationMs <= 0 || timer.durationMs > 3600000 ||
         !Number.isFinite(timer.remainingMs) || timer.remainingMs < 0 || timer.remainingMs > 86400000 ||
@@ -60,7 +65,7 @@ export function validateSession(value, now = Date.now()) {
     if (!Number.isFinite(startedAt) || startedAt < 0 || startedAt > now ||
         (finishedAt !== null && (!Number.isFinite(finishedAt) || finishedAt < startedAt || finishedAt > now))) return null;
     return {
-        schemaVersion: SCHEMA, lessonId: lesson.id, classLabel: value.classLabel,
+        schemaVersion: SCHEMA, lessonId: lesson.id, classId, subjectId, classLabel: getClass(classId)?.label || value.classLabel,
         stage: value.stage, steps: value.steps.slice(), responses,
         stars: value.stars, preferences: { starsVisible: value.preferences.starsVisible, timerVisible: value.preferences.timerVisible },
         modeOverride: Object.hasOwn(modes, value.modeOverride) ? value.modeOverride : null,
@@ -69,27 +74,63 @@ export function validateSession(value, now = Date.now()) {
     };
 }
 export function createStorage(getStorage) {
-    let unavailable = false;
-    return {
-        load: function() {
-            try {
-                const raw = getStorage().getItem(STORAGE_KEY);
-                if (!raw) return { session: null, message: '' };
-                const session = validateSession(JSON.parse(raw));
-                return { session, message: session ? '' : 'Saved progress could not be restored. Start a new lesson.' };
-            } catch (error) {
-                if (error instanceof SyntaxError) return { session: null, message: 'Saved progress is unreadable. Start a new lesson.' };
-                unavailable = true;
-                return { session: null, message: 'Saving is unavailable. This lesson will work in memory.' };
+    let unavailable = false, hydrated = false, active = null;
+    const sessions = new Map();
+    function hydrate() {
+        if (hydrated) return '';
+        hydrated = true;
+        let message = '';
+        try {
+            const raw = getStorage().getItem(SESSIONS_KEY);
+            if (raw) {
+                try {
+                    const values = JSON.parse(raw);
+                    if (!Array.isArray(values)) throw new SyntaxError();
+                    values.forEach(function(value) {
+                        const valid = validateSession(value);
+                        if (valid) sessions.set(sessionKey(valid), valid);
+                    });
+                } catch { message = 'Some saved progress could not be restored.'; }
             }
+            const rawActive = getStorage().getItem(STORAGE_KEY);
+            if (rawActive) {
+                active = validateSession(JSON.parse(rawActive));
+                if (active) sessions.set(sessionKey(active), active);
+                else message = 'Saved progress could not be restored. Choose a class to begin.';
+            }
+        } catch (error) {
+            if (error instanceof SyntaxError) message = 'Saved progress is unreadable. Choose a class to begin.';
+            else { unavailable = true; message = 'Saving is unavailable. This lesson will work in memory.'; }
+        }
+        return message;
+    }
+    return {
+        load: function() { const message = hydrate(); return { session: active, message }; },
+        unassigned: function() { hydrate(); return Array.from(sessions.values()).filter(function(value) { return !value.classId; }).map(function(value) { return validateSession(value); }); },
+        find: function(context) {
+            hydrate();
+            const value = sessions.get(sessionKey(context));
+            return value ? validateSession(value) : null;
         },
         save: function(session) {
-            try { getStorage().setItem(STORAGE_KEY, JSON.stringify(session)); return true; }
-            catch { unavailable = true; return false; }
+            hydrate();
+            active = structuredClone(session);
+            sessions.set(sessionKey(active), active);
+            try {
+                getStorage().setItem(SESSIONS_KEY, JSON.stringify(Array.from(sessions.values())));
+                getStorage().setItem(STORAGE_KEY, JSON.stringify(active));
+                return true;
+            } catch { unavailable = true; return false; }
         },
-        clear: function() {
-            try { getStorage().removeItem(STORAGE_KEY); return true; }
-            catch { unavailable = true; return false; }
+        clear: function(session = active) {
+            hydrate();
+            if (session) sessions.delete(sessionKey(session));
+            active = null;
+            try {
+                getStorage().setItem(SESSIONS_KEY, JSON.stringify(Array.from(sessions.values())));
+                getStorage().removeItem(STORAGE_KEY);
+                return true;
+            } catch { unavailable = true; return false; }
         },
         isUnavailable: function() { return unavailable; }
     };

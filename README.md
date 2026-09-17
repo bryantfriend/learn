@@ -8,19 +8,19 @@ A teacher-operated, whole-class lesson player for **Mr. Friend · Oxford Interna
 
 ## Available lessons
 
-Use **Choose lesson** on the existing home card.
+Use **Choose class & lesson**: select **7A**, **7B**, or **8th Grade**, then **Geography** or **Global Perspectives**, then a lesson. Tap **Start lesson** or **Resume lesson**.
 
 - **Ready to Learn: Notice, Think, Explain** — the original 40-minute lesson, eight stages.
 - **Mission: Learn How We Learn** — a 35–40-minute system practice lesson, nine stages. [Practice lesson guide](./docs/system-practice.md).
 
-The picker leaves saved progress intact. Starting another lesson requires confirmation; Resume always restores the saved lesson.
+The two existing lessons are shared starters available in every class and subject. Subject lesson spaces are ready for your plans. Each class/subject/lesson keeps its own progress. Starting again requires confirmation only for that same saved lesson. The home card offers **Resume last class**; the class chip in the player opens the picker.
 
 ## Teach the first lesson
 
 **Ready to Learn: Notice, Think, Explain** — 40 minutes.
 
 1. Open the published site on the smart board. The initial page load needs an internet connection.
-2. Tap **Start new lesson**. The class label is optional. Starting over asks for confirmation if progress exists.
+2. Tap **Choose class & lesson**, choose your class and subject, select **Ready to Learn**, and tap **Start lesson**.
 3. Tap **Fullscreen** if the board supports it. The normal browser window works too.
 4. Use **Next step** for the current stage's reveals and **Next stage** for the next section. **Back** and the stage-title menu preserve earlier reveal steps.
 5. Use **Attention** during partner talk; wait for 3, 2, 1, then allow processing time. Tap **Resume lesson** yourself.
@@ -54,15 +54,19 @@ The lesson is a general introduction, not a claim of alignment with an unseen cu
 - **Working mode:** tap the labeled mode chip to set Listen, Think quietly, Talk with your partner, or Share with the class.
 - **Class stars:** hidden by default. Teacher tools can show them, add one, or undo the most recent award. They are optional acknowledgements, not grades, punishments, or a gate.
 - **Escape:** closes a dialog; on Attention/Pause it restores the lesson. Browser fullscreen Escape behavior is not intercepted.
-- **Clear saved session:** confirmed removal of the class label and all progress, then home.
+- **Clear saved session:** confirmed removal of only the current class/subject/lesson checkpoint, then home. Other lessons are kept.
 
 **Progress is saved only in this browser. It does not sync between your laptop and the classroom board.**
 
-Only non-sensitive lesson state goes into localStorage: schema/lesson identifiers, optional class label, stage/steps, revealed answers and selected discussion response, timer checkpoint, stars and display preferences. Do not enter student names. There is no backend, login, monitoring, attendance, recording, or student profile.
+Only non-sensitive lesson state goes into localStorage: schema/lesson identifiers, class and subject, stage/steps, revealed answers and selected discussion response, timer checkpoint, stars and display preferences. Do not enter student names. There is no backend, login, monitoring, attendance, recording, or student profile.
 
-On refresh, open **Resume lesson**. The timer accounts for elapsed time but is always restored **paused**, even if it had been running. A timer paused by an overlay remains paused after recovery. Invalid or outdated progress is ignored with a message. Storage failures leave the lesson usable in memory. If clearing storage is denied, browser settings may be needed to remove older saved data.
+On refresh, open **Resume last class**, or use the picker to resume another saved lesson. The timer accounts for elapsed time but is always restored **paused**, even if it had been running. A timer paused by an overlay remains paused after recovery. Invalid or outdated progress is ignored with a message. Storage failures leave the lesson usable in memory. If clearing storage is denied, browser settings may be needed to remove older saved data.
 
 All first-lesson text and the local SVG load at startup. Navigating a loaded lesson makes no new content requests. **There is no service worker. A first visit or page reload is not guaranteed offline.**
+
+## Adding your plans
+
+Classes and subjects live in `src/catalog.js`. Register complete lessons in `src/lessons.js` and add `catalog: { subjectId: 'geography', grades: [7], unit: 'Unit title', order: 1 }` to subject lessons. Use `global-perspectives` for the second subject. Grades `[7]` share content between 7A and 7B with separate progress; `[8]` targets 8th Grade. Keep lesson IDs stable. Lessons without catalog metadata remain shared starters. See [the classroom shell guide](./docs/classroom-shell.md).
 
 ## Local preview
 
@@ -82,13 +86,14 @@ Alternatively, run `python -m http.server 4173` from the repository and open `ht
 npm test
 ```
 
-Runs twelve dependency-free Node tests for lesson structure, deadline timers, recovery and storage validation.
+Runs seventeen dependency-free Node tests for lesson structure, deadline timers, recovery and storage validation.
 
 Browser acceptance tests use the Playwright library and Chromium only as development tools. Reuse an existing installation by setting `PLAYWRIGHT_MODULE` to its absolute module directory, then:
 
 ```sh
 npm run test:browser
 npm run test:practice
+npm run test:classroom
 ```
 
 If none is installed:
