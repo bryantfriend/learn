@@ -90,3 +90,11 @@ Ports: 4179 for 7A traversal/printing, 4180 for 7A workflow. Set `PRINT_ONLY=1` 
 The 7B workflow verifies weekly-plan launch, mobile/board dialog geometry, diagram display, exam links, Print command and separate key. 7A, classroom, Grade 8 plan and Grade 8 workflow regression suites pass. The weekly plan, UK schematic and sample student/key print screenshots were visually reviewed.
 
 Run npm run test:grade7b (port 4181) and node tests/grade7b-workflow.cjs (4182). PRINT_ONLY=1 restricts the first suite to papers; LEARN_URL supports hosted checks. Remaining physical-board checks are touch/fullscreen support and room-specific legibility.
+
+## Version 1.7.0 — illustrated teaching
+
+31 unit tests pass. The new visual suite covers 576 illustrated frames across 269 teaching/review sessions, checks actual lesson IDs during navigation, and checks frame geometry at 1280 × 720 with the timer visible. It also checks animation controls, lesson position, Attention, enlarged-view return, interactive runoff and budget totals, reduced motion, and responsive layouts at 1366 × 768, 1920 × 1080 and 390 × 844.
+
+7A, 7B and Grade 8 picker-to-print workflows and the classroom regression suite pass. Visual screenshots are inspected for diagrams, chart quantities/axes, source and perspective graphics, and enlarged-board readability. Existing quiz and exam frames are excluded from the visual layer.
+
+Run npm run test:visuals (port 4183). Set CONTROLS_ONLY=1 for the control smoke test, or LEARN_URL for the hosted site. Test session setup overrides the old pagehide save before navigation, and asserts the loaded lesson ID to avoid checking a stale lesson.

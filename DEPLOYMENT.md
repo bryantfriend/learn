@@ -41,3 +41,7 @@ Adds 7A Geography at one session per teaching week and GP at two: 95 playable se
 ## Version 1.6.0
 
 Adds the confirmed 7B younger-group courses: 93 GP sessions at three per week, 63 Geography sessions at two per week, and ten printable assessment papers with separate keys. Uses the existing main/root GitHub Pages deployment. Source plans, adaptation and references are documented in docs/grade7b-course.md.
+
+## Version 1.7.0
+
+Adds illustrated teaching frames and teacher-controlled animation across all three classes, with enlarged views, interactive runoff and budgets, and reduced-motion support. Uses the existing main/root Pages deployment; no runtime dependencies or build step.

@@ -1,0 +1,73 @@
+
+/* Illustrated lesson frames: artwork and source text share the board. */
+.teaching-content.illustrated {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;padding:10px 36px;align-items:center;}
+.teaching-content.illustrated .copy {margin:0;max-width:none;width:auto;}
+.illustrated.gp-content .copy h1 {font-size:32px;line-height:1.1;margin:9px 0 12px;}
+.illustrated.gp-content .instructions p {font-size:25px;line-height:1.3;}
+.illustrated.gp-content .footnote {font-size:15px;line-height:1.3;margin-top:10px;}
+.lesson-visual {min-width:0;width:100%;border:1px solid #ccded8;border-radius:24px;background:linear-gradient(145deg,#e8f2ec,#e9f2f7 70%,#f4e7d0);padding:12px;box-shadow:0 10px 24px #214e4510;}
+.visual-tag {font-size:11px;letter-spacing:2px;font-weight:800;color:#547879;}
+.visual-canvas svg {display:block;width:100%;height:clamp(165px,24vh,280px);overflow:visible;}
+.visual-caption {font-size:16px;line-height:1.3;min-height:42px;padding:6px 4px;color:#254d4b;font-weight:650;}
+.visual-controls {display:flex;gap:6px;flex-wrap:wrap;}
+.visual-controls button {min-height:44px;padding:8px 10px;font-size:14px;flex:1;white-space:nowrap;background:#ffffffbf;border-color:#c8dcd5;}
+.visual-controls button:first-child {background:#256568;color:white;}
+.visual-data-note {font-size:12px;line-height:1.2;color:#52716a;margin:1px 4px 7px;}
+.lesson-visual .flow {animation:visual-flow 2s linear infinite;animation-play-state:paused;}
+.lesson-visual .float-drop {animation:visual-drop 3s ease-in-out infinite;animation-play-state:paused;}
+.lesson-visual .ice-body {animation:visual-ice 6s ease-in-out infinite alternate;animation-play-state:paused;transform-origin:220px 130px;}
+.lesson-visual .ice-debris {animation:visual-drift 6s ease-in-out infinite alternate;animation-play-state:paused;}
+.lesson-visual .sun-spin {animation:visual-glow 4s ease-in-out infinite;animation-play-state:paused;}
+.lesson-visual .lens {animation:visual-glow 3s ease-in-out infinite;animation-play-state:paused;}
+.lesson-visual .chart-bar {animation:visual-bars 2s ease-in-out infinite alternate;animation-play-state:paused;transform-origin:center 240px;}
+.lesson-visual.is-playing * {animation-play-state:running;}
+@keyframes visual-flow {to {stroke-dashoffset:-84;}}
+@keyframes visual-drop {0%,100%{transform:translate(0,20px);opacity:.3;}50%{transform:translate(13px,-35px);opacity:1;}}
+@keyframes visual-ice {to{transform:translate(8px,7px) scale(1.02);}}
+@keyframes visual-drift {to{transform:translate(15px,9px);}}
+@keyframes visual-glow {50%{filter:brightness(1.12);}}
+@keyframes visual-bars {from{opacity:.6;}to{opacity:1;}}
+@media(max-height:740px) and (min-width:901px){
+ .visual-canvas svg {height:170px;}
+ .visual-caption {font-size:15px;min-height:39px;}
+ .lesson-visual {padding:10px;}
+ .illustrated.gp-content .instructions p {font-size:24px;}
+}
+@media(min-height:900px) and (min-width:1000px){
+ .visual-caption {font-size:21px;min-height:62px;}
+ .visual-controls button {font-size:18px;min-height:56px;}
+ .illustrated.gp-content .instructions p {font-size:32px;}
+ .illustrated.gp-content .copy h1 {font-size:42px;}
+ .visual-tag {font-size:14px;}
+}
+@media(max-width:900px){
+ .teaching-content.illustrated {display:flex;flex-direction:column;align-items:stretch;padding:20px;gap:18px;}
+ .visual-canvas svg {height:230px;}
+ .lesson-visual {max-width:680px;align-self:center;}
+ .illustrated.gp-content .copy h1 {font-size:30px;}
+ .illustrated.gp-content .instructions p {font-size:23px;}
+}
+@media(prefers-reduced-motion:reduce){
+ .lesson-visual * {animation:none!important;transition:none!important;}
+}
+
+.visual-lightbox {width:min(1160px,96vw);max-width:96vw;height:min(850px,94dvh);max-height:94dvh;padding:22px;border:0;border-radius:24px;background:#f6f8f1;color:#23474a;overflow:auto;}
+.visual-lightbox::backdrop {background:#153f39dd;}
+.visual-lightbox h2 {font-size:28px;margin:5px 0 12px;}
+.visual-lightbox .visual-close {float:right;}
+.visual-lightbox .lesson-visual {box-shadow:none;clear:both;}
+.visual-lightbox .visual-canvas svg {height: min(52vh,470px);}
+.visual-lightbox .visual-caption {font-size:22px;min-height:45px;}
+.visual-lightbox .visual-controls button {font-size:18px;min-height:56px;}
+.visual-lightbox .visual-controls button:last-child {display:none;}
+
+.visual-controls button[aria-pressed="true"] {background:#b8dcca;border-color:#457e71;}
+@media(max-height:740px) and (min-width:901px){.budget-visual .visual-canvas svg{height:145px;}.budget-visual .visual-caption{font-size:14px;}}
+.visual-lightbox .budget-visual .visual-canvas svg{height:min(50vh,440px);}
+
+@media(max-height:740px) and (min-width:901px){
+ .visual-canvas svg {height:215px;}
+ .lesson-visual:has(.rain) .visual-canvas svg,.lesson-visual:has(.water-level) .visual-canvas svg {height:170px;}
+ .budget-visual .visual-canvas svg {height:215px;}
+ .budget-visual:has([data-choice="2"]) .visual-canvas svg {height:170px;}
+}

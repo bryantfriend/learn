@@ -86,7 +86,7 @@ Alternatively, run `python -m http.server 4173` from the repository and open `ht
 npm test
 ```
 
-Runs 29 dependency-free Node tests for lesson structure, deadline timers, recovery and storage validation.
+Runs 31 dependency-free Node tests for lesson structure, deadline timers, recovery and storage validation.
 
 Browser acceptance tests use the Playwright library and Chromium only as development tools. Reuse an existing installation by setting `PLAYWRIGHT_MODULE` to its absolute module directory, then:
 
@@ -163,3 +163,7 @@ Geography combines each teaching week's activities into one lesson, with optiona
 ## 7B younger-group courses (v1.6.0)
 
 Use the existing 7B class for the supplied Stage 6 GP and chapters 3–5 Geography plans. The schedule is three GP and two Geography sessions per regular teaching week. All 156 sessions are playable, with guided examples and weekly tasks; ten assessment points include printable four-choice papers and separate keys. See [7B coverage and teaching notes](./docs/grade7b-course.md).
+
+## Visual lessons (v1.7.0)
+
+The 269 curriculum teaching sessions now open with visual challenges. Explore animated processes, diagrams, lesson-data charts, runoff experiments and budget choices. Play starts motion; Next focus reveals a teaching prompt; Enlarge opens a board-sized view. See [visual lesson controls and coverage](./docs/visual-lessons.md).

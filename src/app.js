@@ -1,3 +1,4 @@
+import {visualSpec,createVisual,pauseVisuals} from './visuals.js';
 import { lesson as firstLesson, getLesson, modes, questionOptions } from './lessons.js';
 import { frameKey, responseKeyFor, summarizeSession } from './progress.js';
 import { prepareTimer, remainingTime, startTimer, pauseTimer, resetTimer, addTime, formatTime } from './timer.js';
@@ -146,6 +147,7 @@ function renderHome() {
 function renderPlayer() {
     const stage = currentStage();
     const frame = currentFrame();
+    const graphic = visualSpec(lesson,stage,frame);
     const mode = modes[currentMode()];
     const modeButton = button(mode.icon + ' ' + mode.label, 'mode', 'mode mode-' + currentMode(), { 'aria-label': 'Working mode: ' + mode.label + '. Change mode' });
     if (lesson.showVoiceLevels) modeButton.append(element('span', { className: 'voice-level' }, ['Voice level ' + currentVoiceLevel()]));
@@ -173,10 +175,10 @@ function renderPlayer() {
     ]);
     const copy = element('div', { className: 'copy' }, []);
     copy.append(element('p', { className: 'eyebrow' }, [frame.kicker || (frame.final ? 'LESSON COMPLETE' : lesson.eyebrow || 'NOTICE · THINK · EXPLAIN')]));
-    copy.append(element('h1', { id: 'student-title', tabindex: '-1' }, [frame.title]));
+    copy.append(element('h1', { id: 'student-title', tabindex: '-1' }, [graphic?.intro && lesson.catalog?.classes ? graphic.title : frame.title]));
     if (frame.quote) copy.append(element('blockquote', {}, [frame.quote]));
     if (frame.choices) copy.append(element('ol', { className: 'opening-choices' + (frame.choiceLayout === 'grid' ? ' choice-grid' : '') }, frame.choices.map(function(choice) { return element('li', {}, [choice]); })));
-    if (frame.lines) copy.append(element('div', { className: 'instructions' }, frame.lines.map(function(line) { return element('p', {}, [line]); })));
+    if (frame.lines) copy.append(element('div', { className: 'instructions' }, (graphic?.intro ? [graphic.prompt] : frame.lines).map(function(line) { return element('p', {}, [line]); })));
     if (frame.footnote) copy.append(element('p', { className: 'footnote' }, [frame.footnote]));
     if (frame.type === 'question' || frame.type === 'opinion') renderQuestion(copy);
     if (frame.type === 'memory') copy.append(element('div', { className: 'memory-grid', 'aria-label': 'Nine items to remember' }, frame.items.map(function(item) {
@@ -184,13 +186,14 @@ function renderPlayer() {
     })));
     if (frame.symbol) copy.append(element('div', { className: 'mission-symbol', 'aria-hidden': 'true' }, [frame.symbol]));
     const answerPanel = !frame.visual && frame.type === 'question' && response().revealed;
-    if (frame.diagram) {
+    if (frame.diagram && !graphic) {
         const diagrams = {'g7b-uk':['g7b-uk','Schematic UK locations; boxes are not country outlines.'],'g7b-valley':['g7b-valley','V-shaped and U-shaped valley cross-sections.'],'g7b-cycle':['g7b-cycle','Water cycle: evaporation, condensation, precipitation, runoff and infiltration.'],'g7b-bend':['g7b-bend','River bend with outer-bank erosion and inner-bank deposition.'],'2.4':['g7-plan','Invented plan: school west, pond east, park north, road south.'],'2.5':['g7-grid','Practice grid. Tree six tenths across and two tenths up inside square 2345.'],'2.8':['g7-profile','Profile: 100, 120, 160 and 180 metres at 0, 100, 200 and 300 metres distance.'],'2.9':['g7-world','Coordinate sketch: A north and east, B south and east, C at zero latitude and longitude.']};
         const item = diagrams[frame.diagram];
         copy.append(element('img', {src:'./assets/'+item[0]+'.svg',alt:item[1],className:'gp-diagram'}));
     }
     if (frame.printExam) copy.append(examLink('Open printable student paper', false));
-    const content = element('section', { className: 'teaching-content' + (frame.visual || answerPanel ? ' split' : '') + (lesson.summary ? ' practice-content' : '') + (lesson.gp ? ' gp-content' : '') + (frame.type === 'question' ? ' quiz' : ''), 'aria-labelledby': 'student-title' }, [copy]);
+    const content = element('section', { className: 'teaching-content' + (graphic ? ' illustrated' : '') + (frame.visual || answerPanel ? ' split' : '') + (lesson.summary ? ' practice-content' : '') + (lesson.gp ? ' gp-content' : '') + (frame.type === 'question' ? ' quiz' : ''), 'aria-labelledby': 'student-title' }, [copy]);
+    if (graphic) content.append(createVisual(graphic));
     if (frame.visual) {
         const evidence = element('div', { className: 'visual-evidence' }, [schoolyard]);
         const explanation = copy.querySelector('.explanation');
@@ -275,6 +278,7 @@ function render() {
     }
 }
 function openPanel(title, children, kind = 'panel') {
+    pauseVisuals();
     if (panel.open) panel.close();
     dialogKind = kind;
     panel.className = kind === 'attention' || kind === 'pause' ? 'overlay-panel' : kind === 'picker' ? 'class-picker' : kind === 'year-plan' ? 'class-picker year-plan' : '';

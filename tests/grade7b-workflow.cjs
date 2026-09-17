@@ -16,7 +16,7 @@ const {createServer}=require('../scripts/serve.cjs');const server=createServer()
  await page.locator('[data-action="g7-open"][data-lesson="g7b-geo-w02-1"]').click();
  assert.equal(await page.locator('[data-lesson="g7b-geo-w02-1"]').getAttribute('aria-pressed'),'true');
  await a('picker-start');await a('next-stage');await a('next-step');
- await page.locator('.gp-diagram').evaluate(async img=>{await img.decode();if(!img.naturalWidth)throw Error('Diagram failed to load');});await page.screenshot({path:'output/playwright/g7b-uk-board.png'});
+ await page.locator('.lesson-visual svg,.gp-diagram').evaluate(async img=>{if(img.tagName==='IMG'){await img.decode();if(!img.naturalWidth)throw Error('Diagram failed to load');}});await page.screenshot({path:'output/playwright/g7b-uk-board.png'});
  await a('switch-class');await page.locator('[data-quarter="Q4"]').click();await page.locator('[data-lesson="g7b-geo-w36-2"]').click();await a('picker-start');
  const [paper]=await Promise.all([context.waitForEvent('page'),page.locator('.copy .exam-link').click()]);
  await paper.waitForSelector('.paper-sheet');assert.equal(await paper.locator('.question').count(),12);assert.equal(await paper.locator('.key-answer').count(),0);

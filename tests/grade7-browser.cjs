@@ -33,7 +33,7 @@ const server=createServer();let browser;
    if(si)await page.locator('[data-action="next-stage"]').click();
    for(let fi=0;fi<lesson.stages[si].frames.length;fi++){
     if(fi)await page.locator('[data-action="next-step"]').click();
-    if(lesson.stages[si].frames[fi].diagram)await page.locator('.gp-diagram').evaluate(async img=>{await img.decode();if(!img.naturalWidth)throw Error('Diagram failed to load');});
+    if(lesson.stages[si].frames[fi].diagram)await page.locator('.lesson-visual svg,.gp-diagram').evaluate(async img=>{if(img.tagName==='IMG'){await img.decode();if(!img.naturalWidth)throw Error('Diagram failed to load');}});
     await fit(si+':'+fi);
     if(lesson.stages[si].frames[fi].type==='question'){
      await page.locator('[data-action="reveal"]').click();await fit('revealed '+si+':'+fi);
