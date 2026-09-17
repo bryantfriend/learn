@@ -283,3 +283,18 @@ dialog.overlay-panel { width:100vw; max-width:none; height:100dvh; max-height:no
 .week-controls button { min-width:56px; min-height:56px; padding:8px; margin:0; }
 .calendar-break { color:#80551d; }
 @media(max-width:760px) { .week-row { flex-direction:column; align-items:flex-start; } }
+
+/* Curriculum source cards stay legible without changing the starter lessons. */
+.gp-content .copy h1,.player:has(.timer-strip) .gp-content .copy h1 { font-size:34px; line-height:1.15; margin:8px 0 12px; letter-spacing:-.5px; }
+.gp-content .instructions p { font-size:27px; line-height:1.3; }
+.gp-content .custom-answers button { font-size:22px; line-height:1.2; min-height:66px; padding:10px 14px; }
+.gp-content .custom-answers { gap:8px; margin:10px 0; }
+.gp-content .response-hint { font-size:17px; margin:8px 0; }
+.gp-content .answer-detail { padding:16px; }
+.gp-content .explanation p { font-size:25px; line-height:1.3; }
+.gp-content .explanation strong { font-size:22px; }
+.gp-content .footnote { font-size:17px; }
+.gp-content .instructions { margin:10px 0; gap:8px; }
+.exam-link { display:inline-block; padding:14px 20px; margin:8px 8px 8px 0; border:1px solid var(--line); border-radius:10px; color:var(--green); background:#edf1de; font-size:20px; min-height:56px; }
+.quarter-options { margin-bottom:12px; }
+@media(min-height:900px) { .gp-content .instructions p { font-size:34px; } .gp-content .copy h1 { font-size:42px; } }

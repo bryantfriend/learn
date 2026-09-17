@@ -13,7 +13,7 @@ Use **Choose class & lesson**: select **7A**, **7B**, or **8th Grade**, then **G
 - **Ready to Learn: Notice, Think, Explain** — the original 40-minute lesson, eight stages.
 - **Mission: Learn How We Learn** — a 35–40-minute system practice lesson, nine stages. [Practice lesson guide](./docs/system-practice.md).
 
-The two existing lessons are shared starters available in every class and subject. Subject lesson spaces are ready for your plans. Each class/subject/lesson keeps its own progress. Starting again requires confirmation only for that same saved lesson. The home card offers **Resume last class**; the class chip in the player opens the picker.
+The two existing lessons are shared starters available in every class and subject. Grade 8 Global Perspectives includes 38 teaching lessons and five printable assessments; Grade 7 subject lessons await your plans. Each class/subject/lesson keeps its own progress. Starting again requires confirmation only for that same saved lesson. The home card offers **Resume last class**; the class chip in the player opens the picker.
 
 ## Teach the first lesson
 
@@ -150,4 +150,8 @@ Keep storage schema compatibility when changing existing lesson IDs or frame ord
 
 ## Grade 8 plan (v1.3.0)
 
-Grade 8 now offers Global Perspectives only; Geography remains for 7A and 7B. Open Year plan & calendar from the Grade 8 picker to browse 43 imported topics by quarter, including objectives and resources. Weekly pacing usually starts at three lessons and can be adjusted to two, one or zero without fixed weekdays. Planned topics are separate from playable classroom lessons. See [plan source and calendar notes](./docs/grade8-gp-plan.md).
+Grade 8 now offers Global Perspectives only; Geography remains for 7A and 7B. Open Year plan & calendar from the Grade 8 picker to browse 43 imported topics by quarter, including objectives and resources. Weekly pacing usually starts at three lessons and can be adjusted to two, one or zero without fixed weekdays. All topics are now playable; assessment sessions include printable four-option tests and separate answer keys. See [plan source and calendar notes](./docs/grade8-gp-plan.md).
+
+## Playable Grade 8 course (v1.4.0)
+
+All 43 plan entries are now playable: 38 teaching lessons and five assessment sessions. Use quarter filters in the Grade 8 picker. Each assessment has a self-contained 16-question, four-option student paper and separate explained teacher key. Open [printable assessments](./exams/) and use Print / Save as PDF. See [teaching and printing guide](./docs/playable-gp-lessons.md).

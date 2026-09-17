@@ -22,7 +22,7 @@ export const grade8GPPlan = {
       "resources": "OIS Global Perspectives skills rubric; printed source and data pack; portfolio; reflection journal",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 13,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-1.1",
@@ -36,7 +36,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed source pack; notebook; vocabulary and perspective cards; projector if available",
       "bloom": "Understand / Analyse",
       "sourceRow": 14,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-1.2",
@@ -50,7 +50,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed source pack; notebook; vocabulary and perspective cards; projector if available",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 15,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-1.3",
@@ -64,7 +64,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed data pack; graph templates; calculator; notebook; projector if available",
       "bloom": "Analyse",
       "sourceRow": 16,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-1.4",
@@ -78,7 +78,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed source pack; notebook; vocabulary and perspective cards; projector if available",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 17,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-1.5",
@@ -92,7 +92,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed source pack; notebook; vocabulary and perspective cards; projector if available",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 18,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-1.6",
@@ -106,7 +106,7 @@ export const grade8GPPlan = {
       "resources": "Role cards; discussion protocol; poster paper; markers; peer-feedback and reflection rubric",
       "bloom": "Evaluate / Create",
       "sourceRow": 19,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-q1",
@@ -120,7 +120,7 @@ export const grade8GPPlan = {
       "resources": "OIS Global Perspectives skills rubric; printed source and data pack; portfolio; reflection journal",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 20,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-2.1",
@@ -134,7 +134,7 @@ export const grade8GPPlan = {
       "resources": "Library and teacher-curated print sources; approved online sources when available; source-recording sheet; notebook",
       "bloom": "Apply / Analyse",
       "sourceRow": 21,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-2.2",
@@ -148,7 +148,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed source pack; notebook; vocabulary and perspective cards; projector if available",
       "bloom": "Analyse",
       "sourceRow": 22,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-2.3",
@@ -162,7 +162,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed data pack; graph templates; calculator; notebook; projector if available",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 23,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-2.4",
@@ -176,7 +176,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed source pack; notebook; vocabulary and perspective cards; projector if available",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 24,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-2.5",
@@ -190,7 +190,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed source pack; notebook; vocabulary and perspective cards; projector if available",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 25,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-2.6",
@@ -204,7 +204,7 @@ export const grade8GPPlan = {
       "resources": "Role cards; discussion protocol; poster paper; markers; peer-feedback and reflection rubric",
       "bloom": "Evaluate / Create",
       "sourceRow": 26,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-q2",
@@ -218,7 +218,7 @@ export const grade8GPPlan = {
       "resources": "OIS Global Perspectives skills rubric; printed source and data pack; portfolio; reflection journal",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 27,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-3.1",
@@ -232,7 +232,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed source pack; notebook; vocabulary and perspective cards; projector if available",
       "bloom": "Understand / Evaluate",
       "sourceRow": 28,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-3.2",
@@ -246,7 +246,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed data pack; graph templates; calculator; notebook; projector if available",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 29,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-3.3",
@@ -260,7 +260,7 @@ export const grade8GPPlan = {
       "resources": "Library and teacher-curated print sources; approved online sources when available; source-recording sheet; notebook",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 30,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-3.4",
@@ -274,7 +274,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed source pack; notebook; vocabulary and perspective cards; projector if available",
       "bloom": "Analyse",
       "sourceRow": 31,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-3.5",
@@ -288,7 +288,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed data pack; graph templates; calculator; notebook; projector if available",
       "bloom": "Evaluate",
       "sourceRow": 32,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-3.6",
@@ -302,7 +302,7 @@ export const grade8GPPlan = {
       "resources": "Role cards; discussion protocol; poster paper; markers; peer-feedback and reflection rubric",
       "bloom": "Evaluate / Create",
       "sourceRow": 33,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-4.1",
@@ -316,7 +316,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed source pack; notebook; vocabulary and perspective cards; projector if available",
       "bloom": "Understand / Analyse",
       "sourceRow": 34,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-4.2",
@@ -330,7 +330,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed source pack; notebook; vocabulary and perspective cards; projector if available",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 35,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-4.3",
@@ -344,7 +344,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed source pack; notebook; vocabulary and perspective cards; projector if available",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 36,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-4.4",
@@ -358,7 +358,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed source pack; notebook; vocabulary and perspective cards; projector if available",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 37,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-4.5",
@@ -372,7 +372,7 @@ export const grade8GPPlan = {
       "resources": "Role cards; discussion protocol; poster paper; markers; peer-feedback and reflection rubric",
       "bloom": "Evaluate",
       "sourceRow": 38,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-4.6",
@@ -386,7 +386,7 @@ export const grade8GPPlan = {
       "resources": "Role cards; discussion protocol; poster paper; markers; peer-feedback and reflection rubric",
       "bloom": "Evaluate / Create",
       "sourceRow": 39,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-r1",
@@ -400,7 +400,7 @@ export const grade8GPPlan = {
       "resources": "OIS Global Perspectives skills rubric; printed source and data pack; portfolio; reflection journal",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 40,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-q3",
@@ -414,7 +414,7 @@ export const grade8GPPlan = {
       "resources": "OIS Global Perspectives skills rubric; printed source and data pack; portfolio; reflection journal",
       "bloom": "Evaluate / Create",
       "sourceRow": 41,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-5.1",
@@ -428,7 +428,7 @@ export const grade8GPPlan = {
       "resources": "Library and teacher-curated print sources; approved online sources when available; source-recording sheet; notebook",
       "bloom": "Apply / Analyse",
       "sourceRow": 42,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-5.2",
@@ -442,7 +442,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed source pack; notebook; vocabulary and perspective cards; projector if available",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 43,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-5.3",
@@ -456,7 +456,7 @@ export const grade8GPPlan = {
       "resources": "Library and teacher-curated print sources; approved online sources when available; source-recording sheet; notebook",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 44,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-5.4",
@@ -470,7 +470,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed data pack; graph templates; calculator; notebook; projector if available",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 45,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-5.5",
@@ -484,7 +484,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed source pack; notebook; vocabulary and perspective cards; projector if available",
       "bloom": "Evaluate",
       "sourceRow": 46,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-5.6",
@@ -498,7 +498,7 @@ export const grade8GPPlan = {
       "resources": "Role cards; discussion protocol; poster paper; markers; peer-feedback and reflection rubric",
       "bloom": "Evaluate / Create",
       "sourceRow": 47,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-6.1",
@@ -512,7 +512,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed source pack; notebook; vocabulary and perspective cards; projector if available",
       "bloom": "Analyse",
       "sourceRow": 48,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-6.2",
@@ -526,7 +526,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed source pack; notebook; vocabulary and perspective cards; projector if available",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 49,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-6.3",
@@ -540,7 +540,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed data pack; graph templates; calculator; notebook; projector if available",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 50,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-6.4",
@@ -554,7 +554,7 @@ export const grade8GPPlan = {
       "resources": "Library and teacher-curated print sources; approved online sources when available; source-recording sheet; notebook",
       "bloom": "Apply / Analyse",
       "sourceRow": 51,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-6.5",
@@ -568,7 +568,7 @@ export const grade8GPPlan = {
       "resources": "Teacher-created printed data pack; graph templates; calculator; notebook; projector if available",
       "bloom": "Evaluate",
       "sourceRow": 52,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-6.6",
@@ -582,7 +582,7 @@ export const grade8GPPlan = {
       "resources": "Role cards; discussion protocol; poster paper; markers; peer-feedback and reflection rubric",
       "bloom": "Evaluate / Create",
       "sourceRow": 53,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-r2",
@@ -596,7 +596,7 @@ export const grade8GPPlan = {
       "resources": "OIS Global Perspectives skills rubric; printed source and data pack; portfolio; reflection journal",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 54,
-      "status": "planned"
+      "status": "playable"
     },
     {
       "id": "g8-gp-q4",
@@ -610,7 +610,7 @@ export const grade8GPPlan = {
       "resources": "OIS Global Perspectives skills rubric; printed source and data pack; portfolio; reflection journal",
       "bloom": "Analyse / Evaluate",
       "sourceRow": 55,
-      "status": "planned"
+      "status": "playable"
     }
   ]
 };

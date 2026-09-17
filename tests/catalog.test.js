@@ -14,7 +14,7 @@ test('all five class/subject combinations expose starters; future lessons filter
  assert.equal(classes.flatMap(c=>subjectsFor(c.id)).length,5);
  assert.deepEqual(subjectsFor('8').map(s=>s.id),['global-perspectives']);
  assert.deepEqual(lessonsFor('8','geography'),[]);
- for(const c of classes)for(const s of subjectsFor(c.id))assert.equal(lessonsFor(c.id,s.id).length,2);
+ for(const c of classes)for(const s of subjectsFor(c.id))assert.equal(lessonsFor(c.id,s.id).length,c.id==='8'?45:2);
  const source=[{id:'shared'}, {id:'geo7',catalog:{subjectId:'geography',grades:[7]}}, {id:'gp8',catalog:{subjectId:'global-perspectives',grades:[8]}}];
  assert.deepEqual(lessonsFor('7a','geography',source).map(x=>x.id),['shared','geo7']);
  assert.deepEqual(lessonsFor('7b','geography',source).map(x=>x.id),['shared','geo7']);

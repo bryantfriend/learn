@@ -22,7 +22,7 @@ const server=createServer();let browser;
   await page.locator('[data-quarter="'+q+'"]').click();
   total+=await page.locator('.planned-topic').count();
   await page.locator('.planned-topic summary').first().click();
-  assert.ok((await page.locator('.planned-topic[open]').innerText()).includes('Resources:'));
+  assert.ok((await page.locator('.planned-topic[open]').innerText()).toLowerCase().includes('resources:'));
  }
  assert.equal(total,43);
  await page.locator('[data-quarter="Q1"]').click();

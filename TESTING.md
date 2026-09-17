@@ -70,3 +70,7 @@ Practice-browser tests use port 4174; the original suite uses 4173. The remainin
 ## Version 1.3.0
 
 20 unit tests and the classroom and plan browser suites pass. Grade 8 Geography is excluded from new sessions; its earlier progress remains recoverable. The plan suite checks all 43 entries, quarter selection, flexible weekly edits and reload, board/mobile layout, and starter launch.
+
+## Version 1.4.0
+
+22 unit tests pass. The GP browser suite traverses all 43 new sessions with visible timers, checks reveals and recovery, and verifies the 40 student/key pages fit A4 without footer overlap. Student print views render no answers. Plan and classroom browser suites also pass.

@@ -6,7 +6,7 @@ All 43 rows are retained in order: 36 unit topics, five assessments and two revi
 
 User corrections override the source: Grade 8 has GP only; Geography remains for Grade 7. Frequency is usually three sessions, overriding the workbook's two. Weekdays vary and some weeks have two or one session.
 
-Open 8th Grade → Global Perspectives → Year plan & calendar. Topics are explicitly planned, not playable lessons. Weekly plans can supply activities and source packs; both complete starter lessons remain playable.
+Open 8th Grade → Global Perspectives → Year plan & calendar. All topics now have playable classroom sessions. Five assessments include printable four-option papers and separate teacher keys. Both complete starter lessons remain playable. See playable-gp-lessons.md for teaching and printing details.
 
 ## Calendar and pacing
 

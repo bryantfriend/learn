@@ -1,3 +1,4 @@
+import { gpLessons } from './lessons/grade8-gp.js';
 import { practiceLesson } from './lessons/system-practice.js';
 /**
  * A lesson contains stages; each stage contains teacher-controlled frames.
@@ -101,7 +102,7 @@ export const lesson = {
     ]
 };
 
-export const lessons = [lesson, practiceLesson];
+export const lessons = [lesson, practiceLesson, ...gpLessons];
 export function getLesson(id) {
     return lessons.find(function(item) { return item.id === id; }) || null;
 }

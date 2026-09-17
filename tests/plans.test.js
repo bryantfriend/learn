@@ -16,7 +16,7 @@ test('import preserves all 43 ordered source entries, six units, five assessment
  assert.deepEqual(p.entries.map(e=>e.sourceRow),Array.from({length:43},(_,i)=>i+13));
  assert.equal(p.entries[0].title,'Stage 8 skills baseline and learning targets');
  assert.equal(p.entries.at(-1).title,'Final applied skills assessment');
- assert.ok(p.entries.every(e=>e.objective&&e.objectives&&e.resources&&e.status==='planned'));
+ assert.ok(p.entries.every(e=>e.objective&&e.objectives&&e.resources&&e.status==='playable'));
 });
 test('weekly pacing follows quarter boundaries and supplied dates without assigning weekdays',()=>{
  const all=schoolCalendar.quarters.flatMap(q=>planningWeeks(q.id));

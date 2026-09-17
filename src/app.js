@@ -182,7 +182,8 @@ function renderPlayer() {
     })));
     if (frame.symbol) copy.append(element('div', { className: 'mission-symbol', 'aria-hidden': 'true' }, [frame.symbol]));
     const answerPanel = !frame.visual && frame.type === 'question' && response().revealed;
-    const content = element('section', { className: 'teaching-content' + (frame.visual || answerPanel ? ' split' : '') + (lesson.summary ? ' practice-content' : '') + (frame.type === 'question' ? ' quiz' : ''), 'aria-labelledby': 'student-title' }, [copy]);
+    if (frame.printExam) copy.append(examLink('Open printable student paper', false));
+    const content = element('section', { className: 'teaching-content' + (frame.visual || answerPanel ? ' split' : '') + (lesson.summary ? ' practice-content' : '') + (lesson.gp ? ' gp-content' : '') + (frame.type === 'question' ? ' quiz' : ''), 'aria-labelledby': 'student-title' }, [copy]);
     if (frame.visual) {
         const evidence = element('div', { className: 'visual-evidence' }, [schoolyard]);
         const explanation = copy.querySelector('.explanation');
@@ -299,13 +300,15 @@ function showHelp() {
     ]);
 }
 function chooseLesson() {
+    const remembered = getLesson(selectedLessonId);
+    if (remembered?.catalog?.quarter) planQuarter = remembered.catalog.quarter;
     picker = { classId: selectedClassId, subjectId: selectedSubjectId, lessonId: selectedLessonId };
     showPicker();
 }
 function showPicker(focusSelector) {
     const availableSubjects = subjectsFor(picker.classId);
     if (!availableSubjects.some(function(item) { return item.id === picker.subjectId; })) picker.subjectId = availableSubjects.length === 1 ? availableSubjects[0].id : null;
-    const available = lessonsFor(picker.classId, picker.subjectId);
+    const available = lessonsFor(picker.classId, picker.subjectId).filter(function(item) { return !item.catalog?.quarter || item.catalog.quarter === planQuarter; });
     if (!available.some(function(item) { return item.id === picker.lessonId; })) picker.lessonId = null;
     const saved = picker.lessonId ? storage.find(picker) : null;
     function group(title, items, key, action) {
@@ -334,7 +337,8 @@ function showPicker(focusSelector) {
         ]),
         element('section', { className: 'picker-lessons', 'aria-label': '3 · Lesson' }, [
             element('h3', {}, ['3 · Lesson']),
-            ...(picker.classId === '8' && picker.subjectId === 'global-perspectives' ? [button('2026–2027 year plan & calendar · 43 planned topics · 3 lessons/week', 'year-plan', 'plan-link')] : []),
+            ...(picker.classId === '8' ? [element('div', { className: 'picker-options quarter-options', 'aria-label': 'Lesson quarter' }, schoolCalendar.quarters.map(function(q) { return button(q.id, 'lesson-quarter', planQuarter === q.id ? 'selected' : '', { 'data-quarter': q.id, 'aria-pressed': String(planQuarter === q.id) }); }))] : []),
+            ...(picker.classId === '8' && picker.subjectId === 'global-perspectives' ? [button('2026–2027 year plan & calendar · 43 playable lessons and assessments', 'year-plan', 'plan-link')] : []),
             ...storage.unassigned().map(function(value) { return button('Resume earlier unassigned lesson: ' + getLesson(value.lessonId).title, 'resume-earlier', 'subtle', { 'data-lesson': value.lessonId }); }),
             ...(!ready ? [element('p', { className: 'empty-curriculum' }, ['Choose a class and subject to see lessons.'])] : [
                 ...(subjectLessons.length ? subjectLessons.map(lessonButton) : [element('p', { className: 'empty-curriculum' }, ['Subject lessons will appear here as classroom activities are prepared.'])]),
@@ -373,7 +377,7 @@ function showYearPlan(focusSelector) {
     const entries = grade8GPPlan.entries.filter(function(item) { return item.quarter === planQuarter; });
     const weeks = planningWeeks(planQuarter);
     openPanel('8th Grade · Global Perspectives', [
-        element('p', { className: 'panel-hint' }, ['2026–2027 · 6 units · 43 planned topics · Usually 3 × 40 minutes per week']),
+        element('p', { className: 'panel-hint' }, ['2026–2027 · 38 teaching lessons · 5 printable assessments · Flexible weekly pacing']),
         element('div', { className: 'picker-options', 'aria-label': 'Quarter' }, schoolCalendar.quarters.map(function(item) {
             return button(item.id, 'plan-quarter', item.id === planQuarter ? 'selected' : '', { 'data-quarter': item.id, 'aria-pressed': String(item.id === planQuarter) });
         })),
@@ -381,7 +385,7 @@ function showYearPlan(focusSelector) {
             element('p', { className: 'plan-period' }, [dateLabel(quarter.start) + ' – ' + dateLabel(quarter.end)]),
             element('details', { className: 'weekly-pacing' }, [
                 element('summary', {}, ['Weekly pacing & school calendar']),
-                element('p', {}, ['Three lessons is a target, not a fixed timetable. Set a week to 2, 1, or 0 when needed. Counts are saved in this browser. Topics may span several lessons; weekly plans will supply the activities.']),
+                element('p', {}, ['Three lessons is a target, not a fixed timetable. Set a week to 2, 1, or 0 when needed. Counts are saved in this browser. Topics may span several lessons; lesson sequences can be extended or revisited when your weekly timetable changes.']),
                 ...weeks.map(function(week) {
                     const count = getWeekCount(week.start);
                     return element('section', { className: 'week-row' }, [
@@ -401,22 +405,23 @@ function showYearPlan(focusSelector) {
                     return element('p', { className: 'calendar-break' }, [dateLabel(item.start) + ' – ' + dateLabel(item.end) + ' · ' + item.title]);
                 })
             ]),
-            element('p', { className: 'empty-curriculum' }, ['Planned topics from your long-term plan. These are not yet playable lessons; weekly plans will add classroom activities and source packs.']),
+            element('p', { className: 'empty-curriculum' }, ['Every topic now opens a classroom lesson. Assessments include printable four-option tests and separate teacher keys.']),
             ...entries.map(function(entry) {
                 return element('details', { className: 'planned-topic', 'data-plan-id': entry.id }, [
                     element('summary', {}, [
                         element('span', { className: 'topic-meta' }, [entry.month + ' · ' + (entry.unit === 'Assessment' || entry.unit === 'Review' ? entry.unit : 'Unit ' + entry.unit) + ' · ' + entry.code]),
                         element('strong', {}, [entry.title])
                     ]),
+                    button(entry.unit === 'Assessment' ? 'Open assessment' : 'Open lesson', 'open-plan-lesson', 'primary', { 'data-lesson': entry.id }),
                     element('p', {}, [entry.objective]),
                     element('p', {}, [element('strong', {}, ['Objectives: ']), entry.objectives]),
-                    element('p', {}, [element('strong', {}, ['Resources: ']), entry.resources]),
+                    element('p', {}, [element('strong', {}, ['Original plan resources: ']), entry.resources]),
                     element('p', {}, [element('strong', {}, ['Thinking skills: ']), entry.bloom])
                 ]);
             })
         ]),
         element('div', { className: 'picker-footer' }, [
-            element('p', { className: 'picker-status' }, ['Flexible weekly pacing · Classroom activities added from weekly plans']),
+            element('p', { className: 'picker-status' }, ['Flexible weekly pacing · Lessons and printable assessments ready']),
             button('Back to lessons', 'back-picker', 'primary')
         ])
     ], 'year-plan');
@@ -448,8 +453,12 @@ function showSummary() {
         button('Return to dismissal screen', 'close-panel', 'primary')
     ]);
 }
+function examLink(label, key) {
+    return element('a', { href: './exams/?id=' + lesson.examId + (key ? '&key=1' : ''), target: '_blank', rel: 'noopener', className: 'exam-link' }, [label]);
+}
 function showTools() {
     openPanel('Teacher tools', [
+        ...(lesson.examId ? [examLink('Print student paper', false), examLink('Teacher answer key', true)] : []),
         element('p', { className: 'panel-hint' }, ['Shared screen: students can see anything opened here.']),
         button('Read this stage’s teacher notes', 'notes'),
         button('Choose a stage', 'stages'),
@@ -551,6 +560,8 @@ function handleAction(event) {
     if (!target || target.disabled) return;
     const action = target.dataset.action;
     if (action === 'choose-lesson' && !inLesson) chooseLesson();
+    else if (action === 'lesson-quarter') { planQuarter = target.dataset.quarter; showPicker('[data-action="lesson-quarter"][data-quarter="' + planQuarter + '"]'); }
+    else if (action === 'open-plan-lesson') { picker = { classId:'8', subjectId:'global-perspectives', lessonId:target.dataset.lesson }; showPicker(); }
     else if (action === 'year-plan') showYearPlan();
     else if (action === 'week-count' && dialogKind === 'year-plan') {
         const count = Number(target.dataset.count), week = target.dataset.week;
