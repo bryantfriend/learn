@@ -1,3 +1,4 @@
+import {issuePerspectiveArt} from './issue-perspective-visuals.js';
 import {grade7ACourses} from './plans/grade7a.js';
 import {grade7BCourses} from './plans/grade7b.js';
 import {grade8GPPlan} from './plans/grade8-gp.js';
@@ -48,6 +49,7 @@ const charts={...{"8:global-perspectives:1.3":{"labels":["2025","2026"],"values"
 };
 export function visualSpec(lesson,stage,frame){
  if(!lesson.gp||lesson.examId||frame.type||frame.final)return null;
+ if(lesson.customVisuals)return frame.lessonVisual||null;
  const base=topics.get(lesson.id);if(!base)return null;
  const sourceCode=frame.title.match(/· ([1-6]\.[1-9]|R[12])$/)?.[1];
  const topic=sourceCode?{...base,code:sourceCode}:base;
@@ -75,6 +77,7 @@ const house=(x,y,color='#e5b267')=>'<g transform="translate('+x+' '+y+')"><path 
 const person=(x,y,c)=>'<g transform="translate('+x+' '+y+')"><circle cx="25" cy="22" r="20" fill="'+c+'"/><path d="M0 85V66Q25 40 50 66V85Z" fill="'+c+'"/><circle cx="19" cy="19" r="2" fill="#173e40"/><circle cx="32" cy="19" r="2" fill="#173e40"/><path d="M20 30Q25 34 31 29" fill="none" stroke="#173e40" stroke-width="2"/></g>';
 const arrow=(x,y)=>'<path d="M'+x+' '+y+'h45m-12-10 12 10-12 10" stroke="#42797b" stroke-width="4" fill="none"/>';
 function art(spec,state){
+ if(spec.kind==='issue-perspective')return issuePerspectiveArt(spec,state);
  const p=state.phase,k=spec.kind;
  let body='';
  if(k==='decision'&&spec.budget){

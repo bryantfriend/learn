@@ -167,3 +167,10 @@ Use the existing 7B class for the supplied Stage 6 GP and chapters 3–5 Geograp
 ## Visual lessons (v1.7.0)
 
 The 269 curriculum teaching sessions now open with visual challenges. Explore animated processes, diagrams, lesson-data charts, runoff experiments and budget choices. Play starts motion; Next focus reveals a teaching prompt; Enlarge opens a board-sized view. See [visual lesson controls and coverage](./docs/visual-lessons.md).
+
+
+## 7B GP Lesson 2 (v1.7.2)
+
+“What is an Issue and a Perspective?” is a bespoke 40-minute lesson: observe a shared playground, distinguish an issue from a perspective and a fact, explain two pupils’ reasons, consider missing voices, answer three four-option checks, then transfer the skill to a library case. Six inline SVG illustrations use teacher-controlled focus steps and enlarged views. All scenarios are fictional. The rewritten lesson resets only its obsolete checkpoint while retaining class preferences; other lessons keep their saved progress.
+
+Validation: `npm test`; `node tests/issue-perspective-browser.cjs` (set `PLAYWRIGHT_MODULE` if Playwright is outside the project). Browser checks cover every lesson frame, answer reveals, diagram focus/enlargement, summary, reload, and responsive layout. The existing visual-controls and 7B workflow checks also pass.

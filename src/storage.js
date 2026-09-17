@@ -1,5 +1,5 @@
 import { lesson as firstLesson, getLesson, modes, questionOptions } from './lessons.js';
-import { recoverTimer } from './timer.js';
+import { prepareTimer, recoverTimer } from './timer.js';
 import { frameKey } from './progress.js';
 import { getClass, getSubject, lessonsFor, sessionKey } from './catalog.js';
 // Keep the existing key so the first release's saved lesson can be migrated in place.
@@ -29,6 +29,14 @@ export function validateSession(value, now = Date.now()) {
     if (!value || ![1, 2, SCHEMA].includes(value.schemaVersion)) return null;
     const lesson = getLesson(value.lessonId);
     if (!lesson || (value.schemaVersion === 1 && lesson.id !== firstLesson.id)) return null;
+    // Rewritten lessons start afresh; class preferences and other lesson saves survive.
+    if (lesson.contentRevision && value.contentRevision !== lesson.contentRevision) {
+        if (value.contentRevision !== undefined && (!Number.isInteger(value.contentRevision) || value.contentRevision > lesson.contentRevision)) return null;
+        value = { ...value, contentRevision: lesson.contentRevision, stage: 0,
+            steps: lesson.stages.map(() => 0), responses: {}, seenFrames: { '0:0': true },
+            attentionReturns: {}, discussedQuestions: [], modeOverride: null,
+            timer: prepareTimer(lesson.stages[0].durationMinutes * 60), startedAt: now, finishedAt: null };
+    }
     if (!integer(value.stage, 0, lesson.stages.length - 1) || !Array.isArray(value.steps) || value.steps.length !== lesson.stages.length) return null;
     for (let index = 0; index < value.steps.length; index += 1) {
         if (!integer(value.steps[index], 0, lesson.stages[index].frames.length - 1)) return null;
@@ -66,7 +74,7 @@ export function validateSession(value, now = Date.now()) {
     if (!Number.isFinite(startedAt) || startedAt < 0 || startedAt > now ||
         (finishedAt !== null && (!Number.isFinite(finishedAt) || finishedAt < startedAt || finishedAt > now))) return null;
     return {
-        schemaVersion: SCHEMA, lessonId: lesson.id, classId, subjectId, classLabel: retired ? '8th Grade · Geography' : getClass(classId)?.label || value.classLabel,
+        schemaVersion: SCHEMA, lessonId: lesson.id, ...(lesson.contentRevision ? { contentRevision: lesson.contentRevision } : {}), classId, subjectId, classLabel: retired ? '8th Grade · Geography' : getClass(classId)?.label || value.classLabel,
         stage: value.stage, steps: value.steps.slice(), responses,
         stars: value.stars, preferences: { starsVisible: value.preferences.starsVisible, timerVisible: value.preferences.timerVisible },
         modeOverride: Object.hasOwn(modes, value.modeOverride) ? value.modeOverride : null,

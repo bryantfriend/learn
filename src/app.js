@@ -96,7 +96,7 @@ function newSession(classLabel, lessonId = selectedLessonId, classId = selectedC
     lesson = getLesson(lessonId) || firstLesson;
     selectedLessonId = lesson.id;
     session = {
-        schemaVersion: SCHEMA, lessonId: lesson.id, classId, subjectId, classLabel: classLabel.trim().slice(0, 30),
+        schemaVersion: SCHEMA, lessonId: lesson.id, ...(lesson.contentRevision ? { contentRevision: lesson.contentRevision } : {}), classId, subjectId, classLabel: classLabel.trim().slice(0, 30),
         stage: 0, steps: lesson.stages.map(function() { return 0; }), responses: {},
         stars: 0, modeOverride: null, preferences: { starsVisible: false, timerVisible: false },
         timer: prepareTimer(lesson.stages[0].frames[0].timerSeconds || lesson.stages[0].durationMinutes * 60),
