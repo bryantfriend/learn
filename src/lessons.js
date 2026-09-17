@@ -1,13 +1,14 @@
+import { practiceLesson } from './lessons/system-practice.js';
 /**
  * A lesson contains stages; each stage contains teacher-controlled frames.
  * A frame has a title, short instruction lines, a mode, and optional visual,
  * choices, question answer/explanation, timerSeconds and nextLabel.
  */
 export const modes = {
-    listen: { icon: '◉', label: 'Listen' },
-    think: { icon: '◇', label: 'Think quietly' },
-    pair: { icon: '↔', label: 'Talk with your partner' },
-    share: { icon: '◎', label: 'Share with the class' }
+    listen: { icon: '◉', label: 'Listen', voiceLevel: 0 },
+    think: { icon: '◇', label: 'Think quietly', voiceLevel: 0 },
+    pair: { icon: '↔', label: 'Talk with your partner', voiceLevel: 2 },
+    share: { icon: '◎', label: 'Share with the class', voiceLevel: 3 }
 };
 const visual = 'schoolyard';
 export const lesson = {
@@ -99,3 +100,17 @@ export const lesson = {
         }
     ]
 };
+
+export const lessons = [lesson, practiceLesson];
+export function getLesson(id) {
+    return lessons.find(function(item) { return item.id === id; }) || null;
+}
+export function questionOptions(frame) {
+    if (frame.options) return frame.options;
+    if (frame.answerText) return [];
+    if (frame.type !== 'question') return [];
+    return [
+        { id: 'A', label: 'Observation: the picture shows it.' },
+        { id: 'B', label: 'Inference: a possible explanation.' }
+    ];
+}

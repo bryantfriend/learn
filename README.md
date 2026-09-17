@@ -6,6 +6,15 @@
 
 A teacher-operated, whole-class lesson player for **Mr. Friend · Oxford International School**. Grades 7–8; no student devices, accounts, worksheets, or external videos.
 
+## Available lessons
+
+Use **Choose lesson** on the existing home card.
+
+- **Ready to Learn: Notice, Think, Explain** — the original 40-minute lesson, eight stages.
+- **Mission: Learn How We Learn** — a 35–40-minute system practice lesson, nine stages. [Practice lesson guide](./docs/system-practice.md).
+
+The picker leaves saved progress intact. Starting another lesson requires confirmation; Resume always restores the saved lesson.
+
 ## Teach the first lesson
 
 **Ready to Learn: Notice, Think, Explain** — 40 minutes.
@@ -73,12 +82,13 @@ Alternatively, run `python -m http.server 4173` from the repository and open `ht
 npm test
 ```
 
-Runs six dependency-free Node tests for lesson structure, deadline timers, recovery and storage validation.
+Runs twelve dependency-free Node tests for lesson structure, deadline timers, recovery and storage validation.
 
 Browser acceptance tests use the Playwright library and Chromium only as development tools. Reuse an existing installation by setting `PLAYWRIGHT_MODULE` to its absolute module directory, then:
 
 ```sh
 npm run test:browser
+npm run test:practice
 ```
 
 If none is installed:
@@ -89,7 +99,7 @@ npx playwright install chromium
 npm run test:browser
 ```
 
-No browser-testing package is loaded by the published application. Screenshots and test reports are written to ignored `output/playwright/`. See [TESTING.md](./TESTING.md) for actual results and smart-board checks.
+No browser-testing package is loaded by the published application. Screenshots and test reports are written to ignored `output/playwright/`. The second browser suite covers the practice lesson end to end. See [TESTING.md](./TESTING.md) for actual results and smart-board checks.
 
 ## Publishing with GitHub Pages
 
@@ -109,20 +119,22 @@ No secrets or environment variables are required. `.nojekyll` keeps this a plain
 - `index.html`: static entry point and accessible dialog container.
 - `styles.css`: calm board layout, touch controls, responsive and reduced-motion rules.
 - `src/app.js`: rendering, teacher actions and a single timer scheduler.
-- `src/lessons.js`: complete eight-stage lesson, modes, prompts, explanations and notes.
+- `src/lessons.js`: original lesson, registry, modes and shared question options.
+- `src/lessons/system-practice.js`: complete nine-stage practice lesson and teacher scripts.
+- `src/progress.js`: response keys and honest completion-summary counts.
 - `src/timer.js`: deadline-based pure timer operations.
 - `src/storage.js`: safe versioned persistence and recovery.
 - `assets/schoolyard.svg`: original imaginary schoolyard; no outside imagery.
 - `scripts/serve.cjs`: optional dependency-free local preview server.
-- `tests/core.test.js`, `tests/browser.cjs`: automated checks.
+- `tests/core.test.js`, `tests/practice.test.js`, `tests/browser.cjs`, `tests/practice-browser.cjs`: automated checks.
 
 ## Adding a future lesson
 
-The first version deliberately exposes one complete lesson, not placeholder cards or an authoring interface.
+Add a lesson data module under `src/lessons/` and register it in the `lessons` array exported by `src/lessons.js`. The picker, stage count and saved-state validation use the selected lesson. Give each lesson and discussion prompt a stable ID.
 
-To adapt a lesson, edit the data in `src/lessons.js`: give it a new stable ID, title, duration and stages. Each stage supplies its duration, notes and frames. A frame contains a title, working mode, optional instructions/quote/choices, optional visual, suggested timer seconds, and next-action label. Question frames add an answer and explanation.
+Reuse frames with instructions, quotes, choices, memory items or configurable questions. Questions can define options, an answer/explanation, a suggested-answer label, or an open response. Opinion frames have no correctness reveal. Per-frame mode, voiceLevel, timerSeconds, nextLabel and teacher-controlled transitions use the same player. Numeric response IDs and shared responseIndex values are validated against the lesson data.
 
-For a second selectable lesson, export a small lesson collection and add selection on home; resolve the saved lesson ID against that collection in storage. Generalize response-key validation (currently the six questions in stage 6) and the eight-stage display count. Reuse the existing player and timer rather than copying the app. Bump the storage schema if the saved shape changes. Add a rendering type only for a genuinely new activity.
+Keep storage schema compatibility when changing existing lesson IDs or frame order. Schema 1 sessions from the first release migrate to schema 2 under the same localStorage key. Summary counts are presentation records and explicit discussion confirmations, not student assessments. See the practice guide for the exact definition.
 
 ## Limits
 

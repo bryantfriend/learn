@@ -16,3 +16,7 @@ No publishing steps remain. Open the published site on the classroom smart board
 Progress belongs to that browser only. An initial visit or reload needs a connection; the loaded lesson needs no further content requests.
 
 For future changes, commit reviewed files and push origin main, wait for the Pages workflow to succeed, then refresh the published site and repeat the smoke test. No production build step is required.
+
+## Version 1.1.0 — classroom system practice
+
+Adds Mission: Learn How We Learn to the existing home picker. The same main-branch Pages deployment publishes both lessons. See docs/system-practice.md for the complete lesson, compatibility details and classroom checklist.

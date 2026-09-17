@@ -2,7 +2,7 @@
 
 Test date: 17 September 2026.
 
-## Executed locally
+## Original release checks
 
 - `npm test`: **6 passed, 0 failed**.
 - `npm run test:browser`: **12 acceptance groups passed**. Chromium tests against the real app at `http://127.0.0.1:4173/learn/`.
@@ -42,8 +42,22 @@ Automated Chromium checks do not certify a particular classroom smart board.
 
 ## Reproduction
 
-See README for running the local server, six Node tests and browser suite. Tests start/stop their own local server on port 4173. Stop a separately running preview first if that port is already occupied.
+See README for running the local server, the current unit tests and browser suites. Tests start/stop their own local servers on ports 4173 and 4174. Stop a separately running preview first if that port is already occupied.
 
 ## Hosted smoke test
 
 GitHub Pages deployment succeeded. The actual published application returned HTTP 200 and passed a Chromium touch smoke test: start, all six explanation reveals, Attention, recovery after reload, relative local assets, and no console errors. See DEPLOYMENT.md for the verified URL and deployment run.
+
+## Practice lesson — version 1.1.0
+
+- `npm test`: 12 unit tests passed, including schema 1 migration, multi-lesson validation, exact practice content, and completion counts.
+- `npm run test:browser`: all 12 original browser acceptance groups passed.
+- `npm run test:practice`: seven acceptance groups passed, including the full nine-stage practice lesson and all 47 frames at all three board sizes.
+- Real Attention during partner talk pauses and resumes running timers; the First System Test acknowledgement appears only after Attention + Resume.
+- All 13 required answers are revealed only by the teacher. Opinion choices have no correctness reveal.
+- The memory grid remains visible at timer expiry, hides only on a teacher tap, recovers hidden after refresh, and reveals all nine original items.
+- Summary checks cover 9/9 after all steps and answers, 0/9 with skipped material, 20 distinct manual discussion confirmations, zero automatic discussion credit, star visibility, and elapsed-time persistence.
+- Switching selected lessons and cancelling replacement preserves the correct saved session.
+- Screenshots were visually inspected for home, memory, quiz and summary. No console errors were found.
+
+Practice-browser tests use port 4174; the original suite uses 4173. The remaining physical-board checks are touch/fullscreen support, emoji rendering, back-row legibility and real-class transition timing.

@@ -183,3 +183,57 @@ dialog.overlay-panel { width:100vw; max-width:none; height:100dvh; max-height:no
     .explanation p, .player:has(.timer-strip) .explanation p { font-size:32px; }
 }
 @media (max-width:760px) { .visual-evidence { height:auto; } }
+
+/* Additional lesson content uses the existing cards, split view and toolbar. */
+.lesson-picker-row { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.lesson-picker-row button { font-size:15px; padding:8px 10px; }
+.lesson-subtitle { font-size:16px; color:var(--muted); margin:0 0 10px; }
+.voice-level { display:block; font-size:15px; font-weight:600; margin-top:3px; }
+.opening-choices.choice-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; list-style:none; padding:0; }
+.choice-grid li { border:1px solid var(--line); background:#fffef8; border-radius:12px; padding:12px 18px; line-height:1.15; }
+.custom-answers { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.custom-answers button { min-height:76px; }
+.practice-content .response-hint { margin-top:12px; }
+.practice-content .copy h1 { font-size:clamp(36px,3vw,54px); }
+.practice-content .instructions { margin:12px 0; }
+.answer-detail { padding:22px; border-radius:20px; background:#eaf0e1; }
+.answer-detail .explanation { border:0; padding:0; margin:0; }
+.answer-detail .explanation strong { font-size:32px; font-weight:650; }
+.answer-detail .explanation p { margin-top:16px; font-size:32px; }
+.answer-detail .follow-up { padding-top:12px; border-top:1px solid #ccd8bd; }
+.memory-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; max-width:770px; margin:18px auto 0; }
+.memory-item { display:flex; align-items:center; justify-content:center; gap:16px; padding:10px 18px; background:#fffef8; border:1px solid var(--line); border-radius:14px; }
+.memory-item>span:first-child { font-size:48px; line-height:1.1; }
+.memory-label { font-size:26px; }
+.mission-symbol { font-size:140px; line-height:1; color:#587545; margin-top:20px; }
+.discussion-button[aria-pressed="true"] { background:#e4edd6; border-color:#cbd9b8; }
+.summary-stats { display:grid; grid-template-columns:1fr auto; align-items:center; gap:20px; font-size:24px; margin:24px 0; }
+.summary-stats dd { margin:0; font-weight:700; font-variant-numeric:tabular-nums; }
+.summary-lesson { font-weight:650; }
+@media (max-height:800px) and (min-width:1000px) {
+    .lesson-picker-row { margin-top:-12px; }
+    .lesson-picker-row button { min-height:56px; }
+    .home:has(.lesson-subtitle) .home-copy h1 { font-size:42px; }
+    .home:has(.lesson-subtitle) .lesson-card { margin-top:12px; padding:16px 20px; }
+    .home:has(.lesson-subtitle) .lesson-card h2 { margin-top:0; }
+    .practice-content .copy h1 { font-size:36px; margin:8px 0 12px; }
+    .practice-content .choice-grid { font-size:30px; margin:10px 0; }
+    .practice-content .choice-grid li { padding:9px 14px; }
+    .practice-content .instructions { margin:8px 0; gap:5px; }
+    .practice-content .custom-answers { margin:10px 0; }
+    .practice-content .custom-answers button { font-size:30px; min-height:66px; }
+    .answer-detail { padding:18px; }
+    .answer-detail .explanation p { margin-top:12px; font-size:30px; }
+    .memory-grid { gap:10px; margin-top:12px; }
+    .memory-item { padding:8px 18px; }
+    .memory-item>span:first-child { font-size:42px; }
+}
+@media (max-width:760px) {
+    .choice-grid, .opening-choices.choice-grid, .custom-answers { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .memory-grid { gap:6px; }
+    .memory-item { flex-direction:column; padding:8px; gap:4px; }
+    .memory-label { font-size:18px; }
+    .memory-item>span:first-child { font-size:36px; }
+    .lesson-picker-row { align-items:flex-start; }
+    .summary-stats { font-size:19px; }
+}

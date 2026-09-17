@@ -1,6 +1,7 @@
-import { lesson, modes } from './lessons.js';
+import { lesson as firstLesson, lessons, getLesson, modes, questionOptions } from './lessons.js';
+import { frameKey, responseKeyFor, summarizeSession } from './progress.js';
 import { prepareTimer, remainingTime, startTimer, pauseTimer, resetTimer, addTime, formatTime } from './timer.js';
-import { createStorage } from './storage.js';
+import { createStorage, SCHEMA } from './storage.js';
 
 const app = document.getElementById('app');
 const panel = document.getElementById('panel');
@@ -8,6 +9,9 @@ const notice = document.getElementById('notice');
 const storage = createStorage(function() { return window.localStorage; });
 const loaded = storage.load();
 let session = loaded.session;
+let lesson = session ? getLesson(session.lessonId) : firstLesson;
+let selectedLessonId = lesson.id;
+let homeClassLabel = session ? session.classLabel : '';
 let inLesson = false;
 let dialogKind = '';
 let confirmation = null;
@@ -47,23 +51,43 @@ function save() {
     }
 }
 function currentStage() { return lesson.stages[session.stage]; }
-function currentFrame() { return currentStage().frames[session.steps[session.stage]]; }
-function responseKey() { return session.stage + ':' + session.steps[session.stage]; }
+function currentFrame() {
+    const frame = currentStage().frames[session.steps[session.stage]];
+    if (frame.afterAttention && session.attentionReturns[frameKey(session.stage, session.steps[session.stage])]) {
+        return { ...frame, ...frame.afterAttention, cue: '' };
+    }
+    return frame;
+}
+function responseKey() { return responseKeyFor(lesson, session.stage, session.steps[session.stage]); }
 function response() { return session.responses[responseKey()] || { selected: null, revealed: false }; }
 function currentMode() {
     if (session.modeOverride) return session.modeOverride;
-    if (currentFrame().type === 'question' && response().selected) return 'share';
+    const frame = currentFrame();
+    if (frame.type === 'question' && (response().selected || response().revealed) && (!lesson.showVoiceLevels || frame.discussionVoice !== undefined)) return 'share';
     return currentFrame().mode;
+}
+function currentVoiceLevel() {
+    const frame = currentFrame();
+    if (session.modeOverride) return modes[session.modeOverride].voiceLevel;
+    if (frame.discussionVoice !== undefined && (response().selected || response().revealed)) return frame.discussionVoice;
+    return frame.voiceLevel === undefined ? modes[currentMode()].voiceLevel : frame.voiceLevel;
+}
+function recordCurrentFrame() {
+    session.seenFrames[frameKey(session.stage, session.steps[session.stage])] = true;
 }
 function prepareCurrentTimer() {
     session.timer = prepareTimer(currentFrame().timerSeconds || currentStage().durationMinutes * 60);
 }
-function newSession(classLabel) {
+function newSession(classLabel, lessonId = selectedLessonId) {
+    lesson = getLesson(lessonId) || firstLesson;
+    selectedLessonId = lesson.id;
     session = {
-        schemaVersion: 1, lessonId: lesson.id, classLabel: classLabel.trim().slice(0, 30),
+        schemaVersion: SCHEMA, lessonId: lesson.id, classLabel: classLabel.trim().slice(0, 30),
         stage: 0, steps: lesson.stages.map(function() { return 0; }), responses: {},
         stars: 0, modeOverride: null, preferences: { starsVisible: false, timerVisible: false },
-        timer: prepareTimer(240)
+        timer: prepareTimer(lesson.stages[0].frames[0].timerSeconds || lesson.stages[0].durationMinutes * 60),
+        seenFrames: { '0:0': true }, attentionReturns: {}, discussedQuestions: [],
+        startedAt: Date.now(), finishedAt: null
     };
     inLesson = true;
     save();
@@ -77,6 +101,7 @@ function brand() {
     ]);
 }
 function renderHome() {
+    const chosenLesson = getLesson(selectedLessonId) || firstLesson;
     const start = button('Start new lesson →', 'start-new', 'primary');
     const actions = [start];
     if (session) actions.unshift(button('Resume lesson →', 'resume-saved', 'primary'));
@@ -88,13 +113,14 @@ function renderHome() {
                 element('h1', {}, ['Clear routines.', element('br'), element('em', {}, ['Active learning.'])]),
                 element('p', { className: 'home-intro' }, ['A shared screen. A fresh start. A whole class ready to think.']),
                 element('div', { className: 'lesson-card' }, [
-                    element('p', { className: 'eyebrow' }, ['TODAY’S LESSON · 01']),
-                    element('h2', {}, [lesson.title]),
-                    element('p', { className: 'meta' }, ['40 minutes · Whole class · No student devices']),
+                    element('div', { className: 'lesson-picker-row' }, [element('p', { className: 'eyebrow' }, ['TODAY’S LESSON']), button('Choose lesson ▾', 'choose-lesson', 'text-button')]),
+                    element('h2', {}, [chosenLesson.title]),
+                    ...(chosenLesson.subtitle ? [element('p', { className: 'lesson-subtitle' }, [chosenLesson.subtitle])] : []),
+                    element('p', { className: 'meta' }, [chosenLesson.durationMinutes + ' minutes · Whole class · No student devices']),
                     element('label', { for: 'class-label' }, ['Class label ', element('span', { className: 'muted' }, ['(optional)'])]),
-                    element('input', { id: 'class-label', maxlength: '30', placeholder: 'e.g. 7A', value: session ? session.classLabel : '', autocomplete: 'off' }),
+                    element('input', { id: 'class-label', maxlength: '30', placeholder: 'e.g. 7A', value: homeClassLabel, autocomplete: 'off' }),
                     element('div', { className: 'home-actions' }, actions),
-                    session ? element('p', { className: 'saved-hint' }, ['Saved: ' + currentStage().title + ' · step ' + (session.steps[session.stage] + 1) + '. Timer resumes paused.']) : element('p', { className: 'saved-hint' }, ['No setup needed. Start when your class is ready.'])
+                    session ? element('p', { className: 'saved-hint' }, ['Saved: ' + lesson.title + ' · ' + currentStage().title + ' · step ' + (session.steps[session.stage] + 1) + '. Timer resumes paused.']) : element('p', { className: 'saved-hint' }, ['No setup needed. Start when your class is ready.'])
                 ])
             ]),
             element('div', { className: 'home-art' }, [element('div', { className: 'art-note' }, ['LOOK CLOSELY. THINK CLEARLY.']), schoolyard, element('p', {}, ['What can we see? What might we explain?'])])
@@ -110,6 +136,8 @@ function renderPlayer() {
     const stage = currentStage();
     const frame = currentFrame();
     const mode = modes[currentMode()];
+    const modeButton = button(mode.icon + ' ' + mode.label, 'mode', 'mode mode-' + currentMode(), { 'aria-label': 'Working mode: ' + mode.label + '. Change mode' });
+    if (lesson.showVoiceLevels) modeButton.append(element('span', { className: 'voice-level' }, ['Voice level ' + currentVoiceLevel()]));
     const step = session.steps[session.stage];
     const progress = element('div', { className: 'stage-dots', 'aria-hidden': 'true' }, lesson.stages.map(function(item, index) {
         return element('span', { className: index === session.stage ? 'active' : '' });
@@ -124,34 +152,47 @@ function renderPlayer() {
     ]);
     const heading = element('section', { className: 'stage-heading' }, [
         element('div', {}, [
-            button(String(session.stage + 1).padStart(2, '0') + ' / 08 · ' + stage.title + ' ▾', 'stages', 'stage-menu-button'),
+            button(String(session.stage + 1).padStart(2, '0') + ' / ' + String(lesson.stages.length).padStart(2, '0') + ' · ' + stage.title + ' ▾', 'stages', 'stage-menu-button'),
             element('p', { className: 'stage-meta' }, [stage.timeRange + ' · ' + stage.durationMinutes + ' minutes planned'])
         ]),
         element('div', { className: 'mode-wrap' }, [
-            button(mode.icon + ' ' + mode.label, 'mode', 'mode mode-' + currentMode(), { 'aria-label': 'Working mode: ' + mode.label + '. Change mode' }),
+            modeButton,
             progress
         ])
     ]);
     const copy = element('div', { className: 'copy' }, []);
-    copy.append(element('p', { className: 'eyebrow' }, [frame.kicker || (frame.final ? 'LESSON COMPLETE' : 'NOTICE · THINK · EXPLAIN')]));
+    copy.append(element('p', { className: 'eyebrow' }, [frame.kicker || (frame.final ? 'LESSON COMPLETE' : lesson.eyebrow || 'NOTICE · THINK · EXPLAIN')]));
     copy.append(element('h1', { id: 'student-title', tabindex: '-1' }, [frame.title]));
     if (frame.quote) copy.append(element('blockquote', {}, [frame.quote]));
-    if (frame.choices) copy.append(element('ol', { className: 'opening-choices' }, frame.choices.map(function(choice) { return element('li', {}, [choice]); })));
+    if (frame.choices) copy.append(element('ol', { className: 'opening-choices' + (frame.choiceLayout === 'grid' ? ' choice-grid' : '') }, frame.choices.map(function(choice) { return element('li', {}, [choice]); })));
     if (frame.lines) copy.append(element('div', { className: 'instructions' }, frame.lines.map(function(line) { return element('p', {}, [line]); })));
     if (frame.footnote) copy.append(element('p', { className: 'footnote' }, [frame.footnote]));
-    if (frame.type === 'question') renderQuestion(copy);
-    const content = element('section', { className: 'teaching-content' + (frame.visual ? ' split' : '') + (frame.type === 'question' ? ' quiz' : ''), 'aria-labelledby': 'student-title' }, [copy]);
+    if (frame.type === 'question' || frame.type === 'opinion') renderQuestion(copy);
+    if (frame.type === 'memory') copy.append(element('div', { className: 'memory-grid', 'aria-label': 'Nine items to remember' }, frame.items.map(function(item) {
+        return element('div', { className: 'memory-item' }, [element('span', { 'aria-hidden': 'true' }, [item.symbol]), element('span', { className: 'memory-label' }, [item.label])]);
+    })));
+    if (frame.symbol) copy.append(element('div', { className: 'mission-symbol', 'aria-hidden': 'true' }, [frame.symbol]));
+    const answerPanel = !frame.visual && frame.type === 'question' && response().revealed;
+    const content = element('section', { className: 'teaching-content' + (frame.visual || answerPanel ? ' split' : '') + (lesson.summary ? ' practice-content' : '') + (frame.type === 'question' ? ' quiz' : ''), 'aria-labelledby': 'student-title' }, [copy]);
     if (frame.visual) {
         const evidence = element('div', { className: 'visual-evidence' }, [schoolyard]);
         const explanation = copy.querySelector('.explanation');
         if (explanation) evidence.append(explanation);
         content.append(evidence);
     }
+    if (answerPanel) {
+        const explanation = copy.querySelector('.explanation');
+        content.append(element('aside', { className: 'answer-detail', 'aria-label': 'Revealed answer' }, [explanation]));
+    }
+    const canDiscuss = frame.discussionId && (frame.type !== 'question' || response().revealed);
+    const discussed = session.discussedQuestions.includes(frame.discussionId);
     const stepControls = element('section', { className: 'step-controls', 'aria-label': 'Current teaching step' }, [
         element('span', { className: 'step-label' }, ['Step ' + (step + 1) + ' of ' + stage.frames.length]),
         ...(frame.cue ? [button('◉ ' + frame.cue, 'attention', 'cue text-button')] : []),
+        ...(canDiscuss ? [button(discussed ? '✓ Discussed' : 'Mark discussed', 'mark-discussed', 'subtle discussion-button', { 'aria-pressed': String(discussed) })] : []),
         ...(step > 0 ? [button('← Previous step', 'previous-step', 'subtle')] : []),
         ...(step < stage.frames.length - 1 ? [button(frame.nextLabel || 'Next step →', 'next-step', 'primary')] : []),
+        ...(frame.final && lesson.summary ? [button('View lesson summary', 'summary', 'primary')] : []),
         ...(frame.final ? [button('Return home', 'home', 'primary')] : [])
     ]);
     const toolbar = element('nav', { className: 'toolbar', 'aria-label': 'Teacher controls' }, [
@@ -170,19 +211,27 @@ function renderPlayer() {
     app.replaceChildren(player);
 }
 function renderQuestion(copy) {
+    const frame = currentFrame();
     const result = response();
-    copy.append(element('div', { className: 'answers', 'aria-label': 'Choose a response to discuss' }, [
-        button('A · Observation: the picture shows it.', 'select-answer', result.selected === 'A' ? 'selected' : '', { 'data-answer': 'A', 'aria-pressed': String(result.selected === 'A') }),
-        button('B · Inference: a possible explanation.', 'select-answer', result.selected === 'B' ? 'selected' : '', { 'data-answer': 'B', 'aria-pressed': String(result.selected === 'B') })
-    ]));
+    const options = questionOptions(frame);
+    if (options.length) copy.append(element('div', { className: 'answers' + (frame.options ? ' custom-answers' : ''), 'aria-label': 'Choose a response to discuss' }, options.map(function(option) {
+        return button(option.id + ' · ' + option.label, 'select-answer', result.selected === option.id ? 'selected' : '', { 'data-answer': option.id, 'aria-pressed': String(result.selected === option.id) });
+    })));
+    if (frame.type === 'opinion') {
+        copy.append(element('p', { className: 'response-hint' }, [result.selected ? 'Discussing ' + result.selected + ' · No correct answer.' : 'No correct answer. Respond from your seat when invited.']));
+        return;
+    }
     if (result.revealed) {
+        const answer = options.find(function(option) { return option.id === frame.answer; });
+        const answerLabel = frame.answerText || (frame.options ? (frame.suggested ? 'Suggested: ' : '') + frame.answer + ' · ' + answer.label : frame.answer + ' · ' + (frame.answer === 'A' ? 'Observation' : 'Inference'));
         copy.append(element('div', { className: 'explanation', role: 'status' }, [
-            element('strong', {}, [currentFrame().answer + ' · ' + (currentFrame().answer === 'A' ? 'Observation' : 'Inference')]),
-            element('p', {}, [currentFrame().explanation])
+            element('strong', {}, [answerLabel]),
+            ...(frame.explanation ? [element('p', {}, [frame.explanation])] : []),
+            ...(frame.followUp ? [element('p', { className: 'follow-up' }, [frame.followUp])] : [])
         ]));
     } else {
-        copy.append(element('p', { className: 'response-hint' }, [result.selected ? 'Discussing ' + result.selected + ' · Explanation is still hidden.' : 'Think first. Show 1 or 2 fingers when invited.']));
-        copy.append(button('Reveal explanation', 'reveal', 'reveal-button'));
+        copy.append(element('p', { className: 'response-hint' }, [result.selected ? 'Discussing ' + result.selected + ' · Explanation is still hidden.' : frame.responseHint || (frame.answerText ? 'Think quietly. Share when invited.' : 'Think first. Show 1 or 2 fingers when invited.')]));
+        copy.append(button(frame.answerText ? 'Reveal response' : frame.suggested ? 'Reveal suggested answer' : 'Reveal explanation', 'reveal', 'reveal-button'));
     }
 }
 function renderTimer() {
@@ -240,6 +289,41 @@ function showHelp() {
         element('p', {}, [storage.isUnavailable() ? 'Saving is unavailable in this browser. Keep this page open while teaching.' : 'Use Clear saved session when you want to remove progress from this board.'])
     ]);
 }
+function chooseLesson() {
+    homeClassLabel = document.getElementById('class-label').value;
+    openPanel('Choose a lesson', [
+        element('p', {}, ['Your saved lesson stays available until you confirm starting a new session.']),
+        ...lessons.map(function(item) {
+            return button(item.title + ' · ' + item.durationMinutes + ' minutes', 'select-lesson', item.id === selectedLessonId ? 'selected' : '', { 'data-lesson': item.id });
+        })
+    ]);
+}
+function showNotes() {
+    const stage = currentStage();
+    openPanel('Teacher notes · visible to the class', [
+        ...(session.stage === 0 && lesson.openingScript ? [element('h3', {}, ['Suggested opening script']), element('p', {}, [lesson.openingScript])] : []),
+        ...(stage.script ? [element('h3', {}, ['Suggested script']), element('p', {}, [stage.script])] : []),
+        element('p', {}, [stage.notes])
+    ]);
+}
+function showSummary() {
+    if (!lesson.summary || !currentFrame().final) return;
+    session.timer = pauseTimer(session.timer);
+    if (!session.finishedAt) session.finishedAt = Date.now();
+    save(); render();
+    const summary = summarizeSession(session, lesson);
+    openPanel('Lesson summary', [
+        element('p', { className: 'summary-lesson' }, [summary.lessonTitle]),
+        element('dl', { className: 'summary-stats' }, [
+            element('dt', {}, ['Stages completed']), element('dd', { 'data-summary': 'stages' }, [summary.completedStages + ' / ' + summary.totalStages]),
+            element('dt', {}, ['Questions discussed']), element('dd', { 'data-summary': 'questions' }, [String(summary.questionsDiscussed)]),
+            ...(summary.stars !== null ? [element('dt', {}, ['Class stars']), element('dd', { 'data-summary': 'stars' }, [String(summary.stars)])] : []),
+            element('dt', {}, ['Session duration']), element('dd', { 'data-summary': 'duration' }, ['About ' + Math.round(summary.elapsedMs / 60000) + (Math.round(summary.elapsedMs / 60000) === 1 ? ' minute' : ' minutes')])
+        ]),
+        element('p', { className: 'panel-hint' }, ['Completed stages had all steps shown and required answers revealed. Discussions are counted only when you tap Mark discussed. These are lesson records, not student scores. Duration includes pauses and time away from this browser.']),
+        button('Return to dismissal screen', 'close-panel', 'primary')
+    ]);
+}
 function showTools() {
     openPanel('Teacher tools', [
         element('p', { className: 'panel-hint' }, ['Shared screen: students can see anything opened here.']),
@@ -247,6 +331,7 @@ function showTools() {
         button('Choose a stage', 'stages'),
         element('section', { className: 'tools-stars' }, [
             element('h3', {}, ['Class stars']),
+            ...(lesson.starSuggestion ? [element('p', {}, ['Suggested reason: ' + lesson.starSuggestion + '. Award manually if appropriate.'])] : []),
             element('p', {}, ['Optional shared acknowledgements, not grades. No automatic awards, rankings, or rewards to unlock.']),
             button(session.preferences.starsVisible ? 'Hide class stars' : 'Show class stars', 'toggle-stars'),
             ...(session.preferences.starsVisible ? [
@@ -273,6 +358,8 @@ function showStages() {
 function goStage(index) {
     if (index < 0 || index >= lesson.stages.length) return;
     session.stage = index;
+    recordCurrentFrame();
+    session.finishedAt = null;
     session.modeOverride = null;
     prepareCurrentTimer();
     save(); render();
@@ -281,6 +368,8 @@ function goStep(direction) {
     const index = session.steps[session.stage] + direction;
     if (index < 0 || index >= currentStage().frames.length) return;
     session.steps[session.stage] = index;
+    recordCurrentFrame();
+    session.finishedAt = null;
     session.modeOverride = null;
     prepareCurrentTimer();
     save(); render();
@@ -305,6 +394,8 @@ function showOverlay(kind) {
     openPanel(kind === 'attention' ? 'A moment to listen.' : 'Pause', content, kind);
 }
 function resumeOverlay() {
+    // Only this lesson's explicit acknowledgement changes after an Attention return.
+    if (dialogKind === 'attention' && currentFrame().afterAttention) session.attentionReturns[frameKey(session.stage, session.steps[session.stage])] = true;
     if (overlayWasRunning) session.timer = startTimer(session.timer);
     overlayWasRunning = false;
     closePanel(); save(); render();
@@ -320,12 +411,13 @@ async function fullscreen() {
 }
 function home() {
     if (session) { session.timer = pauseTimer(session.timer); save(); }
+    if (session) homeClassLabel = session.classLabel;
     closePanel(); inLesson = false; render();
 }
 function clearSession() {
     confirmAction('Clear saved session?', 'This removes this browser’s lesson progress, class label, reveals, timer, and stars, and returns home.', function() {
         const cleared = storage.clear();
-        session = null; inLesson = false; render();
+        session = null; homeClassLabel = ''; inLesson = false; render();
         if (!cleared) notify('Browser storage could not be cleared. Use browser settings to remove any older saved progress.');
     }, 'Clear saved session');
 }
@@ -333,11 +425,17 @@ function handleAction(event) {
     const target = event.target.closest('button[data-action]');
     if (!target || target.disabled) return;
     const action = target.dataset.action;
-    if (action === 'start-new') {
+    if (action === 'choose-lesson' && !inLesson) chooseLesson();
+    else if (action === 'select-lesson' && !inLesson) {
+        if (!getLesson(target.dataset.lesson)) return;
+        selectedLessonId = target.dataset.lesson;
+        closePanel(); render();
+    } else if (action === 'start-new') {
         const label = document.getElementById('class-label').value;
         if (session) confirmAction('Start a new lesson?', 'This clears the saved lesson’s progress, reveals, timer, and stars.', function() { newSession(label); }, 'Start new lesson');
         else newSession(label);
     } else if (action === 'resume-saved') {
+        lesson = getLesson(session.lessonId);
         inLesson = true; render();
     } else if (action === 'confirm') {
         const callback = confirmation;
@@ -349,7 +447,8 @@ function handleAction(event) {
     else if (action === 'fullscreen') fullscreen();
     else if (!session || !inLesson) return;
     else if (action === 'tools') showTools();
-    else if (action === 'notes') openPanel('Teacher notes · visible to the class', [element('p', {}, [currentStage().notes])]);
+    else if (action === 'notes') showNotes();
+    else if (action === 'summary') showSummary();
     else if (action === 'stages') showStages();
     else if (action === 'jump') { closePanel(); goStage(Number(target.dataset.stage)); }
     else if (action === 'back-stage') goStage(session.stage - 1);
@@ -358,6 +457,13 @@ function handleAction(event) {
     else if (action === 'next-step') goStep(1);
     else if (action === 'attention' || action === 'pause') showOverlay(action);
     else if (action === 'resume-overlay') resumeOverlay();
+    else if (action === 'mark-discussed') {
+        const frame = currentFrame();
+        if (!frame.discussionId || (frame.type === 'question' && !response().revealed)) return;
+        if (session.discussedQuestions.includes(frame.discussionId)) session.discussedQuestions = session.discussedQuestions.filter(function(id) { return id !== frame.discussionId; });
+        else session.discussedQuestions.push(frame.discussionId);
+        save(); render();
+    }
     else if (action === 'timer') { session.preferences.timerVisible = !session.preferences.timerVisible; save(); render(); }
     else if (action === 'toggle-timer') {
         session.timer = session.timer.running ? pauseTimer(session.timer) : startTimer(session.timer);
@@ -365,9 +471,11 @@ function handleAction(event) {
     } else if (action === 'reset-timer') { session.timer = resetTimer(session.timer); save(); render(); }
     else if (action === 'add-time') { session.timer = addTime(session.timer); save(); render(); }
     else if (action === 'select-answer') {
+        if (!questionOptions(currentFrame()).some(function(option) { return option.id === target.dataset.answer; })) return;
         session.responses[responseKey()] = { ...response(), selected: target.dataset.answer };
         save(); render();
     } else if (action === 'reveal') {
+        if (currentFrame().type !== 'question') return;
         session.responses[responseKey()] = { ...response(), revealed: true };
         save(); render();
     } else if (action === 'mode') {
@@ -381,7 +489,7 @@ function handleAction(event) {
         session.stars = Math.min(10000, Math.max(0, session.stars + (action === 'add-star' ? 1 : -1)));
         save(); render(); showTools();
     } else if (action === 'restart') {
-        confirmAction('Restart this lesson?', 'This clears all current progress, reveals, timer, and stars. Your class label is kept.', function() { newSession(session.classLabel); }, 'Restart lesson');
+        confirmAction('Restart this lesson?', 'This clears all current progress, reveals, timer, and stars. Your class label is kept.', function() { newSession(session.classLabel, session.lessonId); }, 'Restart lesson');
     } else if (action === 'home') home();
 }
 function tick() {
