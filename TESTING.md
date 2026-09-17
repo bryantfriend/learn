@@ -74,3 +74,11 @@ Practice-browser tests use port 4174; the original suite uses 4173. The remainin
 ## Version 1.4.0
 
 22 unit tests pass. The GP browser suite traverses all 43 new sessions with visible timers, checks reveals and recovery, and verifies the 40 student/key pages fit A4 without footer overlap. Student print views render no answers. Plan and classroom browser suites also pass.
+
+## Version 1.5.0 — 7A courses
+
+25 unit tests pass, including coverage of all 63 Geography and 93 GP source rows, weekly limits, class isolation and ten balanced four-option papers. `npm run test:grade7` traversed all 95 sessions at 1280 × 720 with visible timers and all checkpoint reveals. All ten student papers and ten explained keys fit four A4 pages each without footer overlap. Student views contain no answer-key elements. Printed source cards were reviewed to remove definition hints.
+
+`node tests/grade7-workflow.cjs` verifies weekly-plan launch, mobile/board modal geometry, decoded diagram display, student paper, Print command, separate key and 7B isolation. Classroom and Grade 8 plan/workflow regression suites pass. Weekly-plan, diagram, student-paper and key screenshots were inspected. Browser checks use development-only Playwright; no new production dependencies.
+
+Ports: 4179 for 7A traversal/printing, 4180 for 7A workflow. Set `PRINT_ONLY=1` to check just papers after assessment edits. Set `LEARN_URL` to verify the hosted workflow.

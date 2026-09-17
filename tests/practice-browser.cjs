@@ -58,7 +58,7 @@ async function geometry() {
         await action('choose-lesson');
         await page.locator('[data-action="select-class"][data-id="7a"]').click();
         await page.locator('[data-action="select-subject"][data-id="geography"]').click();
-        assert.equal(await page.locator('[data-action="select-lesson"]').count(),2);
+        assert.equal(await page.locator('[data-lesson="ready-to-learn-v1"], [data-lesson="system-practice-01"]').count(),2);
         await page.locator('[data-lesson="system-practice-01"]').tap();
         assert.match(await page.locator('#panel').innerText(),/Mission: Learn How We Learn/);
         await page.screenshot({path:path.join(output,'practice-home-1280.png')});

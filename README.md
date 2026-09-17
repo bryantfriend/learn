@@ -13,7 +13,7 @@ Use **Choose class & lesson**: select **7A**, **7B**, or **8th Grade**, then **G
 - **Ready to Learn: Notice, Think, Explain** — the original 40-minute lesson, eight stages.
 - **Mission: Learn How We Learn** — a 35–40-minute system practice lesson, nine stages. [Practice lesson guide](./docs/system-practice.md).
 
-The two existing lessons are shared starters available in every class and subject. Grade 8 Global Perspectives includes 38 teaching lessons and five printable assessments; Grade 7 subject lessons await your plans. Each class/subject/lesson keeps its own progress. Starting again requires confirmation only for that same saved lesson. The home card offers **Resume last class**; the class chip in the player opens the picker.
+The two existing lessons are shared starters available in every class and subject. Grade 8 Global Perspectives includes 38 teaching lessons and five printable assessments; 7A includes 33 Geography sessions and 62 GP sessions, including five assessments per subject. 7B awaits its own plans. Each class/subject/lesson keeps its own progress. Starting again requires confirmation only for that same saved lesson. The home card offers **Resume last class**; the class chip in the player opens the picker.
 
 ## Teach the first lesson
 
@@ -62,11 +62,11 @@ Only non-sensitive lesson state goes into localStorage: schema/lesson identifier
 
 On refresh, open **Resume last class**, or use the picker to resume another saved lesson. The timer accounts for elapsed time but is always restored **paused**, even if it had been running. A timer paused by an overlay remains paused after recovery. Invalid or outdated progress is ignored with a message. Storage failures leave the lesson usable in memory. If clearing storage is denied, browser settings may be needed to remove older saved data.
 
-All first-lesson text and the local SVG load at startup. Navigating a loaded lesson makes no new content requests. **There is no service worker. A first visit or page reload is not guaranteed offline.**
+Lesson text loads at startup. Geography diagrams load from local site assets when first shown. **There is no service worker. A first visit or page reload is not guaranteed offline.**
 
 ## Adding your plans
 
-Classes and subjects live in `src/catalog.js`. Register complete lessons in `src/lessons.js` and add `catalog: { subjectId: 'geography', grades: [7], unit: 'Unit title', order: 1 }` to subject lessons. Use `global-perspectives` for the second subject. Grades `[7]` share content between 7A and 7B with separate progress; `[8]` targets 8th Grade. Keep lesson IDs stable. Lessons without catalog metadata remain shared starters. See [the classroom shell guide](./docs/classroom-shell.md).
+Classes and subjects live in `src/catalog.js`. Register complete lessons in `src/lessons.js` and add `catalog: { subjectId: 'geography', grades: [7], unit: 'Unit title', order: 1 }` to subject lessons. Use `global-perspectives` for the second subject. Grades `[7]` share content between 7A and 7B with separate progress; add `classes: ['7a']` to restrict a course to 7A; `[8]` targets 8th Grade. Keep lesson IDs stable. Lessons without catalog metadata remain shared starters. See [the classroom shell guide](./docs/classroom-shell.md).
 
 ## Local preview
 
@@ -86,7 +86,7 @@ Alternatively, run `python -m http.server 4173` from the repository and open `ht
 npm test
 ```
 
-Runs seventeen dependency-free Node tests for lesson structure, deadline timers, recovery and storage validation.
+Runs 25 dependency-free Node tests for lesson structure, deadline timers, recovery and storage validation.
 
 Browser acceptance tests use the Playwright library and Chromium only as development tools. Reuse an existing installation by setting `PLAYWRIGHT_MODULE` to its absolute module directory, then:
 
@@ -155,3 +155,7 @@ Grade 8 now offers Global Perspectives only; Geography remains for 7A and 7B. Op
 ## Playable Grade 8 course (v1.4.0)
 
 All 43 plan entries are now playable: 38 teaching lessons and five assessment sessions. Use quarter filters in the Grade 8 picker. Each assessment has a self-contained 16-question, four-option student paper and separate explained teacher key. Open [printable assessments](./exams/) and use Print / Save as PDF. See [teaching and printing guide](./docs/playable-gp-lessons.md).
+
+## Grade 7A courses (v1.5.0)
+
+Geography combines each teaching week's activities into one lesson, with optional extensions. GP adapts its weekly plan to two lessons. Use the 7A weekly plan or quarter filters to launch 95 sessions. Ten printable assessments have 12 questions each, four choices per question, and separate explained keys. See [coverage and source notes](./docs/grade7a-course.md).

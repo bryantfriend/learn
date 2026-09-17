@@ -13,7 +13,7 @@ Verified 17 September 2026.
 
 No publishing steps remain. Open the published site on the classroom smart board, tap Start new lesson, and use Fullscreen if supported. Verify touch and fullscreen once on the actual board; desktop Chromium tests do not certify that specific hardware.
 
-Progress belongs to that browser only. An initial visit or reload needs a connection; the loaded lesson needs no further content requests.
+Progress belongs to that browser only. An initial visit or reload needs a connection; lesson text is loaded with the app, while Geography diagrams load from local site assets when first shown.
 
 For future changes, commit reviewed files and push origin main, wait for the Pages workflow to succeed, then refresh the published site and repeat the smoke test. No production build step is required.
 
@@ -33,3 +33,7 @@ Imports the Grade 8 GP year plan and relevant calendar windows, adds editable we
 ## Version 1.4.0
 
 Publishes the 38 teaching lessons, five assessment sessions and separate printable papers/keys. Existing main/root Pages deployment; no build or new runtime dependencies.
+
+## Version 1.5.0
+
+Adds 7A Geography at one session per teaching week and GP at two: 95 playable sessions including ten printable assessments with separate keys. Version incremented to 1.5.0. Publication uses the existing main/root GitHub Pages workflow with no build or new runtime dependencies. See docs/grade7a-course.md and TESTING.md for adaptation and validation.

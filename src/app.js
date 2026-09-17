@@ -4,6 +4,7 @@ import { prepareTimer, remainingTime, startTimer, pauseTimer, resetTimer, addTim
 import { createStorage, SCHEMA } from './storage.js';
 import { classes, subjectsFor, getClass, contextLabel, lessonsFor } from './catalog.js';
 
+import { grade7ACourses } from './plans/grade7a.js';
 import { grade8GPPlan } from './plans/grade8-gp.js';
 import { schoolCalendar } from './plans/calendar.js';
 
@@ -182,6 +183,11 @@ function renderPlayer() {
     })));
     if (frame.symbol) copy.append(element('div', { className: 'mission-symbol', 'aria-hidden': 'true' }, [frame.symbol]));
     const answerPanel = !frame.visual && frame.type === 'question' && response().revealed;
+    if (frame.diagram) {
+        const diagrams = {'2.4':['plan','Invented plan: school west, pond east, park north, road south.'],'2.5':['grid','Practice grid. Tree six tenths across and two tenths up inside square 2345.'],'2.8':['profile','Profile: 100, 120, 160 and 180 metres at 0, 100, 200 and 300 metres distance.'],'2.9':['world','Coordinate sketch: A north and east, B south and east, C at zero latitude and longitude.']};
+        const item = diagrams[frame.diagram];
+        copy.append(element('img', {src:'./assets/g7-'+item[0]+'.svg',alt:item[1],className:'gp-diagram'}));
+    }
     if (frame.printExam) copy.append(examLink('Open printable student paper', false));
     const content = element('section', { className: 'teaching-content' + (frame.visual || answerPanel ? ' split' : '') + (lesson.summary ? ' practice-content' : '') + (lesson.gp ? ' gp-content' : '') + (frame.type === 'question' ? ' quiz' : ''), 'aria-labelledby': 'student-title' }, [copy]);
     if (frame.visual) {
@@ -337,7 +343,8 @@ function showPicker(focusSelector) {
         ]),
         element('section', { className: 'picker-lessons', 'aria-label': '3 · Lesson' }, [
             element('h3', {}, ['3 · Lesson']),
-            ...(picker.classId === '8' ? [element('div', { className: 'picker-options quarter-options', 'aria-label': 'Lesson quarter' }, schoolCalendar.quarters.map(function(q) { return button(q.id, 'lesson-quarter', planQuarter === q.id ? 'selected' : '', { 'data-quarter': q.id, 'aria-pressed': String(planQuarter === q.id) }); }))] : []),
+            ...(picker.classId === '7a' && picker.subjectId ? [button('7A weekly plan · '+(picker.subjectId === 'geography' ? '1 Geography lesson/week' : '2 GP lessons/week'), 'g7-plan', 'plan-link')] : []),
+            ...(['8','7a'].includes(picker.classId) ? [element('div', { className: 'picker-options quarter-options', 'aria-label': 'Lesson quarter' }, schoolCalendar.quarters.map(function(q) { return button(q.id, 'lesson-quarter', planQuarter === q.id ? 'selected' : '', { 'data-quarter': q.id, 'aria-pressed': String(planQuarter === q.id) }); }))] : []),
             ...(picker.classId === '8' && picker.subjectId === 'global-perspectives' ? [button('2026–2027 year plan & calendar · 43 playable lessons and assessments', 'year-plan', 'plan-link')] : []),
             ...storage.unassigned().map(function(value) { return button('Resume earlier unassigned lesson: ' + getLesson(value.lessonId).title, 'resume-earlier', 'subtle', { 'data-lesson': value.lessonId }); }),
             ...(!ready ? [element('p', { className: 'empty-curriculum' }, ['Choose a class and subject to see lessons.'])] : [
@@ -368,6 +375,25 @@ function startSelection(resume) {
     }
     if (saved && !resume) confirmAction('Start this lesson again?', 'This resets only ' + contextLabel(selection) + '’s progress for this lesson. Other saved lessons are kept.', start, 'Start again');
     else start();
+}
+function showGrade7Plan() {
+    const course=grade7ACourses.find(function(c){return c.subjectId===picker.subjectId;});
+    const subject=course.subjectId==='geography'?'Geography':'Global Perspectives';
+    openPanel('7A · '+subject+' weekly plan',[
+        element('p',{className:'panel-hint'},[course.sessionsPerWeek+' lesson(s) per teaching week · 40 minutes each · '+course.lessons.length+' sessions']),
+        element('div',{className:'picker-options'},schoolCalendar.quarters.map(function(q){return button(q.id,'g7-quarter',planQuarter===q.id?'selected':'',{'data-quarter':q.id,'aria-pressed':String(planQuarter===q.id)});})),
+        element('div',{className:'year-plan-content'},[
+            element('p',{},['Dates label teaching weeks, not fixed weekdays. Original practice and homework are retained in teacher notes; extensions are optional.']),
+            ...course.weeks.filter(function(w){return w.quarter===planQuarter;}).map(function(week){
+                const sessions=course.lessons.filter(function(l){return l.week===week.index;});
+                return element('section',{className:'planned-topic'},[
+                    element('h3',{},['Week '+week.index+' · '+dateLabel(week.start)]),
+                    ...(sessions.length?sessions.map(function(l){return button('Lesson '+l.slot+' · '+l.title,'g7-open','lesson-option',{'data-lesson':l.id});}):[element('p',{},['No regular lessons in the supplied weekly plan.'])])
+                ]);
+            })
+        ]),
+        element('div',{className:'picker-footer'},[element('p',{className:'picker-status'},['Adapted for 7A · '+course.originalSessionsPerWeek+' original weekly slots → '+course.sessionsPerWeek]),button('Back to lessons','back-picker','primary')])
+    ],'year-plan');
 }
 function dateLabel(value) {
     return new Date(value + 'T12:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
@@ -560,6 +586,9 @@ function handleAction(event) {
     if (!target || target.disabled) return;
     const action = target.dataset.action;
     if (action === 'choose-lesson' && !inLesson) chooseLesson();
+    else if (action === 'g7-plan') showGrade7Plan();
+    else if (action === 'g7-quarter') { planQuarter=target.dataset.quarter; showGrade7Plan(); }
+    else if (action === 'g7-open') { picker.lessonId=target.dataset.lesson; showPicker(); }
     else if (action === 'lesson-quarter') { planQuarter = target.dataset.quarter; showPicker('[data-action="lesson-quarter"][data-quarter="' + planQuarter + '"]'); }
     else if (action === 'open-plan-lesson') { picker = { classId:'8', subjectId:'global-perspectives', lessonId:target.dataset.lesson }; showPicker(); }
     else if (action === 'year-plan') showYearPlan();

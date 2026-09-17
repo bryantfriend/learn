@@ -25,7 +25,7 @@ export function lessonsFor(classId, subjectId, source = lessons) {
     const group = getClass(classId);
     if (!group || !subjectsFor(classId).some(function(item) { return item.id === subjectId; })) return [];
     return source.filter(function(item) {
-        return !item.catalog || (item.catalog.subjectId === subjectId && item.catalog.grades.includes(group.grade));
+        return !item.catalog || (item.catalog.subjectId === subjectId && item.catalog.grades.includes(group.grade) && (!item.catalog.classes || item.catalog.classes.includes(classId)));
     }).sort(function(a, b) { return (a.catalog?.order || 0) - (b.catalog?.order || 0); });
 }
 export function sessionKey(value) {

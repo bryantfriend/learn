@@ -14,7 +14,7 @@ function sessionFor(selected = practiceLesson) {
     };
 }
 test('both complete lessons are registered and practice has nine stages totaling forty minutes', function() {
-    assert.equal(lessons.length, 45);
+    assert.equal(lessons.length, 140);
     assert.equal(getLesson(lesson.id), lesson);
     assert.equal(getLesson('system-practice-01'), practiceLesson);
     assert.equal(getLesson('missing'), null);
