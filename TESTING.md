@@ -82,3 +82,11 @@ Practice-browser tests use port 4174; the original suite uses 4173. The remainin
 `node tests/grade7-workflow.cjs` verifies weekly-plan launch, mobile/board modal geometry, decoded diagram display, student paper, Print command, separate key and 7B isolation. Classroom and Grade 8 plan/workflow regression suites pass. Weekly-plan, diagram, student-paper and key screenshots were inspected. Browser checks use development-only Playwright; no new production dependencies.
 
 Ports: 4179 for 7A traversal/printing, 4180 for 7A workflow. Set `PRINT_ONLY=1` to check just papers after assessment edits. Set `LEARN_URL` to verify the hosted workflow.
+
+## Version 1.6.0 — 7B younger-group courses
+
+29 unit tests cover the 156 new sessions, all source rows, availability, saved-state validation, balanced four-option papers and assessment topics introduced before each quarterly test. The 7B browser suite traversed all 156 sessions at 1280 × 720 with the timer visible, including all explanations and decoded diagrams. Ten student papers and ten separate keys fit four A4 pages each without footer overlap.
+
+The 7B workflow verifies weekly-plan launch, mobile/board dialog geometry, diagram display, exam links, Print command and separate key. 7A, classroom, Grade 8 plan and Grade 8 workflow regression suites pass. The weekly plan, UK schematic and sample student/key print screenshots were visually reviewed.
+
+Run npm run test:grade7b (port 4181) and node tests/grade7b-workflow.cjs (4182). PRINT_ONLY=1 restricts the first suite to papers; LEARN_URL supports hosted checks. Remaining physical-board checks are touch/fullscreen support and room-specific legibility.

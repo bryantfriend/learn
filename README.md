@@ -13,7 +13,7 @@ Use **Choose class & lesson**: select **7A**, **7B**, or **8th Grade**, then **G
 - **Ready to Learn: Notice, Think, Explain** — the original 40-minute lesson, eight stages.
 - **Mission: Learn How We Learn** — a 35–40-minute system practice lesson, nine stages. [Practice lesson guide](./docs/system-practice.md).
 
-The two existing lessons are shared starters available in every class and subject. Grade 8 Global Perspectives includes 38 teaching lessons and five printable assessments; 7A includes 33 Geography sessions and 62 GP sessions, including five assessments per subject. 7B awaits its own plans. Each class/subject/lesson keeps its own progress. Starting again requires confirmation only for that same saved lesson. The home card offers **Resume last class**; the class chip in the player opens the picker.
+The two existing lessons are shared starters available in every class and subject. Grade 8 Global Perspectives includes 38 teaching lessons and five printable assessments; 7A includes 33 Geography sessions and 62 GP sessions, including five assessments per subject. 7B includes 63 Geography and 93 Stage 6 GP sessions, including five printable assessments per subject. Each class/subject/lesson keeps its own progress. Starting again requires confirmation only for that same saved lesson. The home card offers **Resume last class**; the class chip in the player opens the picker.
 
 ## Teach the first lesson
 
@@ -86,7 +86,7 @@ Alternatively, run `python -m http.server 4173` from the repository and open `ht
 npm test
 ```
 
-Runs 25 dependency-free Node tests for lesson structure, deadline timers, recovery and storage validation.
+Runs 29 dependency-free Node tests for lesson structure, deadline timers, recovery and storage validation.
 
 Browser acceptance tests use the Playwright library and Chromium only as development tools. Reuse an existing installation by setting `PLAYWRIGHT_MODULE` to its absolute module directory, then:
 
@@ -159,3 +159,7 @@ All 43 plan entries are now playable: 38 teaching lessons and five assessment se
 ## Grade 7A courses (v1.5.0)
 
 Geography combines each teaching week's activities into one lesson, with optional extensions. GP adapts its weekly plan to two lessons. Use the 7A weekly plan or quarter filters to launch 95 sessions. Ten printable assessments have 12 questions each, four choices per question, and separate explained keys. See [coverage and source notes](./docs/grade7a-course.md).
+
+## 7B younger-group courses (v1.6.0)
+
+Use the existing 7B class for the supplied Stage 6 GP and chapters 3–5 Geography plans. The schedule is three GP and two Geography sessions per regular teaching week. All 156 sessions are playable, with guided examples and weekly tasks; ten assessment points include printable four-choice papers and separate keys. See [7B coverage and teaching notes](./docs/grade7b-course.md).

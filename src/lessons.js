@@ -1,3 +1,4 @@
+import { grade7BLessons } from './lessons/grade7b.js';
 import { grade7Lessons } from './lessons/grade7a.js';
 import { gpLessons } from './lessons/grade8-gp.js';
 import { practiceLesson } from './lessons/system-practice.js';
@@ -103,7 +104,7 @@ export const lesson = {
     ]
 };
 
-export const lessons = [lesson, practiceLesson, ...gpLessons, ...grade7Lessons];
+export const lessons = [lesson, practiceLesson, ...gpLessons, ...grade7Lessons, ...grade7BLessons];
 export function getLesson(id) {
     return lessons.find(function(item) { return item.id === id; }) || null;
 }

@@ -9,7 +9,7 @@ The supplied 2026–2027 plans are adapted specifically for **7A**. Geography ha
 
 The five assessments in each subject are baseline and Q1–Q4. Holidays and weeks with no regular sessions retain their place in the weekly plan. Dates identify a week, not a fixed teaching weekday. Sessions can be opened in sequence when the timetable changes.
 
-Choose **7A → subject → quarter → lesson**, or open **7A weekly plan** to select by week. Both shared starter lessons remain available. These courses are restricted to 7A; 7B still has shared starters while awaiting its own plans. Grade 8 GP is unchanged.
+Choose **7A → subject → quarter → lesson**, or open **7A weekly plan** to select by week. Both shared starter lessons remain available. These courses are restricted to 7A; 7B has its own separate younger-group courses; see grade7b-course.md. Grade 8 GP is unchanged.
 
 ## Sources and adaptation
 

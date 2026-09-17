@@ -4,6 +4,7 @@ import { prepareTimer, remainingTime, startTimer, pauseTimer, resetTimer, addTim
 import { createStorage, SCHEMA } from './storage.js';
 import { classes, subjectsFor, getClass, contextLabel, lessonsFor } from './catalog.js';
 
+import { grade7BCourses } from './plans/grade7b.js';
 import { grade7ACourses } from './plans/grade7a.js';
 import { grade8GPPlan } from './plans/grade8-gp.js';
 import { schoolCalendar } from './plans/calendar.js';
@@ -184,9 +185,9 @@ function renderPlayer() {
     if (frame.symbol) copy.append(element('div', { className: 'mission-symbol', 'aria-hidden': 'true' }, [frame.symbol]));
     const answerPanel = !frame.visual && frame.type === 'question' && response().revealed;
     if (frame.diagram) {
-        const diagrams = {'2.4':['plan','Invented plan: school west, pond east, park north, road south.'],'2.5':['grid','Practice grid. Tree six tenths across and two tenths up inside square 2345.'],'2.8':['profile','Profile: 100, 120, 160 and 180 metres at 0, 100, 200 and 300 metres distance.'],'2.9':['world','Coordinate sketch: A north and east, B south and east, C at zero latitude and longitude.']};
+        const diagrams = {'g7b-uk':['g7b-uk','Schematic UK locations; boxes are not country outlines.'],'g7b-valley':['g7b-valley','V-shaped and U-shaped valley cross-sections.'],'g7b-cycle':['g7b-cycle','Water cycle: evaporation, condensation, precipitation, runoff and infiltration.'],'g7b-bend':['g7b-bend','River bend with outer-bank erosion and inner-bank deposition.'],'2.4':['g7-plan','Invented plan: school west, pond east, park north, road south.'],'2.5':['g7-grid','Practice grid. Tree six tenths across and two tenths up inside square 2345.'],'2.8':['g7-profile','Profile: 100, 120, 160 and 180 metres at 0, 100, 200 and 300 metres distance.'],'2.9':['g7-world','Coordinate sketch: A north and east, B south and east, C at zero latitude and longitude.']};
         const item = diagrams[frame.diagram];
-        copy.append(element('img', {src:'./assets/g7-'+item[0]+'.svg',alt:item[1],className:'gp-diagram'}));
+        copy.append(element('img', {src:'./assets/'+item[0]+'.svg',alt:item[1],className:'gp-diagram'}));
     }
     if (frame.printExam) copy.append(examLink('Open printable student paper', false));
     const content = element('section', { className: 'teaching-content' + (frame.visual || answerPanel ? ' split' : '') + (lesson.summary ? ' practice-content' : '') + (lesson.gp ? ' gp-content' : '') + (frame.type === 'question' ? ' quiz' : ''), 'aria-labelledby': 'student-title' }, [copy]);
@@ -343,8 +344,8 @@ function showPicker(focusSelector) {
         ]),
         element('section', { className: 'picker-lessons', 'aria-label': '3 · Lesson' }, [
             element('h3', {}, ['3 · Lesson']),
-            ...(picker.classId === '7a' && picker.subjectId ? [button('7A weekly plan · '+(picker.subjectId === 'geography' ? '1 Geography lesson/week' : '2 GP lessons/week'), 'g7-plan', 'plan-link')] : []),
-            ...(['8','7a'].includes(picker.classId) ? [element('div', { className: 'picker-options quarter-options', 'aria-label': 'Lesson quarter' }, schoolCalendar.quarters.map(function(q) { return button(q.id, 'lesson-quarter', planQuarter === q.id ? 'selected' : '', { 'data-quarter': q.id, 'aria-pressed': String(planQuarter === q.id) }); }))] : []),
+            ...(['7a','7b'].includes(picker.classId) && picker.subjectId ? [button(getClass(picker.classId).label+' weekly plan · '+(picker.subjectId === 'geography' ? (picker.classId==='7a'?'1':'2')+' Geography lesson(s)/week' : (picker.classId==='7a'?'2':'3')+' GP lessons/week'), 'g7-plan', 'plan-link')] : []),
+            ...(['8','7a','7b'].includes(picker.classId) ? [element('div', { className: 'picker-options quarter-options', 'aria-label': 'Lesson quarter' }, schoolCalendar.quarters.map(function(q) { return button(q.id, 'lesson-quarter', planQuarter === q.id ? 'selected' : '', { 'data-quarter': q.id, 'aria-pressed': String(planQuarter === q.id) }); }))] : []),
             ...(picker.classId === '8' && picker.subjectId === 'global-perspectives' ? [button('2026–2027 year plan & calendar · 43 playable lessons and assessments', 'year-plan', 'plan-link')] : []),
             ...storage.unassigned().map(function(value) { return button('Resume earlier unassigned lesson: ' + getLesson(value.lessonId).title, 'resume-earlier', 'subtle', { 'data-lesson': value.lessonId }); }),
             ...(!ready ? [element('p', { className: 'empty-curriculum' }, ['Choose a class and subject to see lessons.'])] : [
@@ -377,9 +378,10 @@ function startSelection(resume) {
     else start();
 }
 function showGrade7Plan() {
-    const course=grade7ACourses.find(function(c){return c.subjectId===picker.subjectId;});
+    const course=[...grade7ACourses,...grade7BCourses].find(function(c){return c.classId===picker.classId && c.subjectId===picker.subjectId;});
+    const classLabel=getClass(picker.classId).label;
     const subject=course.subjectId==='geography'?'Geography':'Global Perspectives';
-    openPanel('7A · '+subject+' weekly plan',[
+    openPanel(classLabel+' · '+subject+' weekly plan',[
         element('p',{className:'panel-hint'},[course.sessionsPerWeek+' lesson(s) per teaching week · 40 minutes each · '+course.lessons.length+' sessions']),
         element('div',{className:'picker-options'},schoolCalendar.quarters.map(function(q){return button(q.id,'g7-quarter',planQuarter===q.id?'selected':'',{'data-quarter':q.id,'aria-pressed':String(planQuarter===q.id)});})),
         element('div',{className:'year-plan-content'},[
@@ -392,7 +394,7 @@ function showGrade7Plan() {
                 ]);
             })
         ]),
-        element('div',{className:'picker-footer'},[element('p',{className:'picker-status'},['Adapted for 7A · '+course.originalSessionsPerWeek+' original weekly slots → '+course.sessionsPerWeek]),button('Back to lessons','back-picker','primary')])
+        element('div',{className:'picker-footer'},[element('p',{className:'picker-status'},[classLabel+' · '+course.sessionsPerWeek+' sessions per teaching week'+(picker.classId==='7b'?' · Stage 6 support':'')]),button('Back to lessons','back-picker','primary')])
     ],'year-plan');
 }
 function dateLabel(value) {

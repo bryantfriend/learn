@@ -1,6 +1,7 @@
 import { gpExams } from '../src/lessons/gp-exams.js';
 import { grade7Exams } from '../src/lessons/g7-exams.js';
-const allExams = {...gpExams,...grade7Exams};
+import { grade7BExams } from '../src/lessons/g7b-exams.js';
+const allExams = {...gpExams,...grade7Exams,...grade7BExams};
 const params=new URLSearchParams(location.search),exam=allExams[params.get('id')],key=params.get('key')==='1';
 const root=document.getElementById('paper');
 function el(tag,text,cls){const n=document.createElement(tag);if(text)n.textContent=text;if(cls)n.className=cls;return n;}
