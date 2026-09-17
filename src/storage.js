@@ -34,8 +34,9 @@ export function validateSession(value, now = Date.now()) {
         if (!integer(value.steps[index], 0, lesson.stages[index].frames.length - 1)) return null;
     }
     if (typeof value.classLabel !== 'string' || value.classLabel.length > 30 || !integer(value.stars, 0, 10000)) return null;
-    const classId = value.schemaVersion < 3 ? null : value.classId;
-    const subjectId = value.schemaVersion < 3 ? null : value.subjectId;
+    const retired = value.classId === '8' && value.subjectId === 'geography';
+    const classId = value.schemaVersion < 3 || retired ? null : value.classId;
+    const subjectId = value.schemaVersion < 3 || retired ? null : value.subjectId;
     if (!(classId === null && subjectId === null) && (!getClass(classId) || !getSubject(subjectId) || !lessonsFor(classId, subjectId).some(function(item) { return item.id === lesson.id; }))) return null;
     const timer = value.timer;
     if (!timer || !Number.isFinite(timer.durationMs) || timer.durationMs <= 0 || timer.durationMs > 3600000 ||
@@ -65,7 +66,7 @@ export function validateSession(value, now = Date.now()) {
     if (!Number.isFinite(startedAt) || startedAt < 0 || startedAt > now ||
         (finishedAt !== null && (!Number.isFinite(finishedAt) || finishedAt < startedAt || finishedAt > now))) return null;
     return {
-        schemaVersion: SCHEMA, lessonId: lesson.id, classId, subjectId, classLabel: getClass(classId)?.label || value.classLabel,
+        schemaVersion: SCHEMA, lessonId: lesson.id, classId, subjectId, classLabel: retired ? '8th Grade · Geography' : getClass(classId)?.label || value.classLabel,
         stage: value.stage, steps: value.steps.slice(), responses,
         stars: value.stars, preferences: { starsVisible: value.preferences.starsVisible, timerVisible: value.preferences.timerVisible },
         modeOverride: Object.hasOwn(modes, value.modeOverride) ? value.modeOverride : null,

@@ -34,20 +34,20 @@ const server=createServer();let browser;
  await page.setViewportSize({width:1280,height:720});
  await page.keyboard.press('Escape');assert.equal(await state(),null);
  let index=0;
- for(const c of ['7a','7b','8'])for(const s of ['geography','global-perspectives']){
+ for(const c of ['7a','7b','8'])for(const s of (c==='8'?['global-perspectives']:['geography','global-perspectives'])){
   await action(index?'switch-class':'choose-lesson');await select(c,s);await action('picker-start');
   assert.equal((await state()).classId,c);assert.equal((await state()).subjectId,s);assert.equal((await state()).stage,0);
   for(let n=0;n<=index;n++)await action('next-stage');
   index++;
  }
- await page.reload();await action('resume-saved');assert.equal((await state()).stage,6);
+ await page.reload();await action('resume-saved');assert.equal((await state()).stage,5);
  index=0;
- for(const c of ['7a','7b','8'])for(const s of ['geography','global-perspectives']){
+ for(const c of ['7a','7b','8'])for(const s of (c==='8'?['global-perspectives']:['geography','global-perspectives'])){
   await action('switch-class');await select(c,s);await action('picker-resume');
   assert.equal((await state()).stage,++index);
   assert.equal((await state()).timer.running,false);
  }
- console.log('PASS all six contexts keep independent progress across switches and reload');
+ console.log('PASS all five contexts keep independent progress across switches and reload');
  await action('switch-class');await select('7a','geography');await action('picker-start');await action('cancel-confirm');
  assert.equal((await state()).classId,'8');
  await action('choose-lesson');await select('7a','geography');await action('picker-resume');
@@ -67,7 +67,7 @@ const server=createServer();let browser;
  assert.equal(await oldPage.evaluate(()=>JSON.parse(localStorage.getItem('learn.session.v1')).stage),3);
  await oldPage.locator('[data-action="switch-class"]').click();
  await oldPage.locator('[data-action="select-class"][data-id="8"]').click();
- await oldPage.locator('[data-action="select-subject"][data-id="geography"]').click();
+ await oldPage.locator('[data-action="select-subject"][data-id="global-perspectives"]').click();
  await oldPage.locator('[data-lesson="ready-to-learn-v1"]').click();
  await oldPage.locator('[data-action="picker-start"]').click();
  await oldPage.locator('[data-action="switch-class"]').click();

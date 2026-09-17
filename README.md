@@ -147,3 +147,7 @@ Keep storage schema compatibility when changing existing lesson IDs or frame ord
 - Modern Chromium is automated-tested. Verify fullscreen and touch on the actual board once; older board browsers may need an update.
 - The three requested desktop board sizes are tested at 100% browser zoom. Narrow phones/tablets reflow and may scroll; the classroom board is the primary surface.
 - No first-load/reload offline guarantee, multi-device sync, student login, or authoring interface.
+
+## Grade 8 plan (v1.3.0)
+
+Grade 8 now offers Global Perspectives only; Geography remains for 7A and 7B. Open Year plan & calendar from the Grade 8 picker to browse 43 imported topics by quarter, including objectives and resources. Weekly pacing usually starts at three lessons and can be adjusted to two, one or zero without fixed weekdays. Planned topics are separate from playable classroom lessons. See [plan source and calendar notes](./docs/grade8-gp-plan.md).

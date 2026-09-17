@@ -2,8 +2,16 @@ import { lesson as firstLesson, getLesson, modes, questionOptions } from './less
 import { frameKey, responseKeyFor, summarizeSession } from './progress.js';
 import { prepareTimer, remainingTime, startTimer, pauseTimer, resetTimer, addTime, formatTime } from './timer.js';
 import { createStorage, SCHEMA } from './storage.js';
-import { classes, subjects, getClass, contextLabel, lessonsFor } from './catalog.js';
+import { classes, subjectsFor, getClass, contextLabel, lessonsFor } from './catalog.js';
 
+import { grade8GPPlan } from './plans/grade8-gp.js';
+import { schoolCalendar } from './plans/calendar.js';
+
+import { planningWeeks, validPacing, PACING_KEY } from './plans/pacing.js';
+let pacing = {};
+try { pacing = validPacing(JSON.parse(window.localStorage.getItem(PACING_KEY))); } catch {}
+function getWeekCount(week) { return pacing[week] ?? 3; }
+let planQuarter = 'Q1';
 const app = document.getElementById('app');
 const panel = document.getElementById('panel');
 const notice = document.getElementById('notice');
@@ -261,7 +269,7 @@ function render() {
 function openPanel(title, children, kind = 'panel') {
     if (panel.open) panel.close();
     dialogKind = kind;
-    panel.className = kind === 'attention' || kind === 'pause' ? 'overlay-panel' : kind === 'picker' ? 'class-picker' : '';
+    panel.className = kind === 'attention' || kind === 'pause' ? 'overlay-panel' : kind === 'picker' ? 'class-picker' : kind === 'year-plan' ? 'class-picker year-plan' : '';
     panel.replaceChildren(element('div', { className: 'panel-header' }, [
         element('h2', { id: 'panel-title' }, [title]),
         ...(kind === 'attention' || kind === 'pause' ? [] : [button('Close ×', 'close-panel', 'subtle')])
@@ -295,6 +303,8 @@ function chooseLesson() {
     showPicker();
 }
 function showPicker(focusSelector) {
+    const availableSubjects = subjectsFor(picker.classId);
+    if (!availableSubjects.some(function(item) { return item.id === picker.subjectId; })) picker.subjectId = availableSubjects.length === 1 ? availableSubjects[0].id : null;
     const available = lessonsFor(picker.classId, picker.subjectId);
     if (!available.some(function(item) { return item.id === picker.lessonId; })) picker.lessonId = null;
     const saved = picker.lessonId ? storage.find(picker) : null;
@@ -320,13 +330,14 @@ function showPicker(focusSelector) {
         element('p', { className: 'panel-hint' }, ['A quick start for every class. Saved progress stays with its class, subject, and lesson.']),
         element('div', { className: 'picker-context' }, [
             group('1 · Class', classes, 'classId', 'select-class'),
-            group('2 · Subject', subjects, 'subjectId', 'select-subject')
+            group('2 · Subject', availableSubjects, 'subjectId', 'select-subject')
         ]),
         element('section', { className: 'picker-lessons', 'aria-label': '3 · Lesson' }, [
             element('h3', {}, ['3 · Lesson']),
+            ...(picker.classId === '8' && picker.subjectId === 'global-perspectives' ? [button('2026–2027 year plan & calendar · 43 planned topics · 3 lessons/week', 'year-plan', 'plan-link')] : []),
             ...storage.unassigned().map(function(value) { return button('Resume earlier unassigned lesson: ' + getLesson(value.lessonId).title, 'resume-earlier', 'subtle', { 'data-lesson': value.lessonId }); }),
             ...(!ready ? [element('p', { className: 'empty-curriculum' }, ['Choose a class and subject to see lessons.'])] : [
-                ...(subjectLessons.length ? subjectLessons.map(lessonButton) : [element('p', { className: 'empty-curriculum' }, ['Your subject lessons will appear here once we add your plans.'])]),
+                ...(subjectLessons.length ? subjectLessons.map(lessonButton) : [element('p', { className: 'empty-curriculum' }, ['Subject lessons will appear here as classroom activities are prepared.'])]),
                 ...(shared.length ? [element('p', { className: 'eyebrow' }, ['SHARED STARTER LESSONS']), ...shared.map(lessonButton)] : [])
             ])
         ]),
@@ -353,6 +364,63 @@ function startSelection(resume) {
     }
     if (saved && !resume) confirmAction('Start this lesson again?', 'This resets only ' + contextLabel(selection) + '’s progress for this lesson. Other saved lessons are kept.', start, 'Start again');
     else start();
+}
+function dateLabel(value) {
+    return new Date(value + 'T12:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+}
+function showYearPlan(focusSelector) {
+    const quarter = schoolCalendar.quarters.find(function(item) { return item.id === planQuarter; });
+    const entries = grade8GPPlan.entries.filter(function(item) { return item.quarter === planQuarter; });
+    const weeks = planningWeeks(planQuarter);
+    openPanel('8th Grade · Global Perspectives', [
+        element('p', { className: 'panel-hint' }, ['2026–2027 · 6 units · 43 planned topics · Usually 3 × 40 minutes per week']),
+        element('div', { className: 'picker-options', 'aria-label': 'Quarter' }, schoolCalendar.quarters.map(function(item) {
+            return button(item.id, 'plan-quarter', item.id === planQuarter ? 'selected' : '', { 'data-quarter': item.id, 'aria-pressed': String(item.id === planQuarter) });
+        })),
+        element('div', { className: 'year-plan-content' }, [
+            element('p', { className: 'plan-period' }, [dateLabel(quarter.start) + ' – ' + dateLabel(quarter.end)]),
+            element('details', { className: 'weekly-pacing' }, [
+                element('summary', {}, ['Weekly pacing & school calendar']),
+                element('p', {}, ['Three lessons is a target, not a fixed timetable. Set a week to 2, 1, or 0 when needed. Counts are saved in this browser. Topics may span several lessons; weekly plans will supply the activities.']),
+                ...weeks.map(function(week) {
+                    const count = getWeekCount(week.start);
+                    return element('section', { className: 'week-row' }, [
+                        element('div', {}, [
+                            element('strong', {}, [dateLabel(week.start) + ' – ' + dateLabel(week.end)]),
+                            element('p', {}, [week.notes.join(' · ') || 'Regular teaching week'])
+                        ]),
+                        element('div', { className: 'week-controls', 'aria-label': 'Lessons for week of ' + week.start }, [
+                            button('−', 'week-count', '', { 'data-week': week.start, 'data-count': String(count - 1), 'aria-label': 'Fewer lessons for ' + dateLabel(week.start), ...(count === 0 ? { disabled: '' } : {}) }),
+                            element('span', { role: 'status' }, [String(count) + (count === 1 ? ' lesson' : ' lessons')]),
+                            button('+', 'week-count', '', { 'data-week': week.start, 'data-count': String(count + 1), 'aria-label': 'More lessons for ' + dateLabel(week.start), ...(count === 3 ? { disabled: '' } : {}) })
+                        ])
+                    ]);
+                }),
+                element('p', { className: 'panel-hint' }, ['Full holiday weeks are omitted. Dates follow the supplied school calendar; assessment windows remain visible for timetable adjustments.']),
+                ...schoolCalendar.breaks.filter(function(item) { return item.start >= quarter.start && item.start <= (planQuarter === 'Q1' ? '2026-11-08' : planQuarter === 'Q2' ? '2027-01-10' : planQuarter === 'Q3' ? '2027-03-28' : quarter.end); }).map(function(item) {
+                    return element('p', { className: 'calendar-break' }, [dateLabel(item.start) + ' – ' + dateLabel(item.end) + ' · ' + item.title]);
+                })
+            ]),
+            element('p', { className: 'empty-curriculum' }, ['Planned topics from your long-term plan. These are not yet playable lessons; weekly plans will add classroom activities and source packs.']),
+            ...entries.map(function(entry) {
+                return element('details', { className: 'planned-topic', 'data-plan-id': entry.id }, [
+                    element('summary', {}, [
+                        element('span', { className: 'topic-meta' }, [entry.month + ' · ' + (entry.unit === 'Assessment' || entry.unit === 'Review' ? entry.unit : 'Unit ' + entry.unit) + ' · ' + entry.code]),
+                        element('strong', {}, [entry.title])
+                    ]),
+                    element('p', {}, [entry.objective]),
+                    element('p', {}, [element('strong', {}, ['Objectives: ']), entry.objectives]),
+                    element('p', {}, [element('strong', {}, ['Resources: ']), entry.resources]),
+                    element('p', {}, [element('strong', {}, ['Thinking skills: ']), entry.bloom])
+                ]);
+            })
+        ]),
+        element('div', { className: 'picker-footer' }, [
+            element('p', { className: 'picker-status' }, ['Flexible weekly pacing · Classroom activities added from weekly plans']),
+            button('Back to lessons', 'back-picker', 'primary')
+        ])
+    ], 'year-plan');
+    if (focusSelector) { panel.querySelector('.weekly-pacing').open = true; panel.querySelector(focusSelector)?.focus(); }
 }
 function showNotes() {
     const stage = currentStage();
@@ -483,6 +551,16 @@ function handleAction(event) {
     if (!target || target.disabled) return;
     const action = target.dataset.action;
     if (action === 'choose-lesson' && !inLesson) chooseLesson();
+    else if (action === 'year-plan') showYearPlan();
+    else if (action === 'week-count' && dialogKind === 'year-plan') {
+        const count = Number(target.dataset.count), week = target.dataset.week;
+        if (!Number.isInteger(count) || count < 0 || count > 3 || !planningWeeks(planQuarter).some(function(item) { return item.start === week; })) return;
+        pacing[week] = count;
+        try { window.localStorage.setItem(PACING_KEY, JSON.stringify(pacing)); } catch { notify('Weekly pacing stays in memory because browser saving is unavailable.'); }
+        showYearPlan('[data-week="' + week + '"]:not(:disabled)');
+    }
+    else if (action === 'plan-quarter') { planQuarter = target.dataset.quarter; showYearPlan(); }
+    else if (action === 'back-picker') showPicker();
     else if (action === 'switch-class') { home(); chooseLesson(); }
     else if (action === 'select-class' && dialogKind === 'picker') {
         picker.classId = target.dataset.id; showPicker('[data-action="select-class"][data-id="' + picker.classId + '"]');

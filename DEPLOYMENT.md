@@ -25,3 +25,7 @@ Adds Mission: Learn How We Learn to the existing home picker. The same main-bran
 
 Adds the class/subject/lesson modal for 7A, 7B and 8th Grade; Geography and Global Perspectives; independent saved checkpoints; and migration of earlier sessions. Keeps both existing lessons as shared starters. Verified locally with 17 unit tests and all three browser suites. Publish from main using the existing Pages workflow.
 
+
+## Version 1.3.0
+
+Imports the Grade 8 GP year plan and relevant calendar windows, adds editable weekly pacing, and limits Geography to Grade 7. Publishing uses the existing main/root GitHub Pages workflow.

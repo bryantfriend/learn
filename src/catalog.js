@@ -6,11 +6,15 @@ export const classes = [
     { id: '8', label: '8th Grade', grade: 8 }
 ];
 export const subjects = [
-    { id: 'geography', label: 'Geography' },
-    { id: 'global-perspectives', label: 'Global Perspectives' }
+    { id: 'geography', label: 'Geography', grades: [7] },
+    { id: 'global-perspectives', label: 'Global Perspectives', grades: [7, 8] }
 ];
 export function getClass(id) { return classes.find(function(item) { return item.id === id; }) || null; }
 export function getSubject(id) { return subjects.find(function(item) { return item.id === id; }) || null; }
+export function subjectsFor(classId) {
+    const group = getClass(classId);
+    return group ? subjects.filter(function(item) { return item.grades.includes(group.grade); }) : [];
+}
 export function contextLabel(value) {
     const group = getClass(value.classId), subject = getSubject(value.subjectId);
     return group && subject ? group.label + ' · ' + subject.label : (value.classLabel || 'Earlier session') + ' · Unassigned';
@@ -19,7 +23,7 @@ export function contextLabel(value) {
 // Future subject lessons specify catalog: { subjectId, grades: [7], unit, order }.
 export function lessonsFor(classId, subjectId, source = lessons) {
     const group = getClass(classId);
-    if (!group || !getSubject(subjectId)) return [];
+    if (!group || !subjectsFor(classId).some(function(item) { return item.id === subjectId; })) return [];
     return source.filter(function(item) {
         return !item.catalog || (item.catalog.subjectId === subjectId && item.catalog.grades.includes(group.grade));
     }).sort(function(a, b) { return (a.catalog?.order || 0) - (b.catalog?.order || 0); });
