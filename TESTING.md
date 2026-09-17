@@ -5,7 +5,7 @@ Test date: 17 September 2026.
 ## Executed locally
 
 - `npm test`: **6 passed, 0 failed**.
-- `npm run test:browser`: Chromium acceptance tests against the real app at `http://127.0.0.1:4173/learn/`.
+- `npm run test:browser`: **12 acceptance groups passed**. Chromium tests against the real app at `http://127.0.0.1:4173/learn/`.
 - Screenshots inspected: home and question screens at 1280 × 720; automated screenshots also captured at 1366 × 768 and 1920 × 1080.
 - Every lesson frame checked at all three board sizes, with the timer shown, for content outside the viewport, overlap with the step controls, page scrolling, and main-control height below 56px.
 - No production framework, runtime package downloads, API calls or remote fonts/images.
@@ -43,3 +43,7 @@ Automated Chromium checks do not certify a particular classroom smart board.
 ## Reproduction
 
 See README for running the local server, six Node tests and browser suite. Tests start/stop their own local server on port 4173. Stop a separately running preview first if that port is already occupied.
+
+## Hosted smoke test
+
+GitHub Pages deployment succeeded. The actual published application returned HTTP 200 and passed a Chromium touch smoke test: start, all six explanation reveals, Attention, recovery after reload, relative local assets, and no console errors. See DEPLOYMENT.md for the verified URL and deployment run.

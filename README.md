@@ -1,6 +1,9 @@
 # Learn
 
-**Clear routines. Active learning.**  
+**Clear routines. Active learning.**
+
+[Open the published classroom app](https://bryantfriend.github.io/learn/).
+
 A teacher-operated, whole-class lesson player for **Mr. Friend · Oxford International School**. Grades 7–8; no student devices, accounts, worksheets, or external videos.
 
 ## Teach the first lesson

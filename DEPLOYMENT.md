@@ -1,7 +1,18 @@
-# Publishing Learn
+# Learn deployment
 
-Repository: https://github.com/bryantfriend/learn
+Verified 17 September 2026.
 
-The application is a plain static site. Publish the main branch, repository root, using GitHub Pages branch-based deployment. No build command or API keys are needed.
+- Repository: https://github.com/bryantfriend/learn
+- Published site: https://bryantfriend.github.io/learn/
+- Hosting: GitHub Pages, branch-based, main, / (root).
+- Initial application commit: 0669c1c.
+- Successful initial deployment: https://github.com/bryantfriend/learn/actions/runs/35170344861
+- HTTP 200 verified on the published page.
+- Live Chromium touch smoke test passed: start without typing, all six answers, Attention countdown/resume, refresh recovery, relative local assets, no console errors.
+- Local checks passed: 6 unit tests and 12 browser acceptance groups. Every lesson frame was checked at 1920 × 1080, 1366 × 768 and 1280 × 720, with the timer shown.
 
-The initial release is prepared locally and has not yet been verified on the hosted URL. This document will be updated after the Pages deployment and live browser check succeed.
+No publishing steps remain. Open the published site on the classroom smart board, tap Start new lesson, and use Fullscreen if supported. Verify touch and fullscreen once on the actual board; desktop Chromium tests do not certify that specific hardware.
+
+Progress belongs to that browser only. An initial visit or reload needs a connection; the loaded lesson needs no further content requests.
+
+For future changes, commit reviewed files and push origin main, wait for the Pages workflow to succeed, then refresh the published site and repeat the smoke test. No production build step is required.
