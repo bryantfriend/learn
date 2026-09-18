@@ -1,3 +1,4 @@
+import {illustrateExamples} from './lesson-illustrations.js';
 import {strengthenPacing} from './lessons/pacing.js';
 import {registerLessons} from './lesson-editor.js';
 import { grade7BLessons } from './lessons/grade7b.js';
@@ -106,7 +107,7 @@ export const lesson = {
     ]
 };
 
-export const lessons = [lesson, practiceLesson, ...gpLessons, ...grade7Lessons, ...grade7BLessons].map(strengthenPacing);
+export const lessons = [lesson, practiceLesson, ...gpLessons, ...grade7Lessons, ...grade7BLessons].map(strengthenPacing).map(illustrateExamples);
 let lessonStorage; try { lessonStorage = globalThis.localStorage; } catch {}
 registerLessons(lessons, lessonStorage);
 export function getLesson(id) {

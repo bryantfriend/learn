@@ -76,3 +76,10 @@
 .uk-map-visual .visual-canvas svg { height: clamp(240px, 37vh, 400px); }
 @media(max-height:740px) and (min-width:901px){ .uk-map-visual .visual-canvas svg { height:240px; } }
 .visual-lightbox .uk-map-visual .visual-canvas svg { height: min(calc(94dvh - 300px), 530px); }
+
+.lesson-scene { margin:0; min-width:0; border-radius:24px; overflow:hidden; background:#e8efe7; border:1px solid #cdded4; box-shadow:0 12px 32px #163f3514; }
+.lesson-scene img { display:block; width:100%; height:clamp(220px,38vh,480px); object-fit:contain; background:#f4eee2; }
+.lesson-scene figcaption { padding:10px 14px; font-size:14px; line-height:1.35; color:#365d54; }
+.scene-layout .copy { align-self:center; }
+@media(max-height:740px) and (min-width:901px){ .lesson-scene img {height:240px;} .scene-layout .instructions p {font-size:22px;} .scene-layout .copy h1 {font-size:29px;} }
+@media(max-width:900px){ .teaching-content.scene-layout {grid-template-columns:1fr;} .lesson-scene img {height:auto; max-height:420px;} }

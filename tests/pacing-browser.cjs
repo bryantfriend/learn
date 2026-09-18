@@ -12,7 +12,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE),assert=require('node:ass
  for(let si=0;si<l.stages.length;si++){for(let fi=0;fi<l.stages[si].frames.length;fi++){
  const f=l.stages[si].frames[fi];const limit=document.querySelector('.step-controls').getBoundingClientRect().top;
  // All new/retimed frames and every frame of the two reported lessons.
- if(f.expectedSeconds){checked++;for(const e of document.querySelectorAll('.copy h1,.instructions,.footnote,.lesson-visual,.answers')){const r=e.getBoundingClientRect();if(r.bottom>limit+2||r.right>innerWidth+1||r.left<0)issues.push([l.id,si,fi,e.className]);}}
+ if(f.expectedSeconds||f.illustration){checked++;for(const e of document.querySelectorAll('.copy h1,.instructions,.footnote,.lesson-visual,.lesson-scene,.answers')){const r=e.getBoundingClientRect();if(r.bottom>limit+2||r.right>innerWidth+1||r.left<0)issues.push([l.id,si,fi,e.className]);}}
  if(fi<l.stages[si].frames.length-1)a('next-step');}if(si<l.stages.length-1)a('next-stage');}
  a('extensions');if(!document.querySelector('#panel.reserve-panel[open]'))throw Error('Reserve unavailable');
  const text=document.querySelector('#panel').textContent;if(!text.includes(l.extensions[0].source[0]))throw Error('Missing source');

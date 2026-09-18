@@ -853,5 +853,90 @@
     "ru": "Используй береговую линию и границы стран, чтобы найти каждую часть Соединённого Королевства.",
     "zh": "利用海岸线和各国边界，找到英国的每个组成部分。",
     "tr": "Birleşik Krallık’ın her bölümünü bulmak için kıyı çizgisini ve ülke sınırlarını kullan."
+  },
+  "Workers, stored fabric and a delivery truck at a textile factory.": {
+    "ru": "Работники, запасы ткани и грузовик на текстильной фабрике.",
+    "zh": "纺织厂里的工人、储存的布料和送货卡车。",
+    "tr": "Bir tekstil fabrikasında işçiler, depolanan kumaşlar ve teslimat kamyonu."
+  },
+  "Illustration only: use the written source for exact facts and quantities.": {
+    "ru": "Это иллюстрация: точные факты и количества указаны в письменном источнике.",
+    "zh": "图片仅供参考：准确的事实和数量请以文字资料为准。",
+    "tr": "Görsel yalnızca örnek amaçlıdır: kesin bilgiler ve miktarlar için yazılı kaynağı kullanın."
+  },
+  "A shopkeeper and customers discuss choices at a produce stall.": {
+    "ru": "Продавец и покупатели обсуждают выбор продуктов у прилавка.",
+    "zh": "店主和顾客在果蔬摊前讨论商品选择。",
+    "tr": "Bir satıcı ve müşteriler meyve sebze tezgâhındaki seçenekleri tartışıyor."
+  },
+  "A family and local volunteers meet at a transport station.": {
+    "ru": "Семья и местные волонтёры встречаются на вокзале.",
+    "zh": "一家人和当地志愿者在车站见面。",
+    "tr": "Bir aile ve yerel gönüllüler istasyonda buluşuyor."
+  },
+  "Neighbours consider homes, shops, a park and public transport.": {
+    "ru": "Жители обсуждают дома, магазины, парк и общественный транспорт.",
+    "zh": "居民讨论住宅、商店、公园和公共交通。",
+    "tr": "Mahalle sakinleri evleri, dükkânları, parkı ve toplu taşımayı değerlendiriyor."
+  },
+  "A farmer and visitors look at cotton growing and goods being transported.": {
+    "ru": "Фермер и посетители наблюдают за выращиванием хлопка и перевозкой товаров.",
+    "zh": "农民和访客观察棉花种植和货物运输。",
+    "tr": "Bir çiftçi ve ziyaretçiler pamuk yetiştiriciliğini ve malların taşınmasını inceliyor."
+  },
+  "Students compare observations and evidence around a table.": {
+    "ru": "Ученики за столом сравнивают наблюдения и доказательства.",
+    "zh": "学生围坐在桌旁，比较观察结果和证据。",
+    "tr": "Öğrenciler bir masanın etrafında gözlemleri ve kanıtları karşılaştırıyor."
+  },
+  "Students and a teacher discuss information on a tablet.": {
+    "ru": "Ученики и учитель обсуждают информацию на планшете.",
+    "zh": "学生和老师讨论平板电脑上的信息。",
+    "tr": "Öğrenciler ve öğretmen tabletteki bilgileri tartışıyor."
+  },
+  "Students observe instruments at a school weather station.": {
+    "ru": "Ученики изучают приборы на школьной метеостанции.",
+    "zh": "学生观察学校气象站的仪器。",
+    "tr": "Öğrenciler okulun meteoroloji istasyonundaki araçları inceliyor."
+  },
+  "Students explore energy and water use at a school.": {
+    "ru": "Ученики изучают использование энергии и воды в школе.",
+    "zh": "学生探究学校的能源和用水情况。",
+    "tr": "Öğrenciler okulda enerji ve su kullanımını araştırıyor."
+  },
+  "Students discuss football and quiet reading in a shared playground.": {
+    "ru": "Ученики обсуждают футбол и спокойное чтение на общей школьной площадке.",
+    "zh": "学生讨论如何在共用的操场上踢足球和安静阅读。",
+    "tr": "Öğrenciler ortak okul bahçesinde futbol oynamayı ve sessizce kitap okumayı tartışıyor."
+  },
+  "Students and a lunch worker discuss food and reusable bowls in a school canteen.": {
+    "ru": "Ученики и работник школьной столовой обсуждают еду и многоразовую посуду.",
+    "zh": "学生和食堂工作人员讨论食物和可重复使用的餐碗。",
+    "tr": "Öğrenciler ve yemekhane çalışanı yiyecekleri ve yeniden kullanılabilir kâseleri tartışıyor."
+  },
+  "Students use a map and compass to investigate a landscape.": {
+    "ru": "Ученики исследуют местность с помощью карты и компаса.",
+    "zh": "学生使用地图和指南针考察地形。",
+    "tr": "Öğrenciler harita ve pusula kullanarak araziyi inceliyor."
+  },
+  "Students observe a river, its banks and the surrounding landscape.": {
+    "ru": "Ученики наблюдают за рекой, её берегами и окружающим ландшафтом.",
+    "zh": "学生观察河流、河岸和周围的景观。",
+    "tr": "Öğrenciler nehri, kıyılarını ve çevredeki araziyi gözlemliyor."
+  },
+  "Students discuss rest, exercise and daily routines.": {
+    "ru": "Ученики обсуждают отдых, физические упражнения и распорядок дня.",
+    "zh": "学生讨论休息、锻炼和日常作息。",
+    "tr": "Öğrenciler dinlenmeyi, egzersizi ve günlük alışkanlıkları tartışıyor."
+  },
+  "Students share a library for group work and quiet reading.": {
+    "ru": "Ученики используют библиотеку для групповой работы и спокойного чтения.",
+    "zh": "学生共用图书馆，开展小组活动和安静阅读。",
+    "tr": "Öğrenciler kütüphaneyi grup çalışması ve sessiz okuma için paylaşıyor."
+  },
+  "Students and a guide observe a glacier and mountain valley.": {
+    "ru": "Ученики и гид наблюдают за ледником и горной долиной.",
+    "zh": "学生和向导观察冰川和山谷。",
+    "tr": "Öğrenciler ve rehber bir buzulu ve dağ vadisini gözlemliyor."
   }
 }

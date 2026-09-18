@@ -20,7 +20,7 @@ const out=lessons.map(lesson=>{
    if(frame.quote)lines.push(frame.quote);
    if(visual?.steps)for(const step of visual.steps)if(!lines.includes(step))lines.push(step);
    if(!lines.length&&!visual&&!frame.diagram&&!frame.visual)continue;
-   section.blocks.push({id:key,title:frame.title,lines,footnote:frame.footnote||'',visual:visual||null,image:diagrams[frame.diagram]?diagrams[frame.diagram]+'.svg':frame.visual==='schoolyard'?'schoolyard.svg':null});
+   section.blocks.push({id:key,title:frame.title,lines,footnote:frame.footnote||'',visual:visual||null,imageAlt:!visual&&frame.illustration?frame.illustration.alt:'',imageCaption:!visual&&frame.illustration?frame.illustration.caption:'',image:!visual&&frame.illustration?frame.illustration.image:diagrams[frame.diagram]?diagrams[frame.diagram]+'.svg':frame.visual==='schoolyard'?'schoolyard.svg':null});
    if(frame.mode==='listen'&&lines.length&&item.cards.length<8)item.cards.push({front:frame.title,back:lines.slice(0,3).join('\n')});
   }
   if(section.blocks.length)item.sections.push(section);

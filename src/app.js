@@ -150,6 +150,7 @@ function renderPlayer() {
     const stage = currentStage();
     const frame = currentFrame();
     const graphic = visualSpec(lesson,stage,frame);
+    const scene = !graphic && frame.illustration;
     const mode = modes[currentMode()];
     const modeButton = button(mode.icon + ' ' + mode.label, 'mode', 'mode mode-' + currentMode(), { 'aria-label': 'Working mode: ' + mode.label + '. Change mode' });
     if (lesson.showVoiceLevels) modeButton.append(element('span', { className: 'voice-level' }, ['Voice level ' + currentVoiceLevel()]));
@@ -194,8 +195,12 @@ function renderPlayer() {
         copy.append(element('img', {src:'./assets/'+item[0]+'.svg',alt:item[1],className:'gp-diagram'}));
     }
     if (frame.printExam) copy.append(examLink('Open printable student paper', false));
-    const content = element('section', { className: 'teaching-content' + (graphic ? ' illustrated' : '') + (frame.visual || answerPanel ? ' split' : '') + (lesson.summary ? ' practice-content' : '') + (lesson.gp ? ' gp-content' : '') + (frame.type === 'question' ? ' quiz' : ''), 'aria-labelledby': 'student-title' }, [copy]);
+    const content = element('section', { className: 'teaching-content' + (graphic || scene ? ' illustrated' : '') + (scene ? ' scene-layout' : '') + (frame.visual || answerPanel ? ' split' : '') + (lesson.summary ? ' practice-content' : '') + (lesson.gp ? ' gp-content' : '') + (frame.type === 'question' ? ' quiz' : ''), 'aria-labelledby': 'student-title' }, [copy]);
     if (graphic) content.append(createVisual(graphic));
+    if (scene) content.append(element('figure', {className:'lesson-scene'},[
+        element('img',{src:'./assets/'+scene.image,alt:scene.alt,decoding:'async'}),
+        element('figcaption',{},[scene.caption])
+    ]));
     if (frame.visual) {
         const evidence = element('div', { className: 'visual-evidence' }, [schoolyard]);
         const explanation = copy.querySelector('.explanation');
