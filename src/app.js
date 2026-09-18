@@ -140,6 +140,7 @@ function renderHome() {
         ]),
         element('footer', { className: 'home-footer' }, [
             element('span', {}, ['Teacher-led · Quiet by design']),
+            element('a', {href:'./students/',className:'text-button'}, ['Student study space ↗']),
             button('Help & browser storage', 'help', 'text-button'),
             ...(session ? [button('Clear saved session', 'clear-session', 'text-button')] : [])
         ])

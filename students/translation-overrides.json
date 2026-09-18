@@ -1,0 +1,442 @@
+{
+  "What is an Issue and a Perspective?": {
+    "ru": "Что такое обсуждаемый вопрос и точка зрения?",
+    "zh": "什么是议题和观点？",
+    "tr": "Bir konu ve bakış açısı nedir?"
+  },
+  "What is an issue?": {
+    "ru": "Что такое обсуждаемый вопрос?",
+    "zh": "什么是议题？",
+    "tr": "Ele alınan konu nedir?"
+  },
+  "What is a perspective?": {
+    "ru": "Что такое точка зрения?",
+    "zh": "什么是观点？",
+    "tr": "Bakış açısı nedir?"
+  },
+  "An issue is a matter people care about and can discuss or investigate.": {
+    "ru": "Обсуждаемый вопрос — это то, что волнует людей и что можно обсудить или исследовать.",
+    "zh": "议题是人们关心、可以讨论或研究的事情。",
+    "tr": "Bir konu, insanların önem verdiği, tartışabileceği veya araştırabileceği bir meseledir."
+  },
+  "A perspective is someone’s way of seeing an issue.": {
+    "ru": "Точка зрения — это то, как человек видит обсуждаемый вопрос.",
+    "zh": "观点是一个人看待某个议题的方式。",
+    "tr": "Bakış açısı, bir kişinin bir konuyu nasıl gördüğüdür."
+  },
+  "Our issue: how should we share the playground?": {
+    "ru": "Наш вопрос: как нам вместе пользоваться школьной площадкой?",
+    "zh": "我们的议题：应该如何共同使用操场？",
+    "tr": "Konumuz: oyun alanını nasıl paylaşmalıyız?"
+  },
+  "Ask: “What do they think? Why does it matter to them?”": {
+    "ru": "Спроси: «Что они думают? Почему это для них важно?»",
+    "zh": "问一问：“他们怎么想？为什么这对他们很重要？”",
+    "tr": "Şunu sor: “Ne düşünüyorlar? Bu onlar için neden önemli?”"
+  },
+  "A fact is not a preference": {
+    "ru": "Факт — не то же самое, что предпочтение",
+    "zh": "事实不等于个人偏好",
+    "tr": "Bir gerçek, tercih değildir"
+  },
+  "Same issue. Different reasons.": {
+    "ru": "Один вопрос. Разные причины.",
+    "zh": "同一个议题，不同的理由。",
+    "tr": "Aynı konu. Farklı gerekçeler."
+  },
+  "One playground. Two wishes.": {
+    "ru": "Одна площадка. Два желания.",
+    "zh": "一个操场，两种愿望。",
+    "tr": "Bir oyun alanı. İki istek."
+  },
+  "This is revision practice from teaching lessons, not an assessment paper or an answer key.": {
+    "ru": "Это повторение материала учебных уроков, а не контрольная работа или ключ с ответами.",
+    "zh": "这是根据课堂内容编写的复习练习，不是测验试卷或试卷答案。",
+    "tr": "Bu, işlenen derslerden tekrar çalışmasıdır; sınav kâğıdı veya cevap anahtarı değildir."
+  },
+  "Retrieval beats rereading": {
+    "ru": "Вспоминать по памяти полезнее, чем просто перечитывать",
+    "zh": "主动回忆比反复阅读更有助于巩固记忆",
+    "tr": "Hatırlamaya çalışmak, yalnızca tekrar okumaktan daha etkilidir"
+  },
+  "Prepare with a short revision routine": {
+    "ru": "Подготовься с помощью короткого плана повторения",
+    "zh": "用简短的复习步骤做好准备",
+    "tr": "Kısa bir tekrar düzeniyle hazırlan"
+  },
+  "Source card A": {
+    "ru": "Карточка источника A",
+    "zh": "资料卡 A",
+    "tr": "Kaynak kartı A"
+  },
+  "Source card B": {
+    "ru": "Карточка источника B",
+    "zh": "资料卡 B",
+    "tr": "Kaynak kartı B"
+  },
+  "Justify your answer using the source.": {
+    "ru": "Обоснуй свой ответ, опираясь на источник.",
+    "zh": "利用资料中的证据说明你的答案。",
+    "tr": "Kaynağı kullanarak yanıtını gerekçelendir."
+  },
+  "Use one precise source detail.": {
+    "ru": "Используй одну конкретную деталь из источника.",
+    "zh": "引用资料中的一个具体细节。",
+    "tr": "Kaynaktan belirli bir ayrıntı kullan."
+  },
+  "Name a supported detail, an inference and a missing piece of evidence.": {
+    "ru": "Назови деталь, подтверждённую источником, возможный вывод и недостающее доказательство.",
+    "zh": "说出一个有证据支持的细节、一个推断，以及一项尚缺少的证据。",
+    "tr": "Kaynağın desteklediği bir ayrıntıyı, bir çıkarımı ve eksik bir kanıtı belirt."
+  },
+  "There is a puddle. It may have rained, but the water could have come from somewhere else.": {
+    "ru": "Есть лужа. Возможно, шёл дождь, но вода могла появиться и по другой причине.",
+    "zh": "这里有一个水坑。可能下过雨，但水也可能来自别处。",
+    "tr": "Bir su birikintisi var. Yağmur yağmış olabilir, ancak su başka bir yerden de gelmiş olabilir."
+  },
+  "An inference needs evidence.": {
+    "ru": "Предположение нужно подкреплять доказательствами.",
+    "zh": "推断需要证据支持。",
+    "tr": "Bir çıkarımın kanıta ihtiyacı vardır."
+  },
+  "Observation": {
+    "ru": "Наблюдение",
+    "zh": "观察",
+    "tr": "Gözlem"
+  },
+  "Inference": {
+    "ru": "Предположение на основе наблюдений",
+    "zh": "推断",
+    "tr": "Çıkarım"
+  },
+  "Today’s thinking tool": {
+    "ru": "Сегодняшний приём мышления",
+    "zh": "今天的思考方法",
+    "tr": "Bugünün düşünme yöntemi"
+  },
+  "Examine the evidence": {
+    "ru": "Изучи доказательства",
+    "zh": "分析证据",
+    "tr": "Kanıtları incele"
+  },
+  "Model the reasoning": {
+    "ru": "Образец рассуждения",
+    "zh": "推理示范",
+    "tr": "Akıl yürütme örneği"
+  },
+  "A worked example": {
+    "ru": "Пример с объяснением решения",
+    "zh": "解题示例",
+    "tr": "Çözümlü örnek"
+  },
+  "Check your explanation": {
+    "ru": "Проверь своё объяснение",
+    "zh": "检查你的解释",
+    "tr": "Açıklamanı kontrol et"
+  },
+  "Transfer the skill": {
+    "ru": "Примени навык в новой ситуации",
+    "zh": "在新情境中运用技能",
+    "tr": "Beceriyi yeni bir durumda uygula"
+  },
+  "What can we claim?": {
+    "ru": "Какие утверждения можно обосновать?",
+    "zh": "我们能得出哪些有依据的结论？",
+    "tr": "Hangi iddiaları destekleyebiliriz?"
+  },
+  "State what the evidence cannot tell you.": {
+    "ru": "Укажи, чего нельзя узнать из этих доказательств.",
+    "zh": "指出这些证据无法告诉我们的内容。",
+    "tr": "Kanıtların bize neyi söyleyemeyeceğini belirt."
+  },
+  "Your challenge": {
+    "ru": "Твоя задача",
+    "zh": "你的挑战",
+    "tr": "Görevin"
+  },
+  "Show your learning": {
+    "ru": "Покажи, чему ты научился",
+    "zh": "展示你的学习成果",
+    "tr": "Öğrendiklerini göster"
+  },
+  "Read the short source": {
+    "ru": "Прочитай короткий источник",
+    "zh": "阅读简短资料",
+    "tr": "Kısa kaynağı oku"
+  },
+  "Recall one idea from last time.": {
+    "ru": "Вспомни одну идею из прошлого урока.",
+    "zh": "回忆上一课的一个要点。",
+    "tr": "Geçen dersten bir fikri hatırla."
+  },
+  "Shares are 1,000/10,000 = 10% and 1,500/20,000 = 7.5%.": {
+    "ru": "Доли составляют 1 000/10 000 = 10% и 1 500/20 000 = 7,5%.",
+    "zh": "所占比例分别为1,000/10,000＝10%和1,500/20,000＝7.5%。",
+    "tr": "Oranlar 1.000/10.000 = %10 ve 1.500/20.000 = %7,5’tir."
+  },
+  "Read eastings along, then northings up. Four figures name a square.": {
+    "ru": "Сначала считай восточную координату вправо, затем северную вверх. Четыре цифры обозначают квадрат.",
+    "zh": "先向右读取东坐标，再向上读取北坐标。四位数字表示一个方格。",
+    "tr": "Önce yatayda doğu koordinatını, sonra yukarı doğru kuzey koordinatını oku. Dört rakam bir kareyi belirtir."
+  },
+  "Find easting 23.": {
+    "ru": "Найди восточную координату 23.",
+    "zh": "找到东坐标23。",
+    "tr": "Doğu koordinatı 23’ü bul."
+  },
+  "Find northing 45.": {
+    "ru": "Найди северную координату 45.",
+    "zh": "找到北坐标45。",
+    "tr": "Kuzey koordinatı 45’i bul."
+  },
+  "Write the easting part before the northing part.": {
+    "ru": "Запиши восточную координату перед северной.",
+    "zh": "先写东坐标，再写北坐标。",
+    "tr": "Doğu koordinatını kuzey koordinatından önce yaz."
+  },
+  "Easting 23 plus 6 tenths gives 236; northing 45 plus 2 tenths gives 452.": {
+    "ru": "Восточная координата 23 и 6 десятых квадрата дают 236; северная координата 45 и 2 десятых дают 452.",
+    "zh": "东坐标23加上方格内的十分之六，记作236；北坐标45加上十分之二，记作452。",
+    "tr": "Doğu koordinatı 23’e karenin onda 6’sı eklenince 236; kuzey koordinatı 45’e onda 2’si eklenince 452 yazılır."
+  },
+  "Read along: find the easting.": {
+    "ru": "Считай вправо: найди восточную координату.",
+    "zh": "向右读：找到东坐标。",
+    "tr": "Yatayda oku: doğu koordinatını bul."
+  },
+  "Read up: find the northing.": {
+    "ru": "Считай вверх: найди северную координату.",
+    "zh": "向上读：找到北坐标。",
+    "tr": "Yukarı doğru oku: kuzey koordinatını bul."
+  },
+  "Read eastings first, then northings. Four figures locate a square; six add tenths within it.": {
+    "ru": "Сначала считай восточную координату, затем северную. Четыре цифры определяют квадрат; шесть уточняют положение до десятых долей квадрата.",
+    "zh": "先读东坐标，再读北坐标。四位数字确定方格；六位数字进一步表示方格内十分之一的位置。",
+    "tr": "Önce doğu, sonra kuzey koordinatını oku. Dört rakam kareyi bulur; altı rakam kare içindeki onda birlik konumu da belirtir."
+  },
+  "Latitude comes before longitude.": {
+    "ru": "Широту указывают перед долготой.",
+    "zh": "先写纬度，再写经度。",
+    "tr": "Önce enlem, sonra boylam yazılır."
+  },
+  "Latitude is north or south of the Equator; longitude is east or west of the prime meridian.": {
+    "ru": "Широта показывает положение к северу или югу от экватора; долгота — к востоку или западу от нулевого меридиана.",
+    "zh": "纬度表示赤道以北或以南的位置；经度表示本初子午线以东或以西的位置。",
+    "tr": "Enlem, Ekvator’un kuzeyindeki veya güneyindeki; boylam ise başlangıç meridyeninin doğusundaki veya batısındaki konumu belirtir."
+  },
+  "They use latitude and longitude in degrees.": {
+    "ru": "Используются широта и долгота, измеряемые в градусах.",
+    "zh": "它们使用以度为单位的纬度和经度。",
+    "tr": "Derece cinsinden enlem ve boylam kullanılır."
+  },
+  "Latitude/longitude describe global angular position.": {
+    "ru": "Широта и долгота задают угловое положение точки на Земле.",
+    "zh": "经纬度用角度描述地球上的位置。",
+    "tr": "Enlem ve boylam, Dünya üzerindeki açısal konumu tanımlar."
+  },
+  "Both have 30°E longitude.": {
+    "ru": "Обе точки имеют долготу 30° в. д.",
+    "zh": "两点都位于东经30°。",
+    "tr": "İkisi de 30° doğu boylamındadır."
+  },
+  "Practice extract description: scale 1:25,000; a path is 2 cm long. Its key identifies P as parking and a blue line as a stream. This is an original exercise, not an OS extract.": {
+    "ru": "Описание учебного фрагмента карты: масштаб 1:25 000; длина тропы на карте — 2 см. В условных обозначениях P означает парковку, а синяя линия — ручей. Это авторское упражнение, а не фрагмент карты Ordnance Survey.",
+    "zh": "练习用地图片段：比例尺为1:25,000；图上的小路长2厘米。图例中P表示停车场，蓝线表示溪流。这是原创练习，不是英国Ordnance Survey地图的片段。",
+    "tr": "Alıştırma haritası: ölçek 1:25.000; haritadaki patika 2 cm uzunluğundadır. Lejantta P otoparkı, mavi çizgi dereyi gösterir. Bu özgün bir alıştırmadır; Ordnance Survey haritasından alınmış bir kesit değildir."
+  },
+  "Fictional school energy use: January 180 units, February 160, March 120, April 150.": {
+    "ru": "Вымышленный пример энергопотребления школы: январь — 180 единиц, февраль — 160, март — 120, апрель — 150.",
+    "zh": "虚构的学校能源使用数据：1月180单位，2月160单位，3月120单位，4月150单位。",
+    "tr": "Kurgusal okul enerji tüketimi: Ocak 180 birim, Şubat 160, Mart 120, Nisan 150."
+  },
+  "January to April falls by 30 units, but the monthly pattern is not a constant decline.": {
+    "ru": "С января по апрель потребление снизилось на 30 единиц, но оно снижалось не каждый месяц.",
+    "zh": "从1月到4月，总量减少了30单位，但并不是每个月都在下降。",
+    "tr": "Ocaktan nisana tüketim 30 birim azalır; ancak her ay düzenli bir düşüş yoktur."
+  },
+  "A 60-token shelter plus a 30-token loading area fits 90. It still needs a clear path and agreed delivery times.": {
+    "ru": "Навес за 60 условных единиц и зона разгрузки за 30 укладываются в бюджет 90. При этом всё равно нужны свободный проход и согласованное время доставки.",
+    "zh": "60代币的遮蔽设施加上30代币的装卸区，共90代币，符合预算。但仍需保留畅通的通道，并约定送货时间。",
+    "tr": "60 jetonluk bir sığınak ile 30 jetonluk yükleme alanı toplam 90 jetonluk bütçeye uyar. Yine de açık bir geçiş yolu ve kararlaştırılmış teslimat saatleri gerekir."
+  },
+  "Fictional school log: 8 pupils waited at Door A and 2 at Door B at 12:00. The observer did not ask why.": {
+    "ru": "Вымышленная запись наблюдений: в 12:00 у двери A ждали 8 учеников, а у двери B — 2. Наблюдатель не спросил почему.",
+    "zh": "虚构的学校记录：12:00时，8名学生在A门等候，2名在B门等候。观察者没有询问原因。",
+    "tr": "Kurgusal okul kaydı: Saat 12.00’de A Kapısı’nda 8, B Kapısı’nda 2 öğrenci bekliyordu. Gözlemci nedenini sormadı."
+  },
+  "Invented attendance: Monday 18 of 20 pupils; Tuesday 16 of the same 20. The table gives no reasons.": {
+    "ru": "Вымышленные данные посещаемости: в понедельник присутствовали 18 из 20 учеников, во вторник — 16 из тех же 20. Причины в таблице не указаны.",
+    "zh": "虚构的出勤数据：周一20名学生中有18人到课；周二，同样20名学生中有16人到课。表格没有说明原因。",
+    "tr": "Kurgusal yoklama: Pazartesi 20 öğrencinin 18’i, salı aynı 20 öğrencinin 16’sı geldi. Tablo nedenleri açıklamıyor."
+  },
+  "Invented attendance: Monday 18 of 20 pupils; Tuesday 16 of the same 20.": {
+    "ru": "Вымышленные данные посещаемости: в понедельник пришли 18 из 20 учеников, во вторник — 16 из тех же 20.",
+    "zh": "虚构的出勤数据：周一20名学生中有18人到课；周二，同样20名学生中有16人到课。",
+    "tr": "Kurgusal yoklama: Pazartesi 20 öğrencinin 18’i, salı aynı 20 öğrencinin 16’sı geldi."
+  },
+  "1. How should we share the playground?": {
+    "ru": "1. Как нам вместе пользоваться школьной площадкой?",
+    "zh": "1. 我们应该如何共同使用操场？",
+    "tr": "1. Oyun alanını nasıl paylaşmalıyız?"
+  },
+  "2. Our school has one playground.": {
+    "ru": "2. В нашей школе одна игровая площадка.",
+    "zh": "2. 我们学校有一个操场。",
+    "tr": "2. Okulumuzda bir oyun alanı var."
+  },
+  "3. I want a quiet area because I enjoy reading.": {
+    "ru": "3. Я хочу тихую зону, потому что люблю читать.",
+    "zh": "3. 我想要一个安静的区域，因为我喜欢阅读。",
+    "tr": "3. Okumayı sevdiğim için sessiz bir alan istiyorum."
+  },
+  "Before": {
+    "ru": "До",
+    "zh": "之前",
+    "tr": "Önce"
+  },
+  "After": {
+    "ru": "После",
+    "zh": "之后",
+    "tr": "Sonra"
+  },
+  "Active": {
+    "ru": "Активный",
+    "zh": "活动",
+    "tr": "Aktif"
+  },
+  "Our tree is 6 tenths across and 2 tenths up inside square 2345.": {
+    "ru": "Наше дерево имеет 6 десятых в поперечнике и 2 десятых в квадрате 2345.",
+    "zh": "树位于方格2345内，从左边向右十分之六、从底边向上十分之二的位置。",
+    "tr": "Ağaç, 2345 karesinin içinde soldan sağa onda 6, alttan yukarı onda 2 konumundadır."
+  },
+  "Practice grid: a tree is in square 2345, 6 tenths across and 2 tenths up. Draw eastings 23–25 and northings 45–47.": {
+    "ru": "Практическая сетка: дерево находится в квадрате 2345, 6 десятых в поперечнике и 2 десятых вверх. Нарисуйте восток 23-25 и север 45-47.",
+    "zh": "练习网格：树位于方格2345内，向右十分之六、向上十分之二的位置。画出东坐标23–25和北坐标45–47的网格线。",
+    "tr": "Alıştırma ızgarası: Ağaç 2345 karesinde, sağa doğru onda 6 ve yukarı doğru onda 2 konumundadır. Doğu koordinatları 23–25 ve kuzey koordinatları 45–47 olan çizgileri çiz."
+  },
+  "A rise of 40 m over 100 m is steeper than 20 m over 100 m.": {
+    "ru": "Подъем на 40 м более 100 м круче, чем на 20 м более 100 м.",
+    "zh": "同样在100米水平距离内，上升40米比上升20米更陡。",
+    "tr": "100 m yatay mesafede 40 m yükselen yamaç, aynı mesafede 20 m yükselenden daha diktir."
+  },
+  "Practice cross-section at 100 m spacing: heights 100, 120, 160, 180 m. A second slope rises 20 m over 100 m.": {
+    "ru": "Практикуйте поперечное сечение на расстоянии 100 м: высоты 100, 120, 160, 180 м. Второй склон поднимается на 20 м выше 100 м.",
+    "zh": "练习剖面图：每隔100米测得的海拔依次为100、120、160、180米。另一段坡面在100米水平距离内上升20米。",
+    "tr": "Alıştırma kesiti: 100 m aralıklarla yükseklikler 100, 120, 160, 180 m’dir. İkinci bir yamaç 100 m yatay mesafede 20 m yükselir."
+  },
+  "Fictional bus travel time: before trial 40 minutes, after 30. Car travel time: before 25, after 28.": {
+    "ru": "Вымышленное время в пути: до пробы 40 минут, после 30. Время в пути: до 25, после 28.",
+    "zh": "虚构的公交出行时间：试行前40分钟，试行后30分钟。汽车出行时间：试行前25分钟，试行后28分钟。",
+    "tr": "Kurgusal otobüs yolculuğu: denemeden önce 40 dakika, sonra 30 dakika. Otomobil yolculuğu: önce 25, sonra 28 dakika."
+  },
+  "Fictional survey: Group A, 40 of 50 pupils have home internet; Group B, 30 of 60 do.": {
+    "ru": "Вымышленный опрос: группа А, 40 из 50 учеников имеют домашний интернет; группа В, 30 из 60 делают.",
+    "zh": "虚构调查：A组50名学生中有40人在家可以上网；B组60名学生中有30人在家可以上网。",
+    "tr": "Kurgusal anket: A grubunda 50 öğrencinin 40’ının evinde internet var; B grubunda 60 öğrencinin 30’unun var."
+  },
+  "A fictional report says 40 of 100 surveyed firms trialled an AI tool. It predicts more trials if costs fall.": {
+    "ru": "В вымышленном отчете говорится, что 40 из 100 опрошенных компаний опробовали инструмент ИИ. Он предсказывает больше испытаний, если затраты упадут.",
+    "zh": "一份虚构报告称，受调查的100家公司中有40家试用了人工智能工具。报告预测，如果成本下降，会有更多试用。",
+    "tr": "Kurgusal rapora göre ankete katılan 100 firmanın 40’ı bir yapay zekâ aracını denedi. Raporda maliyetler düşerse daha fazla deneme yapılacağı öngörülüyor."
+  },
+  "Access is 80% in A and 50% in B.": {
+    "ru": "Доступ составляет 80% в A и 50% в B.",
+    "zh": "A组的上网比例为80%，B组为50%。",
+    "tr": "İnternete erişim oranı A grubunda %80, B grubunda %50’dir."
+  },
+  "Imagined schools: A has 30 of 40 pupils attending a club; B has 40 of 80 attending.": {
+    "ru": "Воображаемые школы: в А 30 из 40 учеников посещают клуб; в В 40 из 80 учащихся.",
+    "zh": "假设有两所学校：A校40名学生中有30人参加社团；B校80名学生中有40人参加社团。",
+    "tr": "Kurgusal okullar: A okulunda 40 öğrencinin 30’u, B okulunda 80 öğrencinin 40’ı bir kulübe katılıyor."
+  },
+  "A: 30 of 40. B: 40 of 80. Counts and shares differ.": {
+    "ru": "А: 30 из 40. В: 40 из 80. Счета и акции различаются.",
+    "zh": "A：40人中有30人。B：80人中有40人。人数与所占比例并不相同。",
+    "tr": "A: 40 kişiden 30’u. B: 80 kişiden 40’ı. Kişi sayıları ile oranlar farklıdır."
+  },
+  "A: 40 of 50. B: 30 of 60. The group sizes differ.": {
+    "ru": "А: 40 из 50. В: 30 из 60. Размеры групп отличаются.",
+    "zh": "A：50人中有40人。B：60人中有30人。两组的总人数不同。",
+    "tr": "A: 50 kişiden 40’ı. B: 60 kişiden 30’u. Grupların toplam kişi sayıları farklıdır."
+  },
+  "Weak claim: 'Everyone wants a new tap.' Evidence: 14 of 20 voluntary respondents requested one.": {
+    "ru": "Слабое утверждение: «Все хотят нового крана» Доказательства: 14 из 20 добровольных респондентов запросили один.",
+    "zh": "缺乏充分依据的说法：“每个人都想要一个新水龙头。”证据：20名自愿回答者中有14人提出了这个要求。",
+    "tr": "Zayıf iddia: “Herkes yeni bir musluk istiyor.” Kanıt: Gönüllü 20 katılımcının 14’ü yeni bir musluk istedi."
+  },
+  "A fictional team proposes new route signs after 6 of 10 visitors missed a turn. It did not ask regular users.": {
+    "ru": "Вымышленная команда предлагает новые дорожные знаки после того, как 6 из 10 посетителей пропустили поворот. Об этом не спрашивают обычные пользователи.",
+    "zh": "一个虚构团队发现10名访客中有6人错过了转弯处，因此提议设置新的路线标志。团队没有询问经常使用这条路线的人。",
+    "tr": "Kurgusal bir ekip, 10 ziyaretçinin 6’sı dönüşü kaçırınca yeni yön levhaları öneriyor. Ekibin yolu düzenli kullanan kişilere sormadığını unutma."
+  },
+  "Fictional water use: Week A 200 litres for 100 meals; Week B 180 litres for 60 meals.": {
+    "ru": "Вымышленное использование воды: неделя А 200 литров на 100 приемов пищи; неделя В 180 литров на 60 приемов пищи.",
+    "zh": "虚构的用水数据：A周制作100份餐食用了200升水；B周制作60份餐食用了180升水。",
+    "tr": "Kurgusal su tüketimi: A haftasında 100 öğün için 200 litre; B haftasında 60 öğün için 180 litre."
+  },
+  "Invented routine survey: 8 of 10 pupils who took an active break felt ready for class. Other pupils were not asked.": {
+    "ru": "Изобретенный рутинный опрос: 8 из 10 учеников, принявших активный перерыв, чувствовали себя готовыми к занятиям. Других учеников не спрашивали.",
+    "zh": "虚构的习惯调查：10名进行了活动休息的学生中有8人表示已准备好上课。调查没有询问其他学生。",
+    "tr": "Kurgusal alışkanlık anketi: Hareketli mola veren 10 öğrencinin 8’i derse hazır hissettiğini söyledi. Diğer öğrencilere sorulmadı."
+  },
+  "Question: should we try a quiet reading corner? In a fictional class, 14 of 20 pupils want one; 6 do not.": {
+    "ru": "Вопрос: стоит ли пробовать читать в тихом уголке? В вымышленном классе 14 из 20 учеников хотят одного; 6 не хотят.",
+    "zh": "问题：是否应该尝试设置一个安静的阅读角？在一个虚构班级中，20名学生有14人想要，6人不想要。",
+    "tr": "Soru: Sessiz bir okuma köşesini denemeli miyiz? Kurgusal sınıfta 20 öğrencinin 14’ü istiyor, 6’sı istemiyor."
+  },
+  "Fictional class: game alerts interrupted reading for 6 of 10 respondents; 4 did not report this problem.": {
+    "ru": "Вымышленный класс: игровые оповещения прервали чтение для 6 из 10 респондентов; 4 не сообщили об этой проблеме.",
+    "zh": "虚构班级：10名回答者中有6人表示游戏通知打断了阅读；4人没有报告这个问题。",
+    "tr": "Kurgusal sınıf: 10 katılımcının 6’sı oyun bildirimlerinin okumalarını böldüğünü söyledi; 4’ü bu sorunu bildirmedi."
+  },
+  "Fictional kitchen orders 100 portions but serves 70. Thirty are left; the order was based on an old attendance list.": {
+    "ru": "Вымышленная кухня заказывает 100 порций, но обслуживает 70. Тридцать осталось; заказ был основан на старом списке посещаемости.",
+    "zh": "虚构的食堂订了100份餐食，却只供应了70份，剩下30份；订餐依据的是一份旧出勤名单。",
+    "tr": "Kurgusal mutfak 100 porsiyon sipariş ediyor ama 70 porsiyon servis ediyor. 30 porsiyon artıyor; sipariş eski yoklama listesine göre verilmiş."
+  },
+  "Fictional City X: 2020 population 10,000, new arrivals 1,000; 2025 population 20,000, new arrivals 1,500.": {
+    "ru": "Вымышленный город X: население 2020 года 10 000, новые прибытия 1000; население 2025 года 20 000, новые прибытия 1500.",
+    "zh": "虚构的X城市：2020年人口10,000，新迁入人口1,000；2025年人口20,000，新迁入人口1,500。",
+    "tr": "Kurgusal X şehri: 2020’de nüfus 10.000, yeni gelenler 1.000; 2025’te nüfus 20.000, yeni gelenler 1.500."
+  },
+  "Twenty B uniforms cost 440. Its longer life is relevant, but evidence still has limits.": {
+    "ru": "Двадцать б униформы стоили 440. Его более длительный срок службы актуален, но доказательства все еще имеют пределы.",
+    "zh": "20套B款校服共花费440。较长的使用寿命值得考虑，但现有证据仍有限制。",
+    "tr": "20 adet B üniforması 440 tutar. Daha uzun ömürlü olması önemlidir; ancak kanıtların yine de sınırları vardır."
+  },
+  "Assign buyer, worker, supplier and chair roles. Prepare a 60-second recommendation and one counterargument.": {
+    "ru": "Назначьте покупателя, работника, поставщика и стулья. Подготовьте 60-секундную рекомендацию и один контраргумент.",
+    "zh": "分配买方、工人、供应商和主持人的角色。准备一段60秒的建议，并提出一个反对意见。",
+    "tr": "Alıcı, işçi, tedarikçi ve toplantı başkanı rollerini paylaşın. 60 saniyelik bir öneri ve buna karşı bir gerekçe hazırlayın."
+  },
+  "12 divided by 20 is 60%.": {
+    "ru": "12, разделенные на 20, составляют 60%.",
+    "zh": "12除以20等于60%。",
+    "tr": "12’nin 20’ye bölümü %60’tır."
+  },
+  "9 divided by 15 is 60%; it describes this club sample.": {
+    "ru": "9 делится на 15 на 60%; в нем описывается эта клубная выборка.",
+    "zh": "9除以15等于60%；这个比例描述的是该社团的样本。",
+    "tr": "9’un 15’e bölümü %60’tır; bu oran, bu kulüpten alınan örneklemi anlatır."
+  },
+  "School budget: 440 tokens for 20 uniforms. Families value access; workers value stable contracts.": {
+    "ru": "Школьный бюджет: 440 жетонов на 20 униформ. Семьи ценят доступ; работники ценят стабильные контракты.",
+    "zh": "学校预算：用440代币购买20套校服。家庭重视能否获得校服；工人重视稳定的合同。",
+    "tr": "Okul bütçesi: 20 üniforma için 440 jeton. Aileler erişilebilirliği, işçiler istikrarlı sözleşmeleri önemsiyor."
+  },
+  "Practice plan: 1 cm represents 20 m. A classroom is 8 m by 6 m. A path is drawn 3 cm long.": {
+    "ru": "Практический план: 1 см представляет 20 м. Классная комната 8 м на 6 м. Путь нарисован длиной 3 см.",
+    "zh": "练习平面图：1厘米表示20米。教室长8米、宽6米。图上的一条小路长3厘米。",
+    "tr": "Alıştırma planı: 1 cm, 20 m’yi gösterir. Sınıf 8 m × 6 m’dir. Bir patika planda 3 cm uzunluğunda çizilmiştir."
+  },
+  "A sketch shows 5 stalls by a station and 1 farther away.": {
+    "ru": "Эскиз показывает 5 киосков на станции и 1 дальше.",
+    "zh": "草图显示车站旁有5个摊位，较远处有1个。",
+    "tr": "Kroki, istasyonun yanında 5 tezgâh ve daha uzakta 1 tezgâh gösteriyor."
+  },
+  "“8 of 10 quiet-break volunteers reported readiness.”": {
+    "ru": "8 из 10 добровольцев сообщили о готовности.",
+    "zh": "“10名自愿选择安静休息的学生中，有8人表示已准备好上课。”",
+    "tr": "“Sessiz molayı gönüllü seçen 10 kişinin 8’i hazır hissettiğini bildirdi.”"
+  }
+}

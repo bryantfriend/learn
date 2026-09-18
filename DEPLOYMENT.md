@@ -49,3 +49,7 @@ Adds illustrated teaching frames and teacher-controlled animation across all thr
 ## Version 1.9.0 — whole-lesson text editor
 
 Adds the teacher text editor on Learn (18 September 2026). Main/root GitHub Pages deployment remains unchanged. Local browser lesson overrides preserve diagrams and routines; no server or runtime dependency was added. The mistakenly added Oxford Games editor was separately reverted in bryantfriend/ois commit 0287204.
+
+## Version 2.0.0 — student study space
+
+Adds `/students/` under the existing main/root GitHub Pages deployment. The student portal ships its own generated safe lesson catalog and static translations, so it needs no backend or runtime translation service. Teacher playback remains at the site root. Student progress and notes stay in their own browser storage key.
