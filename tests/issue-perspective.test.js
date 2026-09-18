@@ -17,6 +17,6 @@ test('rewritten lesson discards outdated answers while preserving class and pref
  assert.equal(validateSession({...current,contentRevision:lesson.contentRevision+1},2000),null);
 });
 test('another lesson retains its existing checkpoint',()=>{
- const other={...saved,lessonId:'g7b-gp-w01-3',discussedQuestions:[]};
+ const other={...saved,lessonId:'g7b-gp-w01-3',contentRevision:getLesson('g7b-gp-w01-3').contentRevision,discussedQuestions:[]};
  assert.equal(validateSession(other,2000).stage,3);assert.deepEqual(validateSession(other,2000).responses,other.responses);
 });

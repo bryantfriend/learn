@@ -20,6 +20,7 @@
     "build:students": "node scripts/build-students.mjs && node scripts/build-student-visuals.cjs",
     "test:students": "node tests/students-browser.cjs",
     "test:students:catalog": "node tests/students-catalog-browser.cjs",
-    "audit:student-translations": "node scripts/audit-student-translations.mjs"
+    "audit:student-translations": "node scripts/audit-student-translations.mjs",
+    "test:pacing": "node tests/pacing-browser.cjs"
   }
 }

@@ -168,7 +168,7 @@ function renderPlayer() {
     const heading = element('section', { className: 'stage-heading' }, [
         element('div', {}, [
             button(String(session.stage + 1).padStart(2, '0') + ' / ' + String(lesson.stages.length).padStart(2, '0') + ' · ' + stage.title + ' ▾', 'stages', 'stage-menu-button'),
-            element('p', { className: 'stage-meta' }, [stage.timeRange + ' · ' + stage.durationMinutes + ' minutes planned'])
+            element('p', { className: 'stage-meta' }, [stage.timeRange + ' · ' + stage.durationMinutes + ' min activity estimate'])
         ]),
         element('div', { className: 'mode-wrap' }, [
             modeButton,
@@ -180,7 +180,7 @@ function renderPlayer() {
     copy.append(element('h1', { id: 'student-title', tabindex: '-1' }, [graphic?.intro && lesson.catalog?.classes ? graphic.title : frame.title]));
     if (frame.quote) copy.append(element('blockquote', {}, [frame.quote]));
     if (frame.choices) copy.append(element('ol', { className: 'opening-choices' + (frame.choiceLayout === 'grid' ? ' choice-grid' : '') }, frame.choices.map(function(choice) { return element('li', {}, [choice]); })));
-    if (frame.lines) copy.append(element('div', { className: 'instructions' }, (graphic?.intro ? [graphic.prompt] : frame.lines).map(function(line) { return element('p', {}, [line]); })));
+    if (frame.lines) copy.append(element('div', { className: 'instructions' }, (graphic?.intro && !frame.expectedSeconds ? [graphic.prompt] : frame.lines).map(function(line) { return element('p', {}, [line]); })));
     if (frame.footnote) copy.append(element('p', { className: 'footnote' }, [frame.footnote]));
     if (frame.type === 'question' || frame.type === 'opinion') renderQuestion(copy);
     if (frame.type === 'memory') copy.append(element('div', { className: 'memory-grid', 'aria-label': 'Nine items to remember' }, frame.items.map(function(item) {
@@ -209,7 +209,7 @@ function renderPlayer() {
     const canDiscuss = frame.discussionId && (frame.type !== 'question' || response().revealed);
     const discussed = session.discussedQuestions.includes(frame.discussionId);
     const stepControls = element('section', { className: 'step-controls', 'aria-label': 'Current teaching step' }, [
-        element('span', { className: 'step-label' }, ['Step ' + (step + 1) + ' of ' + stage.frames.length]),
+        element('span', { className: 'step-label' }, ['Step ' + (step + 1) + ' of ' + stage.frames.length + (frame.expectedSeconds ? ' · ~' + (frame.expectedSeconds / 60) + ' min' : '')]),
         ...(frame.cue ? [button('◉ ' + frame.cue, 'attention', 'cue text-button')] : []),
         ...(canDiscuss ? [button(discussed ? '✓ Discussed' : 'Mark discussed', 'mark-discussed', 'subtle discussion-button', { 'aria-pressed': String(discussed) })] : []),
         ...(step > 0 ? [button('← Previous step', 'previous-step', 'subtle')] : []),
@@ -225,6 +225,7 @@ function renderPlayer() {
         button('Ⅱ Pause', 'pause'),
         button('◷ Timer', 'timer', '', { 'aria-expanded': String(session.preferences.timerVisible) }),
         button('⛶ Fullscreen', 'fullscreen'),
+        ...(lesson.extensions ? [button('More practice +', 'extensions')] : []),
         button('☰ Teacher tools', 'tools')
     ]);
     const player = element('main', { className: 'player' }, [header, heading, content, stepControls]);
@@ -497,6 +498,7 @@ function showTools() {
         element('p', { className: 'panel-hint' }, ['Shared screen: students can see anything opened here.']),
         button('Edit lesson text', 'edit-lesson'),
         button('Read this stage’s teacher notes', 'notes'),
+        ...(lesson.extensions ? [button('More practice · 5–10 min', 'extensions'), element('p', {}, [lesson.pacingNote])] : []),
         button('Choose a stage', 'stages'),
         element('section', { className: 'tools-stars' }, [
             element('h3', {}, ['Class stars']),
@@ -637,6 +639,7 @@ function handleAction(event) {
     else if (action === 'clear-session') clearSession();
     else if (action === 'fullscreen') fullscreen();
     else if (!session || !inLesson) return;
+    else if (action === 'extensions') showExtensions(Number(target.dataset.index||0));
     else if (action === 'tools') showTools();
     else if (action === 'notes') showNotes();
     else if (action === 'summary') showSummary();
@@ -741,3 +744,17 @@ function showLessonEditor(){
  panel.classList.add('lesson-editor');
 }
 window.addEventListener('beforeunload',event=>{if(lessonTextDrafts.size){event.preventDefault();event.returnValue='';}});
+
+function showExtensions(index=0) {
+ const task=lesson.extensions?.[index];if(!task)return;
+ // Extra practice does not advance the lesson or mark any work complete.
+ if(session.timer.running){session.timer=pauseTimer(session.timer,Date.now());save();render();}
+ openPanel(task.title+' · optional '+task.minutes+' min',[
+  element('p',{className:'panel-hint'},[lesson.title+' · Complete the core task first. Choose one or both extra tasks.']),
+  element('div',{className:'reserve-grid'},[
+   element('section',{},[element('h3',{},[task.sourceTitle]),...task.source.map(line=>element('p',{},[line]))]),
+   element('section',{},[element('h3',{},['Your task']),...task.lines.map(line=>element('p',{},[line])),element('p',{className:'reserve-outcome'},[task.outcome])])
+  ]),
+  element('nav',{className:'reserve-actions'},[...lesson.extensions.map((t,i)=>button((i+1)+'. '+t.title,'extensions',i===index?'selected':'',{'data-index':String(i)})),button('Return to lesson','close-panel','primary')])
+ ]);panel.classList.add('reserve-panel');
+}

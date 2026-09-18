@@ -563,5 +563,235 @@
     "ru": "Нужны одна понятная связь и один способ её проверить.",
     "zh": "你需要说明一个清楚的联系，并提出一种验证方法。",
     "tr": "Bir açık bağlantı ve onu kontrol etmenin bir yolunu belirtmelisin."
+  },
+  "Write the four stages in order. Use the picture to check.": {
+    "zh": "按顺序写出四个阶段，并对照图片检查。",
+    "tr": "Dört aşamayı sırayla yaz. Görselle karşılaştırarak kontrol et.",
+    "ru": "Запиши четыре этапа по порядку. Проверь себя по рисунку."
+  },
+  "Tell your partner which stage needs fabric, and why.": {
+    "zh": "告诉同伴哪个阶段需要布料，并解释原因。",
+    "tr": "Arkadaşına hangi aşamada kumaş gerektiğini ve nedenini söyle.",
+    "ru": "Расскажите своему партнеру, какая стадия нуждается в ткани и почему."
+  },
+  "Record the connections": {
+    "zh": "记录各阶段的联系",
+    "tr": "Bağlantıları kaydet",
+    "ru": "Записывайте соединения"
+  },
+  "Make a four-row table: country, worker, resource.": {
+    "zh": "画一个有四行的表格，列出国家、工人和资源。",
+    "tr": "Dört satırlı bir tablo oluştur: ülke, çalışan, kaynak.",
+    "ru": "Составь таблицу из четырёх строк со столбцами: страна, работник, ресурс."
+  },
+  "Draw one arrow and explain what moves between those countries.": {
+    "zh": "画一个箭头，解释这些国家之间运输的是什么。",
+    "tr": "Bir ok çiz ve bu ülkeler arasında ne taşındığını açıkla.",
+    "ru": "Нарисуй одну стрелку и объясни, что перевозят между этими странами."
+  },
+  "Now explain a different link yourself. Your partner points to the evidence.": {
+    "zh": "现在独立解释另一个联系，让同伴指出相应的依据。",
+    "tr": "Şimdi başka bir bağlantıyı kendin açıkla. Arkadaşın ilgili kanıtı göstersin.",
+    "ru": "Теперь объясните другую связь сами. Ваш партнер указывает на доказательства."
+  },
+  "Draw one connection from memory and explain why it matters.": {
+    "zh": "凭记忆画出一个联系，解释它为什么重要。",
+    "tr": "Hatırladığın bir bağlantıyı çiz ve neden önemli olduğunu açıkla.",
+    "ru": "Нарисуйте одну связь из памяти и объясните, почему это важно."
+  },
+  "Write one possible effect of a delay and one fact needed to check it.": {
+    "zh": "写出延误可能造成的一种影响，以及核查这一影响所需的一项事实。",
+    "tr": "Gecikmenin olası bir etkisini ve bunu kontrol etmek için gereken bir bilgiyi yaz.",
+    "ru": "Напишите один возможный эффект задержки и один факт, необходимый для ее проверки."
+  },
+  "Compare your exit answers": {
+    "zh": "比较你们的课末回答",
+    "tr": "Ders sonu cevaplarınızı karşılaştırın",
+    "ru": "Сравните свои итоговые ответы."
+  },
+  "Compare with a partner. Keep one question you want this lesson to answer.": {
+    "zh": "与同伴比较，记下一个你希望在本课找到答案的问题。",
+    "tr": "Arkadaşınla karşılaştır. Bu derste yanıtını bulmak istediğin bir soruyu not et.",
+    "ru": "Сравните с партнером. Задайте один вопрос, на который вы хотите, чтобы этот урок ответил."
+  },
+  "Beside each, explain what it helps you understand.": {
+    "zh": "在每条细节旁边，说明它能帮助你理解什么。",
+    "tr": "Her ayrıntının yanına, neyi anlamana yardımcı olduğunu yaz.",
+    "ru": "Рядом с каждой деталью объясни, что она помогает понять."
+  },
+  "Circle one thing the source does not tell you.": {
+    "zh": "写出资料没有说明的一件事，并圈出它。",
+    "tr": "Kaynağın belirtmediği bir bilgiyi yaz ve daire içine al.",
+    "ru": "Запиши один вопрос, на который источник не отвечает, и обведи его."
+  },
+  "Try the reasoning yourself": {
+    "zh": "自己尝试推理",
+    "tr": "Akıl yürütmeyi kendin dene",
+    "ru": "Попробуй сам рассуждать"
+  },
+  "Say which part is supported and which part is still uncertain.": {
+    "zh": "指出哪一部分有证据支持，哪一部分仍不确定。",
+    "tr": "Hangi kısmın kanıtla desteklendiğini, hangisinin belirsiz kaldığını söyle.",
+    "ru": "Скажите, какая часть поддерживается, а какая еще не определена."
+  },
+  "Show your reasoning independently": {
+    "zh": "独立展示你的推理过程",
+    "tr": "Akıl yürütmeni kendi başına göster",
+    "ru": "Покажите свои рассуждения независимо"
+  },
+  "Use the task you have just tried. Write your own complete response.": {
+    "zh": "针对刚才的任务，独立写出完整回答。",
+    "tr": "Az önce yaptığın göreve kendi tam cevabını yaz.",
+    "ru": "Используйте задачу, которую вы только что попробовали. Напишите свой полный ответ."
+  },
+  "Explain why your answer fits this example.": {
+    "zh": "解释你的答案为什么适用于这个例子。",
+    "tr": "Cevabının bu örneğe neden uygun olduğunu açıkla.",
+    "ru": "Объясните, почему ваш ответ соответствует этому примеру."
+  },
+  "Test and improve your work": {
+    "zh": "检查并改进你的作答",
+    "tr": "Çalışmanı kontrol et ve geliştir",
+    "ru": "Тестируйте и улучшайте свою работу"
+  },
+  "Exchange answers. Point to the evidence or step behind one claim.": {
+    "zh": "交换答案，指出其中一个观点的证据或推理步骤。",
+    "tr": "Cevaplarınızı değiştirin. Bir iddiayı destekleyen kanıtı veya işlem adımını gösterin.",
+    "ru": "Обмен ответами. Укажите на доказательства или шаг за одним утверждением."
+  },
+  "Ask your partner to explain one unclear part.": {
+    "zh": "请同伴解释一处不清楚的地方。",
+    "tr": "Arkadaşından anlaşılmayan bir bölümü açıklamasını iste.",
+    "ru": "Попросите вашего партнера объяснить одну неясную деталь."
+  },
+  "Revise your own work and underline the change.": {
+    "zh": "修改你的作答，并在改动处画下划线。",
+    "tr": "Kendi çalışmanı düzelt ve değişikliğin altını çiz.",
+    "ru": "Пересмотрите свою работу и подчеркните изменения."
+  },
+  "Compare two approaches": {
+    "zh": "比较两种方法",
+    "tr": "İki yaklaşımı karşılaştır",
+    "ru": "Сравнение двух подходов"
+  },
+  "Two pairs: show different answers or methods from this task.": {
+    "zh": "请两组同伴展示本任务中不同的答案或方法。",
+    "tr": "İki grup, bu görev için farklı cevaplarını veya yöntemlerini göstersin.",
+    "ru": "Две пары: показывают разные ответы или методы из этой задачи."
+  },
+  "Everyone: write one similarity and one difference.": {
+    "zh": "每个人写出一个相同点和一个不同点。",
+    "tr": "Herkes bir benzerlik ve bir fark yazsın.",
+    "ru": "Все: напишите одно сходство и одно отличие."
+  },
+  "Decide which explanation is clearer and justify your choice.": {
+    "zh": "判断哪个解释更清楚，并说明选择理由。",
+    "tr": "Hangi açıklamanın daha anlaşılır olduğuna karar ver ve nedenini açıkla.",
+    "ru": "Решите, какое объяснение яснее, и оправдайте свой выбор."
+  },
+  "Check and explain": {
+    "zh": "检查并解释",
+    "tr": "Kontrol et ve açıkla",
+    "ru": "Проверьте и объясните"
+  },
+  "Explain without the choices": {
+    "zh": "不看选项，作出解释",
+    "tr": "Seçeneklere bakmadan açıkla",
+    "ru": "Объясните без выбора"
+  },
+  "Close or cover the answer choices in your notes.": {
+    "zh": "遮住笔记中的答案选项。",
+    "tr": "Notlarındaki cevap seçeneklerini kapat.",
+    "ru": "Закройте или покройте варианты ответов в своих заметках."
+  },
+  "Write your answer as an explanation, including evidence or working.": {
+    "zh": "用完整解释作答，写出证据或解题过程。",
+    "tr": "Cevabını kanıtları veya işlem adımlarını içeren bir açıklama olarak yaz.",
+    "ru": "Запиши ответ с объяснением, включая доказательства или ход решения."
+  },
+  "Read your explanations to each other.": {
+    "zh": "互相读出你们的解释。",
+    "tr": "Açıklamalarınızı birbirinize okuyun.",
+    "ru": "Читайте свои объяснения друг другу."
+  },
+  "Check each claim against the source, diagram or method.": {
+    "zh": "对照资料、图示或方法，核查每个观点。",
+    "tr": "Her iddiayı kaynak, diyagram veya yöntemle karşılaştırarak kontrol et.",
+    "ru": "Проверьте каждое утверждение на источник, диаграмму или метод."
+  },
+  "Correct one error or add one missing step.": {
+    "zh": "纠正一个错误，或补充一个遗漏的步骤。",
+    "tr": "Bir hatayı düzelt veya eksik bir adımı ekle.",
+    "ru": "Исправьте одну ошибку или добавьте один недостающий шаг."
+  },
+  "What shared decision do they need to make?": {
+    "zh": "他们需要共同作出什么决定？",
+    "tr": "Birlikte hangi kararı vermeleri gerekiyor?",
+    "ru": "Какое совместное решение они должны принять?"
+  },
+  "A new issue: the school canteen": {
+    "zh": "新的议题：学校食堂",
+    "tr": "Yeni bir konu: okul yemekhanesi",
+    "ru": "Новый вопрос: школьная столовая"
+  },
+  "Fictional case: Mira wants cheaper lunches because her budget is limited.": {
+    "zh": "虚构案例：米拉希望午餐更便宜，因为她的预算有限。",
+    "tr": "Kurgusal örnek: Mira, bütçesi kısıtlı olduğu için daha ucuz öğle yemekleri istiyor.",
+    "ru": "Вымышленный пример: Мира хочет более дешёвые обеды, потому что её бюджет ограничен."
+  },
+  "Deniz wants reusable bowls because the canteen throws away many cups.": {
+    "zh": "德尼兹希望使用可重复使用的碗，因为食堂丢弃了很多杯子。",
+    "tr": "Deniz, yemekhane çok sayıda bardak attığı için yeniden kullanılabilir kaseler istiyor.",
+    "ru": "Дениз хочет многоразовые чаши, потому что столовая выбрасывает много чашек."
+  },
+  "Write the shared issue, both perspectives and one question you would investigate.": {
+    "zh": "写出共同议题、双方的观点，以及一个你想调查的问题。",
+    "tr": "Ortak konuyu, iki bakış açısını ve araştırmak istediğin bir soruyu yaz.",
+    "ru": "Напишите общую проблему, обе точки зрения и один вопрос, который вы будете исследовать."
+  },
+  "Work independently: four sentences. A viewpoint needs a reason.": {
+    "zh": "独立完成：写四句话，每个观点都要说明理由。",
+    "tr": "Kendi başına dört cümle yaz. Her bakış açısını bir gerekçeyle açıkla.",
+    "ru": "Работайте самостоятельно: четыре предложения. Точка зрения нуждается в причине."
+  },
+  "Compare two canteen plans": {
+    "zh": "比较两种食堂方案",
+    "tr": "İki yemekhane planını karşılaştır",
+    "ru": "Сравни два плана для столовой."
+  },
+  "Plan A: keep disposable bowls and lower lunch prices.": {
+    "zh": "方案A：继续使用一次性碗，降低午餐价格。",
+    "tr": "A planı: tek kullanımlık kaselere devam et ve öğle yemeği fiyatlarını düşür.",
+    "ru": "План А: сохранить одноразовые чаши и снизить цены на обед."
+  },
+  "Plan B: buy reusable bowls and keep current prices.": {
+    "zh": "方案B：购买可重复使用的碗，保持现有价格。",
+    "tr": "B planı: yeniden kullanılabilir kaseler al ve mevcut fiyatları koru.",
+    "ru": "План Б: купить многоразовые миски и сохранить текущие цены."
+  },
+  "For each plan: who benefits, what is missing, and what evidence would you need?": {
+    "zh": "对每个方案回答：谁会受益？遗漏了什么？还需要什么证据？",
+    "tr": "Her plan için: kim yararlanır, ne eksiktir ve hangi kanıtlar gerekir?",
+    "ru": "Для каждого плана: кому это выгодно, чего не хватает, и какие доказательства вам понадобятся?"
+  },
+  "Write a comparison, then propose one improvement. Costs and waste totals are not supplied.": {
+    "zh": "写出比较结果，再提出一项改进。题目没有提供成本和垃圾总量。",
+    "tr": "Bir karşılaştırma yaz, sonra bir iyileştirme öner. Maliyet ve toplam atık miktarı verilmemiştir.",
+    "ru": "Сравни планы и предложи одно улучшение. Данные о затратах и количестве отходов не даны."
+  },
+  "Deniz wants reusable bowls because the canteen throws away many disposable bowls.": {
+    "ru": "Дениз хочет многоразовые миски, потому что столовая выбрасывает много одноразовых мисок.",
+    "zh": "德尼兹希望使用可重复使用的碗，因为食堂丢弃了很多一次性碗。",
+    "tr": "Deniz, yemekhane çok sayıda tek kullanımlık kase attığı için yeniden kullanılabilir kaseler istiyor."
+  },
+  "Write one question the source does not answer.": {
+    "ru": "Запиши один вопрос, на который источник не отвечает.",
+    "zh": "写出一个资料没有回答的问题。",
+    "tr": "Kaynağın yanıtlamadığı bir soru yaz."
+  },
+  "Answer without looking at the choices.": {
+    "ru": "Ответь, не глядя на варианты ответа.",
+    "zh": "不看选项，独立作答。",
+    "tr": "Seçeneklere bakmadan cevap ver."
   }
 }

@@ -7,6 +7,8 @@ export function guideSupplyChainLesson(lesson){
  lesson.contentRevision=1;
  const stage=id=>lesson.stages.find(s=>s.id===id);
  stage('notice').frames[0]=frame('Follow a T-shirt','think',['Follow this shirt from cotton to the shop.','Which stage makes the fabric? Which stage uses it?']);
+ stage('notice').frames[0].lines=['Write the four stages in order. Use the picture to check.','Tell your partner which stage needs fabric, and why.'];
+ stage('sources').frames.push(frame('Record the connections','think',['Make a four-row table: country, worker, resource.','Use the picture to complete each row.','Draw one arrow and explain what moves between those countries.'],{discussionId:'source-record'}));
  stage('sources').frames[0].lessonVisual=visual;
  stage('sources').frames[1].lessonVisual=visual;
  stage('sources').notes+=' The diagram supplies worker and resource examples for this fictional chain. There are four stages. Transport connects them; do not ask for an extra fifth stage.';
@@ -18,5 +20,8 @@ export function guideSupplyChainLesson(lesson){
  frame('What if the cotton arrives late?','pair',['Imagine the cotton harvest in A is delayed.','Who in B needs that cotton? What might they have to wait to do?','Follow one more arrow. How could that delay affect C or D?'],{timerSeconds:240,discussionId:'apply-delay',footnote:'Use “might” or “could”: we are predicting, not reporting a fact.'}),
  frame('Explain your idea in 30 seconds','share',['“If cotton arrives late, ___ might ___ because ___.”','Partner: point to the link in the picture. Does the explanation fit?','What would you check: delivery dates, stored cotton, or something else?'],{timerSeconds:180,discussionId:'share',footnote:'You need one clear connection and one way to check it.'})
  ];
+ stage('apply').frames.push(frame('Now test a different possibility','think',['Imagine B has enough stored cotton for one week. The delivery is three days late.','Would fabric production have to stop? Explain your reasoning.','Write one more fact you would check before deciding.'],{discussionId:'apply-stocks'}));
+ stage('apply').notes+=' Follow-up: the stock could cover the delay if production and daily use stay the same. Ask about demand, stock quality and delivery reliability. Do not conclude that a delay always stops the whole chain.';
+ stage('reflect').frames[0].lines=['Draw one connection from memory and explain why it matters.','Write one possible effect of a delay and one fact needed to check it.'];
  return lesson;
 }
