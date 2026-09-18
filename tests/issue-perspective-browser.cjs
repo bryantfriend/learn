@@ -21,9 +21,10 @@ const {createServer}=require('../scripts/serve.cjs');const server=createServer()
    assert.equal(await page.locator('#student-title').innerText(),f.title);await bounds(f.title);count++;
    if(f.lessonVisual){
     const svg=await page.locator('.lesson-visual svg').getAttribute('aria-label');assert.ok(svg.length>70);
-    const before=await page.locator('.visual-canvas').innerHTML();
+    if(classId==='7a'&&f.lessonVisual.chart){assert.match(svg,/18 pupils.*12.*30/);assert.match(await page.locator('.visual-data-note').innerText(),/Which space would you most like added/);await page.screenshot({path:'output/playwright/7a-survey-'+si+'.png'});}
+    const before=await page.locator('.visual-caption').innerText();
     await page.getByRole('button',{name:'Next focus →',exact:true}).click();
-    assert.notEqual(await page.locator('.visual-canvas').innerHTML(),before,f.title);
+    assert.notEqual(await page.locator('.visual-caption').innerText(),before,f.title);
     await bounds(f.title+' focus');
     if(fi===0){await page.screenshot({path:'output/playwright/issues-'+si+'.png'});}
     await page.getByRole('button',{name:'⛶ Enlarge',exact:true}).click();

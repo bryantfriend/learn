@@ -139,7 +139,7 @@ function art(spec,state){
   body='<path class="flow" d="M90 77L278 144L470 74M90 230L278 144L470 235" fill="none" stroke="#75aaac" stroke-width="6" stroke-dasharray="9 9"/>';
   [[90,77],[470,74],[90,230],[470,235],[278,144]].forEach(([x,y],i)=>{body+='<circle cx="'+x+'" cy="'+y+'" r="'+(i===4?47:31)+'" fill="'+(p===i?'#e6af64':'#c8ded5')+'"/>'+text(x-10,y+8,['A','B','C','D','?'][i],26);});
  }
- return '<svg viewBox="0 0 560 300" role="img" aria-label="'+esc(spec.title)+'"><g font-family="system-ui,sans-serif" fill="#23474a">'+body+'</g></svg>';
+ return '<svg viewBox="0 0 560 300" role="img" aria-label="'+esc(spec.description||spec.title)+'"><g font-family="system-ui,sans-serif" fill="#23474a">'+body+'</g></svg>';
 }
 export function createVisual(spec){
  const root=document.createElement('figure');root.className='lesson-visual';root.setAttribute('aria-label',spec.title);
