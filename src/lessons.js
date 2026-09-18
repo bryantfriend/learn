@@ -1,3 +1,4 @@
+import {registerLessons} from './lesson-editor.js';
 import { grade7BLessons } from './lessons/grade7b.js';
 import { grade7Lessons } from './lessons/grade7a.js';
 import { gpLessons } from './lessons/grade8-gp.js';
@@ -105,6 +106,8 @@ export const lesson = {
 };
 
 export const lessons = [lesson, practiceLesson, ...gpLessons, ...grade7Lessons, ...grade7BLessons];
+let lessonStorage; try { lessonStorage = globalThis.localStorage; } catch {}
+registerLessons(lessons, lessonStorage);
 export function getLesson(id) {
     return lessons.find(function(item) { return item.id === id; }) || null;
 }

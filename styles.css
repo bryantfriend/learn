@@ -302,3 +302,6 @@ dialog.overlay-panel { width:100vw; max-width:none; height:100dvh; max-height:no
 .gp-diagram { display:block; max-width:100%; width:620px; height:250px; object-fit:contain; margin:8px auto; }
 
 .lesson-context { text-transform:none; letter-spacing:.4px; }
+
+/* Whole-lesson teacher editor */
+dialog.lesson-editor{width:min(1200px,96vw);max-width:96vw}.lesson-editor textarea{width:100%;height:55vh;min-height:300px;resize:vertical;padding:18px;border:2px solid var(--green);border-radius:12px;font:16px/1.6 ui-monospace,Consolas,monospace;background:#fff;color:#183e39;box-sizing:border-box}.lesson-edit-actions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.lesson-edit-actions button{width:auto;margin:0}.lesson-editor p{font-size:16px}.lesson-editor #lesson-edit-status{font-weight:700}

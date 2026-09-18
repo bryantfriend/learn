@@ -45,3 +45,7 @@ Adds the confirmed 7B younger-group courses: 93 GP sessions at three per week, 6
 ## Version 1.7.0
 
 Adds illustrated teaching frames and teacher-controlled animation across all three classes, with enlarged views, interactive runoff and budgets, and reduced-motion support. Uses the existing main/root Pages deployment; no runtime dependencies or build step.
+
+## Version 1.9.0 — whole-lesson text editor
+
+Adds the teacher text editor on Learn (18 September 2026). Main/root GitHub Pages deployment remains unchanged. Local browser lesson overrides preserve diagrams and routines; no server or runtime dependency was added. The mistakenly added Oxford Games editor was separately reverted in bryantfriend/ois commit 0287204.

@@ -202,3 +202,9 @@ Each student attempts a decision or prediction before the board reveal. Pair/gro
 Teacher notes include a short pilot observation: can everyone start, do both partners contribute, and can quieter pupils transfer the skill independently? Reaching the final screen is not evidence of mastery. Classroom engagement has not been measured by browser tests.
 
 Validation: 35 unit tests; `npm run test:pilot` covers 168 frames, hidden answers, all reveals, focus and enlarged views, summaries, reload and responsive layouts. Existing visual-control, Grade 7A/7B plan/print and Grade 8 plan/print workflows also pass. Set `PLAYWRIGHT_MODULE` when using a shared Playwright installation; `LEARN_URL` runs the same browser checks against the published site.
+
+## Whole-lesson text editor
+
+Choose a lesson and select **Edit lesson text**, or open it from Teacher tools while teaching. One text box contains the title, stage notes, slide text, choices and answer keys. Copy the existing template or use **Copy AI instructions**, then paste the full edited lesson back. Keep every bracketed section heading and field label; continuation lines use two spaces. This editor changes prose within the existing stages and slides; diagrams, timing and classroom behaviour remain intact.
+
+Use **Check text**, then **Save lesson**. Edits are local to this browser and apply across classes using that lesson. Saving resets that lesson’s progress so old answers do not carry over. Other lessons are unaffected. **Download text** makes a portable backup; paste it into the same lesson on another device. Closing the editor retains unsaved text for this page session; reloading warns before discarding it. **Use original text** fills the box with the supplied lesson; Save applies that restoration.

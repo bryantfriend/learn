@@ -1,3 +1,4 @@
+import {lessonToText,textToLesson,saveLessonText,originalLessonText} from './lesson-editor.js';
 import {visualSpec,createVisual,pauseVisuals} from './visuals.js';
 import { lesson as firstLesson, getLesson, modes, questionOptions } from './lessons.js';
 import { frameKey, responseKeyFor, summarizeSession } from './progress.js';
@@ -361,6 +362,7 @@ function showPicker(focusSelector) {
             element('p', { className: 'picker-status', role: 'status' }, [saved ? contextLabel(saved) + ' · Stage ' + (saved.stage + 1) + ', step ' + (saved.steps[saved.stage] + 1) + ' · Timer paused' : ready ? contextLabel(picker) + (picker.lessonId ? ' · Ready to begin' : ' · Choose a lesson to begin') : 'Three classes. One familiar lesson player.']),
             element('div', { className: 'dialog-actions' }, [
                 ...(saved ? [button('Resume lesson →', 'picker-resume', 'primary')] : []),
+                button('Edit lesson text', 'edit-lesson', 'subtle', picker.lessonId ? {} : { disabled: '' }),
                 button(saved ? 'Start again' : 'Start lesson →', 'picker-start', saved ? 'subtle' : 'primary', picker.lessonId ? {} : { disabled: '' })
             ])
         ])
@@ -492,6 +494,7 @@ function showTools() {
     openPanel('Teacher tools', [
         ...(lesson.examId ? [examLink('Print student paper', false), examLink('Teacher answer key', true)] : []),
         element('p', { className: 'panel-hint' }, ['Shared screen: students can see anything opened here.']),
+        button('Edit lesson text', 'edit-lesson'),
         button('Read this stage’s teacher notes', 'notes'),
         button('Choose a stage', 'stages'),
         element('section', { className: 'tools-stars' }, [
@@ -628,6 +631,7 @@ function handleAction(event) {
         closePanel();
         if (callback) callback();
     } else if (action === 'close-panel' || action === 'cancel-confirm') closePanel();
+    else if (action === 'edit-lesson') showLessonEditor();
     else if (action === 'help') showHelp();
     else if (action === 'clear-session') clearSession();
     else if (action === 'fullscreen') fullscreen();
@@ -708,3 +712,31 @@ render();
 if (loaded.message) notify(loaded.message);
 // One scheduler for the entire page, regardless of how often controls are tapped.
 window.setInterval(tick, 200);
+
+const lessonTextDrafts = new Map();
+function showLessonEditor(){
+ const target=getLesson(dialogKind==='picker'?picker.lessonId:lesson.id);if(!target)return;
+ const fromPicker=dialogKind==='picker';
+ if(inLesson){session.timer=pauseTimer(session.timer);save();}
+ const box=element('textarea',{id:'lesson-text',rows:'24',spellcheck:'true','aria-label':'Whole lesson text'});
+ box.value=lessonTextDrafts.get(target.id)??lessonToText(target);
+ box.addEventListener('input',()=>lessonTextDrafts.set(target.id,box.value));
+ const feedback=element('p',{role:'status',id:'lesson-edit-status'},['Keep the section headings and labels. Indent continuation lines with two spaces.']);
+ const control=(label,fn,style='subtle')=>{const b=button(label,'editor-control',style);b.addEventListener('click',fn);return b;};
+ const check=()=>{try{textToLesson(box.value,target);feedback.textContent='Lesson text is ready to save.';return true;}catch(error){feedback.textContent=error.message;box.focus();return false;}};
+ async function copyText(text){try{await navigator.clipboard.writeText(text);feedback.textContent='Copied. Ready to paste.';}catch{feedback.textContent='Clipboard is unavailable. Select and copy the lesson text manually.';box.focus();box.select();}}
+ openPanel('Edit the whole lesson',[
+  element('p',{},['Copy your lesson to AI or your notes, then paste the edited version here. All stages and slides are in this one box. Diagrams, timing, and classroom controls are preserved.']),
+  element('div',{className:'lesson-edit-actions'},[
+   control('Copy lesson',()=>copyText(box.value)),
+   control('Copy AI instructions',()=>copyText('Rewrite the lesson prose below for my teaching needs. Return only the complete lesson text. Keep ALL bracketed section headings and field labels exactly as given, in the same order. Do not add or remove stages, slides, fields or answer options. Indent continuation lines with two spaces. Keep answer keys consistent with option IDs. Diagrams and timing are managed separately, so retain their teaching context.\n\n'+box.value)),
+   control('Check text',check),
+   control('Download text',()=>{const url=URL.createObjectURL(new Blob([box.value],{type:'text/plain;charset=utf-8'}));const a=element('a',{href:url,download:target.id+'.txt'});a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}),
+   control('Use original text',()=>{if(confirm('Replace the text in this box with the original lesson? Your saved version stays until you save.')){box.value=originalLessonText(target.id);lessonTextDrafts.set(target.id,box.value);}})
+  ]),box,feedback,
+  element('p',{className:'panel-hint'},['Saved edits apply to this lesson in this browser, across classes that use it. Saving starts its progress again. Download a text backup to move edits to another device. Closing keeps your draft until this page reloads.']),
+  control('Save lesson',()=>{if(!check())return;try{saveLessonText(target,box.value,window.localStorage);lessonTextDrafts.delete(target.id);if(session?.lessonId===target.id){const wasInLesson=inLesson;newSession(session.classLabel,target.id,session.classId,session.subjectId);inLesson=wasInLesson;render();}if(fromPicker)showPicker();else closePanel();notify('Lesson text saved in this browser.');}catch(error){feedback.textContent=error.message;}},'primary')
+ ],'lesson-editor');
+ panel.classList.add('lesson-editor');
+}
+window.addEventListener('beforeunload',event=>{if(lessonTextDrafts.size){event.preventDefault();event.returnValue='';}});
