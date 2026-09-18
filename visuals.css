@@ -71,3 +71,8 @@
  .budget-visual .visual-canvas svg {height:215px;}
  .budget-visual:has([data-choice="2"]) .visual-canvas svg {height:170px;}
 }
+
+/* Give the geographic UK outline enough height to read coastlines and labels. */
+.uk-map-visual .visual-canvas svg { height: clamp(240px, 37vh, 400px); }
+@media(max-height:740px) and (min-width:901px){ .uk-map-visual .visual-canvas svg { height:240px; } }
+.visual-lightbox .uk-map-visual .visual-canvas svg { height: min(calc(94dvh - 300px), 530px); }

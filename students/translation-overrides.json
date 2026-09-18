@@ -848,5 +848,10 @@
     "ru": "Сравните исправленные планы. Укажи, какой факт изменил твоё мнение и что ещё нужно выяснить.",
     "zh": "比较修改后的方案，说出哪项事实改变了你的想法，以及还需要了解什么。",
     "tr": "Düzeltilmiş planları karşılaştırın. Hangi bilginin fikrini değiştirdiğini ve daha neyi öğrenmen gerektiğini belirt."
+  },
+  "Use the coastline and country borders to locate each part of the UK.": {
+    "ru": "Используй береговую линию и границы стран, чтобы найти каждую часть Соединённого Королевства.",
+    "zh": "利用海岸线和各国边界，找到英国的每个组成部分。",
+    "tr": "Birleşik Krallık’ın her bölümünü bulmak için kıyı çizgisini ve ülke sınırlarını kullan."
   }
 }

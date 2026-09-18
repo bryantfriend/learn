@@ -1,3 +1,4 @@
+import {ukMapArt} from './uk-map-visual.js';
 import { supplyChainArt } from './supply-chain-visuals.js';
 import {pilotArt} from './pilot-visuals.js';
 import {issuePerspectiveArt} from './issue-perspective-visuals.js';
@@ -10,7 +11,7 @@ for(const e of grade8GPPlan.entries)topics.set(e.id,{code:e.code,subject:'global
 const definitions={
  plan:['Read the plan',['Find north using the direction arrow.','Locate the school and the pond.','Describe the park relative to the road.','Choose symbols and make a key.']],
  valley:['Compare valley shapes',['Trace the narrow V-shaped section.','Trace the broad floor of the U-shaped section.','Moving ice can widen and deepen a valley.','Explain the shape using erosion.']],
- uk:['Locate the UK',['England, Scotland, Wales and Northern Ireland form the UK.','Great Britain includes England, Scotland and Wales.','Use the surrounding seas to describe location.','This is a schematic locator, not an outline map.']],
+ uk:['Locate the UK',['England, Scotland, Wales and Northern Ireland form the UK.','Great Britain includes England, Scotland and Wales.','Use the surrounding seas to describe location.','Use the coastline and country borders to locate each part of the UK.']],
  profile:['Compare the slopes',['Read heights at equal distance intervals.','Compare the height gain along each section.','A rise of 40 m over 100 m is steeper than 20 m over 100 m.','The total rise is the last height minus the first.']],
  cycle:['Follow a drop',['Evaporation: liquid water becomes vapour.','Condensation: vapour becomes liquid droplets.','Precipitation: water falls from clouds.','Runoff and infiltration move water over and into land.']],
  glacier:['Ice shapes the landscape',['Snow builds up and becomes ice.','Moving ice carries rock fragments.','Rock and ice erode the valley.','Melting ice leaves deposited material.']],
@@ -80,6 +81,7 @@ const house=(x,y,color='#e5b267')=>'<g transform="translate('+x+' '+y+')"><path 
 const person=(x,y,c)=>'<g transform="translate('+x+' '+y+')"><circle cx="25" cy="22" r="20" fill="'+c+'"/><path d="M0 85V66Q25 40 50 66V85Z" fill="'+c+'"/><circle cx="19" cy="19" r="2" fill="#173e40"/><circle cx="32" cy="19" r="2" fill="#173e40"/><path d="M20 30Q25 34 31 29" fill="none" stroke="#173e40" stroke-width="2"/></g>';
 const arrow=(x,y)=>'<path d="M'+x+' '+y+'h45m-12-10 12 10-12 10" stroke="#42797b" stroke-width="4" fill="none"/>';
 function art(spec,state){
+ if(spec.kind==='uk')return ukMapArt(state);
  if(spec.kind==='supply-chain')return supplyChainArt(state);
  if(spec.kind==='pilot')return pilotArt(spec,state);
  if(spec.kind==='issue-perspective')return issuePerspectiveArt(spec,state);
@@ -94,8 +96,6 @@ function art(spec,state){
  body='<rect x="215" y="20" width="145" height="58" rx="20" fill="#a7c590"/><rect x="35" y="108" width="153" height="85" rx="12" fill="#ecd09d"/><ellipse cx="445" cy="150" rx="85" ry="46" fill="#8ccbd9"/><path d="M0 245H560" stroke="#afbab4" stroke-width="34"/>'+text(254,56,'Park',24)+text(70,155,'School',24)+text(418,157,'Pond',24)+text(260,253,'Road',22)+text(480,35,'N ↑',25)+text(65,290,'Invented plan • not to scale',20);
  }else if(k==='valley'){
  body='<path d="M20 50L136 245L250 50M310 50L326 180Q340 245 422 245Q500 245 514 180L535 50" stroke="#8b7962" stroke-width="9" fill="none"/>'+text(65,34,'V-shaped',23)+text(367,34,'U-shaped',23)+text(61,282,'Narrow floor',21)+text(355,282,'Broad floor',21);
- }else if(k==='uk'){
- body='<path d="M0 0H560V300H0Z" fill="#dceef2"/><rect x="255" y="15" width="143" height="70" rx="30" fill="#8ab5a5"/><rect x="285" y="101" width="143" height="114" rx="30" fill="#edc081"/><rect x="173" y="134" width="102" height="76" rx="25" fill="#b9cda0"/><rect x="21" y="81" width="142" height="75" rx="25" fill="#baa7c9"/>'+text(276,57,'Scotland',22)+text(312,160,'England',22)+text(191,179,'Wales',22)+text(33,111,'Northern',21)+text(47,138,'Ireland',21)+text(425,68,'North Sea',19)+text(13,241,'Atlantic',19)+text(267,258,'English Channel',19)+text(45,289,'Schematic positions • not country shapes',18);
  }else if(k==='profile'){
  body='<path d="M55 20V247H529" stroke="#71958a" stroke-width="3" fill="none"/><path d="M65 224L210 183L355 100L500 59" stroke="#c58852" stroke-width="7" fill="none"/>'+text(31,18,'Height (m)',20)+text(38,221,'100',18)+text(187,173,'120',20)+text(332,91,'160',20)+text(478,48,'180',20)+text(53,275,'0',19)+text(192,275,'100',19)+text(337,275,'200',19)+text(482,275,'300',19)+text(197,299,'Distance (m)',19);
  }else if(k==='cycle'){
@@ -146,6 +146,7 @@ function art(spec,state){
 }
 export function createVisual(spec){
  const root=document.createElement('figure');root.className='lesson-visual';root.setAttribute('aria-label',spec.title);
+ if(spec.kind==='uk')root.classList.add('uk-map-visual');
  const state={phase:0,rain:false,paved:false,selected:[]};let playing=false;
  const tag=document.createElement('div');tag.className='visual-tag';tag.textContent='VISUAL INVESTIGATION';
  const canvas=document.createElement('div');canvas.className='visual-canvas';
