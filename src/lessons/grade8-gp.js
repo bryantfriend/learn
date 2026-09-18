@@ -1,3 +1,4 @@
+import { guideSupplyChainLesson } from './supply-chain.js';
 import { pilotLessons } from './pilot.js';
 import { grade8GPPlan } from '../plans/grade8-gp.js';
 import { gpContent } from './gp-content.js';
@@ -31,7 +32,7 @@ export const gpLessons=grade8GPPlan.entries.map(function(entry,index){
  const d=gpContent[entry.code];if(!d)throw Error('Missing content '+entry.code);
  const note='Objective: '+entry.objective+' Codes: '+entry.objectives+'. All cases and figures are fictional teaching materials, not factual claims about named places. Use notebooks or oral responses; no devices or external packs are needed.';
  const options=d[5].slice(1),correct=index%4;options.splice(correct,0,d[5][0]);
- return {...common,stages:[
+ return guideSupplyChainLesson({...common,stages:[
   s('notice','Notice and question',4,0,note,[
    f(d[0],'think',['What would you need to know before reaching a conclusion?']),
    f('Today’s thinking tool','listen',[d[1]],{footnote:entry.code+' · '+entry.month+' · '+entry.quarter})
@@ -59,5 +60,5 @@ export const gpLessons=grade8GPPlan.entries.map(function(entry,index){
    f('Your exit response','think',['Complete: “At first I thought …; now I think … because …”','Name one question you would investigate next.']),
    f('Lesson complete','listen',['Keep your work for your skills portfolio.','Listen for the next instruction.'],{final:true})
   ])
- ]};
+ ]});
 });

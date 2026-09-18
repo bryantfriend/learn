@@ -438,5 +438,130 @@
     "ru": "8 из 10 добровольцев сообщили о готовности.",
     "zh": "“10名自愿选择安静休息的学生中，有8人表示已准备好上课。”",
     "tr": "“Sessiz molayı gönüllü seçen 10 kişinin 8’i hazır hissettiğini bildirdi.”"
+  },
+  "Follow this shirt from cotton to the shop.": {
+    "ru": "Проследи путь этой футболки от хлопка до магазина.",
+    "zh": "跟随这件T恤，看看它如何从棉花变成商店里的商品。",
+    "tr": "Bu tişörtün pamuktan mağazaya uzanan yolunu izle."
+  },
+  "Which stage makes the fabric? Which stage uses it?": {
+    "ru": "На каком этапе делают ткань? На каком этапе её используют?",
+    "zh": "哪个阶段制作布料？哪个阶段使用布料？",
+    "tr": "Kumaş hangi aşamada üretilir? Hangi aşamada kullanılır?"
+  },
+  "1. Country A: grow cotton. A farmer needs water and land.": {
+    "ru": "1. Страна A: выращивание хлопка. Фермеру нужны вода и земля.",
+    "zh": "1. A国：种植棉花。农民需要水和土地。",
+    "tr": "1. A ülkesi: pamuk yetiştirme. Çiftçinin suya ve toprağa ihtiyacı vardır."
+  },
+  "2. Country B: weave fabric. A weaver needs cotton and a loom.": {
+    "ru": "2. Страна B: изготовление ткани. Ткачу нужны хлопок и ткацкий станок.",
+    "zh": "2. B国：织布。织布工需要棉花和织布机。",
+    "tr": "2. B ülkesi: kumaş dokuma. Dokumacının pamuğa ve dokuma tezgâhına ihtiyacı vardır."
+  },
+  "3. Country C: sew the shirt. A garment worker needs fabric and a sewing machine.": {
+    "ru": "3. Страна C: пошив футболки. Швейному работнику нужны ткань и швейная машина.",
+    "zh": "3. C国：缝制T恤。制衣工人需要布料和缝纫机。",
+    "tr": "3. C ülkesi: tişört dikme. Dikiş işçisinin kumaşa ve dikiş makinesine ihtiyacı vardır."
+  },
+  "4. Country D: sell the shirt. A shop worker needs finished shirts and a shop.": {
+    "ru": "4. Страна D: продажа футболки. Продавцу нужны готовые футболки и магазин.",
+    "zh": "4. D国：销售T恤。店员需要成品T恤和店铺。",
+    "tr": "4. D ülkesi: tişört satma. Mağaza çalışanının hazır tişörtlere ve bir mağazaya ihtiyacı vardır."
+  },
+  "One T-shirt, four connected stages": {
+    "ru": "Одна футболка, четыре связанных этапа",
+    "zh": "一件T恤，四个相互联系的阶段",
+    "tr": "Bir tişört, birbiriyle bağlantılı dört aşama"
+  },
+  "Follow the arrows. What does each stage need from the one before it?": {
+    "ru": "Следуй по стрелкам. Что каждый этап получает от предыдущего?",
+    "zh": "沿着箭头看。每个阶段需要从上一个阶段获得什么？",
+    "tr": "Okları takip et. Her aşama bir önceki aşamadan neye ihtiyaç duyar?"
+  },
+  "Explain one connection": {
+    "ru": "Объясни одну связь",
+    "zh": "解释其中一个联系",
+    "tr": "Bir bağlantıyı açıkla"
+  },
+  "The garment worker in C needs fabric from B to sew a shirt.": {
+    "ru": "Швейному работнику в C нужна ткань из B, чтобы сшить футболку.",
+    "zh": "C国的制衣工人需要B国的布料才能缝制T恤。",
+    "tr": "C ülkesindeki dikiş işçisinin tişört dikmek için B ülkesinden gelen kumaşa ihtiyacı vardır."
+  },
+  "Without fabric, sewing may have to wait. “May” shows a possible effect, not a proven fact.": {
+    "ru": "Без ткани пошив, возможно, придётся отложить. «Возможно» означает предполагаемое последствие, а не доказанный факт.",
+    "zh": "没有布料，缝制工作可能要等待。“可能”表示一种可能的影响，而不是已证实的事实。",
+    "tr": "Kumaş olmadan dikiş işi beklemek zorunda kalabilir. “Kalabilir” kanıtlanmış bir olguyu değil, olası bir etkiyi belirtir."
+  },
+  "Your challenge: follow four stages": {
+    "ru": "Твоё задание: проследи четыре этапа",
+    "zh": "你的任务：跟踪四个阶段",
+    "tr": "Görevin: dört aşamayı takip et"
+  },
+  "Take turns pointing: grow cotton → weave fabric → sew → sell.": {
+    "ru": "По очереди показывайте: выращивание хлопка → изготовление ткани → пошив → продажа.",
+    "zh": "轮流指认：种棉花 → 织布 → 缝制 → 销售。",
+    "tr": "Sırayla gösterin: pamuk yetiştirme → kumaş dokuma → dikme → satma."
+  },
+  "Choose one stage. Name its worker and one resource from the picture.": {
+    "ru": "Выбери один этап. Назови работника и один ресурс с рисунка.",
+    "zh": "选择一个阶段。说出图中的一类工人和一种所需资源。",
+    "tr": "Bir aşama seç. Görselden o aşamadaki çalışanı ve bir kaynağı söyle."
+  },
+  "Tell your partner: “This stage needs ___ so that ___.”": {
+    "ru": "Скажи напарнику: «На этом этапе нужен/нужна ___, чтобы ___».",
+    "zh": "告诉同伴：“这个阶段需要___，才能___。”",
+    "tr": "Arkadaşına söyle: “Bu aşamada ___ yapabilmek için ___ gerekir.”"
+  },
+  "What if the cotton arrives late?": {
+    "ru": "Что, если хлопок придёт с опозданием?",
+    "zh": "如果棉花晚到了呢？",
+    "tr": "Pamuk geç gelirse ne olur?"
+  },
+  "Imagine the cotton harvest in A is delayed.": {
+    "ru": "Представь, что сбор хлопка в A задерживается.",
+    "zh": "假设A国的棉花收获推迟了。",
+    "tr": "A ülkesinde pamuk hasadının geciktiğini düşün."
+  },
+  "Who in B needs that cotton? What might they have to wait to do?": {
+    "ru": "Кому в B нужен этот хлопок? Какую работу, возможно, придётся отложить?",
+    "zh": "B国的谁需要这些棉花？他们可能需要等待才能做什么？",
+    "tr": "B ülkesinde bu pamuğa kimin ihtiyacı var? Hangi işi yapmak için beklemeleri gerekebilir?"
+  },
+  "Follow one more arrow. How could that delay affect C or D?": {
+    "ru": "Проследи ещё одну стрелку. Как задержка может повлиять на C или D?",
+    "zh": "再沿着一个箭头看。这次延误可能如何影响C国或D国？",
+    "tr": "Bir ok daha takip et. Bu gecikme C veya D ülkesini nasıl etkileyebilir?"
+  },
+  "Use “might” or “could”: we are predicting, not reporting a fact.": {
+    "ru": "Используй «возможно» или «может»: мы делаем прогноз, а не сообщаем факт.",
+    "zh": "使用“可能”或“也许”：我们是在预测，而不是陈述事实。",
+    "tr": "“Olabilir” veya “etkileyebilir” kullan: bir olguyu bildirmiyor, tahmin yürütüyoruz."
+  },
+  "Explain your idea in 30 seconds": {
+    "ru": "Объясни свою идею за 30 секунд",
+    "zh": "用30秒解释你的想法",
+    "tr": "Fikrini 30 saniyede açıkla"
+  },
+  "“If cotton arrives late, ___ might ___ because ___.”": {
+    "ru": "«Если хлопок придёт с опозданием, ___, возможно, ___, потому что ___».",
+    "zh": "“如果棉花晚到，___可能会___，因为___。”",
+    "tr": "“Pamuk geç gelirse ___, ___ yapamayabilir; çünkü ___.”"
+  },
+  "Partner: point to the link in the picture. Does the explanation fit?": {
+    "ru": "Напарник: покажи связь на рисунке. Подходит ли объяснение?",
+    "zh": "同伴：指出图中的联系。这个解释合理吗？",
+    "tr": "Arkadaşın: görseldeki bağlantıyı göster. Açıklama bu bağlantıya uyuyor mu?"
+  },
+  "What would you check: delivery dates, stored cotton, or something else?": {
+    "ru": "Что бы ты проверил: даты доставки, запасы хлопка или что-то ещё?",
+    "zh": "你会核查什么：交货日期、棉花库存，还是其他信息？",
+    "tr": "Neyi kontrol ederdin: teslimat tarihlerini, pamuk stoklarını veya başka bir şeyi mi?"
+  },
+  "You need one clear connection and one way to check it.": {
+    "ru": "Нужны одна понятная связь и один способ её проверить.",
+    "zh": "你需要说明一个清楚的联系，并提出一种验证方法。",
+    "tr": "Bir açık bağlantı ve onu kontrol etmenin bir yolunu belirtmelisin."
   }
 }

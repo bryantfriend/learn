@@ -14,7 +14,7 @@ export const gpContent = {
       "How many letters are in the brand name?"
     ],
     "It connects decisions and consequences across countries.",
-    "Map the five stages. Add workers, resources and one possible consequence at each stage.",
+    "Trace the four stages of the T-shirt journey. Discuss how a delayed cotton harvest could affect the next stage.",
     "A lower shop price may help buyers, but we need wage and contract evidence before claiming it harms workers.",
     "What evidence would show whether workers benefit?",
     "Compare pay, hours and working conditions over time; price alone cannot establish worker wellbeing."
