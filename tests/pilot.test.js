@@ -9,7 +9,7 @@ test('pilot covers ten topics in fifteen scheduled lessons with explicit relevan
  const selected=Object.keys(pilotLessons).map(getLesson);
  assert.equal(selected.length,15);assert.equal(new Set(selected.map(l=>l.pilotTopic)).size,10);
  for(const l of selected){
-  assert.equal(l.stages.reduce((sum,s)=>sum+s.durationMinutes,0),40);
+  assert.equal(l.stages.reduce((sum,s)=>sum+s.durationMinutes,0),50);
   const first=l.stages[0].frames[0],v=visualSpec(l,l.stages[0],first);
   assert.ok(v);assert.equal(v.intro,false);assert.equal(first.mode,'think');assert.ok(first.discussionId);
   const frames=l.stages.flatMap(s=>s.frames),ids=frames.map(f=>f.discussionId).filter(Boolean);

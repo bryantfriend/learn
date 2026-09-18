@@ -11,7 +11,7 @@ test('all 43 plan entries have complete playable lessons with stable IDs and cor
  assert.deepEqual(gpLessons.map(l=>l.id),grade8GPPlan.entries.map(e=>e.id));
  for(const l of gpLessons){
   assert.deepEqual(l.catalog.grades,[8]);assert.equal(l.catalog.subjectId,'global-perspectives');
-  assert.equal(l.stages.reduce((a,s)=>a+s.durationMinutes,0),40);
+  assert.equal(l.stages.reduce((a,s)=>a+s.durationMinutes,0),l.examId?40:50);
   assert.ok(l.stages.every(s=>s.notes&&s.frames.length));
   assert.ok(l.stages.at(-1).frames.at(-1).final);
   if(!l.examId){

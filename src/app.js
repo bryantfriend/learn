@@ -225,7 +225,7 @@ function renderPlayer() {
         button('Ⅱ Pause', 'pause'),
         button('◷ Timer', 'timer', '', { 'aria-expanded': String(session.preferences.timerVisible) }),
         button('⛶ Fullscreen', 'fullscreen'),
-        ...(lesson.extensions ? [button('More practice +', 'extensions')] : []),
+        ...(lesson.extensions ? [button('Practice overview', 'extensions')] : []),
         button('☰ Teacher tools', 'tools')
     ]);
     const player = element('main', { className: 'player' }, [header, heading, content, stepControls]);
@@ -390,7 +390,7 @@ function showGrade7Plan() {
     const classLabel=getClass(picker.classId).label;
     const subject=course.subjectId==='geography'?'Geography':'Global Perspectives';
     openPanel(classLabel+' · '+subject+' weekly plan',[
-        element('p',{className:'panel-hint'},[course.sessionsPerWeek+' lesson(s) per teaching week · 40 minutes each · '+course.lessons.length+' sessions']),
+        element('p',{className:'panel-hint'},[course.sessionsPerWeek+' lesson(s) per teaching week · 40-minute timetable + practice material · '+course.lessons.length+' sessions']),
         element('div',{className:'picker-options'},schoolCalendar.quarters.map(function(q){return button(q.id,'g7-quarter',planQuarter===q.id?'selected':'',{'data-quarter':q.id,'aria-pressed':String(planQuarter===q.id)});})),
         element('div',{className:'year-plan-content'},[
             element('p',{},['Dates label teaching weeks, not fixed weekdays. Original practice and homework are retained in teacher notes; extensions are optional.']),
@@ -498,7 +498,7 @@ function showTools() {
         element('p', { className: 'panel-hint' }, ['Shared screen: students can see anything opened here.']),
         button('Edit lesson text', 'edit-lesson'),
         button('Read this stage’s teacher notes', 'notes'),
-        ...(lesson.extensions ? [button('More practice · 5–10 min', 'extensions'), element('p', {}, [lesson.pacingNote])] : []),
+        ...(lesson.extensions ? [button('Practice overview · included in lesson', 'extensions'), element('p', {}, [lesson.pacingNote])] : []),
         button('Choose a stage', 'stages'),
         element('section', { className: 'tools-stars' }, [
             element('h3', {}, ['Class stars']),
@@ -749,8 +749,8 @@ function showExtensions(index=0) {
  const task=lesson.extensions?.[index];if(!task)return;
  // Extra practice does not advance the lesson or mark any work complete.
  if(session.timer.running){session.timer=pauseTimer(session.timer,Date.now());save();render();}
- openPanel(task.title+' · optional '+task.minutes+' min',[
-  element('p',{className:'panel-hint'},[lesson.title+' · Complete the core task first. Choose one or both extra tasks.']),
+ openPanel(task.title+' · '+task.minutes+' min practice',[
+  element('p',{className:'panel-hint'},[lesson.title+' · These tasks are included before the final reflection. This overview does not mark them complete.']),
   element('div',{className:'reserve-grid'},[
    element('section',{},[element('h3',{},[task.sourceTitle]),...task.source.map(line=>element('p',{},[line]))]),
    element('section',{},[element('h3',{},['Your task']),...task.lines.map(line=>element('p',{},[line])),element('p',{className:'reserve-outcome'},[task.outcome])])

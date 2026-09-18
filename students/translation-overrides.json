@@ -793,5 +793,60 @@
     "ru": "Ответь, не глядя на варианты ответа.",
     "zh": "不看选项，独立作答。",
     "tr": "Seçeneklere bakmadan cevap ver."
+  },
+  "A new stock problem": {
+    "ru": "Новая задача о запасах",
+    "zh": "新的库存问题",
+    "tr": "Yeni bir stok problemi"
+  },
+  "It has 40 rolls in storage. Its next delivery is 3 days late.": {
+    "ru": "На складе 40 рулонов. Следующая поставка задерживается на 3 дня.",
+    "zh": "仓库中有40卷布料，下一批货将晚到3天。",
+    "tr": "Stokta 40 rulo var. Bir sonraki teslimat 3 gün gecikecek."
+  },
+  "Work out how many days the stock lasts. Show your calculation.": {
+    "ru": "Рассчитай, на сколько дней хватит запасов. Покажи вычисления.",
+    "zh": "算出库存能用几天，并写出计算过程。",
+    "tr": "Stoğun kaç gün yeteceğini hesapla. İşlemini göster."
+  },
+  "A shop worker has promised a customer a shirt for Friday.": {
+    "ru": "Продавец пообещал покупателю футболку к пятнице.",
+    "zh": "店员答应在星期五前为顾客准备好一件T恤。",
+    "tr": "Bir mağaza çalışanı müşteriye cuma gününe kadar bir tişört sözü verdi."
+  },
+  "Share the different views. Suggest a plan that considers all three.": {
+    "ru": "Обсудите разные взгляды. Предложите план, учитывающий все три стороны.",
+    "zh": "分享不同观点，并提出兼顾三方的方案。",
+    "tr": "Farklı görüşleri paylaşın. Üç tarafı da dikkate alan bir plan önerin."
+  },
+  "Draw a labelled explanation or write a worked answer connecting them.": {
+    "ru": "Нарисуй схему с подписями или запиши ответ с ходом рассуждений, связывающий эти детали.",
+    "zh": "画一张带标注的解释图，或写出推理过程，说明两条细节之间的联系。",
+    "tr": "Bu ayrıntıları ilişkilendiren açıklamalı bir çizim yap veya çözüm adımlarını yaz."
+  },
+  "Compare answers. Fix any ambiguity or unsupported claim.": {
+    "ru": "Сравните ответы. Исправьте неясные формулировки и неподтверждённые утверждения.",
+    "zh": "比较答案，修改模糊的表述或没有依据的观点。",
+    "tr": "Cevapları karşılaştırın. Belirsiz ifadeleri veya kanıtlanmamış iddiaları düzeltin."
+  },
+  "Argue from the viewpoint of a pupil who needs quiet. Include a survey number.": {
+    "ru": "Приведи доводы с точки зрения ученика, которому нужна тишина. Используй одно число из результатов опроса.",
+    "zh": "从需要安静的学生的角度提出理由，并引用调查中的一个数据。",
+    "tr": "Sessizliğe ihtiyacı olan bir öğrencinin bakış açısını savun. Anket sonuçlarından bir sayı kullan."
+  },
+  "Fictional follow-up: reusable bowls cost more to buy, but less per use after 100 uses.": {
+    "ru": "Вымышленное продолжение: многоразовые миски дороже при покупке, но после 100 использований затраты на одно использование ниже.",
+    "zh": "虚构的后续信息：可重复使用的碗购买时更贵，但使用100次后，每次使用的成本更低。",
+    "tr": "Kurgusal ek bilgi: yeniden kullanılabilir kaselerin satın alma maliyeti daha yüksek, ancak 100 kullanımdan sonra kullanım başına maliyeti daha düşüktür."
+  },
+  "The canteen has no space for an extra washing machine.": {
+    "ru": "В столовой нет места для дополнительной посудомоечной машины.",
+    "zh": "食堂没有空间再放一台洗碗机。",
+    "tr": "Yemekhanede ek bir bulaşık makinesi için yer yok."
+  },
+  "Compare revisions. State which fact changed your thinking and what you still need to find out.": {
+    "ru": "Сравните исправленные планы. Укажи, какой факт изменил твоё мнение и что ещё нужно выяснить.",
+    "zh": "比较修改后的方案，说出哪项事实改变了你的想法，以及还需要了解什么。",
+    "tr": "Düzeltilmiş planları karşılaştırın. Hangi bilginin fikrini değiştirdiğini ve daha neyi öğrenmen gerektiğini belirt."
   }
 }

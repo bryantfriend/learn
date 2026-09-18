@@ -55,6 +55,17 @@ export function strengthenPacing(lesson){
   {title:'Can the factory keep working?',minutes:5,sourceTitle:'A new stock problem',source:['Fictional example: a factory uses 10 rolls of fabric each day.','It has 40 rolls in storage. Its next delivery is 3 days late.'],lines:['1 minute: work out how many days the stock lasts. Show your calculation.','2 minutes: decide whether it can cover the delay. State your assumptions.','2 minutes: demand doubles to 20 rolls a day. Recalculate and explain what changes.'],outcome:'Compare both situations. Name one fact you would check before promising the shop its delivery.'},
   {title:'Whose problem is it?',minutes:5,sourceTitle:'One delay, three viewpoints',source:['Fictional example: shirts will reach the shop two days late.','A shop worker has promised a customer a shirt for Friday.','A factory manager wants workers to do extra hours to catch up.'],lines:['1 minute: each person chooses the shop worker, customer or garment worker. Write what matters to them.','2 minutes: share the different views. Suggest a plan that considers all three.','2 minutes: identify a drawback of your plan. Write a question to ask the people affected.'],outcome:'Explain a trade-off. Do not assume workers agree to extra hours or that customers can wait.'}
  ];
- lesson.pacingNote='40 minutes of teaching and student work, plus two optional 5-minute practice tasks. Times are estimates: judge understanding, not how long the slide has been displayed. Keep the final reflection; use the reserve when the core work is secure. Attendance and announcements need separate time.';
+ // Put both practice activities before the final reflection in normal navigation.
+ const practice=lesson.extensions.map((extra,i)=>{
+  const chunks=[];for(let j=0;j<extra.source.length;j+=2)chunks.push(extra.source.slice(j,j+2));
+  const frames=chunks.map((lines,j)=>({title:extra.sourceTitle,mode:'think',lines,expectedSeconds:60/chunks.length,timerSeconds:60/chunks.length,kicker:'Practice '+(i+1)+' · Read the example '+(j+1)+'/'+chunks.length}));
+  frames.push({title:extra.title,mode:'pair',lines:extra.lines.map(line=>line.replace(/^\d+ minutes?: /,'').replace(/^[a-z]/,c=>c.toUpperCase())),footnote:extra.outcome,discussionId:'included-practice-'+i,expectedSeconds:240,timerSeconds:240});
+  return {id:'practice-'+(i+1),title:extra.title,durationMinutes:5,notes:'Included five-minute practice: read the supplied example for one minute, then spend four minutes producing and comparing responses. '+extra.outcome+' Use one of these two activities for about five extra minutes, or both for ten. Keep the final reflection.',frames};
+ });
+ lesson.stages.splice(lesson.stages.length-1,0,...practice);
+ let elapsed=0;for(const stage of lesson.stages){stage.timeRange=elapsed+'–'+(elapsed+stage.durationMinutes)+' min';elapsed+=stage.durationMinutes;}
+ lesson.durationMinutes=elapsed;
+ lesson.contentRevision=(lesson.contentRevision||0)+100;
+ lesson.pacingNote='About 50 minutes of teaching and student work, including two five-minute practice activities before the final reflection. Use one for a 45-minute route, or both for 50 minutes. Times are estimates; attendance and announcements are separate.';
  return lesson;
 }

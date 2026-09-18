@@ -19,10 +19,10 @@ test('7A pacing preserves every source row, with 33 Geography and 62 GP sessions
  const codes=new Set(gp.lessons.flatMap(l=>l.rows.map(r=>r.code)));
  for(const row of gp.longTerm)assert.ok(codes.has(row.code),row.code);
 });
-test('7A-only lessons have 40-minute playable content and valid checkpoints',()=>{
+test('7A-only lessons have expanded playable content and valid checkpoints',()=>{
  assert.equal(grade7Lessons.length,95);
  for(const l of grade7Lessons){
-  assert.equal(l.stages.reduce((s,x)=>s+x.durationMinutes,0),40);
+  assert.equal(l.stages.reduce((s,x)=>s+x.durationMinutes,0),l.examId?40:50);
   assert.ok(l.stages.every(s=>s.notes&&s.frames.length));
   assert.ok(l.stages.at(-1).frames.at(-1).final);
   assert.ok(lessonsFor('7a',l.catalog.subjectId).includes(l));
