@@ -13,15 +13,15 @@ export const gpLessons=grade8GPPlan.entries.map(function(entry,index){
  if(entry.unit==='Assessment'){
   const exam=gpExams[entry.code];
   return {...common,examId:entry.code,summary:false,stages:[
-   s('prepare','Prepare the assessment',4,0,'Print one student paper per pupil, separate from the key. Each has four source sections and 16 single-answer questions. Award one mark per correct answer; no negative marking. This MCQ adaptation checks reasoning about the planned skills; use other classroom evidence for actual collaboration and speaking.',[
-    f(exam.title,'listen',['16 questions. Four source sections.','Choose one answer, A, B, C or D, for each question.'],{printExam:true}),
+   s('prepare','Prepare the assessment',4,0,'Print one student paper per pupil, separate from the key. Each has '+exam.totalMarks+' single-answer questions. Award one mark per correct answer; no negative marking. This MCQ adaptation checks reasoning about the planned skills; use other classroom evidence for actual collaboration and speaking.',[
+    f(exam.title,'listen',[exam.totalMarks+' questions. Choose one answer each.','Choose one answer, A, B, C or D, for each question.'],{printExam:true}),
     f('Before you begin','listen',['Write your name, class and date.','Read each source before answering.','All case-study data in this paper is fictional.'])
    ]),
    s('test','Independent test',30,4,'Distribute the papers. Start the timer manually. Answer procedural questions without indicating correct choices. Adapt access arrangements to class needs.',[
     f('Work independently','think',['Read carefully and circle one answer per question.','Use the supplied sources; no internet is needed.','Check your choices if you finish early.'],{timerSeconds:1800,printExam:true})
    ]),
    s('collect','Collect and reflect',4,34,'Collect papers before reviewing answers. The separate key is in Teacher tools. Record marks on paper; this app stores no pupil scores.',[
-    f('Check and hand in','think',['Check your name and all 16 responses.','Hand in your paper when asked.']),
+    f('Check and hand in','think',['Check your name and all '+exam.totalMarks+' responses.','Hand in your paper when asked.']),
     f('Reflect on your approach','think',['Which question needed the closest reading?','What will you do differently next time?'])
    ]),
    s('finish','Finish',2,38,'Mark one point per correct answer. Use common misconceptions to plan a later review.',[

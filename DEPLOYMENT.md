@@ -53,3 +53,7 @@ Adds the teacher text editor on Learn (18 September 2026). Main/root GitHub Page
 ## Version 2.0.0 — student study space
 
 Adds `/students/` under the existing main/root GitHub Pages deployment. The student portal ships its own generated safe lesson catalog and static translations, so it needs no backend or runtime translation service. Teacher playback remains at the site root. Student progress and notes stay in their own browser storage key.
+
+## Version 2.1.0 — exam library and single-page baselines
+
+Adds the home-screen Exams button and navigation by assessment period, grade, and subject. All five baseline student papers contain 20 questions on one A4 page, with separate teacher keys. The 20 term papers retain their existing content. Validation: 46 unit tests and the exams browser suite, including all 25 paper links, baseline PDF page counts, print actions, answer keys, and mobile layouts. Publishes through the existing main/root GitHub Pages deployment.

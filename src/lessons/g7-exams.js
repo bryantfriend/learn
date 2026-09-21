@@ -1,4 +1,5 @@
 import { grade7ACourses } from '../plans/grade7a.js';
+import { baselineExams } from './baseline-exams.js';
 import { content as geo } from './g7-geo-content.js';
 import { content as gp } from './g7-gp-content.js';
 const examSources={'1.1':'Consider natural features, built features and interactions between people and their environment.','1.2':'Choose a suitable geographical tool or measurement for each task.','1.5':'Fictional settlement: houses cluster near a bridge.'};
@@ -38,3 +39,6 @@ for(const course of grade7ACourses){
    blocks:Array.from({length:4},(_,i)=>({title:'Questions '+(i*3+1)+'–'+(i*3+3),source:'Use the information provided with each question. Choose one best answer. Unnamed case studies and numerical datasets are classroom examples.',questions:questions.slice(i*3,i*3+3)}))};
  }
 }
+// Keep the existing fallback bank for unchanged term papers.
+export const grade7CoreFallback = grade7Exams['7A-GP-A0'].blocks.flatMap(b=>b.questions).filter(q=>q.topic==='core-skills');
+for(const id of ['7A-GEO-A0','7A-GP-A0'])grade7Exams[id]=baselineExams[id];

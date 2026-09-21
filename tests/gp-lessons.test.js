@@ -24,13 +24,14 @@ test('all 43 plan entries have complete playable lessons with stable IDs and cor
   assert.ok(validateSession(value),l.id+' can save and recover');
  }
 });
-test('five printable exams each have 16 four-option items and separate rationales',()=>{
+test('five printable exams have 20 baseline or 16 term items and separate rationales',()=>{
  assert.deepEqual(Object.keys(gpExams),['A0','Q1','Q2','Q3','Q4']);
  for(const exam of Object.values(gpExams)){
   const qs=exam.blocks.flatMap(b=>b.questions);
-  assert.equal(qs.length,16);assert.equal(exam.totalMarks,16);
-  assert.deepEqual(qs.map(q=>q.number),Array.from({length:16},(_,i)=>i+1));
+  const count=exam.id==='A0'?20:16;
+  assert.equal(qs.length,count);assert.equal(exam.totalMarks,count);
+  assert.deepEqual(qs.map(q=>q.number),Array.from({length:count},(_,i)=>i+1));
   for(const q of qs){assert.equal(new Set(q.options).size,4);assert.match(q.answer,/^[A-D]$/);assert.ok(q.explanation);}
-  for(const letter of 'ABCD')assert.equal(qs.filter(q=>q.answer===letter).length,4);
+  for(const letter of 'ABCD')assert.equal(qs.filter(q=>q.answer===letter).length,count/4);
  }
 });

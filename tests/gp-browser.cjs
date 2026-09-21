@@ -51,9 +51,10 @@ const server=createServer();let browser;
  for(const id of ['A0','Q1','Q2','Q3','Q4'])for(const key of [false,true]){
   await printPage.goto(url+'exams/?id='+id+(key?'&key=1':''));
   await printPage.waitForSelector('.paper-sheet');
-  assert.equal(await printPage.locator('.question').count(),16);
-  assert.equal(await printPage.locator('.question li').count(),64);
-  assert.equal(await printPage.locator('.key-answer').count(),key?16:0);
+  const count=id.endsWith('A0')?20:16;
+  assert.equal(await printPage.locator('.question').count(),count);
+  assert.equal(await printPage.locator('.question li').count(),key&&id.endsWith('A0')?0:count*4);
+  assert.equal(await printPage.locator('.key-answer').count(),key?count:0);
   await printPage.emulateMedia({media:'print'});
   assert.equal(await printPage.locator('.print-toolbar').isVisible(),false);
   const bounds=await printPage.evaluate(()=>Array.from(document.querySelectorAll('.paper-sheet')).map(s=>{

@@ -15,17 +15,17 @@ export const grade7Lessons=grade7ACourses.flatMap(course=>course.lessons.map((en
  const notes=entry.rows.map(r=>r.title+'\nObjective: '+r.objective+'\nVocabulary: '+r.vocabulary+'\nOriginal starter: '+r.starter+'\nOriginal teaching: '+r.teaching+'\nOriginal practice / optional extension: '+r.practice+'\nOriginal plenary: '+r.plenary+'\nHomework: '+r.homework+'\nResources in original plan: '+r.resources).join('\n\n');
  if(entry.id==='g7a-gp-w01-2')return createGrade7AIssuePerspectiveLesson(common);
  if(entry.examCode){
-  const examId='7A-'+(geography?'GEO':'GP')+'-'+entry.examCode;
+  const examId='7A-'+(geography?'GEO':'GP')+'-'+entry.examCode, count=entry.examCode==='A0'?20:12;
   return {...common,examId,summary:false,stages:[
-   s('prepare','Prepare',5,0,notes+'\nUse the 12-item printable student paper; keep the explained key separate. One mark per correct answer. MCQs do not replace observation of collaboration or speaking.',[
-    f(subject+' assessment','listen',['12 questions. Four answer choices each.','Read the source information and circle one answer.'],{printExam:true}),
+   s('prepare','Prepare',5,0,notes+'\nUse the '+count+'-item printable student paper; keep the explained key separate. One mark per correct answer. MCQs do not replace observation of collaboration or speaking.',[
+    f(subject+' assessment','listen',[count+' questions. Four answer choices each.','Read the source information and circle one answer.'],{printExam:true}),
     f('Before you start','listen',['Write your name, class and date.','Work independently; ask if an instruction is unclear.'])
    ]),
    s('test','Independent work',25,5,'Start the optional timer manually. Adapt access arrangements as needed without coaching answers.',[
     f('Read, think, choose','think',['Use the source information in the paper.','Circle A, B, C or D for each question.','Check your responses before handing in.'],{timerSeconds:1500,printExam:true})
    ]),
    s('reflect','Collect and reflect',7,30,'Collect papers before displaying answers. Teacher tools links to the separate key. Record results outside this app.',[
-    f('Check and hand in','think',['Check your name and all 12 answers.','Which skill felt strongest? Which needs practice?'])
+    f('Check and hand in','think',['Check your name and all '+count+' answers.','Which skill felt strongest? Which needs practice?'])
    ]),
    s('finish','Finish',3,37,'Use item errors to choose a later review activity.',[
     f('Assessment complete','listen',['Thank you. Listen for the next instruction.'],{final:true})

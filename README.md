@@ -8,6 +8,10 @@ A teacher-operated, whole-class lesson player for **Mr. Friend · Oxford Interna
 
 ## Available lessons
 
+Use **Exams** on the home screen to choose **Baseline** or **Term 1–4**, then **7A**, **7B**, or **Grade 8**. For 7A and 7B, choose Geography or Global Perspectives. Each paper has **Print / Save as PDF** and a separate **Teacher answer key** link.
+
+All five baseline student papers contain 20 questions and fit on one A4 page. Print at the default scale with browser headers and footers disabled. Term papers retain their existing content and layout. Run `node tests/exams-browser.cjs` (with `PLAYWRIGHT_MODULE` set if needed) to check navigation, baseline PDF page counts, answer keys, and mobile layouts.
+
 Use **Choose class & lesson**: select **7A**, **7B**, or **8th Grade**, then **Geography** or **Global Perspectives**, then a lesson. Tap **Start lesson** or **Resume lesson**.
 
 - **Ready to Learn: Notice, Think, Explain** — the original 40-minute lesson, eight stages.

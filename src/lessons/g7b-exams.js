@@ -1,7 +1,8 @@
 import { grade7BCourses } from '../plans/grade7b.js';
 import { content as geo } from './g7b-geo-content.js';
 import { content as gp } from './g7b-gp-content.js';
-import { grade7Exams } from './g7-exams.js';
+import { grade7CoreFallback } from './g7-exams.js';
+import { baselineExams } from './baseline-exams.js';
 const positions=[1,3,0,2,2,0,3,1,0,2,1,3];
 const geoSources={'3.1':'Use your knowledge of the UK and its location.','3.2':'Use political and physical geography to answer.','3.7':'Consider the functions of a capital city.','4.5':'Use your knowledge of glacial landforms.','5.1':'Use your knowledge of rivers and the Thames.','5.7':'Use your knowledge of river mouths and tides.'};
 export const grade7BExams={};
@@ -16,7 +17,7 @@ for(const course of grade7BCourses){
   let bank=codes.flatMap(make);
   for(const c of previous){if(bank.length>=12)break;bank.push(...make(c));}
   if(bank.length<12&&!geography){
-   const fallback=grade7Exams['7A-GP-A0'].blocks.flatMap(b=>b.questions).filter(q=>q.topic==='core-skills');
+   const fallback=grade7CoreFallback;
    for(const item of fallback){if(bank.length>=12)break;const correct=item.answer.charCodeAt(0)-65;bank.push({source:item.context,q:[item.prompt,[item.options[correct],...item.options.filter((_,i)=>i!==correct)],item.explanation],code:'core-skills'});}
   }
   if(bank.length<12)throw Error('Not enough exam items '+entry.id);
@@ -27,3 +28,4 @@ for(const course of grade7BCourses){
    blocks:Array.from({length:4},(_,i)=>({title:'Questions '+(i*3+1)+'–'+(i*3+3),source:'Read each short source. Use it and your learning to choose one best answer.',questions:questions.slice(i*3,i*3+3)}))};
  }
 }
+for(const id of ['7B-GEO-A0','7B-GP-A0'])grade7BExams[id]=baselineExams[id];

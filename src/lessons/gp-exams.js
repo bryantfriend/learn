@@ -1,5 +1,6 @@
 // Authoring choices place the correct response first. Displayed answer positions
 // are assigned below and remain stable between student papers and teacher keys.
+import { baselineExams } from './baseline-exams.js';
 const sourceExams = {
   "A0": {
     "title": "Stage 8 skills baseline",
@@ -959,3 +960,4 @@ export const gpExams = Object.fromEntries(Object.entries(sourceExams).map(functi
   })};
  })}];
 }));
+gpExams.A0=baselineExams.A0;

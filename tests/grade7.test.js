@@ -33,13 +33,14 @@ test('7A-only lessons have expanded playable content and valid checkpoints',()=>
   assert.equal(validateSession({...saved,classId:'7b'}),null);
  }
 });
-test('ten 7A assessments contain twelve unique four-option questions and explained keys',()=>{
+test('ten 7A assessments contain 20 baseline or 12 term unique four-option questions and explained keys',()=>{
  assert.equal(Object.keys(grade7Exams).length,10);
  for(const e of Object.values(grade7Exams)){
   const qs=e.blocks.flatMap(b=>b.questions);
-  assert.equal(qs.length,12);assert.equal(e.totalMarks,12);
-  assert.equal(new Set(qs.map(q=>q.context+'|'+q.prompt)).size,12,e.id);
+  const count=e.id.endsWith('-A0')?20:12;
+  assert.equal(qs.length,count);assert.equal(e.totalMarks,count);
+  assert.equal(new Set(qs.map(q=>q.context+'|'+q.prompt)).size,count,e.id);
   for(const q of qs){assert.equal(new Set(q.options).size,4);assert.ok(q.explanation);assert.match(q.answer,/^[A-D]$/);}
-  for(const a of 'ABCD')assert.equal(qs.filter(q=>q.answer===a).length,3);
+  for(const a of 'ABCD')assert.equal(qs.filter(q=>q.answer===a).length,count/4);
  }
 });

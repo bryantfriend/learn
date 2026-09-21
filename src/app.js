@@ -118,7 +118,7 @@ function brand() {
 function renderHome() {
 
     const start = button('Choose class & lesson →', 'choose-lesson', 'primary');
-    const actions = [start];
+    const actions = [start, element('a', { href: './exams/', className: 'exams-button' }, ['Exams'])];
     if (session) actions.unshift(button('Resume last class →', 'resume-saved', 'subtle'));
     app.replaceChildren(element('main', { className: 'home' }, [
         element('header', { className: 'home-header' }, [brand(), element('span', {}, ['Mr. Friend'])]),
