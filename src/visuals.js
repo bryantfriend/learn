@@ -1,4 +1,5 @@
 import {ukMapArt} from './uk-map-visual.js';
+import {learnerText} from './lessons/esl.js';
 import { supplyChainArt } from './supply-chain-visuals.js';
 import {pilotArt} from './pilot-visuals.js';
 import {issuePerspectiveArt} from './issue-perspective-visuals.js';
@@ -51,6 +52,9 @@ const charts={...{"8:global-perspectives:1.3":{"labels":["2025","2026"],"values"
  '7b:global-perspectives:4.4':{labels:['Quiet','Active','Social'],values:[4,2,2],unit:'responses'}
 };
 export function visualSpec(lesson,stage,frame){
+ return learnerText(originalVisualSpec(lesson,stage,frame));
+}
+function originalVisualSpec(lesson,stage,frame){
  if(!lesson.gp||lesson.examId||frame.type||frame.final)return null;
  if(frame.lessonVisual)return frame.lessonVisual;
  if(lesson.customVisuals)return null;

@@ -57,3 +57,7 @@ Adds `/students/` under the existing main/root GitHub Pages deployment. The stud
 ## Version 2.1.0 — exam library and single-page baselines
 
 Adds the home-screen Exams button and navigation by assessment period, grade, and subject. All five baseline student papers contain 20 questions on one A4 page, with separate teacher keys. The 20 term papers retain their existing content. Validation: 46 unit tests and the exams browser suite, including all 25 paper links, baseline PDF page counts, print actions, answer keys, and mobile layouts. Publishes through the existing main/root GitHub Pages deployment.
+
+## Version 2.2.0 — interactive perspectives and simpler English
+
+Rebuilds Grade 8 Global Perspectives Lesson 3 with voting, role cards, a guessing game and a group decision with a surprise choice. Simplifies learner-facing English across lessons and regenerates student study pages and translations. Validation: 48 unit tests and 86 browser screens, including answer reveals, saved progress and classroom layout. Publishes through the existing main/root GitHub Pages deployment.

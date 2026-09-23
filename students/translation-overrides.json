@@ -938,5 +938,30 @@
     "ru": "Ученики и гид наблюдают за ледником и горной долиной.",
     "zh": "学生和向导观察冰川和山谷。",
     "tr": "Öğrenciler ve rehber bir buzulu ve dağ vadisini gözlemliyor."
+  },
+  "Mina: “I want extra hours. I need more pay.”": {
+    "ru": "Мина: «Я хочу работать дополнительные часы. Мне нужно больше зарабатывать».",
+    "zh": "米娜：“我想加班。我需要多挣一些钱。”",
+    "tr": "Mina: “Fazla mesai yapmak istiyorum. Daha çok para kazanmam gerekiyor.”"
+  },
+  "Leo: “I need to leave on time to care for my brother.”": {
+    "ru": "Лео: «Мне нужно уходить с работы вовремя, чтобы заботиться о брате».",
+    "zh": "利奥：“我需要按时下班，去照顾弟弟。”",
+    "tr": "Leo: “Kardeşime bakmak için işten zamanında çıkmam gerekiyor.”"
+  },
+  "C: Workers choose extra hours, with extra pay.": {
+    "ru": "C: Работники сами выбирают, работать ли дополнительные часы за дополнительную оплату.",
+    "zh": "C：工人自愿选择是否加班，加班有额外报酬。",
+    "tr": "C: İşçiler ek ücret karşılığında fazla mesai yapıp yapmamayı kendileri seçer."
+  },
+  "A customer needs a shirt for a new job on Monday.": {
+    "ru": "Покупателю нужна рубашка: в понедельник он выходит на новую работу.",
+    "zh": "一位顾客星期一开始新工作，需要一件衬衫。",
+    "tr": "Bir müşterinin pazartesi başlayacağı yeni işi için bir gömleğe ihtiyacı var."
+  },
+  "Sam wants a low-cost trip. Kim wants a place nearby.": {
+    "ru": "Сэм хочет недорогую поездку. Ким хочет поехать куда-нибудь поблизости.",
+    "zh": "山姆希望旅行费用低。金希望去附近的地方。",
+    "tr": "Sam ucuz bir gezi istiyor. Kim yakındaki bir yere gitmek istiyor."
   }
 }
