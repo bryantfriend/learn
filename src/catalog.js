@@ -7,7 +7,8 @@ export const classes = [
 ];
 export const subjects = [
     { id: 'geography', label: 'Geography', grades: [7] },
-    { id: 'global-perspectives', label: 'Global Perspectives', grades: [7, 8] }
+    { id: 'global-perspectives', label: 'Global Perspectives', grades: [7, 8] },
+    { id: 'global-perspectives-books', label: 'Global Perspectives · Workbook trial', grades: [7, 8] }
 ];
 export function getClass(id) { return classes.find(function(item) { return item.id === id; }) || null; }
 export function getSubject(id) { return subjects.find(function(item) { return item.id === id; }) || null; }

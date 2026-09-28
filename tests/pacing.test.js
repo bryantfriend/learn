@@ -4,7 +4,7 @@ import {lessons,getLesson} from '../src/lessons.js';
 import {validateSession} from '../src/storage.js';
 import {prepareTimer} from '../src/timer.js';
 test('every curriculum teaching lesson has ten minutes of source-based practice included in normal navigation',()=>{
- const teaching=lessons.filter(l=>l.gp&&!l.examId);assert.equal(teaching.length,269);
+ const teaching=lessons.filter(l=>l.gp&&!l.examId&&!l.bookTrial);assert.equal(teaching.length,269);
  for(const l of teaching){assert.equal(l.stages.reduce((n,s)=>n+s.durationMinutes,0),50,l.id);assert.equal(l.durationMinutes,50,l.id);assert.deepEqual(l.stages.slice(-3,-1).map(s=>s.id),['practice-1','practice-2'],l.id);assert.ok(l.stages.at(-1).frames.some(f=>f.final),l.id);assert.equal(l.extensions.reduce((n,t)=>n+t.minutes,0),10,l.id);for(const t of l.extensions){assert.ok(t.source.length&&t.lines.length===3&&t.outcome,l.id);}}
  for(const l of lessons.filter(l=>l.examId))assert.equal(l.extensions,undefined);
 });

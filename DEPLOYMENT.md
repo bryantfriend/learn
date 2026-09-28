@@ -58,6 +58,12 @@ Adds `/students/` under the existing main/root GitHub Pages deployment. The stud
 
 Adds the home-screen Exams button and navigation by assessment period, grade, and subject. All five baseline student papers contain 20 questions on one A4 page, with separate teacher keys. The 20 term papers retain their existing content. Validation: 46 unit tests and the exams browser suite, including all 25 paper links, baseline PDF page counts, print actions, answer keys, and mobile layouts. Publishes through the existing main/root GitHub Pages deployment.
 
+## Version 2.3.0 — workbook trial lessons
+
+Adds a separate Global Perspectives workbook trial category with two page-aligned lessons each for 7B (Book 7), 7A (Book 8), and 8th Grade (Book 9). Each lesson includes a 40-minute core, ten optional practice minutes, examples and teacher notes. Existing curriculum lessons and student study guides are preserved. The 7A starter activity includes a fullscreen question bank with all five choices.
+
+Validation: 50 automated tests and browser checks for all six lessons, plus question-bank display, dismissal, focus restoration and mobile layout.
+
 ## Version 2.2.0 — interactive perspectives and simpler English
 
 Rebuilds Grade 8 Global Perspectives Lesson 3 with voting, role cards, a guessing game and a group decision with a surprise choice. Simplifies learner-facing English across lessons and regenerates student study pages and translations. Validation: 48 unit tests and 86 browser screens, including answer reveals, saved progress and classroom layout. Publishes through the existing main/root GitHub Pages deployment.

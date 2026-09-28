@@ -128,7 +128,7 @@ function renderHome() {
                 element('h1', {}, ['Clear routines.', element('br'), element('em', {}, ['Active learning.'])]),
                 element('p', { className: 'home-intro' }, ['A shared screen. A fresh start. A whole class ready to think.']),
                 element('div', { className: 'lesson-card' }, [
-                    element('div', { className: 'lesson-picker-row' }, [element('p', { className: 'eyebrow' }, ['YOUR CLASSROOM']), element('span', { className: 'catalog-count' }, ['3 classes · 2 subjects'])]),
+                    element('div', { className: 'lesson-picker-row' }, [element('p', { className: 'eyebrow' }, ['YOUR CLASSROOM']), element('span', { className: 'catalog-count' }, ['3 classes · 3 categories'])]),
                     element('h2', {}, [session ? contextLabel(session) : 'Where are we learning today?']),
                     element('p', { className: 'lesson-subtitle' }, [session ? lesson.title : '7A · 7B · 8th Grade']),
                     element('p', { className: 'meta' }, ['Geography · Global Perspectives']),
@@ -183,6 +183,7 @@ function renderPlayer() {
     if (frame.choices) copy.append(element('ol', { className: 'opening-choices' + (frame.choiceLayout === 'grid' ? ' choice-grid' : '') }, frame.choices.map(function(choice) { return element('li', {}, [choice]); })));
     if (frame.lines) copy.append(element('div', { className: 'instructions' }, (graphic?.intro && !frame.expectedSeconds ? [graphic.prompt] : frame.lines).map(function(line) { return element('p', {}, [line]); })));
     if (frame.footnote) copy.append(element('p', { className: 'footnote' }, [frame.footnote]));
+    if (frame.questionBank) copy.append(button('Show all questions ⛶', 'question-bank', 'question-bank-button'));
     if (frame.type === 'question' || frame.type === 'opinion') renderQuestion(copy);
     if (frame.type === 'memory') copy.append(element('div', { className: 'memory-grid', 'aria-label': 'Nine items to remember' }, frame.items.map(function(item) {
         return element('div', { className: 'memory-item' }, [element('span', { 'aria-hidden': 'true' }, [item.symbol]), element('span', { className: 'memory-label' }, [item.label])]);
@@ -209,7 +210,7 @@ function renderPlayer() {
     }
     if (answerPanel) {
         const explanation = copy.querySelector('.explanation');
-        content.append(element('aside', { className: 'answer-detail', 'aria-label': 'Revealed answer' }, [explanation]));
+        content.append(element('aside', { className: 'answer-detail' + (lesson.bookTrial ? ' workbook-answer' : ''), 'aria-label': 'Revealed answer' }, [explanation]));
     }
     const canDiscuss = frame.discussionId && (frame.type !== 'question' || response().revealed);
     const discussed = session.discussedQuestions.includes(frame.discussionId);
@@ -301,6 +302,15 @@ function closePanel() {
     dialogKind = '';
     confirmation = null;
 }
+function showQuestionBank() {
+    const questions = currentFrame().questionBank;
+    if (!questions) return;
+    openPanel('Choose two research questions', [
+        element('p', { className: 'question-bank-instruction' }, ['School lunch waste · Write each chosen question and your reason in your book.']),
+        element('ul', { className: 'question-bank-list' }, questions.map(question => element('li', {}, [question])))
+    ], 'question-bank');
+    panel.classList.add('question-bank-panel');
+}
 function confirmAction(title, message, callback, label) {
     confirmation = callback;
     openPanel(title, [element('p', {}, [message]), element('div', { className: 'dialog-actions' }, [
@@ -344,7 +354,7 @@ function showPicker(focusSelector) {
         const checkpoint = storage.find({ ...picker, lessonId: item.id });
         return element('button', { type: 'button', 'data-action': 'select-lesson', 'data-lesson': item.id, className: 'lesson-option' + (picker.lessonId === item.id ? ' selected' : ''), 'aria-pressed': String(picker.lessonId === item.id) }, [
             element('strong', {}, [item.title]),
-            element('span', {}, [(item.catalog?.unit ? item.catalog.unit + ' · ' : '') + item.durationMinutes + ' min' + (checkpoint ? ' · Saved at stage ' + (checkpoint.stage + 1) : '')])
+            element('span', {}, [(item.catalog?.unit ? item.catalog.unit + ' · ' : '') + (item.bookTrial ? '40 min + 10 min optional' : item.durationMinutes + ' min') + (checkpoint ? ' · Saved at stage ' + (checkpoint.stage + 1) : '')])
         ]);
     }
     const ready = !!picker.classId && !!picker.subjectId;
@@ -356,8 +366,8 @@ function showPicker(focusSelector) {
         ]),
         element('section', { className: 'picker-lessons', 'aria-label': '3 · Lesson' }, [
             element('h3', {}, ['3 · Lesson']),
-            ...(['7a','7b'].includes(picker.classId) && picker.subjectId ? [button(getClass(picker.classId).label+' weekly plan · '+(picker.subjectId === 'geography' ? (picker.classId==='7a'?'1':'2')+' Geography lesson(s)/week' : (picker.classId==='7a'?'2':'3')+' GP lessons/week'), 'g7-plan', 'plan-link')] : []),
-            ...(['8','7a','7b'].includes(picker.classId) ? [element('div', { className: 'picker-options quarter-options', 'aria-label': 'Lesson quarter' }, schoolCalendar.quarters.map(function(q) { return button(q.id, 'lesson-quarter', planQuarter === q.id ? 'selected' : '', { 'data-quarter': q.id, 'aria-pressed': String(planQuarter === q.id) }); }))] : []),
+            ...(['7a','7b'].includes(picker.classId) && ['geography','global-perspectives'].includes(picker.subjectId) ? [button(getClass(picker.classId).label+' weekly plan · '+(picker.subjectId === 'geography' ? (picker.classId==='7a'?'1':'2')+' Geography lesson(s)/week' : (picker.classId==='7a'?'2':'3')+' GP lessons/week'), 'g7-plan', 'plan-link')] : []),
+            ...(['8','7a','7b'].includes(picker.classId) && picker.subjectId !== 'global-perspectives-books' ? [element('div', { className: 'picker-options quarter-options', 'aria-label': 'Lesson quarter' }, schoolCalendar.quarters.map(function(q) { return button(q.id, 'lesson-quarter', planQuarter === q.id ? 'selected' : '', { 'data-quarter': q.id, 'aria-pressed': String(planQuarter === q.id) }); }))] : []),
             ...(picker.classId === '8' && picker.subjectId === 'global-perspectives' ? [button('2026–2027 year plan & calendar · 43 playable lessons and assessments', 'year-plan', 'plan-link')] : []),
             ...storage.unassigned().map(function(value) { return button('Resume earlier unassigned lesson: ' + getLesson(value.lessonId).title, 'resume-earlier', 'subtle', { 'data-lesson': value.lessonId }); }),
             ...(!ready ? [element('p', { className: 'empty-curriculum' }, ['Choose a class and subject to see lessons.'])] : [
@@ -638,7 +648,8 @@ function handleAction(event) {
         const callback = confirmation;
         closePanel();
         if (callback) callback();
-    } else if (action === 'close-panel' || action === 'cancel-confirm') closePanel();
+    } else if (action === 'question-bank') showQuestionBank();
+    else if (action === 'close-panel' || action === 'cancel-confirm') closePanel();
     else if (action === 'edit-lesson') showLessonEditor();
     else if (action === 'help') showHelp();
     else if (action === 'clear-session') clearSession();
@@ -755,7 +766,7 @@ function showExtensions(index=0) {
  // Extra practice does not advance the lesson or mark any work complete.
  if(session.timer.running){session.timer=pauseTimer(session.timer,Date.now());save();render();}
  openPanel(task.title+' · '+task.minutes+' min practice',[
-  element('p',{className:'panel-hint'},[lesson.title+' · These tasks are included before the final reflection. This overview does not mark them complete.']),
+  element('p',{className:'panel-hint'},[lesson.title+(lesson.bookTrial ? ' · Optional practice before reflection. For 40 minutes, use the stage menu to jump to Reflect and finish.' : ' · These tasks are included before the final reflection. This overview does not mark them complete.')]),
   element('div',{className:'reserve-grid'},[
    element('section',{},[element('h3',{},[task.sourceTitle]),...task.source.map(line=>element('p',{},[line]))]),
    element('section',{},[element('h3',{},['Your task']),...task.lines.map(line=>element('p',{},[line])),element('p',{className:'reserve-outcome'},[task.outcome])])

@@ -317,3 +317,13 @@ dialog.lesson-editor{width:min(1200px,96vw);max-width:96vw}.lesson-editor textar
 .reserve-outcome { font-weight: 650; }
 .reserve-actions { display: flex; gap: .7rem; flex-wrap: wrap; margin-top: 1rem; }
 @media(max-width: 700px) { .reserve-grid { grid-template-columns: 1fr; } }
+
+/* Workbook trial models remain readable alongside their question on a classroom display. */
+.player .teaching-content .workbook-answer .explanation p { font-size:26px; line-height:1.25; }
+.question-bank-button { margin-top:12px; }
+#panel.question-bank-panel { width:100vw; max-width:none; height:100dvh; max-height:none; margin:0; border:0; border-radius:0; padding:clamp(20px,3vw,44px); }
+.question-bank-panel .panel-header { margin-bottom:12px; }
+.question-bank-panel .question-bank-instruction { font-size:clamp(18px,1.7vw,24px); margin-bottom:20px; }
+.question-bank-list { list-style:none; padding:0; margin:0; display:grid; gap:12px; }
+.question-bank-list li { padding:14px 20px; border:1px solid var(--line); border-radius:12px; background:#fff; font-size:clamp(22px,2.3vw,36px); line-height:1.25; }
+@media(max-width:600px) { .question-bank-panel .panel-header h2 { font-size:24px; } .question-bank-list li { padding:12px; } }

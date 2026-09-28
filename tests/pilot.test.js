@@ -19,7 +19,7 @@ test('pilot covers ten topics in fifteen scheduled lessons with explicit relevan
   const model=frames.findIndex(f=>f.learningRole==='model');
   if(model>=0)assert.ok(frames.slice(0,model).filter(f=>f.discussionId&&f.mode==='pair').length>=2,l.id+' model follows student attempts');
  }
- assert.equal(lessons.length,296);
+ assert.equal(lessons.length,302);
 });
 test('every pilot migrates old checkpoints and preserves current reveals',()=>{
  for(const id of Object.keys(pilotLessons)){

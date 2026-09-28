@@ -7,7 +7,7 @@ test('all 269 curriculum teaching sessions have an opening visual without exposi
  for(const l of lessons){
   const all=l.stages.flatMap(s=>s.frames.map(f=>({s,f})));
   if(l.examId){for(const {s,f}of all)assert.equal(visualSpec(l,s,f),null);continue;}
-  if(!l.gp)continue;
+  if(!l.gp||l.bookTrial)continue;
   const v=visualSpec(l,l.stages[0],l.stages[0].frames[0]);assert.ok(v,l.id);assert.ok(v.prompt);assert.equal(v.steps.length,4);count++;
   for(const {s,f}of all)if(f.type||f.final)assert.equal(visualSpec(l,s,f),null);
  }
