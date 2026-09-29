@@ -154,6 +154,7 @@ export function learnerText(value,key){
  return value;
 }
 export function supportEnglish(lesson){
+ if(lesson.geoRedesign)return lesson;
  lesson.stages=lesson.stages.map(stage=>({...stage,title:simpleEnglish(stage.title),frames:stage.frames.map(frame=>learnerText(frame))}));
  if(lesson.extensions)lesson.extensions=lesson.extensions.map(extra=>learnerText(extra));
  return lesson;

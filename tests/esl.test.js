@@ -15,7 +15,7 @@ test('ESL language keeps assessment keys, quantities and teacher records intact'
 
 test('Grade 8 Lesson 3 uses a varied role challenge and independent transfer',()=>{
  const lesson=getLesson('g8-gp-1.2'),frames=lesson.stages.flatMap(s=>s.frames);
- assert.equal(lesson.catalog.order,3);assert.equal(lesson.durationMinutes,50);
+ assert.equal(lesson.catalog.order,3);assert.equal(lesson.durationMinutes,40);
  assert.ok(frames.some(f=>f.discussionId==='roles'));
  assert.ok(frames.some(f=>f.discussionId==='twist'));
  assert.ok(frames.some(f=>f.discussionId==='decision'));

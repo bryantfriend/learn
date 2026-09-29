@@ -1,5 +1,13 @@
 # Learn deployment
 
+## Version 2.4.0 — classroom activities, worksheets and English
+
+Adds the visible version beside the top-left Learn logo on the home screen and lesson player. Release metadata is in `package.json` and `src/version.js`; update both together.
+
+Includes revised Geography teaching and review sessions, smart-board activities, optional extra-time practice, printable lesson/homework worksheets, and two introductory 7B conversational English lessons with Chinese vocabulary help. See `docs/geography-audit.md`, `docs/worksheets.md` and `docs/english-7b.md`. Existing multilingual independent-study exports remain separate from these teacher-led additions.
+
+Uses the existing main/root GitHub Pages deployment without a build step.
+
 Verified 17 September 2026.
 
 - Repository: https://github.com/bryantfriend/learn

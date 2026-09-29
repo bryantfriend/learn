@@ -3,7 +3,7 @@ import {lessons,questionOptions} from '../src/lessons.js';
 import {visualSpec} from '../src/visuals.js';
 const diagrams={'g7b-uk':'g7b-uk','g7b-valley':'g7b-valley','g7b-cycle':'g7b-cycle','g7b-bend':'g7b-bend','2.4':'g7-plan','2.5':'g7-grid','2.8':'g7-profile','2.9':'g7-world'};
 const adapt=text=>String(text||'').replace(/Use the textbook source/gi,'Use the study notes and diagrams').replace(/from the textbook/gi,'from the study notes and diagrams').replace(/Practise two examples together, then complete one independently\./g,'Study two examples, then explain one in your own words.').replace(/Exchange work\./g,'Review your work.').replace(/Explain it to a partner/gi,'Explain it in your own words').replace(/Talk to a partner/gi,'Write your ideas').replace(/Listen to a partner\. Make one useful correction\./g,'Read your answer again. Make one useful correction.').replace(/Listen for the next instruction\./g,'').replace(/Keep your work\. Listen for the next instruction\./g,'Keep your work.').trim();
-const out=lessons.filter(l=>!l.bookTrial).map(lesson=>{
+const out=lessons.filter(l=>!l.bookTrial&&!l.classroomOnly).map(lesson=>{
  const item={id:lesson.id,title:lesson.title,classes:lesson.catalog?.classes||(lesson.catalog?.grades?.includes(8)?['8']:['7a','7b','8']),subject:lesson.catalog?.subjectId||'routines',quarter:lesson.catalog?.quarter||'Start',unit:lesson.catalog?.unit||'Classroom foundations',order:lesson.catalog?.order||0,assessment:!!lesson.examId,sections:[],questions:[],cards:[],related:[]};
  if(lesson.examId)return item;
  for(const [si,stage] of lesson.stages.entries()){

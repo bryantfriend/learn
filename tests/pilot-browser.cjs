@@ -5,7 +5,7 @@ const {createServer}=require('../scripts/serve.cjs');const server=createServer()
  await new Promise(r=>server.listen(4186,'127.0.0.1',r));browser=await chromium.launch({headless:true});
  const errors=[],bad=[],topics=new Set();let frames=0;
  fs.mkdirSync('output/playwright/pilot',{recursive:true});
- for(const id of Object.keys(pilotLessons)){
+ for(const id of Object.keys(pilotLessons).filter(id=>!getLesson(id).geoRedesign)){
   const l=getLesson(id),context=await browser.newContext({viewport:{width:1280,height:720}}),page=await context.newPage();
   page.on('pageerror',e=>errors.push(id+': '+e.message));await page.goto(process.env.LEARN_URL||'http://127.0.0.1:4186/learn/');
   const a=n=>page.locator('[data-action="'+n+'"]').first().click();
@@ -46,5 +46,5 @@ const {createServer}=require('../scripts/serve.cjs');const server=createServer()
   for(const [width,height]of [[1366,768],[1920,1080],[390,844]]){await page.setViewportSize({width,height});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,id+' responsive');if(width>900)await bounds('responsive '+width);}
   console.log('PASS flow '+id);await context.close();
  }
- assert.deepEqual(errors,[]);assert.deepEqual(bad,[]);console.log('PASS '+frames+' frames across 15 pilot lessons; reveals, enlarge, summary, reload and responsive checks');
+ assert.deepEqual(errors,[]);assert.deepEqual(bad,[]);console.log('PASS '+frames+' frames across 8 retained GP pilot lessons; reveals, enlarge, summary, reload and responsive checks');
 })().catch(e=>{console.error(e);process.exitCode=1}).finally(async()=>{if(browser)await browser.close();server.close()});

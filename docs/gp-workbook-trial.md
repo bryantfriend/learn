@@ -13,7 +13,7 @@ Each class has two classroom lessons covering the photographed **Research Lesson
 
 Start with Part 1. Bring books, pencils and notebooks. No worksheet printing or student internet is required. The screen supplies the teacher-created question banks requested by the book. Students write in the specified workbook spaces; extra oral/notebook activities are labelled separately.
 
-Allow 40 minutes for the core lesson. Two optional five-minute stages give extra practice. For 40 minutes, use the stage menu after the check activity to jump directly to **Reflect and finish**. The displayed full timeline includes both optional stages and totals 50 minutes. Part 2 is for the next class meeting, not extra work to rush through today.
+Allow 40 minutes for the core lesson. Optional activities are now in **Extra time**, outside the lesson sequence. Choose two, three or four five-minute games for another 10, 15 or 20 minutes. Part 2 is for the next class meeting, not extra work to rush through today.
 
 Open teacher notes for explanations, suggested answers, support and stretch prompts. Reveal worked responses after students think. Different rankings and questions are acceptable when justified: models are supporting examples, not an official Cambridge answer key. Research scenarios do not claim that pupils have already collected evidence.
 

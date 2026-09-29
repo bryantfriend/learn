@@ -8,13 +8,14 @@ export const classes = [
 export const subjects = [
     { id: 'geography', label: 'Geography', grades: [7] },
     { id: 'global-perspectives', label: 'Global Perspectives', grades: [7, 8] },
-    { id: 'global-perspectives-books', label: 'Global Perspectives · Workbook trial', grades: [7, 8] }
+    { id: 'global-perspectives-books', label: 'Global Perspectives · Workbook trial', grades: [7, 8] },
+    { id: 'english', label: 'Conversational English', grades: [7], classes:['7b'], sessionsPerWeek:2 }
 ];
 export function getClass(id) { return classes.find(function(item) { return item.id === id; }) || null; }
 export function getSubject(id) { return subjects.find(function(item) { return item.id === id; }) || null; }
 export function subjectsFor(classId) {
     const group = getClass(classId);
-    return group ? subjects.filter(function(item) { return item.grades.includes(group.grade); }) : [];
+    return group ? subjects.filter(function(item) { return item.grades.includes(group.grade)&&(!item.classes||item.classes.includes(classId)); }) : [];
 }
 export function contextLabel(value) {
     const group = getClass(value.classId), subject = getSubject(value.subjectId);

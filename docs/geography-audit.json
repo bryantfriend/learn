@@ -1,0 +1,2708 @@
+{
+  "date": "2026-09-29",
+  "scope": "Teacher-led Geography player; 7A and 7B. All 96 scheduled sessions inspected, including 10 assessments.",
+  "baseline": {
+    "teachingAndReview": 86,
+    "genericFollowOnLessons": 33,
+    "withoutStudentBoardChallenges": 86,
+    "repeatedReviewTaskSequences": true
+  },
+  "limitations": [
+    "Engagement is a classroom outcome, not established by automated tests.",
+    "Smart-board behaviour is tested with browser touch and keyboard input, not the physical classroom board.",
+    "Textbook section alignment comes from existing plans. Complete printed pages were not supplied.",
+    "Independent-study translation exports are separate and were not regenerated."
+  ],
+  "lessons": [
+    {
+      "id": "g7a-geo-w01-1",
+      "class": "7a",
+      "title": "Baseline assessment",
+      "assessment": true,
+      "review": false,
+      "minutes": 40,
+      "objectives": [],
+      "sections": [],
+      "workedDemonstrations": 0,
+      "boardActivities": [],
+      "independentTasks": [],
+      "disposition": "Assessment retained; optional revision worksheets remain separate."
+    },
+    {
+      "id": "g7a-geo-w02-1",
+      "class": "7a",
+      "title": "Landscape detectives",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Classify a feature and explain an interaction"
+      ],
+      "sections": [
+        "1.1"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Feature / interaction"
+        }
+      ],
+      "independentTasks": [
+        "Landscape detectives · your task",
+        "Connection builders"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w03-1",
+      "class": "7a",
+      "title": "Build a school geography exhibit / Pack the right kit",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Turn an observation into an investigable exhibit label",
+        "Choose tools by the information they provide"
+      ],
+      "sections": [
+        "1.1",
+        "1.2"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Turn an observation into an investigable exhibit label"
+        },
+        {
+          "type": "sort",
+          "title": "Tool dispatch"
+        }
+      ],
+      "independentTasks": [
+        "Build a school geography exhibit · your task",
+        "Pack the right kit · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w04-1",
+      "class": "7a",
+      "title": "Rescue the survey team / Three equipment stations",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Repair an incorrect measurement method",
+        "Record a result another investigator can check"
+      ],
+      "sections": [
+        "1.2",
+        "1.2"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Repair an incorrect measurement method"
+        },
+        {
+          "type": "decision",
+          "title": "Record a result another investigator can check"
+        }
+      ],
+      "independentTasks": [
+        "Rescue the survey team · your task",
+        "Three equipment stations · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w05-1",
+      "class": "7a",
+      "title": "The doorway mystery / Design a fair count",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Separate an observation from a possible cause",
+        "Make repeated counts comparable"
+      ],
+      "sections": [
+        "1.3",
+        "1.3"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Evidence detective"
+        },
+        {
+          "type": "decision",
+          "title": "Make repeated counts comparable"
+        }
+      ],
+      "independentTasks": [
+        "The doorway mystery · your task",
+        "Design a fair count · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w06-1",
+      "class": "7a",
+      "title": "Q1 assessment",
+      "assessment": true,
+      "review": false,
+      "minutes": 40,
+      "objectives": [],
+      "sections": [],
+      "workedDemonstrations": 0,
+      "boardActivities": [],
+      "independentTasks": [],
+      "disposition": "Assessment retained; optional revision worksheets remain separate."
+    },
+    {
+      "id": "g7a-geo-w07-1",
+      "class": "7a",
+      "title": "Review and repair: Evidence hearing · Turn an observation into an investigable exhibit label / Evidence hearing · Record a result another investigator can check / Evidence hearing · Separate an observation from a possible cause",
+      "assessment": false,
+      "review": true,
+      "minutes": 40,
+      "objectives": [
+        "Turn an observation into an investigable exhibit label",
+        "Record a result another investigator can check",
+        "Separate an observation from a possible cause"
+      ],
+      "sections": [
+        "1.1",
+        "1.2",
+        "1.3"
+      ],
+      "workedDemonstrations": 6,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Evidence hearing · Turn an observation into an investigable exhibit label"
+        },
+        {
+          "type": "decision",
+          "title": "Evidence hearing · Record a result another investigator can check"
+        },
+        {
+          "type": "decision",
+          "title": "Evidence hearing · Separate an observation from a possible cause"
+        }
+      ],
+      "independentTasks": [
+        "Evidence hearing · Turn an observation into an investigable exhibit label · your task",
+        "Evidence hearing · Record a result another investigator can check · your task",
+        "Evidence hearing · Separate an observation from a possible cause · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w09-1",
+      "class": "7a",
+      "title": "Evidence before explanation / A crossing changes a place",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Design a small enquiry with honest limits",
+        "Explain a transport change without inventing history"
+      ],
+      "sections": [
+        "1.3",
+        "1.4"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Design a small enquiry with honest limits"
+        },
+        {
+          "type": "sort",
+          "title": "Before, after, or inference?"
+        }
+      ],
+      "independentTasks": [
+        "Evidence before explanation · your task",
+        "A crossing changes a place · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w10-1",
+      "class": "7a",
+      "title": "Then-and-now investigation / Compare with a local change",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Compare matched evidence from two dates",
+        "Test whether a mechanism transfers to another place"
+      ],
+      "sections": [
+        "1.4",
+        "1.4"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Compare matched evidence from two dates"
+        },
+        {
+          "type": "decision",
+          "title": "Test whether a mechanism transfers to another place"
+        }
+      ],
+      "independentTasks": [
+        "Then-and-now investigation · your task",
+        "Compare with a local change · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w11-1",
+      "class": "7a",
+      "title": "Three questions, one map / The answer sorting desk",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Answer identify, describe and explain differently",
+        "Match the evidence detail to the command word"
+      ],
+      "sections": [
+        "1.5",
+        "1.5"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Command-word editor"
+        },
+        {
+          "type": "decision",
+          "title": "Match the evidence detail to the command word"
+        }
+      ],
+      "independentTasks": [
+        "Three questions, one map · your task",
+        "The answer sorting desk · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w12-1",
+      "class": "7a",
+      "title": "Mark the mistaken answer / The bus-stop puzzle",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Repair an answer that answers the wrong question",
+        "Join a claim to evidence and a mechanism"
+      ],
+      "sections": [
+        "1.5",
+        "1.6"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Repair an answer that answers the wrong question"
+        },
+        {
+          "type": "sort",
+          "title": "Build an explanation"
+        }
+      ],
+      "independentTasks": [
+        "Mark the mistaken answer · your task",
+        "The bus-stop puzzle · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w13-1",
+      "class": "7a",
+      "title": "Q2 assessment",
+      "assessment": true,
+      "review": false,
+      "minutes": 40,
+      "objectives": [],
+      "sections": [],
+      "workedDemonstrations": 0,
+      "boardActivities": [],
+      "independentTasks": [],
+      "disposition": "Assessment retained; optional revision worksheets remain separate."
+    },
+    {
+      "id": "g7a-geo-w14-1",
+      "class": "7a",
+      "title": "Review and repair: Design a counterexample · Compare matched evidence from two dates / Design a counterexample · Repair an answer that answers the wrong question / Design a counterexample · Join a claim to evidence and a mechanism",
+      "assessment": false,
+      "review": true,
+      "minutes": 40,
+      "objectives": [
+        "Compare matched evidence from two dates",
+        "Repair an answer that answers the wrong question",
+        "Join a claim to evidence and a mechanism"
+      ],
+      "sections": [
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "workedDemonstrations": 6,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Design a counterexample · Compare matched evidence from two dates"
+        },
+        {
+          "type": "decision",
+          "title": "Design a counterexample · Repair an answer that answers the wrong question"
+        },
+        {
+          "type": "decision",
+          "title": "Design a counterexample · Join a claim to evidence and a mechanism"
+        }
+      ],
+      "independentTasks": [
+        "Design a counterexample · Compare matched evidence from two dates · your task",
+        "Design a counterexample · Repair an answer that answers the wrong question · your task",
+        "Design a counterexample · Join a claim to evidence and a mechanism · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w18-1",
+      "class": "7a",
+      "title": "Repair the unsupported claim / New evidence arrives",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Replace certainty with a testable explanation",
+        "Revise an explanation when chronology changes"
+      ],
+      "sections": [
+        "1.6",
+        "1.6"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Replace certainty with a testable explanation"
+        },
+        {
+          "type": "decision",
+          "title": "Revise an explanation when chronology changes"
+        }
+      ],
+      "independentTasks": [
+        "Repair the unsupported claim · your task",
+        "New evidence arrives · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w19-1",
+      "class": "7a",
+      "title": "Choose for a traveller / Change the traveller",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Evaluate a route for a named traveller",
+        "Change the criteria when the user changes"
+      ],
+      "sections": [
+        "1.7",
+        "1.7"
+      ],
+      "workedDemonstrations": 3,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Route briefing"
+        },
+        {
+          "type": "decision",
+          "title": "Change the criteria when the user changes"
+        }
+      ],
+      "independentTasks": [
+        "Choose for a traveller · your task",
+        "Change the traveller · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w20-1",
+      "class": "7a",
+      "title": "The missing criterion / Which map for which job?",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Treat availability as a constraint",
+        "Select a map by its purpose and date"
+      ],
+      "sections": [
+        "1.7",
+        "2.1"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Treat availability as a constraint"
+        },
+        {
+          "type": "sort",
+          "title": "Choose a map"
+        }
+      ],
+      "independentTasks": [
+        "The missing criterion · your task",
+        "Which map for which job? · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w21-1",
+      "class": "7a",
+      "title": "A map editor’s choices / Test a map claim",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Design a key for an audience",
+        "Distinguish absence on a map from absence in reality"
+      ],
+      "sections": [
+        "2.1",
+        "2.1"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Design a key for an audience"
+        },
+        {
+          "type": "decision",
+          "title": "Distinguish absence on a map from absence in reality"
+        }
+      ],
+      "independentTasks": [
+        "A map editor’s choices · your task",
+        "Test a map claim · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w22-1",
+      "class": "7a",
+      "title": "A classroom that fits / Catch the scale error",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Convert real size into a scaled drawing",
+        "Diagnose a scale calculation rather than guess"
+      ],
+      "sections": [
+        "2.2",
+        "2.2"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "sequence",
+          "title": "Scale-plan recipe"
+        },
+        {
+          "type": "decision",
+          "title": "Diagnose a scale calculation rather than guess"
+        }
+      ],
+      "independentTasks": [
+        "A classroom that fits · your task",
+        "Catch the scale error · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w23-1",
+      "class": "7a",
+      "title": "Design a pocket plan / Listen, then map",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Choose a scale that fits a page",
+        "Preserve route order before adding detail"
+      ],
+      "sections": [
+        "2.2",
+        "2.3"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Choose a scale that fits a page"
+        },
+        {
+          "type": "sequence",
+          "title": "Recover the route"
+        }
+      ],
+      "independentTasks": [
+        "Design a pocket plan · your task",
+        "Listen, then map · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w24-1",
+      "class": "7a",
+      "title": "Two people, one route / Make memory useful",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Explain why mental maps differ",
+        "Turn memory into a provisional navigation aid"
+      ],
+      "sections": [
+        "2.3",
+        "2.3"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Explain why mental maps differ"
+        },
+        {
+          "type": "decision",
+          "title": "Turn memory into a provisional navigation aid"
+        }
+      ],
+      "independentTasks": [
+        "Two people, one route · your task",
+        "Make memory useful · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w25-1",
+      "class": "7a",
+      "title": "Turn a scene into a plan / The missing key case",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Translate a view from above into a plan",
+        "Make symbol meanings explicit"
+      ],
+      "sections": [
+        "2.4",
+        "2.4"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Visitor-map editor"
+        },
+        {
+          "type": "decision",
+          "title": "Make symbol meanings explicit"
+        }
+      ],
+      "independentTasks": [
+        "Turn a scene into a plan · your task",
+        "The missing key case · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w26-1",
+      "class": "7a",
+      "title": "Q3 assessment",
+      "assessment": true,
+      "review": false,
+      "minutes": 40,
+      "objectives": [],
+      "sections": [],
+      "workedDemonstrations": 0,
+      "boardActivities": [],
+      "independentTasks": [],
+      "disposition": "Assessment retained; optional revision worksheets remain separate."
+    },
+    {
+      "id": "g7a-geo-w27-1",
+      "class": "7a",
+      "title": "Review and repair: Mistake clinic · Diagnose a scale calculation rather than guess / Mistake clinic · Turn memory into a provisional navigation aid / Mistake clinic · Translate a view from above into a plan",
+      "assessment": false,
+      "review": true,
+      "minutes": 40,
+      "objectives": [
+        "Diagnose a scale calculation rather than guess",
+        "Turn memory into a provisional navigation aid",
+        "Translate a view from above into a plan"
+      ],
+      "sections": [
+        "2.2",
+        "2.3",
+        "2.4"
+      ],
+      "workedDemonstrations": 6,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Mistake clinic · Diagnose a scale calculation rather than guess"
+        },
+        {
+          "type": "decision",
+          "title": "Mistake clinic · Turn memory into a provisional navigation aid"
+        },
+        {
+          "type": "decision",
+          "title": "Mistake clinic · Translate a view from above into a plan"
+        }
+      ],
+      "independentTasks": [
+        "Mistake clinic · Diagnose a scale calculation rather than guess · your task",
+        "Mistake clinic · Turn memory into a provisional navigation aid · your task",
+        "Mistake clinic · Translate a view from above into a plan · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w29-1",
+      "class": "7a",
+      "title": "Map for a new pupil / Locate the tree",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Select map detail for a specific journey",
+        "Read a grid square before adding tenths"
+      ],
+      "sections": [
+        "2.4",
+        "2.5"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Select map detail for a specific journey"
+        },
+        {
+          "type": "pin",
+          "title": "Send the rescue location"
+        }
+      ],
+      "independentTasks": [
+        "Map for a new pupil · your task",
+        "Locate the tree · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w30-1",
+      "class": "7a",
+      "title": "Deliver the rescue message / Find the swapped digits",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Compare positions using the correct half of the reference",
+        "Diagnose swapped tenths"
+      ],
+      "sections": [
+        "2.5",
+        "2.5"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "pin",
+          "title": "Send the rescue location"
+        },
+        {
+          "type": "pin",
+          "title": "Send the rescue location"
+        }
+      ],
+      "independentTasks": [
+        "Deliver the rescue message · your task",
+        "Find the swapped digits · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w31-1",
+      "class": "7a",
+      "title": "The direct-line trap / Plan a shorter detour",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Measure the route rather than the straight-line gap",
+        "Compare like with like when selecting a route"
+      ],
+      "sections": [
+        "2.6",
+        "2.6"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "sequence",
+          "title": "Measure a winding path"
+        },
+        {
+          "type": "decision",
+          "title": "Compare like with like when selecting a route"
+        }
+      ],
+      "independentTasks": [
+        "The direct-line trap · your task",
+        "Plan a shorter detour · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w32-1",
+      "class": "7a",
+      "title": "An enlarged map / A key before a guess",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Adjust a numerical scale after resizing",
+        "Convert a ratio scale into usable units"
+      ],
+      "sections": [
+        "2.6",
+        "2.7"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Adjust a numerical scale after resizing"
+        },
+        {
+          "type": "sort",
+          "title": "Map-reading checks"
+        }
+      ],
+      "independentTasks": [
+        "An enlarged map · your task",
+        "A key before a guess · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w33-1",
+      "class": "7a",
+      "title": "Choose a walking extract / Build the hill profile",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Distinguish detail from coverage",
+        "Plot a profile using two different axes"
+      ],
+      "sections": [
+        "2.7",
+        "2.8"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Distinguish detail from coverage"
+        },
+        {
+          "type": "sort",
+          "title": "Height or steepness?"
+        }
+      ],
+      "independentTasks": [
+        "Choose a walking extract · your task",
+        "Build the hill profile · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w34-1",
+      "class": "7a",
+      "title": "Choose the gentler approach / Challenge the hill myth",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Compare average slope using rise and run",
+        "Separate summit height from slope steepness"
+      ],
+      "sections": [
+        "2.8",
+        "2.8"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Compare average slope using rise and run"
+        },
+        {
+          "type": "decision",
+          "title": "Separate summit height from slope steepness"
+        }
+      ],
+      "independentTasks": [
+        "Choose the gentler approach · your task",
+        "Challenge the hill myth · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w35-1",
+      "class": "7a",
+      "title": "The coordinate dispatch / Correct the hemisphere",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Use two zero lines to locate a place",
+        "Keep signs and directions consistent"
+      ],
+      "sections": [
+        "2.9",
+        "2.9"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Coordinate dispatch"
+        },
+        {
+          "type": "decision",
+          "title": "Keep signs and directions consistent"
+        }
+      ],
+      "independentTasks": [
+        "The coordinate dispatch · your task",
+        "Correct the hemisphere · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w36-1",
+      "class": "7a",
+      "title": "Q4 assessment",
+      "assessment": true,
+      "review": false,
+      "minutes": 40,
+      "objectives": [],
+      "sections": [],
+      "workedDemonstrations": 0,
+      "boardActivities": [],
+      "independentTasks": [],
+      "disposition": "Assessment retained; optional revision worksheets remain separate."
+    },
+    {
+      "id": "g7a-geo-w37-1",
+      "class": "7a",
+      "title": "Review and repair: Teach the missing step · Distinguish detail from coverage / Teach the missing step · Separate summit height from slope steepness / Teach the missing step · Use two zero lines to locate a place",
+      "assessment": false,
+      "review": true,
+      "minutes": 40,
+      "objectives": [
+        "Distinguish detail from coverage",
+        "Separate summit height from slope steepness",
+        "Use two zero lines to locate a place"
+      ],
+      "sections": [
+        "2.7",
+        "2.8",
+        "2.9"
+      ],
+      "workedDemonstrations": 6,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Teach the missing step · Distinguish detail from coverage"
+        },
+        {
+          "type": "decision",
+          "title": "Teach the missing step · Separate summit height from slope steepness"
+        },
+        {
+          "type": "decision",
+          "title": "Teach the missing step · Use two zero lines to locate a place"
+        }
+      ],
+      "independentTasks": [
+        "Teach the missing step · Distinguish detail from coverage · your task",
+        "Teach the missing step · Separate summit height from slope steepness · your task",
+        "Teach the missing step · Use two zero lines to locate a place · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7a-geo-w38-1",
+      "class": "7a",
+      "title": "Review and repair: Design a counterexample · Distinguish detail from coverage / Design a counterexample · Separate summit height from slope steepness / Design a counterexample · Use two zero lines to locate a place",
+      "assessment": false,
+      "review": true,
+      "minutes": 40,
+      "objectives": [
+        "Distinguish detail from coverage",
+        "Separate summit height from slope steepness",
+        "Use two zero lines to locate a place"
+      ],
+      "sections": [
+        "2.7",
+        "2.8",
+        "2.9"
+      ],
+      "workedDemonstrations": 6,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Design a counterexample · Distinguish detail from coverage"
+        },
+        {
+          "type": "decision",
+          "title": "Design a counterexample · Separate summit height from slope steepness"
+        },
+        {
+          "type": "decision",
+          "title": "Design a counterexample · Use two zero lines to locate a place"
+        }
+      ],
+      "independentTasks": [
+        "Design a counterexample · Distinguish detail from coverage · your task",
+        "Design a counterexample · Separate summit height from slope steepness · your task",
+        "Design a counterexample · Use two zero lines to locate a place · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w01-1",
+      "class": "7b",
+      "title": "Baseline geography and vocabulary check",
+      "assessment": true,
+      "review": false,
+      "minutes": 40,
+      "objectives": [],
+      "sections": [],
+      "workedDemonstrations": 0,
+      "boardActivities": [],
+      "independentTasks": [],
+      "disposition": "Assessment retained; optional revision worksheets remain separate."
+    },
+    {
+      "id": "g7b-geo-w01-2",
+      "class": "7b",
+      "title": "Review and repair: Mistake clinic · Locate the UK at island and country scales / Mistake clinic · Explain relief rainfall as a connected process",
+      "assessment": false,
+      "review": true,
+      "minutes": 40,
+      "objectives": [
+        "Locate the UK at island and country scales",
+        "Explain relief rainfall as a connected process"
+      ],
+      "sections": [
+        "3.1",
+        "3.3"
+      ],
+      "workedDemonstrations": 4,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Mistake clinic · Locate the UK at island and country scales"
+        },
+        {
+          "type": "decision",
+          "title": "Mistake clinic · Explain relief rainfall as a connected process"
+        }
+      ],
+      "independentTasks": [
+        "Mistake clinic · Locate the UK at island and country scales · your task",
+        "Mistake clinic · Explain relief rainfall as a connected process · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w02-1",
+      "class": "7b",
+      "title": "Deliver four postcards",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Locate the UK at island and country scales"
+      ],
+      "sections": [
+        "3.1"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Island sorting office"
+        }
+      ],
+      "independentTasks": [
+        "Deliver four postcards · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w02-2",
+      "class": "7b",
+      "title": "Plan an Irish Sea journey",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Plan a connected journey within constraints"
+      ],
+      "sections": [
+        "3.1"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Plan a connected journey within constraints"
+        }
+      ],
+      "independentTasks": [
+        "Plan an Irish Sea journey · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w03-1",
+      "class": "7b",
+      "title": "Build two map keys",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Separate political information from physical relief"
+      ],
+      "sections": [
+        "3.2"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Switch the map layer"
+        }
+      ],
+      "independentTasks": [
+        "Build two map keys · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w03-2",
+      "class": "7b",
+      "title": "The boundary detective",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Combine layers to answer a specific question"
+      ],
+      "sections": [
+        "3.2"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Combine layers to answer a specific question"
+        }
+      ],
+      "independentTasks": [
+        "The boundary detective · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w04-1",
+      "class": "7b",
+      "title": "Two weather stations",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Compare weather measurements without calling them climate"
+      ],
+      "sections": [
+        "3.3"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sequence",
+          "title": "Build the rainfall mechanism"
+        }
+      ],
+      "independentTasks": [
+        "Two weather stations · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w04-2",
+      "class": "7b",
+      "title": "Forecast the mountain experiment",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Explain relief rainfall as a connected process"
+      ],
+      "sections": [
+        "3.3"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Explain relief rainfall as a connected process"
+        }
+      ],
+      "independentTasks": [
+        "Forecast the mountain experiment · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w05-1",
+      "class": "7b",
+      "title": "A town with overlapping interests",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Count overlapping groups once"
+      ],
+      "sections": [
+        "3.4"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Venn diagram without double counting"
+        }
+      ],
+      "independentTasks": [
+        "A town with overlapping interests · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w05-2",
+      "class": "7b",
+      "title": "The misleading headline",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Write a headline that respects the sample"
+      ],
+      "sections": [
+        "3.4"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Write a headline that respects the sample"
+        }
+      ],
+      "independentTasks": [
+        "The misleading headline · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w06-1",
+      "class": "7b",
+      "title": "Review and repair: Mistake clinic · Combine layers to answer a specific question / Mistake clinic · Compare weather measurements without calling them climate / Mistake clinic · Write a headline that respects the sample",
+      "assessment": false,
+      "review": true,
+      "minutes": 40,
+      "objectives": [
+        "Combine layers to answer a specific question",
+        "Compare weather measurements without calling them climate",
+        "Write a headline that respects the sample"
+      ],
+      "sections": [
+        "3.2",
+        "3.3",
+        "3.4"
+      ],
+      "workedDemonstrations": 6,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Mistake clinic · Combine layers to answer a specific question"
+        },
+        {
+          "type": "decision",
+          "title": "Mistake clinic · Compare weather measurements without calling them climate"
+        },
+        {
+          "type": "decision",
+          "title": "Mistake clinic · Write a headline that respects the sample"
+        }
+      ],
+      "independentTasks": [
+        "Mistake clinic · Combine layers to answer a specific question · your task",
+        "Mistake clinic · Compare weather measurements without calling them climate · your task",
+        "Mistake clinic · Write a headline that respects the sample · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w06-2",
+      "class": "7b",
+      "title": "Quarter 1 assessment — assessment / feedback",
+      "assessment": true,
+      "review": false,
+      "minutes": 40,
+      "objectives": [],
+      "sections": [],
+      "workedDemonstrations": 0,
+      "boardActivities": [],
+      "independentTasks": [],
+      "disposition": "Assessment retained; optional revision worksheets remain separate."
+    },
+    {
+      "id": "g7b-geo-w07-1",
+      "class": "7b",
+      "title": "Review and repair: Teach the missing step · Combine layers to answer a specific question / Teach the missing step · Compare weather measurements without calling them climate / Teach the missing step · Write a headline that respects the sample",
+      "assessment": false,
+      "review": true,
+      "minutes": 40,
+      "objectives": [
+        "Combine layers to answer a specific question",
+        "Compare weather measurements without calling them climate",
+        "Write a headline that respects the sample"
+      ],
+      "sections": [
+        "3.2",
+        "3.3",
+        "3.4"
+      ],
+      "workedDemonstrations": 6,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Teach the missing step · Combine layers to answer a specific question"
+        },
+        {
+          "type": "decision",
+          "title": "Teach the missing step · Compare weather measurements without calling them climate"
+        },
+        {
+          "type": "decision",
+          "title": "Teach the missing step · Write a headline that respects the sample"
+        }
+      ],
+      "independentTasks": [
+        "Teach the missing step · Combine layers to answer a specific question · your task",
+        "Teach the missing step · Compare weather measurements without calling them climate · your task",
+        "Teach the missing step · Write a headline that respects the sample · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w07-2",
+      "class": "7b",
+      "title": "Review and repair: Design a counterexample · Separate political information from physical relief / Design a counterexample · Explain relief rainfall as a connected process / Design a counterexample · Count overlapping groups once",
+      "assessment": false,
+      "review": true,
+      "minutes": 40,
+      "objectives": [
+        "Separate political information from physical relief",
+        "Explain relief rainfall as a connected process",
+        "Count overlapping groups once"
+      ],
+      "sections": [
+        "3.2",
+        "3.3",
+        "3.4"
+      ],
+      "workedDemonstrations": 6,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Design a counterexample · Separate political information from physical relief"
+        },
+        {
+          "type": "decision",
+          "title": "Design a counterexample · Explain relief rainfall as a connected process"
+        },
+        {
+          "type": "decision",
+          "title": "Design a counterexample · Count overlapping groups once"
+        }
+      ],
+      "independentTasks": [
+        "Design a counterexample · Separate political information from physical relief · your task",
+        "Design a counterexample · Explain relief rainfall as a connected process · your task",
+        "Design a counterexample · Count overlapping groups once · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w09-1",
+      "class": "7b",
+      "title": "Settlement from above",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Read settlement pattern before guessing its cause"
+      ],
+      "sections": [
+        "3.5"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Settlement planner"
+        }
+      ],
+      "independentTasks": [
+        "Settlement from above · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w09-2",
+      "class": "7b",
+      "title": "A road changes the pattern",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Describe a mixed pattern after development"
+      ],
+      "sections": [
+        "3.5"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Describe a mixed pattern after development"
+        }
+      ],
+      "independentTasks": [
+        "A road changes the pattern · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w10-1",
+      "class": "7b",
+      "title": "Which town works for whom?",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Evaluate quality of life using more than income"
+      ],
+      "sections": [
+        "3.6"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Quality-of-life evidence"
+        }
+      ],
+      "independentTasks": [
+        "Which town works for whom? · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w10-2",
+      "class": "7b",
+      "title": "The indicator changes",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Update only the conclusions the new evidence supports"
+      ],
+      "sections": [
+        "3.6"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Update only the conclusions the new evidence supports"
+        }
+      ],
+      "independentTasks": [
+        "The indicator changes · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w11-1",
+      "class": "7b",
+      "title": "City connections",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Explain links between city functions"
+      ],
+      "sections": [
+        "3.7"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "City function connections"
+        }
+      ],
+      "independentTasks": [
+        "City connections · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w11-2",
+      "class": "7b",
+      "title": "One station closes",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Trace a disruption through a network"
+      ],
+      "sections": [
+        "3.7"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Trace a disruption through a network"
+        }
+      ],
+      "independentTasks": [
+        "One station closes · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w12-1",
+      "class": "7b",
+      "title": "Follow three connections",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Track goods, people and information separately"
+      ],
+      "sections": [
+        "3.8"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Label the UK viewpoint"
+        }
+      ],
+      "independentTasks": [
+        "Follow three connections · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w12-2",
+      "class": "7b",
+      "title": "A link is interrupted",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Choose a response to a broken connection"
+      ],
+      "sections": [
+        "3.8"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Choose a response to a broken connection"
+        }
+      ],
+      "independentTasks": [
+        "A link is interrupted · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w13-1",
+      "class": "7b",
+      "title": "Review and repair: Field notebook rescue · Update only the conclusions the new evidence supports / Field notebook rescue · Explain links between city functions / Field notebook rescue · Choose a response to a broken connection",
+      "assessment": false,
+      "review": true,
+      "minutes": 40,
+      "objectives": [
+        "Update only the conclusions the new evidence supports",
+        "Explain links between city functions",
+        "Choose a response to a broken connection"
+      ],
+      "sections": [
+        "3.6",
+        "3.7",
+        "3.8"
+      ],
+      "workedDemonstrations": 6,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Field notebook rescue · Update only the conclusions the new evidence supports"
+        },
+        {
+          "type": "decision",
+          "title": "Field notebook rescue · Explain links between city functions"
+        },
+        {
+          "type": "decision",
+          "title": "Field notebook rescue · Choose a response to a broken connection"
+        }
+      ],
+      "independentTasks": [
+        "Field notebook rescue · Update only the conclusions the new evidence supports · your task",
+        "Field notebook rescue · Explain links between city functions · your task",
+        "Field notebook rescue · Choose a response to a broken connection · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w13-2",
+      "class": "7b",
+      "title": "Mid-year assessment — assessment / feedback",
+      "assessment": true,
+      "review": false,
+      "minutes": 40,
+      "objectives": [],
+      "sections": [],
+      "workedDemonstrations": 0,
+      "boardActivities": [],
+      "independentTasks": [],
+      "disposition": "Assessment retained; optional revision worksheets remain separate."
+    },
+    {
+      "id": "g7b-geo-w14-1",
+      "class": "7b",
+      "title": "Review and repair: Evidence hearing · Update only the conclusions the new evidence supports / Evidence hearing · Explain links between city functions / Evidence hearing · Choose a response to a broken connection",
+      "assessment": false,
+      "review": true,
+      "minutes": 40,
+      "objectives": [
+        "Update only the conclusions the new evidence supports",
+        "Explain links between city functions",
+        "Choose a response to a broken connection"
+      ],
+      "sections": [
+        "3.6",
+        "3.7",
+        "3.8"
+      ],
+      "workedDemonstrations": 6,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Evidence hearing · Update only the conclusions the new evidence supports"
+        },
+        {
+          "type": "decision",
+          "title": "Evidence hearing · Explain links between city functions"
+        },
+        {
+          "type": "decision",
+          "title": "Evidence hearing · Choose a response to a broken connection"
+        }
+      ],
+      "independentTasks": [
+        "Evidence hearing · Update only the conclusions the new evidence supports · your task",
+        "Evidence hearing · Explain links between city functions · your task",
+        "Evidence hearing · Choose a response to a broken connection · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w14-2",
+      "class": "7b",
+      "title": "Review and repair: Teach the missing step · Evaluate quality of life using more than income / Teach the missing step · Trace a disruption through a network / Teach the missing step · Track goods, people and information separately",
+      "assessment": false,
+      "review": true,
+      "minutes": 40,
+      "objectives": [
+        "Evaluate quality of life using more than income",
+        "Trace a disruption through a network",
+        "Track goods, people and information separately"
+      ],
+      "sections": [
+        "3.6",
+        "3.7",
+        "3.8"
+      ],
+      "workedDemonstrations": 6,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Teach the missing step · Evaluate quality of life using more than income"
+        },
+        {
+          "type": "decision",
+          "title": "Teach the missing step · Trace a disruption through a network"
+        },
+        {
+          "type": "decision",
+          "title": "Teach the missing step · Track goods, people and information separately"
+        }
+      ],
+      "independentTasks": [
+        "Teach the missing step · Evaluate quality of life using more than income · your task",
+        "Teach the missing step · Trace a disruption through a network · your task",
+        "Teach the missing step · Track goods, people and information separately · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w18-1",
+      "class": "7b",
+      "title": "Landscape evidence file",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Build a past-ice explanation from several clues"
+      ],
+      "sections": [
+        "4.1"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Observation or interpretation?"
+        }
+      ],
+      "independentTasks": [
+        "Landscape evidence file · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w18-2",
+      "class": "7b",
+      "title": "Challenge a past-ice claim",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Match the strength of a claim to its evidence"
+      ],
+      "sections": [
+        "4.1"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Match the strength of a claim to its evidence"
+        }
+      ],
+      "independentTasks": [
+        "Challenge a past-ice claim · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w19-1",
+      "class": "7b",
+      "title": "Keep the glacier in balance",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Calculate glacier mass balance"
+      ],
+      "sections": [
+        "4.2"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Ice-accountant challenge"
+        }
+      ],
+      "independentTasks": [
+        "Keep the glacier in balance · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w19-2",
+      "class": "7b",
+      "title": "Retreat while flowing",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Separate ice movement from the snout's position"
+      ],
+      "sections": [
+        "4.2"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Separate ice movement from the snout's position"
+        }
+      ],
+      "independentTasks": [
+        "Retreat while flowing · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w20-1",
+      "class": "7b",
+      "title": "The rock’s journey",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Distinguish plucking, transport and abrasion"
+      ],
+      "sections": [
+        "4.3"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Name the action"
+        }
+      ],
+      "independentTasks": [
+        "The rock’s journey · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w20-2",
+      "class": "7b",
+      "title": "Two glaciers, different tools",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Identify a useful model and its missing variables"
+      ],
+      "sections": [
+        "4.3"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Identify a useful model and its missing variables"
+        }
+      ],
+      "independentTasks": [
+        "Two glaciers, different tools · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w21-1",
+      "class": "7b",
+      "title": "Change the valley shape",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Explain widening and deepening in cross-section"
+      ],
+      "sections": [
+        "4.4"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Choose the view"
+        }
+      ],
+      "independentTasks": [
+        "Change the valley shape · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w21-2",
+      "class": "7b",
+      "title": "The viewpoint trap",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Choose the view needed for the question"
+      ],
+      "sections": [
+        "4.4"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Choose the view needed for the question"
+        }
+      ],
+      "independentTasks": [
+        "The viewpoint trap · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w22-1",
+      "class": "7b",
+      "title": "Carve a mountain",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Explain a corrie and the ridge between hollows"
+      ],
+      "sections": [
+        "4.5"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Mountain guide clues"
+        }
+      ],
+      "independentTasks": [
+        "Carve a mountain · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w22-2",
+      "class": "7b",
+      "title": "Guidebook without names",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Use shape and formation clues together"
+      ],
+      "sections": [
+        "4.5"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Use shape and formation clues together"
+        }
+      ],
+      "independentTasks": [
+        "Guidebook without names · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w23-1",
+      "class": "7b",
+      "title": "What the ice leaves behind",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Explain deposition when ice loses its load"
+      ],
+      "sections": [
+        "4.6"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sequence",
+          "title": "From rock to deposit"
+        }
+      ],
+      "independentTasks": [
+        "What the ice leaves behind · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w23-2",
+      "class": "7b",
+      "title": "Reconstruct the old margin",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Infer a former margin cautiously"
+      ],
+      "sections": [
+        "4.6"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Infer a former margin cautiously"
+        }
+      ],
+      "independentTasks": [
+        "Reconstruct the old margin · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w24-1",
+      "class": "7b",
+      "title": "A valley visitor plan",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Connect landform, visitors and measurable pressure"
+      ],
+      "sections": [
+        "4.7"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Visitor-management evidence"
+        }
+      ],
+      "independentTasks": [
+        "A valley visitor plan · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w24-2",
+      "class": "7b",
+      "title": "A water-store budget",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Model a glacier as a changing water store"
+      ],
+      "sections": [
+        "4.8"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Water store or flow?"
+        }
+      ],
+      "independentTasks": [
+        "A water-store budget · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w25-1",
+      "class": "7b",
+      "title": "Follow the river downstream",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Use river-network vocabulary correctly"
+      ],
+      "sections": [
+        "5.1"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sequence",
+          "title": "Follow the model river"
+        }
+      ],
+      "independentTasks": [
+        "Follow the river downstream · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w25-2",
+      "class": "7b",
+      "title": "Become a water drop",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Explain water-cycle arrows as changes or movements"
+      ],
+      "sections": [
+        "5.2"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Name the water process"
+        }
+      ],
+      "independentTasks": [
+        "Become a water drop · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w26-1",
+      "class": "7b",
+      "title": "Review and repair: Design a counterexample · Compare short-term flow with long-term storage / Design a counterexample · Use river-network vocabulary correctly / Design a counterexample · Compare surface and underground pathways",
+      "assessment": false,
+      "review": true,
+      "minutes": 40,
+      "objectives": [
+        "Compare short-term flow with long-term storage",
+        "Use river-network vocabulary correctly",
+        "Compare surface and underground pathways"
+      ],
+      "sections": [
+        "4.8",
+        "5.1",
+        "5.2"
+      ],
+      "workedDemonstrations": 6,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Design a counterexample · Compare short-term flow with long-term storage"
+        },
+        {
+          "type": "decision",
+          "title": "Design a counterexample · Use river-network vocabulary correctly"
+        },
+        {
+          "type": "decision",
+          "title": "Design a counterexample · Compare surface and underground pathways"
+        }
+      ],
+      "independentTasks": [
+        "Design a counterexample · Compare short-term flow with long-term storage · your task",
+        "Design a counterexample · Use river-network vocabulary correctly · your task",
+        "Design a counterexample · Compare surface and underground pathways · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w26-2",
+      "class": "7b",
+      "title": "Quarter 3 assessment — assessment / feedback",
+      "assessment": true,
+      "review": false,
+      "minutes": 40,
+      "objectives": [],
+      "sections": [],
+      "workedDemonstrations": 0,
+      "boardActivities": [],
+      "independentTasks": [],
+      "disposition": "Assessment retained; optional revision worksheets remain separate."
+    },
+    {
+      "id": "g7b-geo-w27-1",
+      "class": "7b",
+      "title": "Review and repair: Mistake clinic · Compare short-term flow with long-term storage / Mistake clinic · Use river-network vocabulary correctly / Mistake clinic · Compare surface and underground pathways",
+      "assessment": false,
+      "review": true,
+      "minutes": 40,
+      "objectives": [
+        "Compare short-term flow with long-term storage",
+        "Use river-network vocabulary correctly",
+        "Compare surface and underground pathways"
+      ],
+      "sections": [
+        "4.8",
+        "5.1",
+        "5.2"
+      ],
+      "workedDemonstrations": 6,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Mistake clinic · Compare short-term flow with long-term storage"
+        },
+        {
+          "type": "decision",
+          "title": "Mistake clinic · Use river-network vocabulary correctly"
+        },
+        {
+          "type": "decision",
+          "title": "Mistake clinic · Compare surface and underground pathways"
+        }
+      ],
+      "independentTasks": [
+        "Mistake clinic · Compare short-term flow with long-term storage · your task",
+        "Mistake clinic · Use river-network vocabulary correctly · your task",
+        "Mistake clinic · Compare surface and underground pathways · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w27-2",
+      "class": "7b",
+      "title": "Review and repair: Evidence hearing · Model a glacier as a changing water store / Evidence hearing · Trace connected places before predicting travel time / Evidence hearing · Explain water-cycle arrows as changes or movements",
+      "assessment": false,
+      "review": true,
+      "minutes": 40,
+      "objectives": [
+        "Model a glacier as a changing water store",
+        "Trace connected places before predicting travel time",
+        "Explain water-cycle arrows as changes or movements"
+      ],
+      "sections": [
+        "4.8",
+        "5.1",
+        "5.2"
+      ],
+      "workedDemonstrations": 6,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Evidence hearing · Model a glacier as a changing water store"
+        },
+        {
+          "type": "decision",
+          "title": "Evidence hearing · Trace connected places before predicting travel time"
+        },
+        {
+          "type": "decision",
+          "title": "Evidence hearing · Explain water-cycle arrows as changes or movements"
+        }
+      ],
+      "independentTasks": [
+        "Evidence hearing · Model a glacier as a changing water store · your task",
+        "Evidence hearing · Trace connected places before predicting travel time · your task",
+        "Evidence hearing · Explain water-cycle arrows as changes or movements · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w29-1",
+      "class": "7b",
+      "title": "Build a drainage basin",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Draw a drainage divide from high ground"
+      ],
+      "sections": [
+        "5.3"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Basin vocabulary"
+        }
+      ],
+      "independentTasks": [
+        "Build a drainage basin · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w29-2",
+      "class": "7b",
+      "title": "Sediment journey",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Distinguish removing, moving and dropping sediment"
+      ],
+      "sections": [
+        "5.4"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Sediment action sorter"
+        }
+      ],
+      "independentTasks": [
+        "Sediment journey · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w30-1",
+      "class": "7b",
+      "title": "The flow slows",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Predict settling with stated assumptions"
+      ],
+      "sections": [
+        "5.4"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Predict settling with stated assumptions"
+        }
+      ],
+      "independentTasks": [
+        "The flow slows · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w31-1",
+      "class": "7b",
+      "title": "Six landform process cards",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Connect landforms to more than one process"
+      ],
+      "sections": [
+        "5.5"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sequence",
+          "title": "Create an oxbow lake"
+        }
+      ],
+      "independentTasks": [
+        "Six landform process cards · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w31-2",
+      "class": "7b",
+      "title": "Landform guide challenge",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Explain a sequence rather than just name its final shape"
+      ],
+      "sections": [
+        "5.5"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Explain a sequence rather than just name its final shape"
+        }
+      ],
+      "independentTasks": [
+        "Landform guide challenge · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w32-1",
+      "class": "7b",
+      "title": "Share the river",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Balance a finite supply and make trade-offs explicit"
+      ],
+      "sections": [
+        "5.6"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "allocation",
+          "title": "Water council"
+        }
+      ],
+      "independentTasks": [
+        "Share the river · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w32-2",
+      "class": "7b",
+      "title": "Two waters meet",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Explain why estuary conditions vary"
+      ],
+      "sections": [
+        "5.7"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Estuary hearing"
+        }
+      ],
+      "independentTasks": [
+        "Two waters meet · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w33-1",
+      "class": "7b",
+      "title": "Make rain, predict runoff",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Control one variable in a runoff experiment"
+      ],
+      "sections": [
+        "5.8"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sequence",
+          "title": "Explain one possible flood pathway"
+        }
+      ],
+      "independentTasks": [
+        "Make rain, predict runoff · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w33-2",
+      "class": "7b",
+      "title": "Cause-to-impact chain",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Connect causes to impacts through a mechanism"
+      ],
+      "sections": [
+        "5.8"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Connect causes to impacts through a mechanism"
+        }
+      ],
+      "independentTasks": [
+        "Cause-to-impact chain · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w34-1",
+      "class": "7b",
+      "title": "Build a flood case file",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Organise a case file without mixing fact and invention"
+      ],
+      "sections": [
+        "5.9"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "sort",
+          "title": "Organise a fictional flood log"
+        }
+      ],
+      "independentTasks": [
+        "Build a flood case file · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w34-2",
+      "class": "7b",
+      "title": "The wrong solution claim",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Match a response to the flood mechanism"
+      ],
+      "sections": [
+        "5.9"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Match a response to the flood mechanism"
+        }
+      ],
+      "independentTasks": [
+        "The wrong solution claim · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w35-1",
+      "class": "7b",
+      "title": "Spend a flood budget",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Choose a feasible package and explain its limits"
+      ],
+      "sections": [
+        "5.10"
+      ],
+      "workedDemonstrations": 1,
+      "boardActivities": [
+        {
+          "type": "budget",
+          "title": "Choose a flood package"
+        }
+      ],
+      "independentTasks": [
+        "Spend a flood budget · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w35-2",
+      "class": "7b",
+      "title": "The budget changes",
+      "assessment": false,
+      "review": false,
+      "minutes": 40,
+      "objectives": [
+        "Evaluate performance after checking affordability"
+      ],
+      "sections": [
+        "5.10"
+      ],
+      "workedDemonstrations": 2,
+      "boardActivities": [
+        {
+          "type": "budget",
+          "title": "Choose a flood package"
+        }
+      ],
+      "independentTasks": [
+        "The budget changes · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w36-1",
+      "class": "7b",
+      "title": "Review and repair: Teach the missing step · Connect causes to impacts through a mechanism / Teach the missing step · Organise a case file without mixing fact and invention / Teach the missing step · Evaluate performance after checking affordability",
+      "assessment": false,
+      "review": true,
+      "minutes": 40,
+      "objectives": [
+        "Connect causes to impacts through a mechanism",
+        "Organise a case file without mixing fact and invention",
+        "Evaluate performance after checking affordability"
+      ],
+      "sections": [
+        "5.8",
+        "5.9",
+        "5.10"
+      ],
+      "workedDemonstrations": 7,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Teach the missing step · Connect causes to impacts through a mechanism"
+        },
+        {
+          "type": "decision",
+          "title": "Teach the missing step · Organise a case file without mixing fact and invention"
+        },
+        {
+          "type": "decision",
+          "title": "Teach the missing step · Evaluate performance after checking affordability"
+        }
+      ],
+      "independentTasks": [
+        "Teach the missing step · Connect causes to impacts through a mechanism · your task",
+        "Teach the missing step · Organise a case file without mixing fact and invention · your task",
+        "Teach the missing step · Evaluate performance after checking affordability · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w36-2",
+      "class": "7b",
+      "title": "End-of-year assessment — assessment / feedback",
+      "assessment": true,
+      "review": false,
+      "minutes": 40,
+      "objectives": [],
+      "sections": [],
+      "workedDemonstrations": 0,
+      "boardActivities": [],
+      "independentTasks": [],
+      "disposition": "Assessment retained; optional revision worksheets remain separate."
+    },
+    {
+      "id": "g7b-geo-w37-1",
+      "class": "7b",
+      "title": "Review and repair: Field notebook rescue · Connect causes to impacts through a mechanism / Field notebook rescue · Organise a case file without mixing fact and invention / Field notebook rescue · Evaluate performance after checking affordability",
+      "assessment": false,
+      "review": true,
+      "minutes": 40,
+      "objectives": [
+        "Connect causes to impacts through a mechanism",
+        "Organise a case file without mixing fact and invention",
+        "Evaluate performance after checking affordability"
+      ],
+      "sections": [
+        "5.8",
+        "5.9",
+        "5.10"
+      ],
+      "workedDemonstrations": 7,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Field notebook rescue · Connect causes to impacts through a mechanism"
+        },
+        {
+          "type": "decision",
+          "title": "Field notebook rescue · Organise a case file without mixing fact and invention"
+        },
+        {
+          "type": "decision",
+          "title": "Field notebook rescue · Evaluate performance after checking affordability"
+        }
+      ],
+      "independentTasks": [
+        "Field notebook rescue · Connect causes to impacts through a mechanism · your task",
+        "Field notebook rescue · Organise a case file without mixing fact and invention · your task",
+        "Field notebook rescue · Evaluate performance after checking affordability · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    },
+    {
+      "id": "g7b-geo-w37-2",
+      "class": "7b",
+      "title": "Review and repair: Mistake clinic · Control one variable in a runoff experiment / Mistake clinic · Match a response to the flood mechanism / Mistake clinic · Choose a feasible package and explain its limits",
+      "assessment": false,
+      "review": true,
+      "minutes": 40,
+      "objectives": [
+        "Control one variable in a runoff experiment",
+        "Match a response to the flood mechanism",
+        "Choose a feasible package and explain its limits"
+      ],
+      "sections": [
+        "5.8",
+        "5.9",
+        "5.10"
+      ],
+      "workedDemonstrations": 6,
+      "boardActivities": [
+        {
+          "type": "decision",
+          "title": "Mistake clinic · Control one variable in a runoff experiment"
+        },
+        {
+          "type": "decision",
+          "title": "Mistake clinic · Match a response to the flood mechanism"
+        },
+        {
+          "type": "decision",
+          "title": "Mistake clinic · Choose a feasible package and explain its limits"
+        }
+      ],
+      "independentTasks": [
+        "Mistake clinic · Control one variable in a runoff experiment · your task",
+        "Mistake clinic · Match a response to the flood mechanism · your task",
+        "Mistake clinic · Choose a feasible package and explain its limits · your task"
+      ],
+      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+    }
+  ]
+}

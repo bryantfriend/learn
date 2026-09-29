@@ -1,7 +1,7 @@
 // Pacing is an estimate for pupil work, not a script-reading target.
 const task=(title,mode,lines,id)=>({title,mode,lines,discussionId:id});
 export function strengthenPacing(lesson){
- if(!lesson.gp||lesson.examId)return lesson;
+ if(!lesson.gp||lesson.examId||lesson.geoRedesign)return lesson;
  const standard=!lesson.customVisuals;
  if(standard){
   const find=id=>lesson.stages.find(s=>s.id===id);

@@ -24,12 +24,12 @@ const {createServer}=require('../scripts/serve.cjs');const server=createServer()
   if(did){covered++;console.log('PASS illustrated '+l.id);}
  }
  await load(lessons.find(l=>l.id==='g8-gp-6.5'));await page.locator('[data-choice="0"]').click();await page.locator('[data-choice="1"]').click();assert.match(await page.locator('.visual-caption').innerText(),/130 \/ 100/);await page.screenshot({path:'output/playwright/visual-budget-board.png'});await page.getByRole('button',{name:'↺ Reset',exact:true}).click();assert.match(await page.locator('.visual-caption').innerText(),/0 \/ 100/);
- const cycle=lessons.find(l=>l.id==='g7b-geo-w18-1');await load(cycle);
+ const cycle=lessons.find(l=>l.id==='g8-gp-2.1');await load(cycle);
  const phase=await page.evaluate(()=>JSON.parse(localStorage.getItem('learn.session.v1')).stage);
  assert.equal(await page.locator('.lesson-visual.is-playing').count(),0);
  await page.getByRole('button',{name:'▶ Play',exact:true}).click();
  assert.equal(await page.locator('.lesson-visual.is-playing').count(),1);
- await page.getByRole('button',{name:'Next focus →',exact:true}).click();assert.match(await page.locator('.visual-caption').innerText(),/Moving ice/);
+ await page.getByRole('button',{name:'Next focus →',exact:true}).click();assert.ok((await page.locator('.visual-caption').innerText()).includes(visualSpec(cycle,cycle.stages[0],cycle.stages[0].frames[0]).steps[1]));
  assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('learn.session.v1')).stage),phase);
  await page.locator('[data-action="attention"]').click();assert.equal(await page.locator('.lesson-visual.is-playing').count(),0);await page.keyboard.press('Escape');
  await page.getByRole('button',{name:'⛶ Enlarge',exact:true}).click();assert.equal(await page.locator('.visual-lightbox[open]').count(),1);
@@ -37,16 +37,16 @@ const {createServer}=require('../scripts/serve.cjs');const server=createServer()
  await page.getByRole('button',{name:'Close visual ×'}).click();await page.locator('.teaching-content .lesson-visual').waitFor();assert.equal(await page.locator('.teaching-content .lesson-visual').count(),1);
  await page.getByRole('button',{name:'▶ Play',exact:true}).click();assert.equal(await page.locator('.lesson-visual.is-playing').count(),1);
  await page.getByRole('button',{name:'↺ Reset',exact:true}).click();assert.equal(await page.locator('.lesson-visual.is-playing').count(),0);
- const flood=lessons.find(l=>l.id==='g7b-geo-w33-1');await load(flood);
- await page.getByRole('button',{name:'Add rain',exact:true}).click();const soil=await page.locator('.water-level').getAttribute('height');
- await page.getByRole('button',{name:'Surface: soil',exact:true}).click();const paved=await page.locator('.water-level').getAttribute('height');assert.ok(Number(paved)>Number(soil));
- await page.screenshot({path:'output/playwright/visual-flood-board.png'});
+ const flood=lessons.find(l=>l.id==='g7b-geo-w33-1');await load(flood,2);
+ await page.locator('[data-action="geography-lab"]').click();assert.match(await page.locator('.lab-canvas').innerText(),/runoff 12.0/);
+ await page.getByRole('slider',{name:'Infiltration percent'}).fill('20');await page.getByRole('slider',{name:'Infiltration percent'}).dispatchEvent('input');assert.match(await page.locator('.lab-canvas').innerText(),/runoff 24.0/);
+ await page.screenshot({path:'output/playwright/visual-flood-board.png'});await page.keyboard.press('Escape');
  for(const [width,height] of [[1366,768],[1920,1080],[390,844]]){
   await page.setViewportSize({width,height});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
  }
  await page.setViewportSize({width:1280,height:720});await page.emulateMedia({reducedMotion:'reduce'});await load(cycle);
  assert.equal(await page.locator('.visual-play').isDisabled(),true);assert.equal(await page.evaluate(()=>document.querySelector('.lesson-visual').getAnimations({subtree:true}).length),0);
- await page.getByRole('button',{name:'Next focus →',exact:true}).click();assert.match(await page.locator('.visual-caption').innerText(),/Moving ice/);
+ await page.getByRole('button',{name:'Next focus →',exact:true}).click();assert.ok((await page.locator('.visual-caption').innerText()).includes(visualSpec(cycle,cycle.stages[0],cycle.stages[0].frames[0]).steps[1]));
  await page.emulateMedia({reducedMotion:'no-preference'});await load(lessons.find(l=>l.id==='g8-gp-1.2'));await page.screenshot({path:'output/playwright/visual-perspectives-board.png'});
  await load(lessons.find(l=>l.id==='g7b-gp-w09-3'));await page.screenshot({path:'output/playwright/visual-data-board.png'});
  assert.deepEqual(errors,[]);console.log('PASS '+count+' visual frames across '+covered+' lessons; teacher controls, Attention, enlarged view, runoff interaction, reduced motion and responsive checks');

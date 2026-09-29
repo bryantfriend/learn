@@ -22,7 +22,7 @@ test('7B pacing preserves every source row, with 63 Geography and 93 GP sessions
 test('7B-only lessons have expanded playable content and valid checkpoints',()=>{
  assert.equal(grade7BLessons.length,156);
  for(const l of grade7BLessons){
-  assert.equal(l.stages.reduce((s,x)=>s+x.durationMinutes,0),l.examId?40:50);
+  assert.equal(l.stages.reduce((s,x)=>s+x.durationMinutes,0),40);
   assert.ok(l.stages.every(s=>s.notes&&s.frames.length));
   assert.ok(l.stages.at(-1).frames.at(-1).final);
   assert.ok(lessonsFor('7b',l.catalog.subjectId).includes(l));

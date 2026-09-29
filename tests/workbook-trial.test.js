@@ -20,7 +20,8 @@ test('trial exposes two separate lessons per assigned class and preserves origin
 test('all trials have a timed 40-minute core, optional practice, page tasks and hidden models', () => {
   for (const l of workbookTrialLessons) {
     const optional = l.stages.filter(s => s.id.startsWith('reserve-'));
-    assert.equal(optional.reduce((n,s) => n+s.durationMinutes,0),10);
+    assert.equal(optional.reduce((n,s) => n+s.durationMinutes,0),0);
+    assert.equal(l.extensions.reduce((n,t) => n+t.minutes,0),20);
     assert.equal(l.stages.filter(s => !optional.includes(s)).reduce((n,s) => n+s.durationMinutes,0),40);
     assert.ok(l.stages.at(-1).frames.at(-1).final);
     const tasks = l.stages.flatMap(s => s.frames).filter(f => f.bookTask);

@@ -1,4 +1,9 @@
 import {lessonToText,textToLesson,saveLessonText,originalLessonText} from './lesson-editor.js';
+import {createGeographyLab} from './geography-lab.js';
+import {markVocabulary,createConversationCards} from './english-support.js';
+import {APP_VERSION} from './version.js';
+import {createGeographyBoard,initialBoardState} from './geography-board.js';
+const geographyBoardStates=new Map();
 import {visualSpec,createVisual,pauseVisuals} from './visuals.js';
 import { lesson as firstLesson, getLesson, modes, questionOptions } from './lessons.js';
 import { frameKey, responseKeyFor, summarizeSession } from './progress.js';
@@ -112,6 +117,7 @@ function brand() {
     return element('div', { className: 'brand' }, [
         element('span', { className: 'brand-mark', 'aria-hidden': 'true' }, ['L']),
         element('strong', {}, ['Learn']),
+        element('span', { className: 'app-version', 'aria-label': 'App version '+APP_VERSION }, ['v'+APP_VERSION]),
         element('span', { className: 'brand-divider' }, ['Oxford International School'])
     ]);
 }
@@ -128,10 +134,10 @@ function renderHome() {
                 element('h1', {}, ['Clear routines.', element('br'), element('em', {}, ['Active learning.'])]),
                 element('p', { className: 'home-intro' }, ['A shared screen. A fresh start. A whole class ready to think.']),
                 element('div', { className: 'lesson-card' }, [
-                    element('div', { className: 'lesson-picker-row' }, [element('p', { className: 'eyebrow' }, ['YOUR CLASSROOM']), element('span', { className: 'catalog-count' }, ['3 classes · 3 categories'])]),
+                    element('div', { className: 'lesson-picker-row' }, [element('p', { className: 'eyebrow' }, ['YOUR CLASSROOM']), element('span', { className: 'catalog-count' }, ['3 classes · 4 categories'])]),
                     element('h2', {}, [session ? contextLabel(session) : 'Where are we learning today?']),
                     element('p', { className: 'lesson-subtitle' }, [session ? lesson.title : '7A · 7B · 8th Grade']),
-                    element('p', { className: 'meta' }, ['Geography · Global Perspectives']),
+                    element('p', { className: 'meta' }, ['Geography · Global Perspectives · Conversational English']),
                     element('div', { className: 'home-actions' }, actions),
                     session ? element('p', { className: 'saved-hint' }, ['Saved: ' + currentStage().title + ' · step ' + (session.steps[session.stage] + 1) + '. Timer resumes paused.']) : element('p', { className: 'saved-hint' }, ['Choose your class, subject, and lesson. Your place is saved separately for each.'])
                 ])
@@ -184,6 +190,10 @@ function renderPlayer() {
     if (frame.lines) copy.append(element('div', { className: 'instructions' }, (graphic?.intro && !frame.expectedSeconds ? [graphic.prompt] : frame.lines).map(function(line) { return element('p', {}, [line]); })));
     if (frame.footnote) copy.append(element('p', { className: 'footnote' }, [frame.footnote]));
     if (frame.questionBank) copy.append(button('Show all questions ⛶', 'question-bank', 'question-bank-button'));
+    if (frame.conversationCards) copy.append(button('Open conversation cards ⛶','conversation-cards','question-bank-button'));
+    if (frame.boardActivity) copy.append(button('Open board challenge ⛶', 'geography-board', 'question-bank-button'));
+    if (frame.simulation) copy.append(button(frame.boardActivity?'Explore the model ⛶':'Open investigation ⛶', 'geography-lab', 'question-bank-button'));
+    if (typeof frame.sourceCard === 'string') copy.append(button('Show task source ⛶', 'task-source', 'question-bank-button'));
     if (frame.type === 'question' || frame.type === 'opinion') renderQuestion(copy);
     if (frame.type === 'memory') copy.append(element('div', { className: 'memory-grid', 'aria-label': 'Nine items to remember' }, frame.items.map(function(item) {
         return element('div', { className: 'memory-item' }, [element('span', { 'aria-hidden': 'true' }, [item.symbol]), element('span', { className: 'memory-label' }, [item.label])]);
@@ -196,7 +206,8 @@ function renderPlayer() {
         copy.append(element('img', {src:'./assets/'+item[0]+'.svg',alt:item[1],className:'gp-diagram'}));
     }
     if (frame.printExam) copy.append(examLink('Open printable student paper', false));
-    const content = element('section', { className: 'teaching-content' + (graphic || scene ? ' illustrated' : '') + (scene ? ' scene-layout' : '') + (frame.visual || answerPanel ? ' split' : '') + (lesson.summary ? ' practice-content' : '') + (lesson.gp ? ' gp-content' : '') + (frame.type === 'question' ? ' quiz' : ''), 'aria-labelledby': 'student-title' }, [copy]);
+    if (lesson.vocabulary) markVocabulary(copy,lesson.vocabulary);
+    const content = element('section', { className: 'teaching-content' + (graphic || scene ? ' illustrated' : '') + (scene ? ' scene-layout' : '') + (frame.visual || answerPanel ? ' split' : '') + (lesson.summary ? ' practice-content' : '') + (lesson.gp ? ' gp-content' : '') + (lesson.geoRedesign ? ' geo-workshop' : '') + (frame.type === 'question' ? ' quiz' : ''), 'aria-labelledby': 'student-title' }, [copy]);
     if (graphic) content.append(createVisual(graphic));
     if (scene) content.append(element('figure', {className:'lesson-scene'},[
         element('img',{src:'./assets/'+scene.image,alt:scene.alt,decoding:'async'}),
@@ -231,7 +242,7 @@ function renderPlayer() {
         button('Ⅱ Pause', 'pause'),
         button('◷ Timer', 'timer', '', { 'aria-expanded': String(session.preferences.timerVisible) }),
         button('⛶ Fullscreen', 'fullscreen'),
-        ...(lesson.extensions ? [button('Practice overview', 'extensions')] : []),
+        ...(lesson.extensions ? [button('Extra time', 'extensions')] : []),
         button('☰ Teacher tools', 'tools')
     ]);
     const player = element('main', { className: 'player' }, [header, heading, content, stepControls]);
@@ -311,6 +322,34 @@ function showQuestionBank() {
     ], 'question-bank');
     panel.classList.add('question-bank-panel');
 }
+function showGeographyLab() {
+    const spec=currentFrame().simulation;if(!spec)return;
+    openPanel(spec.title,[createGeographyLab(spec)],'geography-lab');
+    panel.classList.add('geography-lab-panel');
+}
+function showConversationCards() {
+    const spec=currentFrame().conversationCards;if(!spec)return;
+    openPanel(spec.title,[createConversationCards(spec,lesson.vocabulary)],'conversation-cards');
+    panel.classList.add('conversation-panel');
+}
+function showGeographyBoard() {
+    const spec=currentFrame().boardActivity;if(!spec)return;
+    session.timer=pauseTimer(session.timer);save();render();
+    const key=lesson.id+':'+spec.id;
+    if(!geographyBoardStates.has(key))geographyBoardStates.set(key,initialBoardState(spec));
+    openPanel(spec.title,[createGeographyBoard(spec,geographyBoardStates.get(key))],'geography-board');
+    panel.classList.add('geography-board-panel');
+}
+function showTaskSource() {
+    const source=currentFrame().sourceCard;if(typeof source!=='string')return;
+    openPanel('Investigation source',[element('p',{},[source]),element('h3',{},['Your task']),...currentFrame().lines.map(line=>element('p',{},[line])),...(currentFrame().sourceModel?[button('View reference model ⛶','task-model')]:[])]);
+    markVocabulary(panel,lesson.vocabulary);
+}
+function showTaskModel() {
+    const spec=currentFrame().sourceModel;if(!spec)return;
+    openPanel(spec.title,[button('← Return to task source','task-source'),createGeographyLab(spec)],'geography-lab');
+    panel.classList.add('geography-lab-panel');
+}
 function confirmAction(title, message, callback, label) {
     confirmation = callback;
     openPanel(title, [element('p', {}, [message]), element('div', { className: 'dialog-actions' }, [
@@ -354,7 +393,7 @@ function showPicker(focusSelector) {
         const checkpoint = storage.find({ ...picker, lessonId: item.id });
         return element('button', { type: 'button', 'data-action': 'select-lesson', 'data-lesson': item.id, className: 'lesson-option' + (picker.lessonId === item.id ? ' selected' : ''), 'aria-pressed': String(picker.lessonId === item.id) }, [
             element('strong', {}, [item.title]),
-            element('span', {}, [(item.catalog?.unit ? item.catalog.unit + ' · ' : '') + (item.bookTrial ? '40 min + 10 min optional' : item.durationMinutes + ' min') + (checkpoint ? ' · Saved at stage ' + (checkpoint.stage + 1) : '')])
+            element('span', {}, [(item.catalog?.unit ? item.catalog.unit + ' · ' : '') + (item.extensions ? item.durationMinutes + ' min + optional extra time' : item.durationMinutes + ' min') + (checkpoint ? ' · Saved at stage ' + (checkpoint.stage + 1) : '')])
         ]);
     }
     const ready = !!picker.classId && !!picker.subjectId;
@@ -367,7 +406,8 @@ function showPicker(focusSelector) {
         element('section', { className: 'picker-lessons', 'aria-label': '3 · Lesson' }, [
             element('h3', {}, ['3 · Lesson']),
             ...(['7a','7b'].includes(picker.classId) && ['geography','global-perspectives'].includes(picker.subjectId) ? [button(getClass(picker.classId).label+' weekly plan · '+(picker.subjectId === 'geography' ? (picker.classId==='7a'?'1':'2')+' Geography lesson(s)/week' : (picker.classId==='7a'?'2':'3')+' GP lessons/week'), 'g7-plan', 'plan-link')] : []),
-            ...(['8','7a','7b'].includes(picker.classId) && picker.subjectId !== 'global-perspectives-books' ? [element('div', { className: 'picker-options quarter-options', 'aria-label': 'Lesson quarter' }, schoolCalendar.quarters.map(function(q) { return button(q.id, 'lesson-quarter', planQuarter === q.id ? 'selected' : '', { 'data-quarter': q.id, 'aria-pressed': String(planQuarter === q.id) }); }))] : []),
+            ...(picker.subjectId==='english'?[element('p',{className:'panel-hint'},['7B · Two 40-minute lessons per week · Start with Week 1 below. Tap underlined vocabulary for Simplified Chinese and pinyin.'])]:[]),
+            ...(['8','7a','7b'].includes(picker.classId) && ['geography','global-perspectives'].includes(picker.subjectId) ? [element('div', { className: 'picker-options quarter-options', 'aria-label': 'Lesson quarter' }, schoolCalendar.quarters.map(function(q) { return button(q.id, 'lesson-quarter', planQuarter === q.id ? 'selected' : '', { 'data-quarter': q.id, 'aria-pressed': String(planQuarter === q.id) }); }))] : []),
             ...(picker.classId === '8' && picker.subjectId === 'global-perspectives' ? [button('2026–2027 year plan & calendar · 43 playable lessons and assessments', 'year-plan', 'plan-link')] : []),
             ...storage.unassigned().map(function(value) { return button('Resume earlier unassigned lesson: ' + getLesson(value.lessonId).title, 'resume-earlier', 'subtle', { 'data-lesson': value.lessonId }); }),
             ...(!ready ? [element('p', { className: 'empty-curriculum' }, ['Choose a class and subject to see lessons.'])] : [
@@ -510,10 +550,16 @@ function examLink(label, key) {
 function showTools() {
     openPanel('Teacher tools', [
         ...(lesson.examId ? [examLink('Print student paper', false), examLink('Teacher answer key', true)] : []),
+        element('section', { className: 'optional-worksheets' }, [
+            element('h3', {}, ['Optional worksheets']),
+            element('p', {}, ['Print only if useful. These sheets are not required to teach or finish the lesson.']),
+            element('a', { href:'./worksheets/?lesson='+encodeURIComponent(lesson.id)+'&kind=lesson', target:'_blank', rel:'noopener', className:'exam-link' }, ['Print lesson worksheet']),
+            element('a', { href:'./worksheets/?lesson='+encodeURIComponent(lesson.id)+'&kind=homework', target:'_blank', rel:'noopener', className:'exam-link' }, ['Print homework worksheet'])
+        ]),
         element('p', { className: 'panel-hint' }, ['Shared screen: students can see anything opened here.']),
         button('Edit lesson text', 'edit-lesson'),
         button('Read this stage’s teacher notes', 'notes'),
-        ...(lesson.extensions ? [button('Practice overview · included in lesson', 'extensions'), element('p', {}, [lesson.pacingNote])] : []),
+        ...(lesson.extensions ? [button('Extra time · optional 10–20 minutes', 'extensions'), element('p', {}, [lesson.pacingNote])] : []),
         button('Choose a stage', 'stages'),
         element('section', { className: 'tools-stars' }, [
             element('h3', {}, ['Class stars']),
@@ -648,14 +694,19 @@ function handleAction(event) {
         const callback = confirmation;
         closePanel();
         if (callback) callback();
-    } else if (action === 'question-bank') showQuestionBank();
+    } else if (action === 'conversation-cards') showConversationCards();
+    else if (action === 'geography-board') showGeographyBoard();
+    else if (action === 'geography-lab') showGeographyLab();
+    else if (action === 'task-model') showTaskModel();
+    else if (action === 'task-source') showTaskSource();
+    else if (action === 'question-bank') showQuestionBank();
     else if (action === 'close-panel' || action === 'cancel-confirm') closePanel();
     else if (action === 'edit-lesson') showLessonEditor();
     else if (action === 'help') showHelp();
     else if (action === 'clear-session') clearSession();
     else if (action === 'fullscreen') fullscreen();
     else if (!session || !inLesson) return;
-    else if (action === 'extensions') showExtensions(Number(target.dataset.index||0));
+    else if (action === 'extensions') showExtensions(Number(target.dataset.index||0),Number(target.dataset.round||0),target.dataset.reveal==='true',target.dataset.hide==='true');
     else if (action === 'tools') showTools();
     else if (action === 'notes') showNotes();
     else if (action === 'summary') showSummary();
@@ -761,16 +812,24 @@ function showLessonEditor(){
 }
 window.addEventListener('beforeunload',event=>{if(lessonTextDrafts.size){event.preventDefault();event.returnValue='';}});
 
-function showExtensions(index=0) {
+function showExtensions(index=0,roundIndex=0,revealed=false,hideSource=false) {
  const task=lesson.extensions?.[index];if(!task)return;
- // Extra practice does not advance the lesson or mark any work complete.
  if(session.timer.running){session.timer=pauseTimer(session.timer,Date.now());save();render();}
- openPanel(task.title+' · '+task.minutes+' min practice',[
-  element('p',{className:'panel-hint'},[lesson.title+(lesson.bookTrial ? ' · Optional practice before reflection. For 40 minutes, use the stage menu to jump to Reflect and finish.' : ' · These tasks are included before the final reflection. This overview does not mark them complete.')]),
-  element('div',{className:'reserve-grid'},[
-   element('section',{},[element('h3',{},[task.sourceTitle]),...task.source.map(line=>element('p',{},[line]))]),
-   element('section',{},[element('h3',{},['Your task']),...task.lines.map(line=>element('p',{},[line])),element('p',{className:'reserve-outcome'},[task.outcome])])
-  ]),
-  element('nav',{className:'reserve-actions'},[...lesson.extensions.map((t,i)=>button((i+1)+'. '+t.title,'extensions',i===index?'selected':'',{'data-index':String(i)})),button('Return to lesson','close-panel','primary')])
- ]);panel.classList.add('reserve-panel');
+ const round=task.rounds?.[roundIndex];
+ const attrs=(changes={})=>({'data-index':String(index),'data-round':String(roundIndex),...changes});
+ openPanel('Extra time · '+task.title,[
+  element('p',{className:'panel-hint'},['Choose two activities for 10 minutes, three for 15, or four for 20. Stay with a useful discussion; you do not need to finish every round.']),
+  element('nav',{className:'extra-menu'},lesson.extensions.map((t,i)=>button((i+1)+'. '+['Finger vote','Teacher mistake','Memory detectives','Change a condition'][i]+' · 5 min','extensions',i===index?'selected':'',{'data-index':String(i)}))),
+  ...(round ? [
+   element('p',{className:'extra-round-label'},['Round '+(roundIndex+1)+' of '+task.rounds.length]),
+   element('h3',{},[round.prompt]),
+   ...(!hideSource?(round.source||[]).map(line=>element('p',{className:'extra-source'},[line])):[]),
+   ...(index===2?[button(hideSource?'Show source':'Hide source','extensions','subtle',attrs({'data-hide':String(!hideSource)}))]:[]),
+   ...(round.statement?[element('p',{className:'extra-statement'},[round.statement])]:[]),
+   ...(round.choices?[element('div',{className:'finger-choices'},round.choices.map((choice,i)=>element('p',{},[element('strong',{},[(i+1)+' finger'+(i?'s':'')]),element('span',{},[choice])])) )]:[]),
+   ...(revealed?[element('div',{className:'extra-explanation',role:'status'},[element('strong',{},[round.answer?'Answer: '+round.answer+' finger'+(round.answer===1?'':'s'):'Suggested reasoning']),element('p',{},[round.explanation]),element('p',{},[round.followup])])]:[button('Reveal explanation','extensions','primary',attrs({'data-reveal':'true','data-hide':String(hideSource)}))]),
+   element('nav',{className:'extra-round-controls'},[button('Previous round','extensions','',attrs({'data-round':String(Math.max(0,roundIndex-1)),...(roundIndex===0?{disabled:''}:{})})),button('Next round','extensions','',attrs({'data-round':String(Math.min(task.rounds.length-1,roundIndex+1)),...(roundIndex===task.rounds.length-1?{disabled:''}:{})}))]),
+  ]:[]),
+  element('details',{className:'extra-running-notes'},[element('summary',{},['How to run this for five minutes']),...task.lines.map(line=>element('p',{},[line])),element('p',{},[task.outcome])])
+ ]);panel.classList.add('reserve-panel','extra-time-panel');markVocabulary(panel,lesson.vocabulary);
 }

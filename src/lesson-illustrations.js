@@ -23,7 +23,7 @@ export function chooseScene(text){
  return rules.find(([,pattern])=>pattern.test(text.toLowerCase()))?.[0]||'research';
 }
 export function illustrateExamples(lesson){
- if(!lesson.gp||lesson.examId)return lesson;
+ if(!lesson.gp||lesson.examId||lesson.geoRedesign)return lesson;
  for(const stage of lesson.stages){
   const isPractice=stage.id.startsWith('practice-');
   const context=[lesson.title,...stage.frames.flatMap(f=>[f.title,...(f.lines||[])])].join(' ');
