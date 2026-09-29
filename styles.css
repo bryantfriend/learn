@@ -396,3 +396,21 @@ dialog.lesson-editor{width:min(1200px,96vw);max-width:96vw}.lesson-editor textar
  .geography-lab { display:flex;flex-direction:column; }.lab-canvas svg{height:44vh;}.lab-controls{flex-flow:row wrap;}.lab-controls label{width:100%;}
  .extra-menu,.finger-choices{grid-template-columns:1fr;}.finger-choices p{font-size:22px;}
 }
+
+/* Global Perspectives: large touch controls and deliberately optional motion. */
+#panel.gp-lab-panel { width:96vw; max-width:1400px; height:94vh; max-height:96vh; }
+.gp-lab { max-width:1100px; margin:auto; }
+.gp-controls { display:flex; flex-wrap:wrap; gap:12px; margin:18px 0; }
+.gp-controls button { min-height:52px; padding:12px 18px; }
+.gp-controls button[aria-pressed="true"] { background:#176b53; color:white; }
+.gp-controls label { display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:12px; }
+.gp-controls input { min-width:190px; min-height:44px; }
+.gp-lab svg { width:100%; max-height:420px; }
+.gp-feedback { border-left:5px solid #157b57; padding:16px; background:#edf7f3; color:#122641; font-size:1.2rem; }
+.gp-lab details, #panel details { margin:14px 0; padding:12px; border:1px solid #b2bdca; border-radius:10px; }
+.gp-lab summary, #panel summary { cursor:pointer; min-height:32px; font-weight:700; }
+.gp-flow { animation:gp-flow 1s linear infinite; animation-play-state:paused; }
+.gp-playing .gp-flow { animation-play-state:running; }
+.gp-bar { transition:width .35s ease; }
+@keyframes gp-flow { to { stroke-dashoffset:-14; } }
+@media(prefers-reduced-motion:reduce) { .gp-flow { animation:none; } .gp-bar { transition:none; } }

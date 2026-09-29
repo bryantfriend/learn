@@ -3,6 +3,7 @@ import {createGeographyLab} from './geography-lab.js';
 import {markVocabulary,createConversationCards} from './english-support.js';
 import {APP_VERSION} from './version.js';
 import {createGeographyBoard,initialBoardState} from './geography-board.js';
+import {createGPLab} from './gp-lab.js';
 const geographyBoardStates=new Map();
 import {visualSpec,createVisual,pauseVisuals} from './visuals.js';
 import { lesson as firstLesson, getLesson, modes, questionOptions } from './lessons.js';
@@ -191,6 +192,7 @@ function renderPlayer() {
     if (frame.footnote) copy.append(element('p', { className: 'footnote' }, [frame.footnote]));
     if (frame.questionBank) copy.append(button('Show all questions ⛶', 'question-bank', 'question-bank-button'));
     if (frame.conversationCards) copy.append(button('Open conversation cards ⛶','conversation-cards','question-bank-button'));
+    if (frame.gpLab) copy.append(button('Explore: '+frame.gpLab.title+' ⛶', 'gp-lab', 'question-bank-button'));
     if (frame.boardActivity) copy.append(button('Open board challenge ⛶', 'geography-board', 'question-bank-button'));
     if (frame.simulation) copy.append(button(frame.boardActivity?'Explore the model ⛶':'Open investigation ⛶', 'geography-lab', 'question-bank-button'));
     if (typeof frame.sourceCard === 'string') copy.append(button('Show task source ⛶', 'task-source', 'question-bank-button'));
@@ -547,6 +549,20 @@ function showSummary() {
 function examLink(label, key) {
     return element('a', { href: './exams/?id=' + lesson.examId + (key ? '&key=1' : ''), target: '_blank', rel: 'noopener', className: 'exam-link' }, [label]);
 }
+function showGPGuide() {
+    const g=lesson.teacherGuide;if(!g)return;
+    const items=[element('p',{className:'panel-hint'},['Teacher preparation · opening this guide is visible on the shared screen.']),element('h3',{},[g.title])];
+    function section(title,lines){const d=element('details',{},[element('summary',{},[title]),...lines.filter(Boolean).map(t=>element('p',{},[t]))]);items.push(d);}
+    section('Start and explain',[g.objective,g.opening,g.method]);
+    if(g.sources)section('This lesson’s sources',g.sources);
+    if(g.task)section('Model, then let pupils try',g.task);
+    if(g.simulation)section('Run the interactive model',[`Use ${g.simulation.minutes} minutes within the existing activity, then return to the lesson task.`,g.simulation.predict,g.simulation.test,g.simulation.debrief]);
+    section('Teaching sequence',g.stages.map(s=>`${s.title} · ${s.minutes} minutes. ${s.notes||''}`));
+    if(g.checks)section('Questions and model explanations',g.checks.flatMap(c=>[c.question,c.model]));
+    section('Support, challenge and misconceptions',[g.support,g.stretch,g.misconception]);
+    section('Check learning',[g.exit,g.followup]);
+    openPanel('How to teach this lesson',items);
+}
 function showTools() {
     openPanel('Teacher tools', [
         ...(lesson.examId ? [examLink('Print student paper', false), examLink('Teacher answer key', true)] : []),
@@ -559,6 +575,8 @@ function showTools() {
         element('p', { className: 'panel-hint' }, ['Shared screen: students can see anything opened here.']),
         button('Edit lesson text', 'edit-lesson'),
         button('Read this stage’s teacher notes', 'notes'),
+        ...(lesson.teacherGuide ? [button('How to teach this lesson', 'gp-guide')] : []),
+        ...(lesson.gpLab ? [button('Interactive model · '+lesson.gpLab.title, 'gp-lab')] : []),
         ...(lesson.extensions ? [button('Extra time · optional 10–20 minutes', 'extensions'), element('p', {}, [lesson.pacingNote])] : []),
         button('Choose a stage', 'stages'),
         element('section', { className: 'tools-stars' }, [
@@ -707,6 +725,8 @@ function handleAction(event) {
     else if (action === 'fullscreen') fullscreen();
     else if (!session || !inLesson) return;
     else if (action === 'extensions') showExtensions(Number(target.dataset.index||0),Number(target.dataset.round||0),target.dataset.reveal==='true',target.dataset.hide==='true');
+    else if (action === 'gp-lab') {const spec=currentFrame().gpLab||lesson.gpLab;if(spec){openPanel(spec.title,[createGPLab(spec)]);panel.classList.add('gp-lab-panel');}}
+    else if (action === 'gp-guide') showGPGuide();
     else if (action === 'tools') showTools();
     else if (action === 'notes') showNotes();
     else if (action === 'summary') showSummary();

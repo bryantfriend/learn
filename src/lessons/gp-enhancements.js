@@ -1,0 +1,64 @@
+export const gpLabMethods={
+ research:{title:'Question builder',method:'Model how a broad topic becomes a focused question: specify who, where, what and when. A narrower question is useful only if it still addresses the issue.',predict:'Which part of the question is too broad to investigate with our available time?',test:'Change one scope choice. Read the new question aloud and name a suitable source.',debrief:'A manageable scope does not automatically make the wording neutral or the evidence reliable.',misconception:'A question is not fair merely because it is short. Remove wording that assumes the answer.',support:'Offer “How does ___ affect ___ in ___?” and let pupils supply one part.',stretch:'Design a different method for the same question and compare what each method could establish.'},
+ sampling:{title:'Who is in the sample?',method:'Draw the target population before choosing respondents. Show how over-selecting one group can change a sample result even when everyone answers honestly.',predict:'Will a sample drawn mostly from one group describe the whole model population?',test:'Change the number sampled from each group. Compare the sample percentage with the model population percentage.',debrief:'The simulator uses fixed group rates to isolate selection effects. Real surveys also involve chance, non-response and wording.',misconception:'A bigger sample does not automatically remove a systematic selection problem.',support:'Start with counts in each group, then calculate a percentage together.',stretch:'Explain why even a balanced sample does not guarantee an exact estimate in a real survey.'},
+ data:{title:'Compare fairly',method:'Read the unit and denominator before comparing bar heights. Model how a larger count can still be a smaller proportion.',predict:'Which group looks larger by count? Will that be the same group by percentage?',test:'Switch count and percentage views, then alter one denominator while keeping its count fixed.',debrief:'Describe the numerical comparison separately from any explanation of its cause.',misconception:'A tall count bar alone does not establish a higher rate or a cause.',support:'Say “___ out of ___”; calculate one group while pupils calculate the other.',stretch:'Identify an additional variable or measurement that could change the interpretation.'},
+ causality:{title:'Trace the ripple',method:'Separate a documented connection from a hypothesised effect. Trace an interruption to the next dependent stage before considering later consequences.',predict:'Which stage is affected first when a connection is blocked? What could buffer the effect?',test:'Block a stage, then turn the buffer on. Follow the arrows and compare the downstream result.',debrief:'This is a deliberately simplified dependency model; it cannot establish wages, wellbeing or other real-world outcomes.',misconception:'Events happening together do not prove the proposed mechanism or exclude other causes.',support:'Use arrows labelled “needs”, “supplies” and “may affect”, not an unexplained line.',stretch:'Add an alternative path or cause and explain what evidence could test it.'},
+ perspectives:{title:'Whose needs count?',method:'Give two affected people different priorities. Compare the same options against those priorities without treating a group label as a fixed opinion.',predict:'Will the same option suit both people equally?',test:'Change whose priority is considered, then choose an option and read its trade-off.',debrief:'The positions are fictional examples, not stereotypes. Ask whose voice and evidence are missing.',misconception:'Different priorities do not establish that one person is dishonest or that everyone in a group agrees.',support:'Use “___ values ___, so ___ may suit them.”',stretch:'Suggest a compromise and identify who may still be disadvantaged.'},
+ reliability:{title:'Open the evidence trail',method:'Separate the claim from information about its source. Reveal method, sample and purpose one at a time; revise what the claim can support.',predict:'Which missing detail would most affect your judgement?',test:'Open evidence cards in a chosen order. After each reveal, say what changed and what remains uncertain.',debrief:'There is no automatic trust score. A named author or a larger sample is not proof of correctness.',misconception:'A confident statement or professional appearance is not the same as relevant evidence.',support:'Ask three questions: Who says it? How do they know? What is missing?',stretch:'Design an independent check that could contradict, not just confirm, the claim.'},
+ planning:{title:'Decision workshop',method:'Check feasibility first, then compare benefits, costs and limitations. Make the criteria explicit rather than claiming the highest score must win.',predict:'Which combination fits the budget, and which need may remain unmet?',test:'Select a package and change the budget. Explain the effect on feasibility and on the remaining needs.',debrief:'Token costs are invented. A feasible package still requires local evidence and consultation.',misconception:'Affordable does not mean effective, and expensive does not automatically mean better.',support:'Add the selected costs aloud; name one benefit and one limitation.',stretch:'Defend an alternative package under a changed constraint.'},
+ teamwork:{title:'Share the work',method:'Make every task visible, assign responsibility and check the hand-offs. Equal numbers of tasks do not necessarily mean equal effort.',predict:'What happens if all responsibilities sit with one person, or a necessary task has no owner?',test:'Tap a task to move responsibility between teammates. Check coverage and discuss the workload.',debrief:'The diagram records assigned responsibilities, not actual participation. Listen for whose ideas shape the outcome.',misconception:'A completed role chart does not prove collaboration was fair or effective.',support:'Give a clear first contribution to each learner and rehearse one respectful invitation to speak.',stretch:'Plan how to handle an absent member without silently excluding another.'},
+ communication:{title:'Build a clear message',method:'Connect a claim, a precise supporting detail and a limitation. Reveal these parts separately to show what each adds for an audience.',predict:'What can a listener reasonably conclude from the headline alone?',test:'Reveal the evidence, then the limitation. Rewrite the headline so it remains accurate.',debrief:'A clear message can still mislead if evidence is omitted or the audience cannot interpret its units.',misconception:'Making a statement simpler must not remove a qualification that changes its meaning.',support:'Use “We found ___ in ___; we cannot yet claim ___.”',stretch:'Adapt the same accurate message for two audiences without changing its factual meaning.'},
+ reflection:{title:'Evidence of progress',method:'Compare a first attempt with a revised one. Identify the exact change and link it to feedback or evidence before choosing a next action.',predict:'Which change would count as improved reasoning rather than merely longer writing?',test:'Move through attempt, feedback and revision. Point to the changed claim and select a next-step target.',debrief:'A useful reflection describes an action, evidence of its effect and a practical next step.',misconception:'“I did well” or “I will try harder” supplies no checkable evidence or action.',support:'Use “I changed ___ after ___; next time I will ___.”',stretch:'Choose a measurable sign that would show whether the next action helped.'}
+};
+function kindFor(text){
+ const s=text.toLowerCase();
+ if(/gallery|display|showcase|campaign|briefing|headline|message|forum|strength of arguments/.test(s))return 'communication';
+ if(/survey results|reading.*data|interpreting.*data|employment data|urbanisation data|tourism data|routines in data|numbers to arguments/.test(s))return 'data';
+ if(/different views|wellbeing perspectives/.test(s))return 'perspectives';
+ if(/water and food|scarcity|waste around/.test(s))return 'causality';
+ if(/survey/.test(s))return 'sampling';
+ if(/trust|evaluating.*arguments/.test(s))return 'reliability';
+ if(/choosing.*issue/.test(s))return 'research';
+ if(/reflect|progress|portfolio|review.*learning/.test(s))return 'reflection';
+ if(/team|collaborat|roles|contribut/.test(s))return 'teamwork';
+ if(/survey|sample|collect.*data|collect.*evidence|respondent/.test(s))return 'sampling';
+ if(/percentage|proportion|table|bar chart|compare.*data|measurement|units|denominator/.test(s))return 'data';
+ if(/chain|cause|consequence|depend|connect.*water|ripple/.test(s))return 'causality';
+ if(/perspective|viewpoint|voices|different.*needs|priorities/.test(s))return 'perspectives';
+ if(/reliab|source|credib|claim|persuasion|evidence/.test(s))return 'reliability';
+ if(/question|research|enquiry|inquiry|investigat/.test(s))return 'research';
+ if(/present|communicat|audience|gallery|caption|report/.test(s))return 'communication';
+ return 'planning';
+}
+const unique=xs=>[...new Set(xs.filter(Boolean))];
+export function enhanceGlobalPerspectives(lesson){
+ if(!['global-perspectives','global-perspectives-books'].includes(lesson.catalog?.subjectId))return lesson;
+ const frames=lesson.stages.flatMap(s=>s.frames);
+ if(lesson.examId){lesson.teacherGuide={assessment:true,title:lesson.title,opening:'Use the student paper and separate answer key under Teacher tools. Clarify procedure and access needs before the assessment. Do not run a simulation that cues answers during independent work.',stages:lesson.stages.map(s=>({title:s.title,minutes:s.durationMinutes,notes:s.notes})),followup:'Collect papers first. Use common errors to plan a later teaching activity; written answers alone do not establish live collaboration skills.'};return lesson;}
+ const sourceFrames=frames.filter(f=>!f.type&&(f.sourceCard===true||/^(Source card|Examine the source|Read the short source)|scenario|case study/i.test(f.title)));
+ const sources=unique(sourceFrames.flatMap(f=>[f.quote,...(f.lines||[])]));
+ if(!sources.length)sources.push(...unique(frames.filter(f=>!f.type&&f.mode==='listen').flatMap(f=>f.lines||[])).slice(0,3));
+ const application=lesson.stages.find(s=>s.id==='apply')||lesson.stages.find(s=>s.frames.some(f=>f.bookTask))||lesson.stages.find(s=>s.frames.some(f=>f.mode==='pair'))||lesson.stages[1];
+ const task=application.frames.find(f=>f.mode==='pair'&&!f.type)||application.frames.find(f=>!f.type&&!f.final);
+ const focus=unique(frames.filter(f=>/Key idea|thinking tool|Our focus/.test(f.title)).flatMap(f=>f.lines||[])).join(' ');
+ const kind=lesson.bookTrial?'research':kindFor(lesson.title+' '+focus);
+ const method=gpLabMethods[kind];
+ const checks=frames.filter(f=>f.explanation).slice(0,3).map(f=>({question:f.title,model:f.explanation}));
+ const spec={id:lesson.id,kind,title:method.title,lessonTitle:lesson.title,sources:sources.slice(0,4),task:task?.lines||[],predict:method.predict,test:method.test,debrief:method.debrief,
+  limits:'Separate fictional practice model. Use the lesson source cards or workbook for claims about that case; model numbers are not additional evidence.'};
+ // Reuse time in an existing activity rather than add another timed stage.
+ const launch=[...application.frames].filter(f=>!f.type&&!f.final).sort((a,b)=>(a.lines||[]).join(' ').length-(b.lines||[]).join(' ').length)[0];
+ if(launch)launch.gpLab=spec;
+ lesson.gpLab=spec;
+ lesson.teacherGuide={title:lesson.title,assessment:false,objective:focus||lesson.openingScript||lesson.title,
+  opening:`Ask pupils for an initial answer to: “${checks[0]?.question||lesson.title}”. Keep two contrasting answers to revisit. Explain that the task is to improve the reasoning, not guess the teacher's preference.`,
+  method:method.method,sources:sources.slice(0,6),task:task?.lines||[],checks,
+  simulation:{title:method.title,minutes:Math.min(4,Math.max(2,Math.floor(application.durationMinutes/2))),predict:method.predict,test:method.test,debrief:method.debrief},
+  misconception:method.misconception,support:method.support,stretch:method.stretch,
+  stages:lesson.stages.map(s=>({title:s.title,minutes:s.durationMinutes,notes:s.notes})),
+  exit:`Ask pupils to improve their first answer using one detail from this lesson. Listen for this check: ${checks[0]?.model||method.debrief}`};
+ application.notes+=`\nInteractive model (${lesson.teacherGuide.simulation.minutes} minutes within this stage): ${method.predict} ${method.test} ${method.debrief} Then return to this lesson's source and complete the existing task. Support: ${method.support} Stretch: ${method.stretch}`;
+ lesson.teacherGuide.stages=lesson.stages.map(s=>({title:s.title,minutes:s.durationMinutes,notes:s.notes}));
+ lesson.contentRevision=(lesson.contentRevision||0)+10000;
+ return lesson;
+}

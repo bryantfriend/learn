@@ -1,0 +1,2042 @@
+[
+  {
+    "id": "g8-gp-a0",
+    "title": "Stage 8 skills baseline and learning targets",
+    "class": "8",
+    "assessment": true,
+    "model": null,
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 0
+  },
+  {
+    "id": "g8-gp-1.1",
+    "title": "From product to global supply chain",
+    "class": "8",
+    "assessment": false,
+    "model": "causality",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-1.2",
+    "title": "One shirt, different views",
+    "class": "8",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 4
+  },
+  {
+    "id": "g8-gp-1.3",
+    "title": "Trade, price and employment data",
+    "class": "8",
+    "assessment": false,
+    "model": "data",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-1.4",
+    "title": "Advertising, purpose and credibility",
+    "class": "8",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-1.5",
+    "title": "Consequences of consumer choices",
+    "class": "8",
+    "assessment": false,
+    "model": "causality",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-1.6",
+    "title": "Challenge: Ethical consumer panel",
+    "class": "8",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-q1",
+    "title": "Quarter 1 skills evidence review",
+    "class": "8",
+    "assessment": true,
+    "model": null,
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 0
+  },
+  {
+    "id": "g8-gp-2.1",
+    "title": "Constructing balanced migration questions",
+    "class": "8",
+    "assessment": false,
+    "model": "research",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-2.2",
+    "title": "Push, pull and interconnected causes",
+    "class": "8",
+    "assessment": false,
+    "model": "causality",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-2.3",
+    "title": "Population and urbanisation data",
+    "class": "8",
+    "assessment": false,
+    "model": "data",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-2.4",
+    "title": "Whose perspective is represented?",
+    "class": "8",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-2.5",
+    "title": "Evaluating migration arguments",
+    "class": "8",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-2.6",
+    "title": "Challenge: A welcoming and workable city",
+    "class": "8",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-q2",
+    "title": "Mid-year Global Perspectives skills assessment",
+    "class": "8",
+    "assessment": true,
+    "model": null,
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 0
+  },
+  {
+    "id": "g8-gp-3.1",
+    "title": "Climate, energy and evidence",
+    "class": "8",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-3.2",
+    "title": "Interpreting climate and energy data",
+    "class": "8",
+    "assessment": false,
+    "model": "data",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-3.3",
+    "title": "Comparing source credibility",
+    "class": "8",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-3.4",
+    "title": "Causes and consequences across scales",
+    "class": "8",
+    "assessment": false,
+    "model": "causality",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-3.5",
+    "title": "Evaluating actions and trade-offs",
+    "class": "8",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-3.6",
+    "title": "Challenge: Kyrgyzstan energy choices briefing",
+    "class": "8",
+    "assessment": false,
+    "model": "communication",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-4.1",
+    "title": "Why societies use rules and laws",
+    "class": "8",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-4.2",
+    "title": "Perspectives on fairness and public safety",
+    "class": "8",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-4.3",
+    "title": "Evaluating evidence in a case study",
+    "class": "8",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-4.4",
+    "title": "Structure and strength of arguments",
+    "class": "8",
+    "assessment": false,
+    "model": "communication",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-4.5",
+    "title": "Actions for a safer and fairer community",
+    "class": "8",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-4.6",
+    "title": "Town hall: negotiate a real layout",
+    "class": "8",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 3
+  },
+  {
+    "id": "g8-gp-r1",
+    "title": "Skills clinic: Source, argument and action",
+    "class": "8",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-q3",
+    "title": "Quarter 3 applied challenge",
+    "class": "8",
+    "assessment": true,
+    "model": null,
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 0
+  },
+  {
+    "id": "g8-gp-5.1",
+    "title": "Constructing questions about AI and society",
+    "class": "8",
+    "assessment": false,
+    "model": "research",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-5.2",
+    "title": "Prediction, evidence and speculation",
+    "class": "8",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-5.3",
+    "title": "Credibility, bias and corroboration",
+    "class": "8",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-5.4",
+    "title": "Access, opportunity and the digital divide",
+    "class": "8",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-5.5",
+    "title": "Benefits, risks and responsible choices",
+    "class": "8",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-5.6",
+    "title": "Challenge: Responsible AI guidance for school",
+    "class": "8",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-6.1",
+    "title": "Issues shaping future cities",
+    "class": "8",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-6.2",
+    "title": "Stakeholder perspectives on urban change",
+    "class": "8",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-6.3",
+    "title": "Maps, transport and tourism data",
+    "class": "8",
+    "assessment": false,
+    "model": "data",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-6.4",
+    "title": "Mini-inquiry: Local travel evidence",
+    "class": "8",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-6.5",
+    "title": "Comparing options and justifying action",
+    "class": "8",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-6.6",
+    "title": "Future Bishkek: design, challenge, revise",
+    "class": "8",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 3
+  },
+  {
+    "id": "g8-gp-r2",
+    "title": "Portfolio consolidation and Grade 9 bridge",
+    "class": "8",
+    "assessment": false,
+    "model": "reflection",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g8-gp-q4",
+    "title": "Final applied skills assessment",
+    "class": "8",
+    "assessment": true,
+    "model": null,
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 0
+  },
+  {
+    "id": "g7a-gp-w01-1",
+    "title": "Baseline assessment",
+    "class": "7a",
+    "assessment": true,
+    "model": null,
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 0
+  },
+  {
+    "id": "g7a-gp-w01-2",
+    "title": "What is an Issue and a Perspective?",
+    "class": "7a",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 3
+  },
+  {
+    "id": "g7a-gp-w02-1",
+    "title": "Evidence, opinion and respectful curiosity / Questions for cultural inquiry",
+    "class": "7a",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g7a-gp-w02-2",
+    "title": "Working positively in a team",
+    "class": "7a",
+    "assessment": false,
+    "model": "teamwork",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w03-1",
+    "title": "Challenge: Culture and community gallery",
+    "class": "7a",
+    "assessment": false,
+    "model": "communication",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w03-2",
+    "title": "The digital world as an issue",
+    "class": "7a",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w04-1",
+    "title": "Claims, evidence and persuasion online / Who made this source and why?",
+    "class": "7a",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g7a-gp-w04-2",
+    "title": "Mini-survey: technology habits",
+    "class": "7a",
+    "assessment": false,
+    "model": "sampling",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w05-1",
+    "title": "Mini-survey: technology habits / From numbers to arguments",
+    "class": "7a",
+    "assessment": false,
+    "model": "data",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g7a-gp-w05-2",
+    "title": "Challenge: Does technology improve learning?",
+    "class": "7a",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w06-1",
+    "title": "Challenge: Does technology improve learning?",
+    "class": "7a",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w06-2",
+    "title": "Q1 assessment",
+    "class": "7a",
+    "assessment": true,
+    "model": null,
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 0
+  },
+  {
+    "id": "g7a-gp-w09-1",
+    "title": "Education for all: framing the issue / Barriers to education",
+    "class": "7a",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g7a-gp-w09-2",
+    "title": "Reading education data",
+    "class": "7a",
+    "assessment": false,
+    "model": "data",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w10-1",
+    "title": "Finding and recording useful information",
+    "class": "7a",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w10-2",
+    "title": "Choose the learning setup",
+    "class": "7a",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 3
+  },
+  {
+    "id": "g7a-gp-w11-1",
+    "title": "Design an access trial",
+    "class": "7a",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 3
+  },
+  {
+    "id": "g7a-gp-w11-2",
+    "title": "Challenge: Improve access to learning",
+    "class": "7a",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w12-1",
+    "title": "Catch the headline",
+    "class": "7a",
+    "assessment": false,
+    "model": "communication",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 3
+  },
+  {
+    "id": "g7a-gp-w12-2",
+    "title": "Designing fair questions",
+    "class": "7a",
+    "assessment": false,
+    "model": "research",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w13-1",
+    "title": "Designing fair questions",
+    "class": "7a",
+    "assessment": false,
+    "model": "research",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w13-2",
+    "title": "Q2 assessment",
+    "class": "7a",
+    "assessment": true,
+    "model": null,
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 0
+  },
+  {
+    "id": "g7a-gp-w14-1",
+    "title": "Mid-year Global Perspectives skills assessment",
+    "class": "7a",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w14-2",
+    "title": "Mid-year Global Perspectives skills assessment",
+    "class": "7a",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w18-1",
+    "title": "Collecting and recording class evidence",
+    "class": "7a",
+    "assessment": false,
+    "model": "sampling",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w18-2",
+    "title": "Collecting and recording class evidence",
+    "class": "7a",
+    "assessment": false,
+    "model": "sampling",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w19-1",
+    "title": "Collecting and recording class evidence / Comparing wellbeing perspectives",
+    "class": "7a",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g7a-gp-w19-2",
+    "title": "Comparing wellbeing perspectives",
+    "class": "7a",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w20-1",
+    "title": "Challenge: A healthy school-day campaign",
+    "class": "7a",
+    "assessment": false,
+    "model": "communication",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w20-2",
+    "title": "Challenge: A healthy school-day campaign",
+    "class": "7a",
+    "assessment": false,
+    "model": "communication",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w21-1",
+    "title": "Water and food systems",
+    "class": "7a",
+    "assessment": false,
+    "model": "causality",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w21-2",
+    "title": "Scarcity, waste and unequal access",
+    "class": "7a",
+    "assessment": false,
+    "model": "causality",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w22-1",
+    "title": "Scarcity, waste and unequal access / Reading resource-use data",
+    "class": "7a",
+    "assessment": false,
+    "model": "data",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g7a-gp-w22-2",
+    "title": "Reading resource-use data",
+    "class": "7a",
+    "assessment": false,
+    "model": "data",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w23-1",
+    "title": "Credibility of environmental sources",
+    "class": "7a",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w23-2",
+    "title": "Comparing possible school actions",
+    "class": "7a",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w24-1",
+    "title": "Comparing possible school actions / Challenge: Sustainable lunch and water plan",
+    "class": "7a",
+    "assessment": false,
+    "model": "teamwork",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g7a-gp-w24-2",
+    "title": "Challenge: Sustainable lunch and water plan",
+    "class": "7a",
+    "assessment": false,
+    "model": "teamwork",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w25-1",
+    "title": "Challenge: Sustainable lunch and water plan",
+    "class": "7a",
+    "assessment": false,
+    "model": "teamwork",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w25-2",
+    "title": "Skills clinic: From evidence to conclusion",
+    "class": "7a",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w26-1",
+    "title": "Skills clinic: From evidence to conclusion",
+    "class": "7a",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w26-2",
+    "title": "Q3 assessment",
+    "class": "7a",
+    "assessment": true,
+    "model": null,
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 0
+  },
+  {
+    "id": "g7a-gp-w27-1",
+    "title": "Quarter 3 applied challenge",
+    "class": "7a",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w27-2",
+    "title": "Quarter 3 applied challenge",
+    "class": "7a",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w29-1",
+    "title": "Choosing a manageable community issue",
+    "class": "7a",
+    "assessment": false,
+    "model": "research",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w29-2",
+    "title": "Observing and using curated evidence",
+    "class": "7a",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w30-1",
+    "title": "Observing and using curated evidence",
+    "class": "7a",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w30-2",
+    "title": "Stakeholder and perspective mapping",
+    "class": "7a",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w31-1",
+    "title": "Stakeholder and perspective mapping / Comparing solutions with criteria",
+    "class": "7a",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 2
+  },
+  {
+    "id": "g7a-gp-w31-2",
+    "title": "Comparing solutions with criteria",
+    "class": "7a",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w32-1",
+    "title": "Team action proposal",
+    "class": "7a",
+    "assessment": false,
+    "model": "teamwork",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w32-2",
+    "title": "Team action proposal",
+    "class": "7a",
+    "assessment": false,
+    "model": "teamwork",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w33-1",
+    "title": "Challenge: Community solutions forum",
+    "class": "7a",
+    "assessment": false,
+    "model": "communication",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w33-2",
+    "title": "Challenge: Community solutions forum",
+    "class": "7a",
+    "assessment": false,
+    "model": "communication",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w34-1",
+    "title": "Portfolio consolidation and Grade 8 bridge",
+    "class": "7a",
+    "assessment": false,
+    "model": "reflection",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w34-2",
+    "title": "Portfolio consolidation and Grade 8 bridge",
+    "class": "7a",
+    "assessment": false,
+    "model": "reflection",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w35-1",
+    "title": "Final applied skills assessment",
+    "class": "7a",
+    "assessment": false,
+    "model": "reflection",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w35-2",
+    "title": "Final applied skills assessment",
+    "class": "7a",
+    "assessment": false,
+    "model": "reflection",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w36-1",
+    "title": "Q4 assessment",
+    "class": "7a",
+    "assessment": true,
+    "model": null,
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 0
+  },
+  {
+    "id": "g7a-gp-w36-2",
+    "title": "Final applied skills assessment",
+    "class": "7a",
+    "assessment": false,
+    "model": "reflection",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w37-1",
+    "title": "Final applied skills assessment",
+    "class": "7a",
+    "assessment": false,
+    "model": "reflection",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7a-gp-w37-2",
+    "title": "Final applied skills assessment",
+    "class": "7a",
+    "assessment": false,
+    "model": "reflection",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w01-1",
+    "title": "Assessment A0: Skills baseline and classroom norms",
+    "class": "7b",
+    "assessment": true,
+    "model": null,
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 0
+  },
+  {
+    "id": "g7b-gp-w01-2",
+    "title": "What is an Issue and a Perspective?",
+    "class": "7b",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 3
+  },
+  {
+    "id": "g7b-gp-w01-3",
+    "title": "Unit 1, 1.2: The same place, different viewpoints",
+    "class": "7b",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w02-1",
+    "title": "Unit 1, 1.3: Finding useful evidence",
+    "class": "7b",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w02-2",
+    "title": "Unit 1, 1.4: Asking useful questions",
+    "class": "7b",
+    "assessment": false,
+    "model": "research",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w02-3",
+    "title": "Unit 1, 1.5: Team roles and fair participation",
+    "class": "7b",
+    "assessment": false,
+    "model": "teamwork",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w03-1",
+    "title": "Unit 1, 1.6: Challenge: Our community and culture display",
+    "class": "7b",
+    "assessment": false,
+    "model": "communication",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w03-2",
+    "title": "Unit 1, 1.6: Challenge: Our community and culture display",
+    "class": "7b",
+    "assessment": false,
+    "model": "communication",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w03-3",
+    "title": "Unit 2, 2.1: How digital life affects us",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w04-1",
+    "title": "Unit 2, 2.2: Finding the message online",
+    "class": "7b",
+    "assessment": false,
+    "model": "communication",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w04-2",
+    "title": "Unit 2, 2.3: Who made this source and why?",
+    "class": "7b",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w04-3",
+    "title": "Survey repair shop",
+    "class": "7b",
+    "assessment": false,
+    "model": "sampling",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 3
+  },
+  {
+    "id": "g7b-gp-w05-1",
+    "title": "Test another team’s survey",
+    "class": "7b",
+    "assessment": false,
+    "model": "sampling",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 3
+  },
+  {
+    "id": "g7b-gp-w05-2",
+    "title": "Unit 2, 2.5: Making sense of survey results",
+    "class": "7b",
+    "assessment": false,
+    "model": "data",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w05-3",
+    "title": "Unit 2, 2.6: Challenge: A better digital balance",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w06-1",
+    "title": "Unit 2, 2.6: Challenge: A better digital balance",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w06-2",
+    "title": "Assessment Q1: Quarter 1 skills evidence review",
+    "class": "7b",
+    "assessment": true,
+    "model": null,
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 0
+  },
+  {
+    "id": "g7b-gp-w06-3",
+    "title": "Assessment Q1: Quarter 1 skills evidence review",
+    "class": "7b",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w09-1",
+    "title": "Unit 3, 3.1: What helps people learn?",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w09-2",
+    "title": "Unit 3, 3.2: Barriers to learning",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w09-3",
+    "title": "Unit 3, 3.3: Reading education data",
+    "class": "7b",
+    "assessment": false,
+    "model": "data",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w10-1",
+    "title": "Unit 3, 3.4: Finding answers in sources",
+    "class": "7b",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w10-2",
+    "title": "Unit 3, 3.4: Finding answers in sources",
+    "class": "7b",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w10-3",
+    "title": "Unit 3, 3.5: Comparing ideas about learning",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w11-1",
+    "title": "Unit 3, 3.5: Comparing ideas about learning",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w11-2",
+    "title": "Unit 3, 3.6: Challenge: Learning for everyone",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w11-3",
+    "title": "Unit 3, 3.6: Challenge: Learning for everyone",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w12-1",
+    "title": "Unit 4, 4.1: Can we trust this health advice?",
+    "class": "7b",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w12-2",
+    "title": "Unit 4, 4.2: Sleep, exercise and routines in data",
+    "class": "7b",
+    "assessment": false,
+    "model": "data",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w12-3",
+    "title": "Unit 4, 4.3: A fair wellbeing research question",
+    "class": "7b",
+    "assessment": false,
+    "model": "research",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w13-1",
+    "title": "Unit 4, 4.3: A fair wellbeing research question",
+    "class": "7b",
+    "assessment": false,
+    "model": "research",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w13-2",
+    "title": "Assessment Q2: Mid-year Global Perspectives skills assessment",
+    "class": "7b",
+    "assessment": true,
+    "model": null,
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 0
+  },
+  {
+    "id": "g7b-gp-w13-3",
+    "title": "Assessment Q2: Mid-year Global Perspectives skills assessment",
+    "class": "7b",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w14-1",
+    "title": "Assessment Q2: Mid-year Global Perspectives skills assessment",
+    "class": "7b",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w14-2",
+    "title": "Assessment Q2: Mid-year Global Perspectives skills assessment",
+    "class": "7b",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w14-3",
+    "title": "Assessment Q2: Mid-year Global Perspectives skills assessment",
+    "class": "7b",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w18-1",
+    "title": "Unit 4, 4.4: Collecting class evidence",
+    "class": "7b",
+    "assessment": false,
+    "model": "sampling",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w18-2",
+    "title": "Unit 4, 4.4: Collecting class evidence",
+    "class": "7b",
+    "assessment": false,
+    "model": "sampling",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w18-3",
+    "title": "Unit 4, 4.4: Collecting class evidence",
+    "class": "7b",
+    "assessment": false,
+    "model": "sampling",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w19-1",
+    "title": "Unit 4, 4.4: Collecting class evidence",
+    "class": "7b",
+    "assessment": false,
+    "model": "sampling",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w19-2",
+    "title": "Unit 4, 4.5: Listening to wellbeing viewpoints",
+    "class": "7b",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w19-3",
+    "title": "Unit 4, 4.5: Listening to wellbeing viewpoints",
+    "class": "7b",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w20-1",
+    "title": "Unit 4, 4.6: Challenge: A healthier school day",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w20-2",
+    "title": "Unit 4, 4.6: Challenge: A healthier school day",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w20-3",
+    "title": "Unit 4, 4.6: Challenge: A healthier school day",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w21-1",
+    "title": "Unit 5, 5.1: Where our water and food come from",
+    "class": "7b",
+    "assessment": false,
+    "model": "causality",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w21-2",
+    "title": "Unit 5, 5.1: Where our water and food come from",
+    "class": "7b",
+    "assessment": false,
+    "model": "causality",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w21-3",
+    "title": "Unit 5, 5.2: Scarcity and waste around us",
+    "class": "7b",
+    "assessment": false,
+    "model": "causality",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w22-1",
+    "title": "Unit 5, 5.2: Scarcity and waste around us",
+    "class": "7b",
+    "assessment": false,
+    "model": "causality",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w22-2",
+    "title": "Unit 5, 5.3: Reading use and waste data",
+    "class": "7b",
+    "assessment": false,
+    "model": "data",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w22-3",
+    "title": "Unit 5, 5.3: Reading use and waste data",
+    "class": "7b",
+    "assessment": false,
+    "model": "data",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w23-1",
+    "title": "Unit 5, 5.4: Comparing environmental sources",
+    "class": "7b",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w23-2",
+    "title": "Unit 5, 5.4: Comparing environmental sources",
+    "class": "7b",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w23-3",
+    "title": "Unit 5, 5.5: Which action would help most?",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w24-1",
+    "title": "Unit 5, 5.5: Which action would help most?",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w24-2",
+    "title": "Unit 5, 5.6: Challenge: Save water and reduce food waste",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w24-3",
+    "title": "Unit 5, 5.6: Challenge: Save water and reduce food waste",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w25-1",
+    "title": "Unit 5, 5.6: Challenge: Save water and reduce food waste",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w25-2",
+    "title": "Unit 5, 5.6: Challenge: Save water and reduce food waste",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w25-3",
+    "title": "Review R1: Skills clinic: From evidence to conclusion",
+    "class": "7b",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w26-1",
+    "title": "Review R1: Skills clinic: From evidence to conclusion",
+    "class": "7b",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w26-2",
+    "title": "Review R1: Skills clinic: From evidence to conclusion",
+    "class": "7b",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w26-3",
+    "title": "Assessment Q3: Quarter 3 applied challenge",
+    "class": "7b",
+    "assessment": true,
+    "model": null,
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 0
+  },
+  {
+    "id": "g7b-gp-w27-1",
+    "title": "Assessment Q3: Quarter 3 applied challenge",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w27-2",
+    "title": "Assessment Q3: Quarter 3 applied challenge",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w27-3",
+    "title": "Assessment Q3: Quarter 3 applied challenge",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w29-1",
+    "title": "Unit 6, 6.1: Choosing a local issue",
+    "class": "7b",
+    "assessment": false,
+    "model": "research",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w29-2",
+    "title": "Unit 6, 6.1: Choosing a local issue",
+    "class": "7b",
+    "assessment": false,
+    "model": "research",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w29-3",
+    "title": "Unit 6, 6.2: Finding useful sources and answers",
+    "class": "7b",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w30-1",
+    "title": "Unit 6, 6.2: Finding useful sources and answers",
+    "class": "7b",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w30-2",
+    "title": "Unit 6, 6.2: Finding useful sources and answers",
+    "class": "7b",
+    "assessment": false,
+    "model": "reliability",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w30-3",
+    "title": "Unit 6, 6.3: Collecting simple local evidence",
+    "class": "7b",
+    "assessment": false,
+    "model": "sampling",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w31-1",
+    "title": "Unit 6, 6.3: Collecting simple local evidence",
+    "class": "7b",
+    "assessment": false,
+    "model": "sampling",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w31-2",
+    "title": "Unit 6, 6.4: Mapping viewpoints and choosing action",
+    "class": "7b",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w31-3",
+    "title": "Unit 6, 6.4: Mapping viewpoints and choosing action",
+    "class": "7b",
+    "assessment": false,
+    "model": "perspectives",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w32-1",
+    "title": "Unit 6, 6.5: Taking and recording team action",
+    "class": "7b",
+    "assessment": false,
+    "model": "teamwork",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w32-2",
+    "title": "Unit 6, 6.5: Taking and recording team action",
+    "class": "7b",
+    "assessment": false,
+    "model": "teamwork",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w32-3",
+    "title": "Unit 6, 6.5: Taking and recording team action",
+    "class": "7b",
+    "assessment": false,
+    "model": "teamwork",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w33-1",
+    "title": "Unit 6, 6.6: Challenge: Community action showcase",
+    "class": "7b",
+    "assessment": false,
+    "model": "communication",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w33-2",
+    "title": "Unit 6, 6.6: Challenge: Community action showcase",
+    "class": "7b",
+    "assessment": false,
+    "model": "communication",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w33-3",
+    "title": "Unit 6, 6.6: Challenge: Community action showcase",
+    "class": "7b",
+    "assessment": false,
+    "model": "communication",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w34-1",
+    "title": "Review R2: Portfolio consolidation and Stage 7 bridge",
+    "class": "7b",
+    "assessment": false,
+    "model": "reflection",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w34-2",
+    "title": "Review R2: Portfolio consolidation and Stage 7 bridge",
+    "class": "7b",
+    "assessment": false,
+    "model": "reflection",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w34-3",
+    "title": "Review R2: Portfolio consolidation and Stage 7 bridge",
+    "class": "7b",
+    "assessment": false,
+    "model": "reflection",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w35-1",
+    "title": "Assessment Q4: Final applied skills assessment",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w35-2",
+    "title": "Assessment Q4: Final applied skills assessment",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w35-3",
+    "title": "Assessment Q4: Final applied skills assessment",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w36-1",
+    "title": "Assessment Q4: Final applied skills assessment",
+    "class": "7b",
+    "assessment": true,
+    "model": null,
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 0
+  },
+  {
+    "id": "g7b-gp-w36-2",
+    "title": "Assessment Q4: Final applied skills assessment",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w36-3",
+    "title": "Assessment Q4: Final applied skills assessment",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w37-1",
+    "title": "Assessment Q4: Final applied skills assessment",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w37-2",
+    "title": "Assessment Q4: Final applied skills assessment",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "g7b-gp-w37-3",
+    "title": "Assessment Q4: Final applied skills assessment",
+    "class": "7b",
+    "assessment": false,
+    "model": "planning",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 1
+  },
+  {
+    "id": "gp-books-7b-research-1-part-1",
+    "title": "Part 1 · What makes a useful research question?",
+    "class": "7b",
+    "assessment": false,
+    "model": "research",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 3
+  },
+  {
+    "id": "gp-books-7b-research-1-part-2",
+    "title": "Part 2 · Write and improve your research questions",
+    "class": "7b",
+    "assessment": false,
+    "model": "research",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 3
+  },
+  {
+    "id": "gp-books-7a-research-1-part-1",
+    "title": "Part 1 · Recognise a good research question",
+    "class": "7a",
+    "assessment": false,
+    "model": "research",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 3
+  },
+  {
+    "id": "gp-books-7a-research-1-part-2",
+    "title": "Part 2 · Develop and test your own questions",
+    "class": "7a",
+    "assessment": false,
+    "model": "research",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 3
+  },
+  {
+    "id": "gp-books-8-research-1-part-1",
+    "title": "Part 1 · Evaluate questions for a research report",
+    "class": "8",
+    "assessment": false,
+    "model": "research",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 3
+  },
+  {
+    "id": "gp-books-8-research-1-part-2",
+    "title": "Part 2 · Design and defend a research question",
+    "class": "8",
+    "assessment": false,
+    "model": "research",
+    "minutes": 40,
+    "guide": true,
+    "sourceCount": 3
+  }
+]
