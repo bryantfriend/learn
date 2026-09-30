@@ -20,9 +20,10 @@ function blocks(lesson) {
 function entries(block){
  const list=fields[block.kind].filter(key=>key==='title'||Object.hasOwn(block.object,key)).map(key=>({label:key,key}));
  (block.object.options||[]).forEach((option,i)=>list.push({label:`option ${option.id}`,key:'options',index:i}));
+ if(block.object.geoDisplay?.demo)list.push({label:'demonstration steps',key:'demonstrationSteps'});
  return list;
 }
-function value(block,entry){return entry.index===undefined?block.object[entry.key]:block.object.options[entry.index].label;}
+function value(block,entry){if(entry.key==='demonstrationSteps')return block.object.geoDisplay.demo.steps;return entry.index===undefined?block.object[entry.key]:block.object.options[entry.index].label;}
 export function lessonToText(lesson){
  return blocks(lesson).map(block=>`[${block.name}]\n`+entries(block).map(entry=>{
   const raw=value(block,entry);const text=Array.isArray(raw)?raw.join('\n'):String(raw??'');
@@ -52,7 +53,8 @@ export function textToLesson(text,base){
   for(const item of block.values||[]){
    if(item.text.length>12000)throw Error(`${block.name}: shorten ${item.entry.label} to under 12,000 characters.`);
    if(item.entry.key==='title'&&!item.text.trim())throw Error(`${block.name}: a title is required.`);
-   if(item.entry.index!==undefined){if(!item.text.trim())throw Error(`${block.name}: option labels cannot be empty.`);block.object.options[item.entry.index].label=item.text;}
+   if(item.entry.key==='demonstrationSteps'){if(!item.text.trim())throw Error(`${block.name}: include at least one demonstration step.`);block.object.geoDisplay.demo.steps=item.text.split('\n');}
+   else if(item.entry.index!==undefined){if(!item.text.trim())throw Error(`${block.name}: option labels cannot be empty.`);block.object.options[item.entry.index].label=item.text;}
    else block.object[item.entry.key]=Array.isArray(value(block,item.entry))?(item.text?item.text.split('\n'):[]):item.text;
   }
   const frame=block.object;

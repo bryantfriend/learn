@@ -4,7 +4,11 @@ import {markVocabulary,createConversationCards} from './english-support.js';
 import {APP_VERSION} from './version.js';
 import {createGeographyBoard,initialBoardState} from './geography-board.js';
 import {createGPLab} from './gp-lab.js';
+import {createGeographyEvidence} from './geography-evidence.js';
+import {createPostcardGame,initialPostState} from './geography-postcards.js';
+import {createGeographyWorkspace,initialWorkspaceState} from './geography-workspace.js';
 const geographyBoardStates=new Map();
+const geographyEvidenceStates=new Map();
 import {visualSpec,createVisual,pauseVisuals} from './visuals.js';
 import { lesson as firstLesson, getLesson, modes, questionOptions } from './lessons.js';
 import { frameKey, responseKeyFor, summarizeSession } from './progress.js';
@@ -81,6 +85,10 @@ function currentFrame() {
 }
 function responseKey() { return responseKeyFor(lesson, session.stage, session.steps[session.stage]); }
 function response() { return session.responses[responseKey()] || { selected: null, revealed: false }; }
+function createFrameEvidence() {
+    const key=lesson.id+':'+lesson.contentRevision+':'+session.stage+':'+session.steps[session.stage];
+    return createGeographyEvidence(geographyEvidenceStates.get(key)||currentFrame().geoDisplay,spec=>geographyEvidenceStates.set(key,spec));
+}
 function currentMode() {
     if (session.modeOverride) return session.modeOverride;
     const frame = currentFrame();
@@ -101,6 +109,7 @@ function prepareCurrentTimer() {
 }
 function newSession(classLabel, lessonId = selectedLessonId, classId = selectedClassId, subjectId = selectedSubjectId) {
     lesson = getLesson(lessonId) || firstLesson;
+    for (const states of [geographyEvidenceStates,geographyBoardStates]) for (const key of states.keys()) if (key.startsWith(lesson.id+':')) states.delete(key);
     selectedLessonId = lesson.id;
     session = {
         schemaVersion: SCHEMA, lessonId: lesson.id, ...(lesson.contentRevision ? { contentRevision: lesson.contentRevision } : {}), classId, subjectId, classLabel: classLabel.trim().slice(0, 30),
@@ -183,25 +192,35 @@ function renderPlayer() {
             progress
         ])
     ]);
-    const copy = element('div', { className: 'copy' }, []);
+    const copy = element('div', { className: 'copy'+(frame.solutionCheck?' solution-check':'') }, []);
     copy.append(element('p', { className: 'eyebrow' + (lesson.catalog ? ' lesson-context' : '') }, [frame.kicker || (frame.final ? 'LESSON COMPLETE' : lesson.eyebrow || 'NOTICE · THINK · EXPLAIN')]));
     copy.append(element('h1', { id: 'student-title', tabindex: '-1' }, [graphic?.intro && lesson.catalog?.classes ? graphic.title : frame.title]));
     if (frame.quote) copy.append(element('blockquote', {}, [frame.quote]));
     if (frame.choices) copy.append(element('ol', { className: 'opening-choices' + (frame.choiceLayout === 'grid' ? ' choice-grid' : '') }, frame.choices.map(function(choice) { return element('li', {}, [choice]); })));
     if (frame.lines) copy.append(element('div', { className: 'instructions' }, (graphic?.intro && !frame.expectedSeconds ? [graphic.prompt] : frame.lines).map(function(line) { return element('p', {}, [line]); })));
     if (frame.footnote) copy.append(element('p', { className: 'footnote' }, [frame.footnote]));
-    if (frame.questionBank) copy.append(button('Show all questions ⛶', 'question-bank', 'question-bank-button'));
+    if (frame.questionBank?.length) {
+        const bankButton = button('Show all questions ⛶', 'question-bank', 'question-bank-button');
+        bankButton.setAttribute('aria-haspopup', 'dialog');
+        bankButton.setAttribute('aria-controls', 'panel');
+        copy.append(bankButton);
+    }
     if (frame.conversationCards) copy.append(button('Open conversation cards ⛶','conversation-cards','question-bank-button'));
     if (frame.gpLab) copy.append(button('Explore: '+frame.gpLab.title+' ⛶', 'gp-lab', 'question-bank-button'));
     if (frame.boardActivity) copy.append(button('Open board challenge ⛶', 'geography-board', 'question-bank-button'));
+    if (frame.postcardActivity) copy.append(button(frame.postcardActivity.mode==='sorting'?'Open island sorting office ⛶':'Open postcard delivery ⛶','geography-postcards','question-bank-button'));
+    if (frame.boardWork) copy.append(button('Work this out on the board ⛶','geography-workspace','board-work-button'));
+    if (frame.boardRound||frame.boardTask) copy.append(element('p',{className:'board-round-routine'},['Everyone thinks → two pupils explain → check and improve.']));
+    if (frame.geoDisplay&&!frame.simulation&&!frame.postcardActivity&&!frame.boardWork) copy.append(button('Enlarge visual ⛶','geography-evidence','geo-enlarge'));
     if (frame.simulation) copy.append(button(frame.boardActivity?'Explore the model ⛶':'Open investigation ⛶', 'geography-lab', 'question-bank-button'));
     if (typeof frame.sourceCard === 'string') copy.append(button('Show task source ⛶', 'task-source', 'question-bank-button'));
+    if(lesson.geoRedesign){const actions=[...copy.querySelectorAll('.question-bank-button,.board-work-button,.geo-enlarge')];if(actions.length){const row=element('div',{className:'geo-frame-actions'});actions.forEach(b=>row.append(b));copy.append(row);}}
     if (frame.type === 'question' || frame.type === 'opinion') renderQuestion(copy);
     if (frame.type === 'memory') copy.append(element('div', { className: 'memory-grid', 'aria-label': 'Nine items to remember' }, frame.items.map(function(item) {
         return element('div', { className: 'memory-item' }, [element('span', { 'aria-hidden': 'true' }, [item.symbol]), element('span', { className: 'memory-label' }, [item.label])]);
     })));
     if (frame.symbol) copy.append(element('div', { className: 'mission-symbol', 'aria-hidden': 'true' }, [frame.symbol]));
-    const answerPanel = !frame.visual && frame.type === 'question' && response().revealed;
+    const answerPanel = !frame.visual && !frame.geoDisplay && frame.type === 'question' && response().revealed;
     if (frame.diagram && !graphic) {
         const diagrams = {'g7b-uk':['g7b-uk','Geographic map of the United Kingdom and neighbouring Ireland.'],'g7b-valley':['g7b-valley','V-shaped and U-shaped valley cross-sections.'],'g7b-cycle':['g7b-cycle','Water cycle: evaporation, condensation, precipitation, runoff and infiltration.'],'g7b-bend':['g7b-bend','River bend with outer-bank erosion and inner-bank deposition.'],'2.4':['g7-plan','Invented plan: school west, pond east, park north, road south.'],'2.5':['g7-grid','Practice grid. Tree six tenths across and two tenths up inside square 2345.'],'2.8':['g7-profile','Profile: 100, 120, 160 and 180 metres at 0, 100, 200 and 300 metres distance.'],'2.9':['g7-world','Coordinate sketch: A north and east, B south and east, C at zero latitude and longitude.']};
         const item = diagrams[frame.diagram];
@@ -211,6 +230,7 @@ function renderPlayer() {
     if (lesson.vocabulary) markVocabulary(copy,lesson.vocabulary);
     const content = element('section', { className: 'teaching-content' + (graphic || scene ? ' illustrated' : '') + (scene ? ' scene-layout' : '') + (frame.visual || answerPanel ? ' split' : '') + (lesson.summary ? ' practice-content' : '') + (lesson.gp ? ' gp-content' : '') + (lesson.geoRedesign ? ' geo-workshop' : '') + (frame.type === 'question' ? ' quiz' : ''), 'aria-labelledby': 'student-title' }, [copy]);
     if (graphic) content.append(createVisual(graphic));
+    if (frame.geoDisplay) {content.classList.add('geography-visual-layout');content.append(createFrameEvidence());}
     if (scene) content.append(element('figure', {className:'lesson-scene'},[
         element('img',{src:'./assets/'+scene.image,alt:scene.alt,decoding:'async'}),
         element('figcaption',{},[scene.caption])
@@ -311,15 +331,18 @@ function openPanel(title, children, kind = 'panel') {
     panel.showModal();
 }
 function closePanel() {
+    const refreshEvidence = dialogKind === 'geography-evidence';
     panel.close();
     dialogKind = '';
     confirmation = null;
+    if (refreshEvidence && inLesson) { render(); app.querySelector('[data-action="geography-evidence"]')?.focus({preventScroll:true}); }
 }
 function showQuestionBank() {
-    const questions = currentFrame().questionBank;
-    if (!questions) return;
-    openPanel('Choose two research questions', [
-        element('p', { className: 'question-bank-instruction' }, ['School lunch waste · Write each chosen question and your reason in your book.']),
+    const frame = currentFrame();
+    const questions = frame.questionBank;
+    if (!questions?.length) return;
+    openPanel('All research questions', [
+        element('p', { className: 'question-bank-instruction' }, [[frame.questionBankTopic, `${questions.length} questions`].filter(Boolean).join(' · ')]),
         element('ul', { className: 'question-bank-list' }, questions.map(question => element('li', {}, [question])))
     ], 'question-bank');
     panel.classList.add('question-bank-panel');
@@ -344,7 +367,7 @@ function showGeographyBoard() {
 }
 function showTaskSource() {
     const source=currentFrame().sourceCard;if(typeof source!=='string')return;
-    openPanel('Investigation source',[element('p',{},[source]),element('h3',{},['Your task']),...currentFrame().lines.map(line=>element('p',{},[line])),...(currentFrame().sourceModel?[button('View reference model ⛶','task-model')]:[])]);
+    openPanel('Investigation source',[...(currentFrame().geoDisplay?.atlas?[createGeographyEvidence(currentFrame().geoDisplay)]:[]),element('p',{},[source]),element('h3',{},['Your task']),...currentFrame().lines.map(line=>element('p',{},[line])),...(currentFrame().sourceModel?[button('View reference model ⛶','task-model')]:[])]);
     markVocabulary(panel,lesson.vocabulary);
 }
 function showTaskModel() {
@@ -576,6 +599,7 @@ function showTools() {
         button('Edit lesson text', 'edit-lesson'),
         button('Read this stage’s teacher notes', 'notes'),
         ...(lesson.teacherGuide ? [button('How to teach this lesson', 'gp-guide')] : []),
+        ...(lesson.boardTeachingGuide ? [button('40-minute board teaching guide','geo-teaching-guide')] : []),
         ...(lesson.gpLab ? [button('Interactive model · '+lesson.gpLab.title, 'gp-lab')] : []),
         ...(lesson.extensions ? [button('Extra time · optional 10–20 minutes', 'extensions'), element('p', {}, [lesson.pacingNote])] : []),
         button('Choose a stage', 'stages'),
@@ -714,6 +738,26 @@ function handleAction(event) {
         if (callback) callback();
     } else if (action === 'conversation-cards') showConversationCards();
     else if (action === 'geography-board') showGeographyBoard();
+    else if (action === 'geography-evidence') {openPanel('Look closely · '+currentFrame().title,[createFrameEvidence()],'geography-evidence');panel.classList.add('geography-evidence-panel');}
+    else if (action === 'geography-postcards') {
+        const spec=currentFrame().postcardActivity,key=lesson.id+':'+spec.id;
+        if(!geographyBoardStates.has(key))geographyBoardStates.set(key,initialPostState());
+        openPanel(spec.title,[createPostcardGame(spec,geographyBoardStates.get(key))]);panel.classList.add('geography-board-panel');
+    }
+    else if (action === 'geography-workspace') {
+        const key=lesson.id+':workspace:'+(currentFrame().workspaceId||session.stage+':'+session.steps[session.stage]);
+        if(!geographyBoardStates.has(key))geographyBoardStates.set(key,initialWorkspaceState(currentFrame()));
+        openPanel('Class board workspace',[createGeographyWorkspace(currentFrame(),geographyBoardStates.get(key))]);panel.classList.add('geography-workspace-panel');
+    }
+    else if (action === 'geo-teaching-guide') {
+        const guide=lesson.boardTeachingGuide;
+        openPanel('40-minute board teaching guide',[
+            element('p',{},[guide.message]),element('p',{},['No student book, worksheet or notebook required. Pair discussion is optional.']),
+            ...guide.stages.map(s=>element('details',{},[element('summary',{},[s.title+' · '+s.minutes+' min · '+s.rounds+' board tasks']),element('p',{},[s.notes])])),
+            element('h3',{},['If the class answers quickly']),element('p',{},[guide.quickClass]),
+            ...guide.extra.map(q=>element('details',{},[element('summary',{},[q.prompt]),element('p',{},[q.source]),element('p',{},[q.answer])]))
+        ]);
+    }
     else if (action === 'geography-lab') showGeographyLab();
     else if (action === 'task-model') showTaskModel();
     else if (action === 'task-source') showTaskSource();

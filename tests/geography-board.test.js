@@ -16,7 +16,7 @@ test('every Geography mission has authored instruction and every session has a b
  for(const l of geo){
   const frames=l.stages.flatMap(s=>s.frames);
   assert.ok(frames.some(f=>f.teachingModel),l.id);
-  assert.ok(frames.some(f=>f.boardActivity),l.id);
+  assert.ok(frames.some(f=>f.boardActivity||f.postcardActivity),l.id);
   assert.ok(l.learningObjectives.length,l.id);
   assert.doesNotMatch(JSON.stringify(l),/Transfer the method, not the old result|Assume a plausible answer needs no evidence|Keep the previous answer without checking/);
  }

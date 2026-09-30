@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-29",
+  "date": "2026-09-30",
   "scope": "Teacher-led Geography player; 7A and 7B. All 96 scheduled sessions inspected, including 10 assessments.",
   "baseline": {
     "teachingAndReview": 86,
@@ -8,6 +8,7 @@
     "repeatedReviewTaskSequences": true
   },
   "limitations": [
+    "Forty minutes is a teaching plan, not a measured classroom duration. Pupil thinking, discussion and shared work are part of that plan.",
     "Engagement is a classroom outcome, not established by automated tests.",
     "Smart-board behaviour is tested with browser touch and keyboard input, not the physical classroom board.",
     "Textbook section alignment comes from existing plans. Complete printed pages were not supplied.",
@@ -24,6 +25,12 @@
       "objectives": [],
       "sections": [],
       "workedDemonstrations": 0,
+      "visibleVisuals": 0,
+      "boardFirst": false,
+      "coreBoardRounds": 0,
+      "boardWorkspaces": 0,
+      "teacherGuide": false,
+      "spokenExit": true,
       "boardActivities": [],
       "independentTasks": [],
       "disposition": "Assessment retained; optional revision worksheets remain separate."
@@ -42,6 +49,12 @@
         "1.1"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 11,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 5,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -50,9 +63,10 @@
       ],
       "independentTasks": [
         "Landscape detectives · your task",
-        "Connection builders"
+        "Connection builders",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w03-1",
@@ -70,6 +84,12 @@
         "1.2"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 16,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -82,9 +102,11 @@
       ],
       "independentTasks": [
         "Build a school geography exhibit · your task",
-        "Pack the right kit · your task"
+        "Pack the right kit · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w04-1",
@@ -102,6 +124,12 @@
         "1.2"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 13,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -114,9 +142,11 @@
       ],
       "independentTasks": [
         "Rescue the survey team · your task",
-        "Three equipment stations · your task"
+        "Three equipment stations · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w05-1",
@@ -134,6 +164,12 @@
         "1.3"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 15,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -146,9 +182,11 @@
       ],
       "independentTasks": [
         "The doorway mystery · your task",
-        "Design a fair count · your task"
+        "Design a fair count · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w06-1",
@@ -160,6 +198,12 @@
       "objectives": [],
       "sections": [],
       "workedDemonstrations": 0,
+      "visibleVisuals": 0,
+      "boardFirst": false,
+      "coreBoardRounds": 0,
+      "boardWorkspaces": 0,
+      "teacherGuide": false,
+      "spokenExit": true,
       "boardActivities": [],
       "independentTasks": [],
       "disposition": "Assessment retained; optional revision worksheets remain separate."
@@ -181,7 +225,13 @@
         "1.2",
         "1.3"
       ],
-      "workedDemonstrations": 6,
+      "workedDemonstrations": 3,
+      "visibleVisuals": 18,
+      "boardFirst": true,
+      "coreBoardRounds": 6,
+      "boardWorkspaces": 13,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -199,9 +249,12 @@
       "independentTasks": [
         "Evidence hearing · Turn an observation into an investigable exhibit label · your task",
         "Evidence hearing · Record a result another investigator can check · your task",
-        "Evidence hearing · Separate an observation from a possible cause · your task"
+        "Evidence hearing · Separate an observation from a possible cause · your task",
+        "Change the conditions · board case 2",
+        "Work it out together · board case 3",
+        "Change the conditions · board case 3"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w09-1",
@@ -219,6 +272,12 @@
         "1.4"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 16,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -231,9 +290,11 @@
       ],
       "independentTasks": [
         "Evidence before explanation · your task",
-        "A crossing changes a place · your task"
+        "A crossing changes a place · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w10-1",
@@ -251,6 +312,12 @@
         "1.4"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 13,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -263,9 +330,11 @@
       ],
       "independentTasks": [
         "Then-and-now investigation · your task",
-        "Compare with a local change · your task"
+        "Compare with a local change · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w11-1",
@@ -283,6 +352,12 @@
         "1.5"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 15,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -295,9 +370,11 @@
       ],
       "independentTasks": [
         "Three questions, one map · your task",
-        "The answer sorting desk · your task"
+        "The answer sorting desk · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w12-1",
@@ -315,6 +392,12 @@
         "1.6"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 16,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -327,9 +410,11 @@
       ],
       "independentTasks": [
         "Mark the mistaken answer · your task",
-        "The bus-stop puzzle · your task"
+        "The bus-stop puzzle · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w13-1",
@@ -341,6 +426,12 @@
       "objectives": [],
       "sections": [],
       "workedDemonstrations": 0,
+      "visibleVisuals": 0,
+      "boardFirst": false,
+      "coreBoardRounds": 0,
+      "boardWorkspaces": 0,
+      "teacherGuide": false,
+      "spokenExit": true,
       "boardActivities": [],
       "independentTasks": [],
       "disposition": "Assessment retained; optional revision worksheets remain separate."
@@ -362,7 +453,13 @@
         "1.5",
         "1.6"
       ],
-      "workedDemonstrations": 6,
+      "workedDemonstrations": 3,
+      "visibleVisuals": 18,
+      "boardFirst": true,
+      "coreBoardRounds": 6,
+      "boardWorkspaces": 13,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -380,9 +477,12 @@
       "independentTasks": [
         "Design a counterexample · Compare matched evidence from two dates · your task",
         "Design a counterexample · Repair an answer that answers the wrong question · your task",
-        "Design a counterexample · Join a claim to evidence and a mechanism · your task"
+        "Design a counterexample · Join a claim to evidence and a mechanism · your task",
+        "Change the conditions · board case 2",
+        "Work it out together · board case 3",
+        "Change the conditions · board case 3"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w18-1",
@@ -400,6 +500,12 @@
         "1.6"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 13,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -412,9 +518,11 @@
       ],
       "independentTasks": [
         "Repair the unsupported claim · your task",
-        "New evidence arrives · your task"
+        "New evidence arrives · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w19-1",
@@ -431,7 +539,13 @@
         "1.7",
         "1.7"
       ],
-      "workedDemonstrations": 3,
+      "workedDemonstrations": 2,
+      "visibleVisuals": 15,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -444,9 +558,11 @@
       ],
       "independentTasks": [
         "Choose for a traveller · your task",
-        "Change the traveller · your task"
+        "Change the traveller · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w20-1",
@@ -464,6 +580,12 @@
         "2.1"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 16,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -476,9 +598,11 @@
       ],
       "independentTasks": [
         "The missing criterion · your task",
-        "Which map for which job? · your task"
+        "Which map for which job? · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w21-1",
@@ -496,6 +620,12 @@
         "2.1"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 13,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -508,9 +638,11 @@
       ],
       "independentTasks": [
         "A map editor’s choices · your task",
-        "Test a map claim · your task"
+        "Test a map claim · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w22-1",
@@ -528,6 +660,12 @@
         "2.2"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 15,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sequence",
@@ -540,9 +678,11 @@
       ],
       "independentTasks": [
         "A classroom that fits · your task",
-        "Catch the scale error · your task"
+        "Catch the scale error · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w23-1",
@@ -560,6 +700,12 @@
         "2.3"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 16,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -572,9 +718,11 @@
       ],
       "independentTasks": [
         "Design a pocket plan · your task",
-        "Listen, then map · your task"
+        "Listen, then map · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w24-1",
@@ -592,6 +740,12 @@
         "2.3"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 13,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -604,9 +758,11 @@
       ],
       "independentTasks": [
         "Two people, one route · your task",
-        "Make memory useful · your task"
+        "Make memory useful · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w25-1",
@@ -624,6 +780,12 @@
         "2.4"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 15,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -636,9 +798,11 @@
       ],
       "independentTasks": [
         "Turn a scene into a plan · your task",
-        "The missing key case · your task"
+        "The missing key case · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w26-1",
@@ -650,6 +814,12 @@
       "objectives": [],
       "sections": [],
       "workedDemonstrations": 0,
+      "visibleVisuals": 0,
+      "boardFirst": false,
+      "coreBoardRounds": 0,
+      "boardWorkspaces": 0,
+      "teacherGuide": false,
+      "spokenExit": true,
       "boardActivities": [],
       "independentTasks": [],
       "disposition": "Assessment retained; optional revision worksheets remain separate."
@@ -671,7 +841,13 @@
         "2.3",
         "2.4"
       ],
-      "workedDemonstrations": 6,
+      "workedDemonstrations": 3,
+      "visibleVisuals": 18,
+      "boardFirst": true,
+      "coreBoardRounds": 6,
+      "boardWorkspaces": 13,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -689,9 +865,12 @@
       "independentTasks": [
         "Mistake clinic · Diagnose a scale calculation rather than guess · your task",
         "Mistake clinic · Turn memory into a provisional navigation aid · your task",
-        "Mistake clinic · Translate a view from above into a plan · your task"
+        "Mistake clinic · Translate a view from above into a plan · your task",
+        "Change the conditions · board case 2",
+        "Work it out together · board case 3",
+        "Change the conditions · board case 3"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w29-1",
@@ -709,6 +888,12 @@
         "2.5"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 16,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -721,9 +906,11 @@
       ],
       "independentTasks": [
         "Map for a new pupil · your task",
-        "Locate the tree · your task"
+        "Locate the tree · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w30-1",
@@ -741,6 +928,12 @@
         "2.5"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 13,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "pin",
@@ -753,9 +946,11 @@
       ],
       "independentTasks": [
         "Deliver the rescue message · your task",
-        "Find the swapped digits · your task"
+        "Find the swapped digits · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w31-1",
@@ -773,6 +968,12 @@
         "2.6"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 15,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sequence",
@@ -785,9 +986,11 @@
       ],
       "independentTasks": [
         "The direct-line trap · your task",
-        "Plan a shorter detour · your task"
+        "Plan a shorter detour · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w32-1",
@@ -805,6 +1008,12 @@
         "2.7"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 16,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -817,9 +1026,11 @@
       ],
       "independentTasks": [
         "An enlarged map · your task",
-        "A key before a guess · your task"
+        "A key before a guess · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w33-1",
@@ -837,6 +1048,12 @@
         "2.8"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 16,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -849,9 +1066,11 @@
       ],
       "independentTasks": [
         "Choose a walking extract · your task",
-        "Build the hill profile · your task"
+        "Build the hill profile · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w34-1",
@@ -869,6 +1088,12 @@
         "2.8"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 13,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -881,9 +1106,11 @@
       ],
       "independentTasks": [
         "Choose the gentler approach · your task",
-        "Challenge the hill myth · your task"
+        "Challenge the hill myth · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w35-1",
@@ -901,6 +1128,12 @@
         "2.9"
       ],
       "workedDemonstrations": 2,
+      "visibleVisuals": 15,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 8,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -913,9 +1146,11 @@
       ],
       "independentTasks": [
         "The coordinate dispatch · your task",
-        "Correct the hemisphere · your task"
+        "Correct the hemisphere · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w36-1",
@@ -927,6 +1162,12 @@
       "objectives": [],
       "sections": [],
       "workedDemonstrations": 0,
+      "visibleVisuals": 0,
+      "boardFirst": false,
+      "coreBoardRounds": 0,
+      "boardWorkspaces": 0,
+      "teacherGuide": false,
+      "spokenExit": true,
       "boardActivities": [],
       "independentTasks": [],
       "disposition": "Assessment retained; optional revision worksheets remain separate."
@@ -948,7 +1189,13 @@
         "2.8",
         "2.9"
       ],
-      "workedDemonstrations": 6,
+      "workedDemonstrations": 3,
+      "visibleVisuals": 18,
+      "boardFirst": true,
+      "coreBoardRounds": 6,
+      "boardWorkspaces": 13,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -966,9 +1213,12 @@
       "independentTasks": [
         "Teach the missing step · Distinguish detail from coverage · your task",
         "Teach the missing step · Separate summit height from slope steepness · your task",
-        "Teach the missing step · Use two zero lines to locate a place · your task"
+        "Teach the missing step · Use two zero lines to locate a place · your task",
+        "Change the conditions · board case 2",
+        "Work it out together · board case 3",
+        "Change the conditions · board case 3"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7a-geo-w38-1",
@@ -987,7 +1237,13 @@
         "2.8",
         "2.9"
       ],
-      "workedDemonstrations": 6,
+      "workedDemonstrations": 3,
+      "visibleVisuals": 18,
+      "boardFirst": true,
+      "coreBoardRounds": 6,
+      "boardWorkspaces": 13,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1005,9 +1261,12 @@
       "independentTasks": [
         "Design a counterexample · Distinguish detail from coverage · your task",
         "Design a counterexample · Separate summit height from slope steepness · your task",
-        "Design a counterexample · Use two zero lines to locate a place · your task"
+        "Design a counterexample · Use two zero lines to locate a place · your task",
+        "Change the conditions · board case 2",
+        "Work it out together · board case 3",
+        "Change the conditions · board case 3"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w01-1",
@@ -1019,6 +1278,12 @@
       "objectives": [],
       "sections": [],
       "workedDemonstrations": 0,
+      "visibleVisuals": 0,
+      "boardFirst": false,
+      "coreBoardRounds": 0,
+      "boardWorkspaces": 0,
+      "teacherGuide": false,
+      "spokenExit": true,
       "boardActivities": [],
       "independentTasks": [],
       "disposition": "Assessment retained; optional revision worksheets remain separate."
@@ -1038,7 +1303,13 @@
         "3.1",
         "3.3"
       ],
-      "workedDemonstrations": 4,
+      "workedDemonstrations": 2,
+      "visibleVisuals": 12,
+      "boardFirst": true,
+      "coreBoardRounds": 4,
+      "boardWorkspaces": 9,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1051,14 +1322,16 @@
       ],
       "independentTasks": [
         "Mistake clinic · Locate the UK at island and country scales · your task",
-        "Mistake clinic · Explain relief rainfall as a connected process · your task"
+        "Mistake clinic · Explain relief rainfall as a connected process · your task",
+        "Work it out together · board case 2",
+        "Change the conditions · board case 2"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w02-1",
       "class": "7b",
-      "title": "Deliver four postcards",
+      "title": "UK map detectives and postcard delivery",
       "assessment": false,
       "review": false,
       "minutes": 40,
@@ -1069,16 +1342,27 @@
         "3.1"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 8,
+      "boardFirst": true,
+      "coreBoardRounds": 0,
+      "boardWorkspaces": 1,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
-          "type": "sort",
+          "type": "sorting",
           "title": "Island sorting office"
+        },
+        {
+          "type": "postcards",
+          "title": "Map delivery missions"
         }
       ],
       "independentTasks": [
-        "Deliver four postcards · your task"
+        "Post office: read, point, deliver",
+        "Invent a better address"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w02-2",
@@ -1094,6 +1378,12 @@
         "3.1"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 7,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1101,9 +1391,10 @@
         }
       ],
       "independentTasks": [
-        "Plan an Irish Sea journey · your task"
+        "Plan an Irish Sea journey · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w03-1",
@@ -1119,6 +1410,12 @@
         "3.2"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -1126,9 +1423,10 @@
         }
       ],
       "independentTasks": [
-        "Build two map keys · your task"
+        "Build two map keys · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w03-2",
@@ -1144,6 +1442,12 @@
         "3.2"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 7,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1151,9 +1455,10 @@
         }
       ],
       "independentTasks": [
-        "The boundary detective · your task"
+        "The boundary detective · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w04-1",
@@ -1169,6 +1474,12 @@
         "3.3"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sequence",
@@ -1176,9 +1487,10 @@
         }
       ],
       "independentTasks": [
-        "Two weather stations · your task"
+        "Two weather stations · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w04-2",
@@ -1194,6 +1506,12 @@
         "3.3"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 7,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1201,9 +1519,10 @@
         }
       ],
       "independentTasks": [
-        "Forecast the mountain experiment · your task"
+        "Forecast the mountain experiment · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w05-1",
@@ -1219,6 +1538,12 @@
         "3.4"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -1226,9 +1551,10 @@
         }
       ],
       "independentTasks": [
-        "A town with overlapping interests · your task"
+        "A town with overlapping interests · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w05-2",
@@ -1244,6 +1570,12 @@
         "3.4"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 7,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1251,9 +1583,10 @@
         }
       ],
       "independentTasks": [
-        "The misleading headline · your task"
+        "The misleading headline · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w06-1",
@@ -1272,7 +1605,13 @@
         "3.3",
         "3.4"
       ],
-      "workedDemonstrations": 6,
+      "workedDemonstrations": 3,
+      "visibleVisuals": 18,
+      "boardFirst": true,
+      "coreBoardRounds": 6,
+      "boardWorkspaces": 13,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1290,9 +1629,12 @@
       "independentTasks": [
         "Mistake clinic · Combine layers to answer a specific question · your task",
         "Mistake clinic · Compare weather measurements without calling them climate · your task",
-        "Mistake clinic · Write a headline that respects the sample · your task"
+        "Mistake clinic · Write a headline that respects the sample · your task",
+        "Change the conditions · board case 2",
+        "Work it out together · board case 3",
+        "Change the conditions · board case 3"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w06-2",
@@ -1304,6 +1646,12 @@
       "objectives": [],
       "sections": [],
       "workedDemonstrations": 0,
+      "visibleVisuals": 0,
+      "boardFirst": false,
+      "coreBoardRounds": 0,
+      "boardWorkspaces": 0,
+      "teacherGuide": false,
+      "spokenExit": true,
       "boardActivities": [],
       "independentTasks": [],
       "disposition": "Assessment retained; optional revision worksheets remain separate."
@@ -1325,7 +1673,13 @@
         "3.3",
         "3.4"
       ],
-      "workedDemonstrations": 6,
+      "workedDemonstrations": 3,
+      "visibleVisuals": 18,
+      "boardFirst": true,
+      "coreBoardRounds": 6,
+      "boardWorkspaces": 13,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1343,9 +1697,12 @@
       "independentTasks": [
         "Teach the missing step · Combine layers to answer a specific question · your task",
         "Teach the missing step · Compare weather measurements without calling them climate · your task",
-        "Teach the missing step · Write a headline that respects the sample · your task"
+        "Teach the missing step · Write a headline that respects the sample · your task",
+        "Change the conditions · board case 2",
+        "Work it out together · board case 3",
+        "Change the conditions · board case 3"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w07-2",
@@ -1364,7 +1721,13 @@
         "3.3",
         "3.4"
       ],
-      "workedDemonstrations": 6,
+      "workedDemonstrations": 3,
+      "visibleVisuals": 18,
+      "boardFirst": true,
+      "coreBoardRounds": 6,
+      "boardWorkspaces": 13,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1382,9 +1745,12 @@
       "independentTasks": [
         "Design a counterexample · Separate political information from physical relief · your task",
         "Design a counterexample · Explain relief rainfall as a connected process · your task",
-        "Design a counterexample · Count overlapping groups once · your task"
+        "Design a counterexample · Count overlapping groups once · your task",
+        "Change the conditions · board case 2",
+        "Work it out together · board case 3",
+        "Change the conditions · board case 3"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w09-1",
@@ -1400,6 +1766,12 @@
         "3.5"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -1407,9 +1779,10 @@
         }
       ],
       "independentTasks": [
-        "Settlement from above · your task"
+        "Settlement from above · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w09-2",
@@ -1425,6 +1798,12 @@
         "3.5"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 7,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1432,9 +1811,10 @@
         }
       ],
       "independentTasks": [
-        "A road changes the pattern · your task"
+        "A road changes the pattern · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w10-1",
@@ -1450,6 +1830,12 @@
         "3.6"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -1457,9 +1843,10 @@
         }
       ],
       "independentTasks": [
-        "Which town works for whom? · your task"
+        "Which town works for whom? · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w10-2",
@@ -1475,6 +1862,12 @@
         "3.6"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 7,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1482,9 +1875,10 @@
         }
       ],
       "independentTasks": [
-        "The indicator changes · your task"
+        "The indicator changes · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w11-1",
@@ -1500,6 +1894,12 @@
         "3.7"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -1507,9 +1907,10 @@
         }
       ],
       "independentTasks": [
-        "City connections · your task"
+        "City connections · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w11-2",
@@ -1525,6 +1926,12 @@
         "3.7"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 7,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1532,9 +1939,10 @@
         }
       ],
       "independentTasks": [
-        "One station closes · your task"
+        "One station closes · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w12-1",
@@ -1550,6 +1958,12 @@
         "3.8"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -1557,9 +1971,10 @@
         }
       ],
       "independentTasks": [
-        "Follow three connections · your task"
+        "Follow three connections · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w12-2",
@@ -1575,6 +1990,12 @@
         "3.8"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 7,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1582,9 +2003,10 @@
         }
       ],
       "independentTasks": [
-        "A link is interrupted · your task"
+        "A link is interrupted · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w13-1",
@@ -1603,7 +2025,13 @@
         "3.7",
         "3.8"
       ],
-      "workedDemonstrations": 6,
+      "workedDemonstrations": 3,
+      "visibleVisuals": 18,
+      "boardFirst": true,
+      "coreBoardRounds": 6,
+      "boardWorkspaces": 13,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1621,9 +2049,12 @@
       "independentTasks": [
         "Field notebook rescue · Update only the conclusions the new evidence supports · your task",
         "Field notebook rescue · Explain links between city functions · your task",
-        "Field notebook rescue · Choose a response to a broken connection · your task"
+        "Field notebook rescue · Choose a response to a broken connection · your task",
+        "Change the conditions · board case 2",
+        "Work it out together · board case 3",
+        "Change the conditions · board case 3"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w13-2",
@@ -1635,6 +2066,12 @@
       "objectives": [],
       "sections": [],
       "workedDemonstrations": 0,
+      "visibleVisuals": 0,
+      "boardFirst": false,
+      "coreBoardRounds": 0,
+      "boardWorkspaces": 0,
+      "teacherGuide": false,
+      "spokenExit": true,
       "boardActivities": [],
       "independentTasks": [],
       "disposition": "Assessment retained; optional revision worksheets remain separate."
@@ -1656,7 +2093,13 @@
         "3.7",
         "3.8"
       ],
-      "workedDemonstrations": 6,
+      "workedDemonstrations": 3,
+      "visibleVisuals": 18,
+      "boardFirst": true,
+      "coreBoardRounds": 6,
+      "boardWorkspaces": 13,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1674,9 +2117,12 @@
       "independentTasks": [
         "Evidence hearing · Update only the conclusions the new evidence supports · your task",
         "Evidence hearing · Explain links between city functions · your task",
-        "Evidence hearing · Choose a response to a broken connection · your task"
+        "Evidence hearing · Choose a response to a broken connection · your task",
+        "Change the conditions · board case 2",
+        "Work it out together · board case 3",
+        "Change the conditions · board case 3"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w14-2",
@@ -1695,7 +2141,13 @@
         "3.7",
         "3.8"
       ],
-      "workedDemonstrations": 6,
+      "workedDemonstrations": 3,
+      "visibleVisuals": 18,
+      "boardFirst": true,
+      "coreBoardRounds": 6,
+      "boardWorkspaces": 13,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1713,9 +2165,12 @@
       "independentTasks": [
         "Teach the missing step · Evaluate quality of life using more than income · your task",
         "Teach the missing step · Trace a disruption through a network · your task",
-        "Teach the missing step · Track goods, people and information separately · your task"
+        "Teach the missing step · Track goods, people and information separately · your task",
+        "Change the conditions · board case 2",
+        "Work it out together · board case 3",
+        "Change the conditions · board case 3"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w18-1",
@@ -1731,6 +2186,12 @@
         "4.1"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -1738,9 +2199,10 @@
         }
       ],
       "independentTasks": [
-        "Landscape evidence file · your task"
+        "Landscape evidence file · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w18-2",
@@ -1756,6 +2218,12 @@
         "4.1"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 7,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1763,9 +2231,10 @@
         }
       ],
       "independentTasks": [
-        "Challenge a past-ice claim · your task"
+        "Challenge a past-ice claim · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w19-1",
@@ -1781,6 +2250,12 @@
         "4.2"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -1788,9 +2263,10 @@
         }
       ],
       "independentTasks": [
-        "Keep the glacier in balance · your task"
+        "Keep the glacier in balance · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w19-2",
@@ -1806,6 +2282,12 @@
         "4.2"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 7,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1813,9 +2295,10 @@
         }
       ],
       "independentTasks": [
-        "Retreat while flowing · your task"
+        "Retreat while flowing · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w20-1",
@@ -1831,6 +2314,12 @@
         "4.3"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -1838,9 +2327,10 @@
         }
       ],
       "independentTasks": [
-        "The rock’s journey · your task"
+        "The rock’s journey · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w20-2",
@@ -1856,6 +2346,12 @@
         "4.3"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 7,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1863,9 +2359,10 @@
         }
       ],
       "independentTasks": [
-        "Two glaciers, different tools · your task"
+        "Two glaciers, different tools · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w21-1",
@@ -1881,6 +2378,12 @@
         "4.4"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -1888,9 +2391,10 @@
         }
       ],
       "independentTasks": [
-        "Change the valley shape · your task"
+        "Change the valley shape · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w21-2",
@@ -1906,6 +2410,12 @@
         "4.4"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 7,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1913,9 +2423,10 @@
         }
       ],
       "independentTasks": [
-        "The viewpoint trap · your task"
+        "The viewpoint trap · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w22-1",
@@ -1931,6 +2442,12 @@
         "4.5"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -1938,9 +2455,10 @@
         }
       ],
       "independentTasks": [
-        "Carve a mountain · your task"
+        "Carve a mountain · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w22-2",
@@ -1956,6 +2474,12 @@
         "4.5"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 7,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -1963,9 +2487,10 @@
         }
       ],
       "independentTasks": [
-        "Guidebook without names · your task"
+        "Guidebook without names · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w23-1",
@@ -1981,6 +2506,12 @@
         "4.6"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sequence",
@@ -1988,9 +2519,10 @@
         }
       ],
       "independentTasks": [
-        "What the ice leaves behind · your task"
+        "What the ice leaves behind · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w23-2",
@@ -2006,6 +2538,12 @@
         "4.6"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 7,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -2013,9 +2551,10 @@
         }
       ],
       "independentTasks": [
-        "Reconstruct the old margin · your task"
+        "Reconstruct the old margin · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w24-1",
@@ -2031,6 +2570,12 @@
         "4.7"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -2038,9 +2583,10 @@
         }
       ],
       "independentTasks": [
-        "A valley visitor plan · your task"
+        "A valley visitor plan · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w24-2",
@@ -2056,6 +2602,12 @@
         "4.8"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -2063,9 +2615,10 @@
         }
       ],
       "independentTasks": [
-        "A water-store budget · your task"
+        "A water-store budget · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w25-1",
@@ -2081,6 +2634,12 @@
         "5.1"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sequence",
@@ -2088,9 +2647,10 @@
         }
       ],
       "independentTasks": [
-        "Follow the river downstream · your task"
+        "Follow the river downstream · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w25-2",
@@ -2106,6 +2666,12 @@
         "5.2"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -2113,9 +2679,10 @@
         }
       ],
       "independentTasks": [
-        "Become a water drop · your task"
+        "Become a water drop · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w26-1",
@@ -2134,7 +2701,13 @@
         "5.1",
         "5.2"
       ],
-      "workedDemonstrations": 6,
+      "workedDemonstrations": 3,
+      "visibleVisuals": 18,
+      "boardFirst": true,
+      "coreBoardRounds": 6,
+      "boardWorkspaces": 13,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -2152,9 +2725,12 @@
       "independentTasks": [
         "Design a counterexample · Compare short-term flow with long-term storage · your task",
         "Design a counterexample · Use river-network vocabulary correctly · your task",
-        "Design a counterexample · Compare surface and underground pathways · your task"
+        "Design a counterexample · Compare surface and underground pathways · your task",
+        "Change the conditions · board case 2",
+        "Work it out together · board case 3",
+        "Change the conditions · board case 3"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w26-2",
@@ -2166,6 +2742,12 @@
       "objectives": [],
       "sections": [],
       "workedDemonstrations": 0,
+      "visibleVisuals": 0,
+      "boardFirst": false,
+      "coreBoardRounds": 0,
+      "boardWorkspaces": 0,
+      "teacherGuide": false,
+      "spokenExit": true,
       "boardActivities": [],
       "independentTasks": [],
       "disposition": "Assessment retained; optional revision worksheets remain separate."
@@ -2187,7 +2769,13 @@
         "5.1",
         "5.2"
       ],
-      "workedDemonstrations": 6,
+      "workedDemonstrations": 3,
+      "visibleVisuals": 18,
+      "boardFirst": true,
+      "coreBoardRounds": 6,
+      "boardWorkspaces": 13,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -2205,9 +2793,12 @@
       "independentTasks": [
         "Mistake clinic · Compare short-term flow with long-term storage · your task",
         "Mistake clinic · Use river-network vocabulary correctly · your task",
-        "Mistake clinic · Compare surface and underground pathways · your task"
+        "Mistake clinic · Compare surface and underground pathways · your task",
+        "Change the conditions · board case 2",
+        "Work it out together · board case 3",
+        "Change the conditions · board case 3"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w27-2",
@@ -2226,7 +2817,13 @@
         "5.1",
         "5.2"
       ],
-      "workedDemonstrations": 6,
+      "workedDemonstrations": 3,
+      "visibleVisuals": 18,
+      "boardFirst": true,
+      "coreBoardRounds": 6,
+      "boardWorkspaces": 13,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -2244,9 +2841,12 @@
       "independentTasks": [
         "Evidence hearing · Model a glacier as a changing water store · your task",
         "Evidence hearing · Trace connected places before predicting travel time · your task",
-        "Evidence hearing · Explain water-cycle arrows as changes or movements · your task"
+        "Evidence hearing · Explain water-cycle arrows as changes or movements · your task",
+        "Change the conditions · board case 2",
+        "Work it out together · board case 3",
+        "Change the conditions · board case 3"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w29-1",
@@ -2262,6 +2862,12 @@
         "5.3"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -2269,9 +2875,10 @@
         }
       ],
       "independentTasks": [
-        "Build a drainage basin · your task"
+        "Build a drainage basin · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w29-2",
@@ -2287,6 +2894,12 @@
         "5.4"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -2294,9 +2907,10 @@
         }
       ],
       "independentTasks": [
-        "Sediment journey · your task"
+        "Sediment journey · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w30-1",
@@ -2311,7 +2925,13 @@
       "sections": [
         "5.4"
       ],
-      "workedDemonstrations": 2,
+      "workedDemonstrations": 1,
+      "visibleVisuals": 7,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -2319,9 +2939,10 @@
         }
       ],
       "independentTasks": [
-        "The flow slows · your task"
+        "The flow slows · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w31-1",
@@ -2337,6 +2958,12 @@
         "5.5"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sequence",
@@ -2344,9 +2971,10 @@
         }
       ],
       "independentTasks": [
-        "Six landform process cards · your task"
+        "Six landform process cards · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w31-2",
@@ -2362,6 +2990,12 @@
         "5.5"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 7,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -2369,9 +3003,10 @@
         }
       ],
       "independentTasks": [
-        "Landform guide challenge · your task"
+        "Landform guide challenge · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w32-1",
@@ -2387,6 +3022,12 @@
         "5.6"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "allocation",
@@ -2394,9 +3035,10 @@
         }
       ],
       "independentTasks": [
-        "Share the river · your task"
+        "Share the river · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w32-2",
@@ -2412,6 +3054,12 @@
         "5.7"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -2419,9 +3067,10 @@
         }
       ],
       "independentTasks": [
-        "Two waters meet · your task"
+        "Two waters meet · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w33-1",
@@ -2437,6 +3086,12 @@
         "5.8"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sequence",
@@ -2444,9 +3099,10 @@
         }
       ],
       "independentTasks": [
-        "Make rain, predict runoff · your task"
+        "Make rain, predict runoff · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w33-2",
@@ -2462,6 +3118,12 @@
         "5.8"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 7,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -2469,9 +3131,10 @@
         }
       ],
       "independentTasks": [
-        "Cause-to-impact chain · your task"
+        "Cause-to-impact chain · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w34-1",
@@ -2487,6 +3150,12 @@
         "5.9"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "sort",
@@ -2494,9 +3163,10 @@
         }
       ],
       "independentTasks": [
-        "Build a flood case file · your task"
+        "Build a flood case file · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w34-2",
@@ -2512,6 +3182,12 @@
         "5.9"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 7,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -2519,9 +3195,10 @@
         }
       ],
       "independentTasks": [
-        "The wrong solution claim · your task"
+        "The wrong solution claim · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w35-1",
@@ -2537,6 +3214,12 @@
         "5.10"
       ],
       "workedDemonstrations": 1,
+      "visibleVisuals": 9,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "budget",
@@ -2544,9 +3227,10 @@
         }
       ],
       "independentTasks": [
-        "Spend a flood budget · your task"
+        "Spend a flood budget · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w35-2",
@@ -2561,7 +3245,13 @@
       "sections": [
         "5.10"
       ],
-      "workedDemonstrations": 2,
+      "workedDemonstrations": 1,
+      "visibleVisuals": 7,
+      "boardFirst": true,
+      "coreBoardRounds": 2,
+      "boardWorkspaces": 4,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "budget",
@@ -2569,9 +3259,10 @@
         }
       ],
       "independentTasks": [
-        "The budget changes · your task"
+        "The budget changes · your task",
+        "Change the conditions · board case 1"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w36-1",
@@ -2590,7 +3281,13 @@
         "5.9",
         "5.10"
       ],
-      "workedDemonstrations": 7,
+      "workedDemonstrations": 3,
+      "visibleVisuals": 18,
+      "boardFirst": true,
+      "coreBoardRounds": 6,
+      "boardWorkspaces": 13,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -2608,9 +3305,12 @@
       "independentTasks": [
         "Teach the missing step · Connect causes to impacts through a mechanism · your task",
         "Teach the missing step · Organise a case file without mixing fact and invention · your task",
-        "Teach the missing step · Evaluate performance after checking affordability · your task"
+        "Teach the missing step · Evaluate performance after checking affordability · your task",
+        "Change the conditions · board case 2",
+        "Work it out together · board case 3",
+        "Change the conditions · board case 3"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w36-2",
@@ -2622,6 +3322,12 @@
       "objectives": [],
       "sections": [],
       "workedDemonstrations": 0,
+      "visibleVisuals": 0,
+      "boardFirst": false,
+      "coreBoardRounds": 0,
+      "boardWorkspaces": 0,
+      "teacherGuide": false,
+      "spokenExit": true,
       "boardActivities": [],
       "independentTasks": [],
       "disposition": "Assessment retained; optional revision worksheets remain separate."
@@ -2643,7 +3349,13 @@
         "5.9",
         "5.10"
       ],
-      "workedDemonstrations": 7,
+      "workedDemonstrations": 3,
+      "visibleVisuals": 18,
+      "boardFirst": true,
+      "coreBoardRounds": 6,
+      "boardWorkspaces": 13,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -2661,9 +3373,12 @@
       "independentTasks": [
         "Field notebook rescue · Connect causes to impacts through a mechanism · your task",
         "Field notebook rescue · Organise a case file without mixing fact and invention · your task",
-        "Field notebook rescue · Evaluate performance after checking affordability · your task"
+        "Field notebook rescue · Evaluate performance after checking affordability · your task",
+        "Change the conditions · board case 2",
+        "Work it out together · board case 3",
+        "Change the conditions · board case 3"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     },
     {
       "id": "g7b-geo-w37-2",
@@ -2682,7 +3397,13 @@
         "5.9",
         "5.10"
       ],
-      "workedDemonstrations": 6,
+      "workedDemonstrations": 3,
+      "visibleVisuals": 18,
+      "boardFirst": true,
+      "coreBoardRounds": 6,
+      "boardWorkspaces": 13,
+      "teacherGuide": true,
+      "spokenExit": true,
       "boardActivities": [
         {
           "type": "decision",
@@ -2700,9 +3421,12 @@
       "independentTasks": [
         "Mistake clinic · Control one variable in a runoff experiment · your task",
         "Mistake clinic · Match a response to the flood mechanism · your task",
-        "Mistake clinic · Choose a feasible package and explain its limits · your task"
+        "Mistake clinic · Choose a feasible package and explain its limits · your task",
+        "Change the conditions · board case 2",
+        "Work it out together · board case 3",
+        "Change the conditions · board case 3"
       ],
-      "disposition": "Revised: authored demonstration, board challenge, independent task and worked response."
+      "disposition": "Board-led lesson with new case rounds, visible sources, drawing workspace, concealed teaching models and a 40-minute teacher guide. No student book, notebook or printout required."
     }
   ]
 }

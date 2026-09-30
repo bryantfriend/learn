@@ -13,7 +13,7 @@ export function ukMapArt(state={phase:0}){
  ${label(27,221,'Northern','#695287')}${label(27,248,'Ireland','#695287')}
  ${label(135,391,'Wales','#476529')}${label(530,378,'England','#855222')}
  <text x="238" y="329" font-size="19" fill="#626e69" text-anchor="middle">Ireland</text>
- ${sea(542,263,'North Sea')}${sea(32,121,'Atlantic')}${sea(34,147,'Ocean')}${sea(459,479,'English Channel')}
+ ${sea(542,263,'North Sea')}${sea(32,121,'Atlantic')}${sea(34,147,'Ocean')}${sea(459,479,'English Channel')}${sea(407,300,'Irish Sea')}<path d="M403 296L345 306" stroke="#4b7e92" fill="none"/>
  <g transform="translate(54 387)"><text x="0" y="-11" text-anchor="middle" fill="#315762" font-size="19" font-weight="700">N</text><path d="M0 0L-10 27L0 21L10 27Z" fill="#315762"/><path d="M0 23V50" stroke="#315762" stroke-width="2"/></g>
  <rect x="22" y="486" width="355" height="24" rx="7" fill="#f8fbfa"/>
  <text x="32" y="503" font-size="14" fill="#426269">UK countries in colour · neighbouring territory in grey</text>

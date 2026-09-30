@@ -15,7 +15,7 @@ const {createServer}=require('../scripts/serve.cjs');const server=createServer()
   async function bounds(label){
    const issues=await page.evaluate(()=>{
     const limit=document.querySelector('.step-controls').getBoundingClientRect().top;
-    return [...document.querySelectorAll('.copy h1,.instructions,.footnote,.lesson-visual,.answers,.answer-detail,.reveal-button')].filter(n=>{const r=n.getBoundingClientRect();return r.bottom>limit+2||r.left<0||r.right>innerWidth+1;}).map(n=>n.className);
+    return [...document.querySelectorAll('.copy h1,.instructions,.footnote,.lesson-visual,.answers,.answer-detail,.reveal-button,.question-bank-button')].filter(n=>{const r=n.getBoundingClientRect();return r.bottom>limit+2||r.left<0||r.right>innerWidth+1;}).map(n=>n.className);
    });
    if(issues.length){bad.push(id+' '+label+': '+issues.join(','));await page.screenshot({path:'output/playwright/workbook-trial/overflow-'+bad.length+'.png'});}
   }
@@ -23,6 +23,30 @@ const {createServer}=require('../scripts/serve.cjs');const server=createServer()
    for(let fi=0;fi<l.stages[si].frames.length;fi++){
     const f=l.stages[si].frames[fi];assert.equal(await page.locator('#student-title').innerText(),f.title);frames++;
     await bounds(si+':'+fi); if(si===3&&fi===0)await page.screenshot({path:'output/playwright/workbook-trial/'+id+'.png'});
+    assert.equal(await page.locator('[data-action="question-bank"]').count(),f.questionBank?.length?1:0);
+    if(f.questionBank?.length){
+     await a('question-bank');
+     assert.equal(await page.locator('#panel[open].question-bank-panel').count(),1);
+     assert.deepEqual(await page.locator('.question-bank-list li').allTextContents(),f.questionBank);
+     assert.equal(await page.locator('.question-bank-instruction').innerText(),f.questionBankTopic+' · '+f.questionBank.length+' questions');
+     assert.equal(await page.locator('#panel .explanation').count(),0);
+     await page.keyboard.press('Escape');
+     assert.equal(await page.locator('#panel[open]').count(),0);
+     assert.equal(await page.locator('[data-action="question-bank"]').evaluate(n=>n===document.activeElement),true);
+     await a('question-bank');
+     if(si===3&&fi===0){
+      await page.screenshot({path:'output/playwright/workbook-trial/'+id+'-bank.png'});
+      await page.setViewportSize({width:390,height:844});
+      assert.equal(await page.locator('#panel').evaluate(n=>n.scrollWidth>n.clientWidth),false);
+      await page.locator('.question-bank-list li').last().scrollIntoViewIfNeeded();
+      assert.equal(await page.locator('[data-action="close-panel"]').isVisible(),true);
+      await page.screenshot({path:'output/playwright/workbook-trial/'+id+'-bank-mobile.png'});
+      await page.setViewportSize({width:1280,height:720});
+     }
+     await a('close-panel');
+     assert.equal(await page.locator('#panel[open]').count(),0);
+     assert.equal(await page.locator('#student-title').innerText(),f.title);
+    }
     if(f.lessonVisual){
      assert.equal(await page.locator('.lesson-visual svg').count(),1);
      for(let phase=0;phase<3;phase++)await page.getByRole('button',{name:'Next focus →',exact:true}).click();

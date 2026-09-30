@@ -31,7 +31,7 @@ export function worksheetFor(lesson,kind,allLessons){
   return base;
  }
  if(teaching.geoRedesign){
-  const tasks=teaching.stages.find(s=>s.id==='apply').frames;
+  const tasks=teaching.stages.find(s=>s.id==='apply').frames.filter(f=>!f.boardRound);
   const common=frames.filter(f=>f.sourceCard===true).flatMap(f=>f.lines||[]);
   base.pages=tasks.map((f,i)=>({title:f.title.replace(' · your task',''),sources:typeof f.sourceCard==='string'?[f.sourceCard]:common,
    sections:[{title:'Your investigation',lines:f.lines.map(clean),space:8},{title:'Explain your reasoning',lines:['Explain one choice or step using a detail from the source. Label any diagram you use.'],space:3}]}));

@@ -57,11 +57,11 @@ export function boardFor(code,index,p,mission){
  const round={prompt:p.prompt,choices:[p.correct,p.wrong],answer:0,explanation:p.explanation};
  // Applied sessions start from a new case, not the introductory sorting set.
  const twist=geographyTwists[`${code}.${index}`];
- const activity=index===0?{...base,items:base.items.map(x=>({...x}))}:{type:'decision',title:p.objective,rounds:twist?[round,twist]:[round]};
+ const activity=index===0?{...base,items:base.items.map(x=>({...x}))}:{type:'decision',title:p.objective,rounds:twist?[twist]:[round]};
  if(code==='2.5')Object.assign(activity,{type:'pin',title:'Send the rescue location',target:[[6,2],[3,8],[8,1]][index],square:[23,45]});
  if(code==='5.6')Object.assign(activity,{type:'allocation',title:'Water council',limit:index===0?100:80,allocations:[30,40,20,20],labels:['Homes','Farms','Industry','River ecosystem'],minimum:[20,0,0,20],unit:'water units'});
  if(code==='5.10')Object.assign(activity,{type:'budget',title:'Choose a flood package',limit:index===0?60:90,costs:[10,40,80],labels:['Warnings','Wetland storage','Wall'],notes:['Supports preparation; does not stop water.','May store water if the site is suitable.','Can exclude water locally but may transfer risk.']});
- return {...activity,id:`${code}.${index}`,question:round,...(index?{source:mission.source}:{}),
+ return {...activity,id:`${code}.${index}`,question:activity.rounds?.[0]||round,...(index?{source:mission.source}:{}),
   rationale:p.model,followup:p.explanation,
   facilitation:'Everyone predicts from their seat first. Invite a pupil to enter the class choice, or tap it yourself. Ask a different pupil for the reason. Check, discuss the feedback, then retry one disputed choice. No speed score.',
   challenge:index?'Explain which detail would change your decision. State what still needs checking.':'Change one card or one condition. Ask a partner to explain how the answer would change.'};

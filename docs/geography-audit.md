@@ -10,6 +10,7 @@ The board can be operated by the teacher or an invited pupil. Everyone predicts 
 
 ## Evidence and limits
 
+- Forty minutes is a teaching plan, not a measured classroom duration. Pupil thinking, discussion and shared work are part of that plan.
 - Engagement is a classroom outcome, not established by automated tests.
 - Smart-board behaviour is tested with browser touch and keyboard input, not the physical classroom board.
 - Textbook section alignment comes from existing plans. Complete printed pages were not supplied.
@@ -56,7 +57,7 @@ Topic checks: [OS map reading](https://www.ordnancesurvey.co.uk/documents/resour
 | g7a-geo-w38-1 | 7A | Review | Distinguish detail from coverage; Separate summit height from slope steepness; Use two zero lines to locate a place | decision, decision, decision |
 | g7b-geo-w01-1 | 7B | Assessment | Assessment conditions retained | — |
 | g7b-geo-w01-2 | 7B | Review | Locate the UK at island and country scales; Explain relief rainfall as a connected process | decision, decision |
-| g7b-geo-w02-1 | 7B | Teaching | Locate the UK at island and country scales | sort |
+| g7b-geo-w02-1 | 7B | Teaching | Locate the UK at island and country scales | sorting, postcards |
 | g7b-geo-w02-2 | 7B | Teaching | Plan a connected journey within constraints | decision |
 | g7b-geo-w03-1 | 7B | Teaching | Separate political information from physical relief | sort |
 | g7b-geo-w03-2 | 7B | Teaching | Combine layers to answer a specific question | decision |
@@ -117,3 +118,21 @@ Topic checks: [OS map reading](https://www.ordnancesurvey.co.uk/documents/resour
 | g7b-geo-w36-2 | 7B | Assessment | Assessment conditions retained | — |
 | g7b-geo-w37-1 | 7B | Review | Connect causes to impacts through a mechanism; Organise a case file without mixing fact and invention; Evaluate performance after checking affordability | decision, decision, decision |
 | g7b-geo-w37-2 | 7B | Review | Control one variable in a runoff experiment; Match a response to the flood mechanism; Choose a feasible package and explain its limits | decision, decision, decision |
+
+## More content for board-led teaching
+
+All 86 teaching/review sessions include new core case rounds (284 round placements across the timetable). Each case adds two core questions; remaining questions stay in the optional teacher guide. The section 3.1 introduction uses its bespoke map and postcard activities without extra case rounds. Review lessons deliberately revisit skills using fresh case values or review tasks; these counts do not claim that every underlying question or fact is unique.
+
+The new rounds sit inside Investigate and Apply. Each supplies its evidence, a prompt, a concealed model and a teacher discussion cue. Tasks include calculating, challenging a claim, changing a condition and defending a decision. The board workspace supports finger/pen/mouse drawing, undo, clear and typed class answers. UK tasks show the atlas; other tasks provide SVG drawing guides. Work persists when reopening a frame during the current page session.
+
+Teacher Tools → 40-minute board teaching guide gives stage timings totalling 40 minutes, directions for the original activity and new rounds, and model answers. Pupils may respond from their seats; pair talk and paper are optional. Printing remains optional and the new board-round bank is not duplicated into the lesson worksheet. Assessments retain their independent conditions.
+
+Validation: curriculum coverage and source/model assertions; numerical and geographical bounds; all-frame browser layout and reveal checks; real browser touch drawing, undo, response persistence and responsive workspace checks. These establish content and interaction coverage, not classroom engagement or lesson duration.
+
+## Visual teaching and postcard revision
+
+All 86 teaching/review sessions now have visible diagrams in every teaching step, source facts beside the independent task, and short spoken exits. Repeated source-reading slides were removed from the teaching block. Applied board decisions begin with their changed case rather than repeating the prediction vote. Sorting and sequencing support pointer dragging as well as tap/keyboard controls.
+
+The section 3.1 introductory lesson is rebuilt as **UK map detectives and postcard delivery**: explicit one/two-finger prediction; side-by-side UK/Great Britain maps; sea and neighbour views; tap-to-label countries; two sorting rules; two missions of two illustrated postcards delivered onto the map; pupil-created clues; one error-correction message; a spoken exit at the door. It retains a 40-minute budget. The following journey-planning lesson remains a separate task.
+
+Maps use bundled Natural Earth coastlines; see [map provenance](map-sources.md). Numerical source cards retain their exact case text and highlight quantities. Concept diagrams are labelled separately from exact task evidence. The 10 assessment sessions are retained.

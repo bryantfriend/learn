@@ -337,7 +337,7 @@ dialog.lesson-editor{width:min(1200px,96vw);max-width:96vw}.lesson-editor textar
 .player .teaching-content .workbook-answer .explanation p { font-size:26px; line-height:1.25; }
 .question-bank-button { margin-top:12px; }
 #panel.question-bank-panel { width:100vw; max-width:none; height:100dvh; max-height:none; margin:0; border:0; border-radius:0; padding:clamp(20px,3vw,44px); }
-.question-bank-panel .panel-header { margin-bottom:12px; }
+.question-bank-panel .panel-header { margin-bottom:12px; position:sticky; top:0; z-index:1; background:var(--paper); padding-bottom:12px; }
 .question-bank-panel .question-bank-instruction { font-size:clamp(18px,1.7vw,24px); margin-bottom:20px; }
 .question-bank-list { list-style:none; padding:0; margin:0; display:grid; gap:12px; }
 .question-bank-list li { padding:14px 20px; border:1px solid var(--line); border-radius:12px; background:#fff; font-size:clamp(22px,2.3vw,36px); line-height:1.25; }
@@ -414,3 +414,100 @@ dialog.lesson-editor{width:min(1200px,96vw);max-width:96vw}.lesson-editor textar
 .gp-bar { transition:width .35s ease; }
 @keyframes gp-flow { to { stroke-dashoffset:-14; } }
 @media(prefers-reduced-motion:reduce) { .gp-flow { animation:none; } .gp-bar { transition:none; } }
+
+/* Visible Geography evidence and smart-board maps. */
+.player .teaching-content.geography-visual-layout {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;padding:10px 28px;align-items:center;}
+.geography-visual-layout .copy {width:auto;max-width:none;margin:0;min-width:0;}
+.player .geography-visual-layout .copy h1 {font-size:clamp(24px,2.2vw,36px);line-height:1.12;}
+.player .geography-visual-layout .instructions p {font-size:clamp(20px,1.9vw,29px);line-height:1.22;margin:10px 0;}
+.player .geography-visual-layout .footnote {font-size:16px;}
+.geo-enlarge {font-size:16px;min-height:40px;padding:8px 14px;margin-top:8px;}
+.geo-atlas,.geography-evidence {margin:0;min-width:0;width:100%;border:1px solid #b6cec6;border-radius:16px;background:#f4f8f4;padding:10px;}
+.atlas-canvas svg,.evidence-canvas svg {width:100%;height:auto;max-height:40vh;display:block;border-radius:10px;}
+.geo-atlas figcaption,.geography-evidence figcaption {font-size:16px;line-height:1.3;margin:6px 0;color:#345a58;}
+.atlas-controls {display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;}
+.atlas-controls:empty {display:none;}.atlas-controls button {min-height:44px;padding:8px 12px;font-size:17px;}
+.atlas-controls button[aria-pressed="true"] {background:#225e57;color:white;}
+.source-evidence {max-height:48vh;overflow:auto;}
+.source-evidence figcaption {font-size:20px;font-weight:700;border-bottom:1px solid #b6cec6;padding-bottom:10px;}
+.evidence-fact {display:flex;gap:12px;font-size:21px;line-height:1.3;margin:12px 0;}
+.evidence-number {color:#327163;font-size:17px;font-weight:bold;padding-top:4px;}
+.evidence-fact mark {background:#fff0b9;color:inherit;border-radius:3px;padding:0 2px;}
+#panel.geography-evidence-panel {width:100vw;max-width:none;height:100dvh;max-height:none;margin:0;border:0;border-radius:0;padding:20px;}
+.geography-evidence-panel .geo-atlas,.geography-evidence-panel .geography-evidence {max-width:1250px;margin:auto;}
+.geography-evidence-panel svg {max-height:69vh;}.geography-evidence-panel .source-evidence {max-height:none;}
+#panel.geography-board-panel .panel-header,#panel.geography-evidence-panel .panel-header {position:sticky;top:0;z-index:3;background:var(--paper);padding-bottom:10px;}
+.post-office {max-width:1500px;margin:auto;}.post-mission {font-size:24px;margin:8px 0;}.post-help {font-size:17px;margin:6px 0 12px;color:#48635c;}
+.post-layout {display:grid;grid-template-columns:minmax(360px,1.15fr) minmax(390px,1fr);gap:20px;align-items:start;}
+.post-map>svg {width:100%;max-height:48vh;display:block;border:1px solid #adcad3;border-radius:14px;}
+.post-targets {display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.post-destination {min-height:62px;background:#e6efdd;border:2px dashed #6c977d;text-align:center;white-space:normal;padding:10px;font-size:20px;}
+.delivered-list {display:block;font-size:15px;font-weight:400;margin-top:6px;}
+.post-tray {display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.picture-postcard,.country-postcard {position:relative;display:flex;flex-direction:column;gap:7px;white-space:normal;text-align:left;border:2px solid #c1b9a1;border-radius:12px;padding:10px;background:#fffbed;color:#253d3a;min-width:0;box-shadow:0 4px 9px #263e3612;}
+.picture-postcard[aria-pressed="true"],.country-postcard[aria-pressed="true"] {outline:4px solid #cc6b29;outline-offset:1px;}
+.post-picture {display:block;width:100%;}.post-picture svg {display:block;width:100%;height:80px;}
+.picture-postcard strong,.country-postcard strong {font-size:20px;}.post-clue {font-size:17px;line-height:1.25;}.post-stamp {font-size:11px;color:#6a7869;border-top:1px dashed #bcac8b;padding-top:4px;}
+.post-address,.post-result {font-size:16px;font-weight:700;color:#225e57;}
+.country-postcard .post-picture svg {height:95px;}.island-mini {display:block;}.island-mini svg {height:65px;width:100%;}
+.post-actions {display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 10px;}.post-actions button {min-height:48px;font-size:18px;}
+.post-status {padding:14px;background:#e5efdf;border-radius:12px;font-size:21px;line-height:1.3;}
+.draggable-card {touch-action:none;cursor:grab;user-select:none;}.draggable-card:active{cursor:grabbing;}.drag-ghost{position:fixed!important;z-index:100;pointer-events:none;opacity:.9;transform:rotate(3deg);box-shadow:0 10px 30px #0004;}
+.board-chain li {min-height:65px;border:2px dashed #9fb5a8;margin:8px 0;border-radius:10px;}.board-chain button {width:100%;}.board-reference summary{font-size:18px;cursor:pointer;}.board-reference .geography-evidence{max-width:650px;}
+@media(min-height:850px){.atlas-canvas svg,.evidence-canvas svg{max-height:48vh;}.post-picture svg{height:105px;}}
+@media(max-width:750px){.player .teaching-content.geography-visual-layout{display:flex;flex-direction:column;padding:16px;}.post-layout{grid-template-columns:1fr;}.post-tray{grid-template-columns:1fr 1fr;}.source-evidence{max-height:none;}.geo-atlas,.geography-evidence{max-width:100%;}.post-clue{font-size:16px;}.post-targets{grid-template-columns:1fr 1fr;}}
+.geo-board .atlas-controls button {min-height:56px;}
+.board-move-layout {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:24px;align-items:start;}
+.board-move-layout .board-tray {grid-template-columns:1fr;margin:0;}.board-move-layout .board-chain{margin:0;}.board-move-layout .board-bins{grid-template-columns:1fr 1fr;}
+@media(max-width:750px){.board-move-layout{grid-template-columns:1fr;}.board-move-layout .board-bins{grid-template-columns:1fr;}}
+.geo-board .draggable-card {touch-action:none;}
+
+/* Board-led case rounds and persistent class workspace. */
+.board-round-routine {font-size:15px!important;line-height:1.3;color:#42645b;margin:7px 0!important;}
+.board-work-button {min-height:42px;padding:9px 13px;font-size:16px;margin-top:8px;}
+.player .geography-visual-layout:has(.board-round-routine) .copy h1 {font-size:28px;}
+.player .geography-visual-layout:has(.board-round-routine) .instructions p {font-size:23px;}
+.player .geography-visual-layout:has(.board-round-routine) .explanation p {font-size:21px;line-height:1.2;}
+.player .geography-visual-layout:has(.board-round-routine) .explanation strong {font-size:20px;}
+#panel.geography-workspace-panel {width:100vw;max-width:none;height:100dvh;max-height:none;margin:0;border:0;border-radius:0;padding:18px 24px;overflow:auto;}
+.geography-workspace-panel .panel-header {position:sticky;top:0;background:var(--paper);z-index:5;}
+.geo-workspace {display:grid;grid-template-columns:minmax(240px,.65fr) minmax(0,1.5fr);gap:24px;}
+.workspace-task h3{font-size:26px;margin:10px 0;}.workspace-task p{font-size:21px;line-height:1.35;}.workspace-task details p{font-size:19px;}
+.workspace-tools{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;}.workspace-tools button{min-height:46px;padding:8px 12px;font-size:17px;}.workspace-tools button[aria-pressed="true"]{background:#214f48;color:white;}
+.workspace-surface{position:relative;aspect-ratio:900/560;width:100%;background:repeating-linear-gradient(0deg,#fff 0,#fff 39px,#dfe8e5 40px);border:2px solid #98b7aa;border-radius:12px;overflow:hidden;}
+.workspace-ink{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair;}
+.workspace-backdrop{position:absolute;inset:0;}.workspace-backdrop>svg{width:100%;height:100%;display:block;}.workspace-board textarea{display:block;width:100%;margin-top:5px;font-size:22px;min-height:90px;}.workspace-board label{display:block;margin-top:10px;font-size:17px;}
+@media(max-width:750px){.geo-workspace{grid-template-columns:1fr;}.workspace-task p{font-size:19px;}}
+.geo-frame-actions{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;}.geo-frame-actions button{margin:0!important;padding:8px 12px;min-height:42px;font-size:16px;}
+
+/* Geography: shared maps, visible evidence and large smart-board targets. */
+.atlas-comparison{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.atlas-comparison section{min-width:0;background:#fff;border:1px solid #b4c9bc;border-radius:12px;padding:8px;}
+.atlas-comparison h3{font-size:22px;margin:0 0 6px;}.atlas-comparison p{font-size:15px;line-height:1.3;margin:0;min-height:40px;}
+.atlas-comparison svg{width:100%;height:auto;}.geography-evidence-panel .atlas-comparison svg{max-height:65vh;}
+.geo-atlas [role=button],.post-map [role=button]{cursor:pointer;transition:fill .3s;}
+.geo-atlas [role=button]:hover,.geo-atlas [role=button]:focus,.post-map [role=button]:hover,.post-map [role=button]:focus{stroke:#b75323;stroke-width:4;outline:none;}
+.geo-atlas .atlas-label{pointer-events:none;}.post-delivery{pointer-events:none;}
+.postcard-office .post-layout{grid-template-columns:minmax(0,1.6fr) minmax(270px,.8fr);}
+.postcard-office .post-map{position:sticky;top:95px;}.postcard-office .post-map>svg{max-height:67vh;}
+.postcard-office .post-tray{grid-template-columns:1fr;}.postcard-office .picture-postcard{display:grid;grid-template-columns:90px 1fr;align-items:center;}
+.postcard-office .post-picture{grid-row:1/4;}.postcard-office .post-stamp{display:none;}.postcard-office .post-clue{font-size:19px;}
+.postcard-office .post-address,.postcard-office .post-result{grid-column:2;}
+.geography-demo .demo-step{font-size:21px;line-height:1.3;margin:10px 0;min-height:55px;}
+.geography-demo .evidence-canvas svg{max-height:30vh;}.geography-evidence-panel .geography-demo .evidence-canvas svg{max-height:56vh;}
+.workpad-preview svg{display:block;width:100%;height:175px;}.source-evidence:has(.workpad-preview){max-height:47vh;}
+.geo-board:has(>.board-reference){display:grid;grid-template-columns:minmax(280px,.85fr) minmax(0,1.3fr);gap:12px 24px;align-items:start;}
+.geo-board:has(>.board-reference)>*{grid-column:2;}.geo-board:has(>.board-reference)>.board-instructions{grid-column:1/-1;}
+.geo-board:has(>.board-reference)>.board-reference{grid-column:1;grid-row:2/30;position:sticky;top:100px;}
+.board-reference .geography-evidence,.board-reference .geo-atlas{margin:0;}.board-reference h3{font-size:23px;margin:0 0 12px;}
+.board-reference svg{max-height:55vh;width:100%;}.board-card-picture{display:inline-block;vertical-align:middle;margin-right:10px;}
+.board-card-picture svg{width:68px;height:52px;display:block;}.board-card{display:flex;align-items:center;}
+.geo-board .board-move-layout{grid-template-columns:1fr;gap:14px;}.geo-board .board-tray{grid-template-columns:1fr 1fr;gap:10px;}
+.geo-board .board-chain{display:grid;grid-template-columns:1fr 1fr;gap:8px;}.geo-board .board-chain li{font-size:18px;}
+.geography-visual-layout .opening-choices{font-size:24px;line-height:1.3;margin:12px 0;}
+@media(prefers-reduced-motion:no-preference){.atlas-label,.demo-label,.post-delivery{animation:geo-appear .35s ease-out;}@keyframes geo-appear{from{opacity:.7}to{opacity:1}}}
+@media(max-width:750px){.atlas-comparison{grid-template-columns:1fr;}.postcard-office .post-layout{grid-template-columns:1fr;}.postcard-office .post-map{position:static;}.postcard-office .post-tray{grid-template-columns:1fr;}.geo-board:has(>.board-reference){display:block;}.geo-board:has(>.board-reference)>.board-reference{position:static;}.geo-board .board-tray,.geo-board .board-chain{grid-template-columns:1fr;}.workpad-preview svg{height:auto;}.source-evidence:has(.workpad-preview){max-height:none;}}
+.solution-check:has(.explanation) .instructions{display:none;}
+
+.solution-check .board-round-routine{display:none;}
+.player .geography-visual-layout .solution-check h1{font-size:26px;}

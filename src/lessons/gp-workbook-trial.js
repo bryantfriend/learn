@@ -13,6 +13,7 @@ const reveal = (title, lines, explanation, id) => frame(title, 'think', lines, {
   footnote: 'Teacher-created practice · explain before revealing.'
 });
 const stage = (id, title, minutes, notes, frames) => ({ id, title, durationMinutes: minutes, notes, frames });
+const withQuestionBank = (frames, questions, topic) => frames.map(f => ({ ...f, questionBank: questions, questionBankTopic: topic }));
 const supplies = 'Have the correct Learner’s Skills Book, a pencil and a notebook for extra practice. No photocopies or student internet access are needed. Give thinking time before showing model responses. The numbered objectives 1.1/1.2 are not separate lesson numbers. These two classroom parts teach the printed Research Lesson 1.';
 const support = 'Support: read the task aloud, explain one word at a time, let pupils rehearse orally, then write their own answer. Stretch: justify the scope, name a feasible source, and explain a limitation. Accept different questions and reasoned judgements; the on-screen models are not an official Cambridge answer key.';
 const topic7 = 'School break spaces';
@@ -158,17 +159,17 @@ function eightPart1() {
         example('Remove the assumption', ['Leading: “Why do pupils always waste lunch?”', 'Fairer: “What reasons do pupils give for leaving food at lunch?”', 'The fairer version allows different answers.']),
         reveal('Which change makes the scope clearer?', ['“How much waste is there?”', '“How much edible food is left after our class lunch over five days?”'], 'The second specifies the kind of waste, group and time period. We still need a safe, consistent way to measure it and permission for any observation.', 'scope')
       ]),
-      stage('guided', 'Compare teacher questions', 8, 'Show the complete question bank across two frames; use Previous step to revisit. These labels remain stable for workbook answers. C and D are strong choices with different purposes. A is leading; B is a definition; E is unmanageably broad and absolute.', [
+      stage('guided', 'Compare teacher questions', 8, 'Use Show all questions to compare the complete question bank at any step. These labels remain stable for workbook answers. C and D are strong choices with different purposes. A is leading; B is a definition; E is unmanageably broad and absolute.', withQuestionBank([
         frame('Question bank · A and B', 'think', eightQuestions.slice(0, 2), { footnote: 'Teacher questions for the Starter activity on pp. 4–5.' }),
         frame('Question bank · C, D and E', 'think', eightQuestions.slice(2), { footnote: 'Teacher questions for the Starter activity on pp. 4–5.' }),
         talk('Compare a strong and a weak question', ['Choose one from each group.', 'Explain their differences using the five checks.', 'Say what evidence would help answer the stronger one.'], 'compare-questions'),
         reveal('Can C and D both be useful?', ['C counts food left over.', 'D asks pupils about their reasons.'], 'Yes. C measures an amount over a defined period. D explores reasons. Counts alone do not explain why people leave food; reported reasons do not directly measure the amount.', 'different-methods')
-      ]),
-      stage('workbook', 'Choose, test and reconsider', 12, 'Use the stable A–E question bank above. Pupils choose two questions and write their wording, not only letters. C and D are a defensible pair, but accept other carefully improved choices. For task 2 use oral discussion or notebook notes if the book provides no lines.', [
+      ], eightQuestions, topic8)),
+      stage('workbook', 'Choose, test and reconsider', 12, 'Use the stable A–E question bank above. Pupils choose two questions and write their wording, not only letters. C and D are a defensible pair, but accept other carefully improved choices. For task 2 use oral discussion or notebook notes if the book provides no lines.', withQuestionBank([
         book(4, 'Starter activity · task 1', [`Write the topic: ${topic8}.`, 'Choose two useful questions from the question bank.', 'Write each question and explain why you chose it.']),
         book(5, 'Starter activity · task 2a–e', ['Test both choices against all five printed checks.', 'Discuss one strength and one possible improvement.', 'Use your notebook for extra notes.']),
         book(5, 'Starter activity · task 3a–b', ['Decide whether you still support each choice.', 'Write Yes or No and explain why.', 'A well-explained change of mind shows learning.'])
-      ].map(f => ({ ...f, questionBank: eightQuestions }))),
+      ], eightQuestions, topic8)),
       stage('check', 'Improve a new question', 4, 'Focus on an actionable change and a reason. Do not demand the exact model wording.', [
         reveal('Repair this question', ['“Why should we ban every packed lunch?”', 'Keep the topic but allow more than one answer.'], 'Try: “How does food left over from packed lunches compare with food left over from school meals in our class over a week?” Compare like-for-like measures; the question does not assume a ban is best.', 'repair-packed-lunch'),
         talk('Explain your repair', ['Which word or assumption did you change?', 'What information would you need now?'], 'explain-repair')
@@ -245,21 +246,21 @@ function ninePart1() {
         example('A report question opens several routes', ['“Should schools offer smaller first portions to reduce food waste?”', 'We can examine causes, effects and alternative actions.', 'We can compare different people’s views and evidence from different countries.']),
         reveal('Does “should” guarantee a good question?', ['“Should everything be better everywhere?”'], 'No. It is unclear and far too broad. A useful report question names a specific issue and manageable setting, and can be investigated with evidence.', 'should-test')
       ]),
-      stage('guided', 'Evaluate the five teacher questions', 8, 'A is useful background but not a full report; B assumes a cause and blames pupils; C is absolute and impractical; D is too narrow for a report; E allows evaluation but requires definitions, sources, alternatives and attention to access to enough food. It is a research proposal, not a dietary recommendation.', [
+      stage('guided', 'Evaluate the five teacher questions', 8, 'Use Show all questions to compare the complete question bank at any step. A is useful background but not a full report; B assumes a cause and blames pupils; C is absolute and impractical; D is too narrow for a report; E allows evaluation but requires definitions, sources, alternatives and attention to access to enough food. It is a research proposal, not a dietary recommendation.', withQuestionBank([
         frame('Question bank · A, B and C', 'think', nineQuestions.slice(0, 3), { footnote: 'Teacher-supplied questions for Book 9 p. 4.' }),
         frame('Question bank · D and E', 'think', nineQuestions.slice(3), { footnote: 'Teacher-supplied questions for Book 9 p. 4.' }),
         talk('Give a judgement with a reason', ['Choose one weak question and explain its main problem.', 'Compare it with question E.', 'Name one challenge you would still need to solve with E.'], 'evaluate-bank'),
         example('Clarify the strongest option', ['Define “smaller first portions” as an option with more available if wanted.', 'Compare it with other changes, such as more choice or better scheduling.', 'Investigate effects and trade-offs before recommending an action.'])
-      ]),
-      stage('workbook', 'Choose a question for a report', 12, 'Use p. 4 task 1 for five brief judgements; task 2a is a discussion supported by the Question space. Complete agreement at top of p. 5. E is the strongest of these five for a report, but evidence could lead to either conclusion.', [
+      ], nineQuestions, topic9)),
+      stage('workbook', 'Choose a question for a report', 12, 'Use p. 4 task 1 for five brief judgements; task 2a is a discussion supported by the Question space. Complete agreement at top of p. 5. E is the strongest of these five for a report, but evidence could lead to either conclusion.', withQuestionBank([
         book(4, 'Starter activity · task 1', [`Write the topic: ${topic9}.`, 'Use the five teacher questions A–E.', 'In Question 1–5, record a judgement and reason for each.']),
         book(4, 'Starter activity · task 2a', ['Choose the best question for a research report.', 'Check causes/effects, global and national views, action and reflection.', 'Write your chosen question in the space provided.']),
         book(5, 'Starter activity · task 2b', ['Compare your choice with classmates.', 'Discuss whether they agree and explain why.', 'Use a notebook if you need more writing space.'])
-      ]),
-      stage('check', 'Connect the question to perspectives', 4, 'Distinguish scale from opinion. A global perspective needs evidence and viewpoints beyond one country, not just the word global. National scope does not imply everyone in that country agrees. Examples are plans for research, not researched claims.', [
+      ], nineQuestions, topic9)),
+      stage('check', 'Connect the question to perspectives', 4, 'Distinguish scale from opinion. A global perspective needs evidence and viewpoints beyond one country, not just the word global. National scope does not imply everyone in that country agrees. Examples are plans for research, not researched claims.', withQuestionBank([
         reveal('Where could the report find different perspectives?', ['Question E focuses on schools in Kyrgyzstan.', 'How could the report still use global evidence?'], 'Compare evidence and experiences from schools in other countries, then consider how relevant they are locally. Investigate national conditions and different pupils’ or staff members’ views; do not assume one survey represents a whole country.', 'global-national'),
         talk('What would change your mind?', ['State one piece of evidence you would want before recommending smaller portions.', 'Explain why that evidence matters.'], 'change-mind')
-      ]),
+      ], nineQuestions, topic9)),
       stage('finish', 'Reflect and finish', 4, 'Check that every pupil has evaluated the question bank, not simply copied the preferred question.', [
         frame('Your exit explanation', 'think', ['In your notebook: explain why your chosen question suits a report.', 'Name one uncertainty you would investigate.', 'Next time: create your own question on pages 5–7.']),
         frame('Part 1 complete', 'listen', ['Keep your judgements and reasons.', 'Listen for the next instruction.'], { final: true })

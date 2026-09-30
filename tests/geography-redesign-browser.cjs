@@ -12,7 +12,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
     const click=s=>{const e=document.querySelector(s);if(!e)throw Error('Missing '+s);e.click();};const a=n=>click(`[data-action="${n}"]`);
     a(document.querySelector('[data-action="switch-class"]')?'switch-class':'choose-lesson');click(`[data-id="${l.catalog.classes[0]}"]`);click('[data-id="geography"]');click(`[data-quarter="${l.catalog.quarter}"]`);click(`[data-lesson="${l.id}"]`);a('picker-start');if(document.querySelector('[data-action="confirm"]'))a('confirm');
     const bad=[];let count=0;
-    const bounds=label=>{const limit=document.querySelector('.step-controls').getBoundingClientRect().top;for(const e of document.querySelectorAll('.copy h1,.instructions,.footnote,.answer-detail,.question-bank-button')){const r=e.getBoundingClientRect();if(r.bottom>limit+2||r.right>innerWidth+1||r.left<0)bad.push([l.id,label,e.className]);}};
+    const bounds=label=>{const limit=document.querySelector('.step-controls').getBoundingClientRect().top;for(const e of document.querySelectorAll('.copy h1,.instructions,.footnote,.answer-detail,.question-bank-button,.board-work-button,.copy .explanation,.teaching-content>.geography-evidence,.teaching-content>.geo-atlas')){const r=e.getBoundingClientRect();if(r.bottom>limit+2||r.right>innerWidth+1||r.left<0)bad.push([l.id,label,e.className]);}};
     for(let si=0;si<l.stages.length;si++){for(let fi=0;fi<l.stages[si].frames.length;fi++){
      count++;bounds(si+':'+fi);const f=l.stages[si].frames[fi];
      if(f.simulation){a('geography-lab');if(!document.querySelector('.lab-canvas svg'))throw Error('Missing SVG');a('close-panel');}
@@ -23,8 +23,8 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
     }if(si<l.stages.length-1)a('next-stage');}
     return {bad,count};
    },l);bad.push(...result.bad);frames+=result.count;
-   const sim=l.stages.find(s=>s.id==='investigate').frames.find(f=>f.simulation).simulation;
-   if(!captured.has(sim.kind)){
+   const sim=l.stages.find(s=>s.id==='investigate').frames.find(f=>f.simulation)?.simulation;
+   if(sim&&!captured.has(sim.kind)){
     captured.add(sim.kind);await page.locator('[data-action="stages"]').click();await page.locator('[data-action="jump"][data-stage="2"]').click();
     await page.evaluate(()=>{let prev;while((prev=document.querySelector('[data-action="previous-step"]'))&&!prev.disabled)prev.click();});
     await page.locator('[data-action="geography-lab"]').click();

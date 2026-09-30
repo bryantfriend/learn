@@ -52,7 +52,7 @@ export function modelValues(kind,a,b){
  if(kind==='grid')return {reference:`23${a}45${b}`,x:100+a*45,y:480-b*40};
  return {a,b};
 }
-function art(kind,p,a,b,code){
+export function geographyArt(kind,p=0,a=6,b=20,code){
  if(kind==='journey')return `<svg viewBox="0 0 900 540" role="img" aria-label="Fictional Irish Sea journey comparison">${text(35,55,'Wales → Irish Sea crossing → Northern Ireland',28)}${text(35,115,'A: coach 2h + check-in 1h + ferry 3h + coach 1h',23)}${arrow('M45 155H790')}${text(35,205,'Total 7 hours · 35 tokens',25)}${text(35,285,'B: coach 2h + check-in 2h + flight 1h + coach 1h',23)}${arrow('M45 325H790')}${text(35,375,'Total 6 hours · 60 tokens',25)}${text(35,445,p===0?'Which is faster? Which is cheaper?':p===1?'Budget 45: A fits; B exceeds it by 15 tokens.':'A cancelled. B over budget. Revise the plan.',25)}${text(35,500,'Classroom model: invented times and costs, not live travel advice.',18)}</svg>`;
  if(kind==='uk')return ukMapArt({phase:p});
  let body='';const v=modelValues(kind,a,b);
@@ -165,7 +165,7 @@ export function createGeographyLab(spec){
  const caption=document.createElement('p');caption.className='lab-caption';caption.setAttribute('aria-live','polite');
  const controls=document.createElement('div');controls.className='lab-controls';
  const make=(label,fn)=>{const el=document.createElement('button');el.type='button';el.textContent=label;el.addEventListener('click',fn);controls.append(el);return el;};
- const update=()=>{canvas.innerHTML=art(spec.kind,phase,a,b,spec.code);caption.textContent=`${phase+1}/3 · ${spec.kind==='reasoning'&&spec.code==='1.6'?['State a pattern','Support it with counts','Explain a possible mechanism and its limit'][phase]:scenes[spec.kind][phase]}`;play.hidden=!canvas.querySelector('.geo-flow');};
+ const update=()=>{canvas.innerHTML=geographyArt(spec.kind,phase,a,b,spec.code);caption.textContent=`${phase+1}/3 · ${spec.kind==='reasoning'&&spec.code==='1.6'?['State a pattern','Support it with counts','Explain a possible mechanism and its limit'][phase]:scenes[spec.kind][phase]}`;play.hidden=!canvas.querySelector('.geo-flow');};
  make('Next case →',()=>{
   phase=(phase+1)%3;
   const presets={flood:[[30,60],[30,20],[50,20]],ice:[[9,6],[4,7],[4,7]],grid:[[6,2],[8,2],[8,8]],scale:[[6,20],[6,50],[4,50]],tools:[[6,20],[6,50],[4,50]],distance:[[4,100],[6,100],[8,50]],'os-map':[[2,250],[3,250],[3,2500]]};

@@ -9,15 +9,15 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   const {lessons}=await import('../src/lessons.js');
   await page.goto(base);
   // Actual player: open, interact, close, reopen; keep choices, not lesson marks.
-  const l=lessons.find(l=>l.id==='g7b-geo-w02-1');
-  await page.evaluate(l=>{const a=n=>document.querySelector(`[data-action="${n}"]`).click();a('choose-lesson');document.querySelector('[data-id="7b"]').click();document.querySelector('[data-id="geography"]').click();document.querySelector(`[data-lesson="${l.id}"]`).click();a('picker-start');a('stages');document.querySelector('[data-action="jump"][data-stage="2"]').click();a('geography-board');},l);
+  const l=lessons.find(l=>l.id==='g7a-geo-w02-1');
+  await page.evaluate(l=>{const a=n=>document.querySelector(`[data-action="${n}"]`).click();a('choose-lesson');document.querySelector('[data-id="7a"]').click();document.querySelector('[data-id="geography"]').click();document.querySelector(`[data-lesson="${l.id}"]`).click();a('picker-start');a('stages');document.querySelector('[data-action="jump"][data-stage="2"]').click();a('geography-board');},l);
   await page.locator('[data-card="0"]').tap();await page.locator('[data-group="0"]').tap();
   await page.locator('[data-action="close-panel"]').click();await page.locator('[data-action="geography-board"]').click();assert.equal(await page.locator('[data-placed="0"]').count(),1);
   await page.getByRole('button',{name:'Reset activity',exact:true}).click();assert.equal(await page.locator('[data-placed]').count(),0);
   await page.locator('[data-action="close-panel"]').click();
   await page.locator('[data-action="stages"]').click();await page.locator('[data-action="jump"][data-stage="3"]').click();await page.locator('[data-action="task-source"]').click();
   await page.getByRole('button',{name:'View reference model ⛶',exact:true}).click();assert.equal(await page.locator('.lab-canvas svg').count(),1);
-  await page.getByRole('button',{name:'← Return to task source',exact:true}).click();assert.match(await page.locator('#panel').innerText(),/Map facts/);await page.locator('[data-action="close-panel"]').click();
+  await page.getByRole('button',{name:'← Return to task source',exact:true}).click();assert.match(await page.locator('#panel').innerText(),/model valley/);await page.locator('[data-action="close-panel"]').click();
   // Exercise every activity's rendered data with touch, then all six mechanics.
   const activities=lessons.filter(l=>l.geoRedesign).flatMap(l=>l.stages.flatMap(s=>s.frames.filter(f=>f.boardActivity).map(f=>f.boardActivity)));
   const unique=[...new Map(activities.map(a=>[a.id,a])).values()];
@@ -26,10 +26,10 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
    await page.evaluate(async spec=>{const {createGeographyBoard,initialBoardState}=await import('./src/geography-board.js');window.boardState=initialBoardState(spec);document.querySelector('#panel').replaceChildren(createGeographyBoard(spec,window.boardState));},spec);
    assert.equal(await page.locator('.board-prompt').count(),1,spec.id);
    assert.equal(await page.locator('#panel').evaluate(n=>n.scrollWidth<=n.clientWidth),true,spec.id);
-   assert.ok(await page.locator('.geo-board button').evaluateAll(bs=>bs.every(b=>b.getBoundingClientRect().height>=52)),spec.id);
+   assert.ok(await page.locator('.geo-board button').evaluateAll(bs=>bs.filter(b=>b.getClientRects().length).every(b=>b.getBoundingClientRect().height>=52)),spec.id);
   }
   for(const type of ['sort','sequence','decision','pin','allocation','budget']){
-   const spec=unique.find(a=>a.type===type&&(type!=='decision'||a.rounds?.length>1));
+   const spec=unique.find(a=>a.type===type);
    await page.evaluate(async spec=>{const {createGeographyBoard,initialBoardState}=await import('./src/geography-board.js');window.boardState=initialBoardState(spec);document.querySelector('#panel').replaceChildren(createGeographyBoard(spec,window.boardState));},spec);
    assert.equal(await page.locator('.board-reason').count(),0);
    await page.getByRole('button',{name:'Check reasoning',exact:true}).click();
@@ -55,7 +55,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
    }
    await page.getByRole('button',{name:'Check reasoning',exact:true}).click();assert.match(await page.locator('.board-feedback').innerText(),/fits the stated conditions/,type);
    await page.getByRole('button',{name:'Reveal explanation',exact:true}).click();assert.ok(await page.locator('.board-reason').innerText());
-   if(type==='decision'){
+   if(type==='decision'&&spec.rounds?.length>1){
     await page.getByRole('button',{name:'Next changed case →',exact:true}).tap();assert.equal(await page.locator('.board-reason').count(),0);assert.match(await page.locator('.board-case').innerText(),/Case 2/);
     await page.getByRole('button',{name:spec.rounds[1].choices[0],exact:true}).tap();await page.getByRole('button',{name:'Check reasoning',exact:true}).click();assert.match(await page.locator('.board-feedback').innerText(),/fits/);
    }

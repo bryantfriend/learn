@@ -12,7 +12,7 @@ test('every lesson provides both optional student sheets without answer keys or 
 });
 test('Geography sheets retain each investigation source and offer different homework',()=>{
  for(const l of lessons.filter(l=>l.geoRedesign)){
-  const sheet=worksheetFor(l,'lesson',lessons),tasks=l.stages.find(s=>s.id==='apply').frames;
+  const sheet=worksheetFor(l,'lesson',lessons),tasks=l.stages.find(s=>s.id==='apply').frames.filter(f=>!f.boardRound);
   assert.equal(sheet.pages.length,tasks.length,l.id);
   tasks.forEach((f,i)=>{if(typeof f.sourceCard==='string')assert.ok(sheet.pages[i].sources.includes(f.sourceCard));});
   assert.notDeepEqual(sheet.pages,worksheetFor(l,'homework',lessons).pages);

@@ -1,5 +1,13 @@
 # Learn deployment
 
+## Version 2.4.2 — map workshops and complete question banks
+
+Includes all pending Geography smart-board updates: interactive SVG maps, UK/Great Britain comparison, country labelling, two postcard missions, illustrated challenges, progressive demonstrations, shared task/review workspaces and spoken exits. Global Perspectives workbook activities now expose their complete question banks. Includes pending worksheets, map provenance, audit scripts and curriculum documentation.
+
+Release metadata is synchronized in `package.json` and `src/version.js`. Deploy by pushing `main` to the existing root GitHub Pages site; no production build is required. Independent-study exports remain separate.
+
+Validation includes 77 unit tests, 1,254 Geography screens, 142 board views, and touch, keyboard, drawing and postcard checks.
+
 ## Version 2.4.0 — classroom activities, worksheets and English
 
 Adds the visible version beside the top-left Learn logo on the home screen and lesson player. Release metadata is in `package.json` and `src/version.js`; update both together.

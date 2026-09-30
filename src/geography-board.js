@@ -1,11 +1,19 @@
 // Touch and keyboard activities. Session state is local to the open player,
 // independent of lesson marks, timers and stored student progress.
+import {makeDraggable} from './board-drag.js';
+import {createGeographyEvidence} from './geography-evidence.js';
+import {cardArt} from './geography-card-art.js';
 const el=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
-export function initialBoardState(spec){return {placements:{},order:[],selected:null,round:0,choice:null,point:null,values:spec.allocations?.slice()||[],picks:[],checked:false,reveal:false};}
+export function initialBoardState(spec){return {placements:{},order:[],orderHistory:[],selected:null,round:0,choice:null,point:null,values:spec.allocations?.slice()||[],picks:[],checked:false,reveal:false};}
+export function placeSequenceCard(state,id,index){
+ (state.orderHistory||=[]).push([...state.order]);
+ state.order=Array.from({length:Math.max(state.order.length,index+1)},(_,i)=>state.order[i]===id?null:state.order[i]||null);
+ state.order[index]=id;
+}
 const questionFor=(spec,state)=>spec.rounds?.[state.round]||spec.question;
 export function evaluateBoard(spec,state){
  if(spec.type==='sort')return {complete:spec.items.every(i=>state.placements[i.id]!==undefined),correct:spec.items.every(i=>state.placements[i.id]===i.answer)};
- if(spec.type==='sequence')return {complete:state.order.length===spec.items.length,correct:state.order.every((id,i)=>spec.items.find(x=>x.id===id)?.answer===i)&&state.order.length===spec.items.length};
+ if(spec.type==='sequence')return {complete:spec.items.every((_,i)=>spec.items.some(x=>x.id===state.order[i])),correct:spec.items.every((_,i)=>spec.items.find(x=>x.id===state.order[i])?.answer===i)};
  if(spec.type==='decision')return {complete:state.choice!==null,correct:state.choice===questionFor(spec,state).answer};
  if(spec.type==='pin')return {complete:!!state.point,correct:!!state.point&&state.point.every((v,i)=>v===spec.target[i])};
  if(spec.type==='allocation'){const total=state.values.reduce((a,b)=>a+b,0);return {complete:true,correct:total<=spec.limit&&state.values.every((v,i)=>v>=spec.minimum[i]),total};}
@@ -22,9 +30,10 @@ export function createGeographyBoard(spec,state=initialBoardState(spec)){
  function render(){
   root.replaceChildren();
   root.append(el('p',spec.facilitation,'board-instructions'));
+  if(spec.visual){const reference=el('aside',undefined,'board-reference');reference.append(el('h3','Use the visual evidence'),createGeographyEvidence(spec.visual));root.append(reference);}
   const q=questionFor(spec,state);
   if(spec.type==='decision'&&spec.rounds?.length>1)root.append(el('p',`Case ${state.round+1} of ${spec.rounds.length} · ${state.round?'A condition has changed. Reconsider the evidence.':'Make and defend a prediction.'}`,'board-case'));
-  const prompt=spec.type==='sort'?'Tap a card, then its category. Tap a placed card to move it.':spec.type==='sequence'?'Tap cards in order. Use Undo to revise your sequence.':spec.type==='pin'?`In square ${spec.square.join('')}, place the marker ${spec.target[0]} tenths east and ${spec.target[1]} tenths north.`:spec.type==='allocation'?`Supply: ${spec.limit} water units. Classroom constraints: homes at least 20; ecosystem at least 20. Negotiate the rest.`:spec.type==='budget'?`Budget: ${spec.limit} tokens. Select a package, then defend its suitability.`:q.prompt;
+  const prompt=spec.type==='sort'?'Drag a card into its category, or tap a card then its category.':spec.type==='sequence'?'Build the process: drag cards to numbered positions, or tap cards in order.':spec.type==='pin'?`In square ${spec.square.join('')}, place the marker ${spec.target[0]} tenths east and ${spec.target[1]} tenths north.`:spec.type==='allocation'?`Supply: ${spec.limit} water units. Classroom constraints: homes at least 20; ecosystem at least 20. Negotiate the rest.`:spec.type==='budget'?`Budget: ${spec.limit} tokens. Select a package, then defend its suitability.`:q.prompt;
   root.append(el('h3',prompt,'board-prompt'));
   if(spec.type==='decision'){
    const choices=el('div',undefined,'board-choices');
@@ -36,14 +45,15 @@ export function createGeographyBoard(spec,state=initialBoardState(spec)){
    for(const item of shuffled(spec.items)){
     const placed=spec.type==='sort'?state.placements[item.id]!==undefined:state.order.includes(item.id);
     if(placed)continue;
-    const b=act(item.label,()=>change(()=>{if(spec.type==='sort')state.selected=item.id;else state.order.push(item.id);}),'board-card');b.dataset.card=item.id;b.setAttribute('aria-pressed',String(state.selected===item.id));tray.append(b);
-   }root.append(tray);
+    const b=act(item.label,()=>change(()=>{if(spec.type==='sort')state.selected=item.id;else{const gap=state.order.findIndex(x=>!x);placeSequenceCard(state,item.id,gap<0?state.order.length:gap);}}),'board-card');b.dataset.card=item.id;b.setAttribute('aria-pressed',String(state.selected===item.id));makeDraggable(b,{id:item.id,root,drop:(id,target)=>change(()=>{if(spec.type==='sort'){state.placements[id]=Number(target);state.selected=null;}else placeSequenceCard(state,id,Number(target));})});tray.append(b);
+   }const sortingLayout=el('div',undefined,'board-move-layout');sortingLayout.append(tray);root.append(sortingLayout);
    if(spec.type==='sort'){
     const bins=el('div',undefined,'board-bins');
-    spec.groups.forEach((name,i)=>{const bin=el('section',undefined,'board-bin');const target=act(name,()=>change(()=>{if(state.selected!==null){state.placements[state.selected]=i;state.selected=null;}}),'board-bin-target');target.disabled=state.selected===null;target.dataset.group=i;bin.append(target);
-     for(const item of spec.items.filter(x=>state.placements[x.id]===i)){const b=act(item.label,()=>change(()=>{delete state.placements[item.id];state.selected=item.id;}),'board-card placed');b.dataset.placed=item.id;if(state.checked)b.append(el('span',item.answer===i?' ✓':' · Reconsider'));bin.append(b);}bins.append(bin);});root.append(bins);
+    spec.groups.forEach((name,i)=>{const bin=el('section',undefined,'board-bin');bin.dataset.drop=i;const target=act(name,()=>change(()=>{if(state.selected!==null){state.placements[state.selected]=i;state.selected=null;}}),'board-bin-target');target.dataset.group=i;bin.append(target);
+     for(const item of spec.items.filter(x=>state.placements[x.id]===i)){const b=act(item.label,()=>change(()=>{delete state.placements[item.id];state.selected=item.id;}),'board-card placed');b.dataset.placed=item.id;makeDraggable(b,{id:item.id,root,drop:(id,target)=>change(()=>{state.placements[id]=Number(target);state.selected=null;})});if(state.checked)b.append(el('span',item.answer===i?' ✓':' · Reconsider'));bin.append(b);}bins.append(bin);});sortingLayout.append(bins);
    }else{
-    const chain=el('ol',undefined,'board-chain');state.order.forEach((id,i)=>{const item=spec.items.find(x=>x.id===id);chain.append(el('li',item.label+(state.checked?(item.answer===i?' ✓':' · Reconsider position'):'')));});root.append(chain,act('Undo last card',()=>change(()=>{state.order.pop();}),'board-undo'));
+    const chain=el('ol',undefined,'board-chain');spec.items.forEach((_,i)=>{const id=state.order[i],item=spec.items.find(x=>x.id===id),slot=el('li');slot.dataset.drop=i;
+     if(item){const b=act(item.label+(state.checked?(item.answer===i?' ✓':' · Reconsider position'):''),()=>change(()=>{state.orderHistory.push([...state.order]);state.order[i]=null;}),'board-card');b.setAttribute('aria-label',`Remove step ${i+1}: ${item.label}`);makeDraggable(b,{id,root,drop:(id,target)=>change(()=>placeSequenceCard(state,id,Number(target)))});slot.append(b);}else slot.textContent='Drop a step here';chain.append(slot);});sortingLayout.append(chain);root.append(act('Undo last card',()=>change(()=>{if(state.orderHistory.length)state.order=state.orderHistory.pop();}),'board-undo'));
    }
   }else if(spec.type==='pin'){
    const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox','0 0 620 550');svg.setAttribute('role','img');svg.setAttribute('aria-label','Grid square: east to the right; north upwards. Use the coordinate controls as a keyboard alternative.');svg.classList.add('board-grid');
@@ -68,6 +78,7 @@ export function createGeographyBoard(spec,state=initialBoardState(spec)){
    if(r.complete){root.append(act(state.reveal?'Hide explanation':'Reveal explanation',()=>{state.reveal=!state.reveal;render();}));if(state.reveal){root.append(showReason());if(spec.type==='budget')spec.notes.forEach((n,i)=>root.append(el('p',spec.labels[i]+': '+n)));if(spec.type==='sort')root.append(el('p',spec.items.map(i=>`${i.label} → ${spec.groups[i.answer]}`).join(' · ')));if(spec.type==='sequence')root.append(el('p',spec.items.map(i=>i.label).join(' → ')));}}
   }
   if(spec.type==='decision'&&state.checked&&state.choice!==null&&state.round<(spec.rounds?.length||1)-1)root.append(act('Next changed case →',()=>change(()=>{state.round++;state.choice=null;})));
+  for(const card of root.querySelectorAll('.board-card,.board-choice')){const picture=el('span',undefined,'board-card-picture');picture.innerHTML=cardArt(card.textContent);card.prepend(picture);}
   if(focusLabel){const target=[...root.querySelectorAll('button')].find(b=>b.dataset.boardFocus===focusLabel&&!b.disabled)||root.querySelector('.board-bin-target:not(:disabled),.board-card,.board-choice,.board-actions button');target?.focus({preventScroll:true});}
  }
  render();return root;
