@@ -5,7 +5,7 @@ const copy = value => JSON.parse(JSON.stringify(value));
 const fields = {
  lesson: ['title','subtitle','openingScript','starSuggestion'],
  stage: ['title','notes','script'],
- frame: ['title','kicker','lines','quote','cue','footnote','nextLabel','answer','answerText','explanation','choices']
+ frame: ['title','kicker','lines','quote','cue','footnote','nextLabel','answer','answerText','explanation','choices','teacherScript']
 };
 function blocks(lesson) {
  const result=[{name:'Lesson',object:lesson,kind:'lesson'}];

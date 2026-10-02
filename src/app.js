@@ -206,6 +206,8 @@ function renderPlayer() {
         copy.append(bankButton);
     }
     if (frame.conversationCards) copy.append(button('Open conversation cards ⛶','conversation-cards','question-bank-button'));
+    if (frame.teacherScript) copy.append(button('Teaching notes for this slide','slide-teaching-notes','text-button'));
+    if (frame.oralCheck) copy.append(button('Brief understanding check','slide-understanding-check','text-button'));
     if (frame.gpLab) copy.append(button('Explore: '+frame.gpLab.title+' ⛶', 'gp-lab', 'question-bank-button'));
     if (frame.boardActivity) copy.append(button('Open board challenge ⛶', 'geography-board', 'question-bank-button'));
     if (frame.postcardActivity) copy.append(button(frame.postcardActivity.mode==='sorting'?'Open island sorting office ⛶':'Open postcard delivery ⛶','geography-postcards','question-bank-button'));
@@ -228,7 +230,7 @@ function renderPlayer() {
     }
     if (frame.printExam) copy.append(examLink('Open printable student paper', false));
     if (lesson.vocabulary) markVocabulary(copy,lesson.vocabulary);
-    const content = element('section', { className: 'teaching-content' + (graphic || scene ? ' illustrated' : '') + (scene ? ' scene-layout' : '') + (frame.visual || answerPanel ? ' split' : '') + (lesson.summary ? ' practice-content' : '') + (lesson.gp ? ' gp-content' : '') + (lesson.geoRedesign ? ' geo-workshop' : '') + (frame.type === 'question' ? ' quiz' : ''), 'aria-labelledby': 'student-title' }, [copy]);
+    const content = element('section', { className: 'teaching-content' + (graphic || scene ? ' illustrated' : '') + (scene ? ' scene-layout' : '') + (frame.visual || answerPanel ? ' split' : '') + (lesson.summary ? ' practice-content' : '') + (lesson.gp ? ' gp-content' : '') + (lesson.geoRedesign ? ' geo-workshop' : '') + (lesson.teacherLed ? ' teacher-led-geography' : '') + (frame.type === 'question' ? ' quiz' : ''), 'aria-labelledby': 'student-title' }, [copy]);
     if (graphic) content.append(createVisual(graphic));
     if (frame.geoDisplay) {content.classList.add('geography-visual-layout');content.append(createFrameEvidence());}
     if (scene) content.append(element('figure', {className:'lesson-scene'},[
@@ -599,7 +601,8 @@ function showTools() {
         button('Edit lesson text', 'edit-lesson'),
         button('Read this stage’s teacher notes', 'notes'),
         ...(lesson.teacherGuide ? [button('How to teach this lesson', 'gp-guide')] : []),
-        ...(lesson.boardTeachingGuide ? [button('40-minute board teaching guide','geo-teaching-guide')] : []),
+        ...(lesson.boardTeachingGuide ? [button(lesson.teacherLed?'40-minute teacher-led guide':'40-minute board teaching guide','geo-teaching-guide')] : []),
+        ...(lesson.teacherLed ? [element('a',{href:'./docs/geography-teacher-guide.html#'+lesson.id,target:'_blank',rel:'noopener',className:'text-button'},['Read / print this lesson’s teacher guide ↗'])] : []),
         ...(lesson.gpLab ? [button('Interactive model · '+lesson.gpLab.title, 'gp-lab')] : []),
         ...(lesson.extensions ? [button('Extra time · optional 10–20 minutes', 'extensions'), element('p', {}, [lesson.pacingNote])] : []),
         button('Choose a stage', 'stages'),
@@ -702,6 +705,15 @@ function handleAction(event) {
     const action = target.dataset.action;
     if (action === 'choose-lesson' && !inLesson) chooseLesson();
     else if (action === 'g7-plan') showGrade7Plan();
+    else if (action === 'slide-teaching-notes') {
+        const frame=currentFrame();
+        openPanel('Teaching notes · '+frame.title,[...frame.teacherScript.split(/\n\n/).map(p=>element('p',{className:'slide-teacher-script'},[p]))]);
+    }
+    else if (action === 'slide-understanding-check') {
+        const check=currentFrame().oralCheck;
+        const detail=element('details',{},[element('summary',{},['Show the explanation']),element('p',{},[check.answer])]);
+        openPanel('Brief understanding check',[element('p',{},[check.question]),detail]);
+    }
     else if (action === 'g7-quarter') { planQuarter=target.dataset.quarter; showGrade7Plan(); }
     else if (action === 'g7-open') { picker.lessonId=target.dataset.lesson; showPicker(); }
     else if (action === 'lesson-quarter') { planQuarter = target.dataset.quarter; showPicker('[data-action="lesson-quarter"][data-quarter="' + planQuarter + '"]'); }
@@ -751,8 +763,8 @@ function handleAction(event) {
     }
     else if (action === 'geo-teaching-guide') {
         const guide=lesson.boardTeachingGuide;
-        openPanel('40-minute board teaching guide',[
-            element('p',{},[guide.message]),element('p',{},['No student book, worksheet or notebook required. Pair discussion is optional.']),
+        openPanel(lesson.teacherLed?'40-minute teacher-led guide':'40-minute board teaching guide',[
+            element('p',{},[guide.message]),element('p',{},[lesson.teacherLed?'Students listen from their seats. Invite brief answers and occasional volunteer board turns. No notebook, printing or student device is required.':'No student book, worksheet or notebook required. Pair discussion is optional.']),
             ...guide.stages.map(s=>element('details',{},[element('summary',{},[s.title+' · '+s.minutes+' min · '+s.rounds+' board tasks']),element('p',{},[s.notes])])),
             element('h3',{},['If the class answers quickly']),element('p',{},[guide.quickClass]),
             ...guide.extra.map(q=>element('details',{},[element('summary',{},[q.prompt]),element('p',{},[q.source]),element('p',{},[q.answer])]))

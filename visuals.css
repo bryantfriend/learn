@@ -102,6 +102,14 @@
 .journey-pair img{width:100%;max-height:180px;object-fit:cover;border-radius:9px;}
 .journey-map svg{width:100%;max-height:300px;}
 .journey-note{color:#586760;}
+.slide-teacher-script{white-space:pre-line;line-height:1.6;}
+.teacher-led-geography.quiz .copy:has(.explanation) .instructions{display:none;}
+.teacher-led-geography.quiz .copy:has(.explanation) .board-round-routine{display:none;}
+.teacher-led-geography .geo-atlas,.teacher-led-geography .geography-evidence{max-height:100%;overflow:auto;box-sizing:border-box;}
+.teacher-led-geography .atlas-canvas svg,.teacher-led-geography .evidence-canvas svg{max-height:30vh;}
+.teacher-led-geography:not(.quiz) .atlas-canvas svg,.teacher-led-geography:not(.quiz) .evidence-canvas svg{max-height:45vh;}
+.teacher-led-geography .copy>.text-button{display:block;font-size:14px;padding:5px 0;min-height:26px;}
+.teacher-led-geography .copy .explanation{font-size:20px;line-height:1.25;}
 .player .journey-leg img{max-height:55px;}
 .player .journey-visual input{min-height:30px;height:30px;padding:3px 5px;box-sizing:border-box;}
 .player .journey-visual button{min-height:34px;padding:5px 8px;}

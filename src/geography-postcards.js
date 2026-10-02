@@ -24,7 +24,7 @@ export function createPostcardGame(spec,state=initialPostState()){
  function render(){
   root.replaceChildren();
   items=sorting?[...ukCountries,'Ireland'].map((name,i)=>({id:String(i),name,answer:state.round?(name==='Ireland'?'Outside the UK':'In the UK'):['England','Scotland','Wales'].includes(name)?'Great Britain':'Island of Ireland'})):postcards.slice(state.round*2,state.round*2+2);
-  root.append(el('p',sorting?(state.round?'Round 2 · Same places, a different question: which are in the UK?':'Round 1 · Sort the country outlines by island.'):`Mission ${state.round+1} of 2 · ${state.round?'Swap jobs: explain, then deliver.':'One reader, one map detective. Deliver these two postcards.'}`,'post-mission'));
+  root.append(el('p',sorting?(state.round?'Round 2 · Same places, a different question: which are in the UK?':'Round 1 · Sort the country outlines by island.'):spec.teacherLed?`Teacher demonstration ${state.round+1} · Read a clue, explain it and point to the country.`:`Mission ${state.round+1} of 2 · ${state.round?'Swap jobs: explain, then deliver.':'One reader, one map detective. Deliver these two postcards.'}`,'post-mission'));
   root.append(el('p','Drag a card to a destination, or tap a card then tap a destination. Placed cards can be moved again.','post-help'));
   const layout=el('div',null,'post-layout'),map=el('div',null,'post-map'),tray=el('div',null,'post-tray');
   map.innerHTML=atlasArt({labels:true,cities:!sorting});
@@ -66,7 +66,7 @@ export function createPostcardGame(spec,state=initialPostState()){
   root.append(actions);
   const status=el('p',null,'post-status');status.setAttribute('role','status');
   const complete=items.every(c=>state.placements[c.id]!==undefined),correct=items.filter(c=>state.placements[c.id]===c.answer).length;
-  status.textContent=state.checked?(!complete?(sorting?'Place every country, then check again.':'Deliver both postcards, then check again.'):`${correct} of ${items.length} destinations match. `+(correct===items.length?(sorting?'Explain why Northern Ireland changes group when the question changes.':state.round?'All four delivered. Finish the game: invent a new two-clue address for your partner.':'Explain one map clue, then swap jobs for mission 2.'):'Use the map and address clues to repair a delivery.')):state.selected!==null?'Card selected. Tap its country on the map or drag it there.':'Choose a card to begin.';root.append(status);
+  status.textContent=state.checked?(!complete?(sorting?'Place every country, then check again.':'Deliver both postcards, then check again.'):`${correct} of ${items.length} destinations match. `+(correct===items.length?(sorting?'Explain why Northern Ireland changes group when the question changes.':spec.teacherLed?'Your teacher explains the map clue. Continue only if another short demonstration is useful.':state.round?'All four delivered. Finish the game: invent a new two-clue address for your partner.':'Explain one map clue, then swap jobs for mission 2.'):'Use the map and address clues to repair a delivery.')):state.selected!==null?'Card selected. Tap its country on the map or drag it there.':'Choose a card to begin.';root.append(status);
   if(state.checked&&complete&&!sorting){const detail=el('details');detail.append(el('summary','Teacher: delivery explanations'));items.forEach(c=>detail.append(el('p',c.detail)));root.append(detail);}
   if(focus)[...root.querySelectorAll('button')].find(b=>b.textContent===focus)?.focus({preventScroll:true});
  }

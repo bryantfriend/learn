@@ -19,6 +19,10 @@ export function createJourneyVisual(spec,onChange){
    const pictures=el('div',null,'journey-pair');pictures.append(image('ferry','Passenger ferry crossing the sea'),image('flight','Airplane crossing the sea'));root.append(pictures);
   }else if(cfg.view==='case'){
    const pictures=el('div',null,'journey-pair');pictures.append(image('ferry','Ferry option: check whether it is available'),image('flight','Flight option: check whether it is affordable'));root.append(pictures,el('p',spec.source||'Use the case source for its own figures.'));
+  }else if(cfg.view==='worked'){
+   const chain=el('div',null,'journey-chain');
+   for(const [kind,name,hours]of [['coach','Coach',1],['checkin','Waiting',2],['ferry','Crossing',2]]){const card=el('div',null,'journey-leg');card.append(image(kind,name),el('strong',name),el('span',hours+' h'));chain.append(card);}
+   root.append(el('p','Separate worked example · include the waiting'),chain,button('Reveal total',()=>state.step=1),button('Start again',()=>state.step=0),el('p',state.step?'1 + 2 + 2 = 5 hours. Waiting is part of the journey.':'Predict the total before your teacher reveals it.'));
   }else if(cfg.view==='exit'){
    const chain=el('div',null,'journey-chain');for(const [kind,name,hours]of [['coach','Coach',1],['checkin','Check-in',1],['ferry','Ferry',2],['coach','Coach',1]]){const c=el('div',null,'journey-leg');c.append(image(kind,name),el('strong',name),el('span',hours+' h'));chain.append(c);}root.append(chain,el('p','New journey: 42 tokens · budget 40. Add the time. Is it feasible?'));
   }else{

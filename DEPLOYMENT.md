@@ -1,5 +1,11 @@
 # Learn deployment
 
+## Version 2.5.0 — teacher-led Geography curriculum
+
+Rebuilds all 86 Geography teaching and review lessons for a 40-minute ESL class: substantial teacher explanations, visual demonstrations, occasional spoken opinions and volunteer board activities. Adds per-slide teaching notes, concealed understanding-check answers and a printable guide for every lesson. Assessments and other subjects retain their existing curriculum.
+
+Validation: 80 unit tests, 3,718 rebuilt lesson screen checks across two classroom resolutions, and focused checks for the journey planner, teaching notes, mobile layout and printable guide. The 40-minute pacing is planned and still needs classroom validation. Publish through the existing main/root GitHub Pages deployment.
+
 ## Version 2.4.3 — illustrated Irish Sea journey
 
 Adds generated coach, check-in, ferry and flight illustrations throughout the section 3.1 application lesson. The interactive planner lets pupils calculate journey totals, choose a route, cancel the ferry, change the budget and check feasibility. Includes an enlarged classroom view and a visual spoken exit task.

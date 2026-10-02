@@ -87,6 +87,6 @@ export function addExtraTime(lesson){
   pack('Change one condition · defend or reject',defend,['1 minute: read the original case and alternative.','3 minutes: change one condition, or explain why the alternative cannot work.','1 minute: another pair tests the reasoning; return to the original case.'],'Apply the idea flexibly without confusing a hypothetical with a fact.')
  ];
  lesson.extraTimeVersion=1;
- lesson.pacingNote=`${elapsed}-minute core. Optional Extra time: choose any two five-minute games for 10 minutes, three for 15, or all four for 20. Reveal answers only after everyone has responded. The games do not mark core lesson work complete.`;
+ if(!lesson.teacherLed)lesson.pacingNote=`${elapsed}-minute core. Optional Extra time: choose any two five-minute games for 10 minutes, three for 15, or all four for 20. Reveal answers only after everyone has responded. The games do not mark core lesson work complete.`;
  return lesson;
 }

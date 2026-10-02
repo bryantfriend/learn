@@ -7,6 +7,7 @@ import {reviewMission} from './geography-review.js';
 import {rebuildUKLesson} from './geography-uk-lesson.js';
 import {deepenGeography} from './geography-depth.js';
 import {visualiseJourneyLesson} from './journey-lesson.js';
+import {rebuildGeographyLecture} from './geography-lecture.js';
 
 const entries = new Map();
 const reviewIndices=new Map();
@@ -112,5 +113,6 @@ export function redesignGeography(lesson) {
  rebuildUKLesson(lesson,stage);
  deepenGeography(lesson,active,stage,reviewIndices.get(lesson.id)||0);
  visualiseJourneyLesson(lesson,stage);
+ rebuildGeographyLecture(lesson,active,stage);
  return lesson;
 }

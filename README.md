@@ -8,6 +8,8 @@ A teacher-operated, whole-class lesson player for **Mr. Friend · Oxford Interna
 
 ## Available lessons
 
+Geography now uses a [40-minute teacher-led ESL route](docs/geography-teacher-led.md) across all 86 teaching/review sessions: explicit concept explanations, visual worked examples, occasional board demonstrations and brief class responses. Open **Teaching notes for this slide** while preparing or use the [separate teacher guide](docs/geography-teacher-guide.html). The revised duration is a teaching estimate, pending classroom observation.
+
 Use **Exams** on the home screen to choose **Baseline** or **Term 1–4**, then **7A**, **7B**, or **Grade 8**. For 7A and 7B, choose Geography or Global Perspectives. Each paper has **Print / Save as PDF** and a separate **Teacher answer key** link.
 
 All five baseline student papers contain 20 questions and fit on one A4 page. Print at the default scale with browser headers and footers disabled. Term papers retain their existing content and layout. Run `node tests/exams-browser.cjs` (with `PLAYWRIGHT_MODULE` set if needed) to check navigation, baseline PDF page counts, answer keys, and mobile layouts.
