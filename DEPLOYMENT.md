@@ -1,5 +1,11 @@
 # Learn deployment
 
+## Version 2.4.3 — illustrated Irish Sea journey
+
+Adds generated coach, check-in, ferry and flight illustrations throughout the section 3.1 application lesson. The interactive planner lets pupils calculate journey totals, choose a route, cancel the ferry, change the budget and check feasibility. Includes an enlarged classroom view and a visual spoken exit task.
+
+Validation: 77 unit tests and the journey browser check covering all images, totals, cancellation, budget changes and reset. Publish through the existing main/root GitHub Pages deployment.
+
 ## Version 2.4.2 — map workshops and complete question banks
 
 Includes all pending Geography smart-board updates: interactive SVG maps, UK/Great Britain comparison, country labelling, two postcard missions, illustrated challenges, progressive demonstrations, shared task/review workspaces and spoken exits. Global Perspectives workbook activities now expose their complete question banks. Includes pending worksheets, map provenance, audit scripts and curriculum documentation.

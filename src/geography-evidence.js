@@ -1,8 +1,10 @@
 import {geographyArt} from './geography-lab.js';
 import {createAtlas,atlasArt} from './geography-atlas.js';
 import {workpadArt} from './geography-workpads.js';
+import {createJourneyVisual} from './journey-visual.js';
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text)n.textContent=text;if(cls)n.className=cls;return n;};
 export function createGeographyEvidence(spec,onChange=()=>{}){
+ if(spec.journey)return createJourneyVisual(spec,onChange);
  if(spec.atlas)return createAtlas(spec.atlas,atlas=>onChange({...spec,atlas}));
  if(spec.kind==='uk'&&!spec.demo)return createAtlas({layers:spec.code==='3.2',physical:spec.code==='3.2',caption:spec.code==='3.2'?'Country boundaries and physical features answer different questions. Toggle the physical layer.':spec.caption},atlas=>onChange({...spec,atlas}));
  const root=el('figure',null,'geography-evidence');

@@ -6,6 +6,7 @@ import {boardFor,boardQuestions} from './geography-board-data.js';
 import {reviewMission} from './geography-review.js';
 import {rebuildUKLesson} from './geography-uk-lesson.js';
 import {deepenGeography} from './geography-depth.js';
+import {visualiseJourneyLesson} from './journey-lesson.js';
 
 const entries = new Map();
 const reviewIndices=new Map();
@@ -110,5 +111,6 @@ export function redesignGeography(lesson) {
  for(const frame of lesson.stages.find(s=>s.id==='teach').frames)if(!frame.geoDisplay)frame.geoDisplay={kind:active[0].w.kind,code:active[0].code,phase:1,caption:'Point to the two features, then explain the link between them.'};
  rebuildUKLesson(lesson,stage);
  deepenGeography(lesson,active,stage,reviewIndices.get(lesson.id)||0);
+ visualiseJourneyLesson(lesson,stage);
  return lesson;
 }

@@ -83,3 +83,28 @@
 .scene-layout .copy { align-self:center; }
 @media(max-height:740px) and (min-width:901px){ .lesson-scene img {height:240px;} .scene-layout .instructions p {font-size:22px;} .scene-layout .copy h1 {font-size:29px;} }
 @media(max-width:900px){ .teaching-content.scene-layout {grid-template-columns:1fr;} .lesson-scene img {height:auto; max-height:420px;} }
+.journey-visual{overflow:auto;max-height:100%;padding:12px;box-sizing:border-box;}
+.journey-visual figcaption{font-weight:800;font-size:clamp(14px,1.3vw,20px);}
+.journey-visual p{font-size:clamp(12px,1.05vw,17px);margin:8px 0;}
+.journey-route h3{font-size:16px;margin:7px 0;}
+.journey-chain{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;}
+.journey-leg{display:flex;flex-direction:column;gap:3px;border:1px solid #c6d8d2;border-radius:9px;padding:5px;background:#fff;min-width:0;}
+.journey-leg img{width:100%;aspect-ratio:1.65;object-fit:cover;border-radius:6px;}
+.journey-leg strong{font-size:12px;line-height:1.15;}
+.journey-leg span{font-weight:800;color:#176875;font-size:16px;}
+.journey-route label{display:block;font-size:13px;margin-top:5px;}
+.journey-visual input{width:65px;padding:5px;border:1px solid #728c85;border-radius:5px;font:inherit;}
+.journey-controls{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px;font-size:13px;}
+.journey-visual button{padding:7px 10px;border:1px solid #698b83;border-radius:7px;background:#fff;color:#193b36;font:inherit;cursor:pointer;}
+.journey-visual button[aria-pressed=true]{background:#195d60;color:white;}
+.journey-feedback:not(:empty){padding:9px;border-radius:7px;background:#e4f2e7;font-weight:700;}
+.journey-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.journey-pair img{width:100%;max-height:180px;object-fit:cover;border-radius:9px;}
+.journey-map svg{width:100%;max-height:300px;}
+.journey-note{color:#586760;}
+.player .journey-leg img{max-height:55px;}
+.player .journey-visual input{min-height:30px;height:30px;padding:3px 5px;box-sizing:border-box;}
+.player .journey-visual button{min-height:34px;padding:5px 8px;}
+.player .journey-route h3{margin:4px 0;}
+.player .journey-visual p{margin:5px 0;}
+@media(max-width:600px){.journey-chain{grid-template-columns:repeat(2,minmax(0,1fr));}.journey-visual{max-height:none;}}
