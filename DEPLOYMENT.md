@@ -1,5 +1,11 @@
 # Learn deployment
 
+## Version 2.5.1 — temporary online read-aloud lessons
+
+Adds four lessons for 5 October 2026 in **Online · Temporary**, filtered by class: Geography 7A, GP 8, Geography 7B and GP 7B. Six screens per lesson have substantial original spoken scripts, with a continuous HTML reading guide. The early Geography course topics and reviewed GP Skills Books 9 and 7 supply the curriculum starting point. Plan about 30 minutes with slow delivery and pauses, plus an optional 10-minute recap. No student responses, worksheets or breakout rooms are required. These teacher-led lessons are excluded from the independent-study export using the existing `classroomOnly` flag.
+
+Publish through the existing main/root GitHub Pages deployment. Run `node scripts/build-online-guide.mjs` after editing scripts; `node tests/online-browser.cjs` verifies the picker, all scripts, progress recovery and responsive reading guide.
+
 ## Version 2.5.0 — teacher-led Geography curriculum
 
 Rebuilds all 86 Geography teaching and review lessons for a 40-minute ESL class: substantial teacher explanations, visual demonstrations, occasional spoken opinions and volunteer board activities. Adds per-slide teaching notes, concealed understanding-check answers and a printable guide for every lesson. Assessments and other subjects retain their existing curriculum.

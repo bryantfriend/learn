@@ -1,3 +1,4 @@
+import { onlineLessons } from './lessons/online.js';
 import { enhanceGlobalPerspectives } from './lessons/gp-enhancements.js';
 import { redesignGeography } from './lessons/geography-redesign.js';
 import { addExtraTime } from './lessons/extra-time.js';
@@ -114,6 +115,7 @@ export const lesson = {
 };
 
 export const lessons = [...[lesson, practiceLesson, ...gpLessons, ...grade7Lessons, ...grade7BLessons].map(redesignGeography).map(strengthenPacing).map(illustrateExamples).map(supportEnglish), ...workbookTrialLessons,...english7BLessons].map(addExtraTime).map(enhanceGlobalPerspectives);
+lessons.push(...onlineLessons);
 let lessonStorage; try { lessonStorage = globalThis.localStorage; } catch {}
 registerLessons(lessons, lessonStorage);
 export function getLesson(id) {

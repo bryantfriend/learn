@@ -8,6 +8,8 @@ A teacher-operated, whole-class lesson player for **Mr. Friend · Oxford Interna
 
 ## Available lessons
 
+For the temporary Google Meet collection, choose **7A**, **7B** or **8th Grade** → **Online · Temporary**. There are four original read-aloud lessons: Geography 7A (geography tools), GP 8 (research questions, Skills Book 9), Geography 7B (UK countries and maps), and GP 7B (research questions, Skills Book 7). Use **Read-aloud script** on each screen or [open the continuous reading guide](docs/online-lessons.html). Allow about 30 minutes with slow delivery and pauses, plus an optional 10-minute recap. No written work, chat responses or group work is required. These are early-topic adaptations, not a claim that the teacher's current book position is known. Rebuild the guide after script edits with `node scripts/build-online-guide.mjs`.
+
 Geography now uses a [40-minute teacher-led ESL route](docs/geography-teacher-led.md) across all 86 teaching/review sessions: explicit concept explanations, visual worked examples, occasional board demonstrations and brief class responses. Open **Teaching notes for this slide** while preparing or use the [separate teacher guide](docs/geography-teacher-guide.html). The revised duration is a teaching estimate, pending classroom observation.
 
 Use **Exams** on the home screen to choose **Baseline** or **Term 1–4**, then **7A**, **7B**, or **Grade 8**. For 7A and 7B, choose Geography or Global Perspectives. Each paper has **Print / Save as PDF** and a separate **Teacher answer key** link.

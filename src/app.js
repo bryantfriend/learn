@@ -144,7 +144,7 @@ function renderHome() {
                 element('h1', {}, ['Clear routines.', element('br'), element('em', {}, ['Active learning.'])]),
                 element('p', { className: 'home-intro' }, ['A shared screen. A fresh start. A whole class ready to think.']),
                 element('div', { className: 'lesson-card' }, [
-                    element('div', { className: 'lesson-picker-row' }, [element('p', { className: 'eyebrow' }, ['YOUR CLASSROOM']), element('span', { className: 'catalog-count' }, ['3 classes · 4 categories'])]),
+                    element('div', { className: 'lesson-picker-row' }, [element('p', { className: 'eyebrow' }, ['YOUR CLASSROOM']), element('span', { className: 'catalog-count' }, ['3 classes · 5 categories'])]),
                     element('h2', {}, [session ? contextLabel(session) : 'Where are we learning today?']),
                     element('p', { className: 'lesson-subtitle' }, [session ? lesson.title : '7A · 7B · 8th Grade']),
                     element('p', { className: 'meta' }, ['Geography · Global Perspectives · Conversational English']),
@@ -206,7 +206,8 @@ function renderPlayer() {
         copy.append(bankButton);
     }
     if (frame.conversationCards) copy.append(button('Open conversation cards ⛶','conversation-cards','question-bank-button'));
-    if (frame.teacherScript) copy.append(button('Teaching notes for this slide','slide-teaching-notes','text-button'));
+    if (frame.teacherScript) copy.append(button(lesson.online ? 'Read-aloud script' : 'Teaching notes for this slide','slide-teaching-notes','text-button'));
+    if (lesson.readingGuide) copy.append(element('a', { href: lesson.readingGuide, target: '_blank', rel: 'noopener', className: 'text-button' }, ['Open continuous reading guide ↗']));
     if (frame.oralCheck) copy.append(button('Brief understanding check','slide-understanding-check','text-button'));
     if (frame.gpLab) copy.append(button('Explore: '+frame.gpLab.title+' ⛶', 'gp-lab', 'question-bank-button'));
     if (frame.boardActivity) copy.append(button('Open board challenge ⛶', 'geography-board', 'question-bank-button'));
@@ -432,6 +433,7 @@ function showPicker(focusSelector) {
         ]),
         element('section', { className: 'picker-lessons', 'aria-label': '3 · Lesson' }, [
             element('h3', {}, ['3 · Lesson']),
+            ...(picker.subjectId === 'online' ? [element('p', { className: 'panel-hint' }, ['Temporary Google Meet lessons · Read aloud while pupils listen. About 30 minutes with pauses; repeat the examples and recap for a 40-minute slot. No required writing, chat or group work.']), element('a', { href: 'docs/online-lessons.html', target: '_blank', rel: 'noopener', className: 'plan-link' }, ['Open all four read-aloud scripts ↗'])] : []),
             ...(['7a','7b'].includes(picker.classId) && ['geography','global-perspectives'].includes(picker.subjectId) ? [button(getClass(picker.classId).label+' weekly plan · '+(picker.subjectId === 'geography' ? (picker.classId==='7a'?'1':'2')+' Geography lesson(s)/week' : (picker.classId==='7a'?'2':'3')+' GP lessons/week'), 'g7-plan', 'plan-link')] : []),
             ...(picker.subjectId==='english'?[element('p',{className:'panel-hint'},['7B · Two 40-minute lessons per week · Start with Week 1 below. Tap underlined vocabulary for Simplified Chinese and pinyin.'])]:[]),
             ...(['8','7a','7b'].includes(picker.classId) && ['geography','global-perspectives'].includes(picker.subjectId) ? [element('div', { className: 'picker-options quarter-options', 'aria-label': 'Lesson quarter' }, schoolCalendar.quarters.map(function(q) { return button(q.id, 'lesson-quarter', planQuarter === q.id ? 'selected' : '', { 'data-quarter': q.id, 'aria-pressed': String(planQuarter === q.id) }); }))] : []),
@@ -591,12 +593,12 @@ function showGPGuide() {
 function showTools() {
     openPanel('Teacher tools', [
         ...(lesson.examId ? [examLink('Print student paper', false), examLink('Teacher answer key', true)] : []),
-        element('section', { className: 'optional-worksheets' }, [
+        ...(!lesson.online ? [element('section', { className: 'optional-worksheets' }, [
             element('h3', {}, ['Optional worksheets']),
             element('p', {}, ['Print only if useful. These sheets are not required to teach or finish the lesson.']),
             element('a', { href:'./worksheets/?lesson='+encodeURIComponent(lesson.id)+'&kind=lesson', target:'_blank', rel:'noopener', className:'exam-link' }, ['Print lesson worksheet']),
             element('a', { href:'./worksheets/?lesson='+encodeURIComponent(lesson.id)+'&kind=homework', target:'_blank', rel:'noopener', className:'exam-link' }, ['Print homework worksheet'])
-        ]),
+        ])] : []),
         element('p', { className: 'panel-hint' }, ['Shared screen: students can see anything opened here.']),
         button('Edit lesson text', 'edit-lesson'),
         button('Read this stage’s teacher notes', 'notes'),
