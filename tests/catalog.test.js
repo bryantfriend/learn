@@ -10,11 +10,11 @@ function session(classId = '7a', subjectId = 'geography') {
  seenFrames:{'0:0':true}, attentionReturns:{}, discussedQuestions:[], startedAt:1000, finishedAt:null };
 }
 function backing() { const values=new Map(); return {getItem:key=>values.get(key)||null,setItem:(key,value)=>values.set(key,value),removeItem:key=>values.delete(key)}; }
-test('class/subject combinations expose the expected lessons; temporary Online stays separate',()=>{
- assert.equal(classes.flatMap(c=>subjectsFor(c.id)).length,12);
- assert.deepEqual(subjectsFor('8').map(s=>s.id),['online','global-perspectives','global-perspectives-books']);
+test('all nine class/subject combinations expose starters; future lessons filter by grade and subject',()=>{
+ assert.equal(classes.flatMap(c=>subjectsFor(c.id)).length,9);
+ assert.deepEqual(subjectsFor('8').map(s=>s.id),['global-perspectives','global-perspectives-books']);
  assert.deepEqual(lessonsFor('8','geography'),[]);
- for(const c of classes)for(const s of subjectsFor(c.id))assert.equal(lessonsFor(c.id,s.id).length,s.id==='online'?(c.id==='7b'?2:1):['english','global-perspectives-books'].includes(s.id)?4:c.id==='8'?45:c.id==='7a'?(s.id==='geography'?35:64):(s.id==='geography'?65:95));
+ for(const c of classes)for(const s of subjectsFor(c.id))assert.equal(lessonsFor(c.id,s.id).length,['english','global-perspectives-books'].includes(s.id)?4:c.id==='8'?45:c.id==='7a'?(s.id==='geography'?35:64):(s.id==='geography'?65:95));
  const source=[{id:'shared'}, {id:'geo7',catalog:{subjectId:'geography',grades:[7]}}, {id:'gp8',catalog:{subjectId:'global-perspectives',grades:[8]}}];
  assert.deepEqual(lessonsFor('7a','geography',source).map(x=>x.id),['shared','geo7']);
  assert.deepEqual(lessonsFor('7b','geography',source).map(x=>x.id),['shared','geo7']);
@@ -23,9 +23,9 @@ test('class/subject combinations expose the expected lessons; temporary Online s
 });
 test('class, subject and lesson checkpoints survive reload and clearing only one slot',()=>{
  const disk=backing(), store=createStorage(()=>disk);
- for(const c of classes)for(const s of subjectsFor(c.id).filter(s=>s.id!=='online'))store.save({...session(c.id,s.id),stars:c.grade+(s.id==='geography'?0:10)});
+ for(const c of classes)for(const s of subjectsFor(c.id))store.save({...session(c.id,s.id),stars:c.grade+(s.id==='geography'?0:10)});
  const loaded=createStorage(()=>disk); loaded.load();
- for(const c of classes)for(const s of subjectsFor(c.id).filter(s=>s.id!=='online'))assert.equal(loaded.find(session(c.id,s.id)).stars,c.grade+(s.id==='geography'?0:10));
+ for(const c of classes)for(const s of subjectsFor(c.id))assert.equal(loaded.find(session(c.id,s.id)).stars,c.grade+(s.id==='geography'?0:10));
  loaded.clear(session());
  assert.equal(loaded.find(session()),null);
  assert.equal(createStorage(()=>disk).find(session('7b')).stars,7);

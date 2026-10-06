@@ -1,5 +1,9 @@
 # Learn deployment
 
+## Version 2.5.2 — remove temporary online collection
+
+Removes the four online read-aloud lessons, the temporary Online category, their reading guide and its generator at the teacher's request on 6 October 2026. The usual curriculum and workbook trial categories remain available. Publish through the existing main/root GitHub Pages deployment.
+
 ## Version 2.5.1 — temporary online read-aloud lessons
 
 Adds four lessons for 5 October 2026 in **Online · Temporary**, filtered by class: Geography 7A, GP 8, Geography 7B and GP 7B. Six screens per lesson have substantial original spoken scripts, with a continuous HTML reading guide. The early Geography course topics and reviewed GP Skills Books 9 and 7 supply the curriculum starting point. Plan about 30 minutes with slow delivery and pauses, plus an optional 10-minute recap. No student responses, worksheets or breakout rooms are required. These teacher-led lessons are excluded from the independent-study export using the existing `classroomOnly` flag.

@@ -38,7 +38,7 @@ test('numerical models conserve water, convert scale and encode grid references'
  assert.equal(modelValues('ice',4,7).balance,-3);
 });
 test('extra-time choices have concealed, valid answers and original context',()=>{
- for(const l of lessons.filter(l=>!l.examId&&!l.online)){
+ for(const l of lessons.filter(l=>!l.examId)){
   assert.equal(l.extensions.length,4,l.id);
   for(const r of l.extensions[0].rounds){assert.equal(r.choices.length,2);assert.notEqual(r.choices[0],r.choices[1]);assert.ok([1,2].includes(r.answer));assert.ok(r.explanation);}
   for(const t of l.extensions)assert.ok(t.rounds.every(r=>r.followup&&r.explanation));

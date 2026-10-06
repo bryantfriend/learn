@@ -2,8 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {lessons} from '../src/lessons.js';
 import {worksheetFor} from '../src/worksheets.js';
-test('classroom activity lessons provide both optional student sheets without answer keys or mutations',()=>{
- for(const l of lessons.filter(l=>!l.online)){const before=JSON.stringify(l);for(const kind of ['lesson','homework']){
+test('every lesson provides both optional student sheets without answer keys or mutations',()=>{
+ for(const l of lessons){const before=JSON.stringify(l);for(const kind of ['lesson','homework']){
   const sheet=worksheetFor(l,kind,lessons);assert.equal(sheet.lessonId,l.id);assert.equal(sheet.kind,kind);assert.match(sheet.note,/Optional/i);
   assert.ok(sheet.pages.length&&sheet.pages.some(p=>p.sections.length),l.id);
   for(const page of sheet.pages)for(const item of page.sections){assert.ok(item.title&&item.lines.length&&item.space>=3,l.id);assert.equal(item.answer,undefined);assert.equal(item.explanation,undefined);}
