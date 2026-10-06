@@ -1,7 +1,7 @@
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'C:/Users/fangb_kyiapn1/.codex/skills/develop-web-game/node_modules/playwright');
 const assert=require('node:assert/strict'),fs=require('node:fs');
 (async()=>{const browser=await chromium.launch();try{
- const page=await browser.newPage({viewport:{width:1440,height:900}}),errors=[];page.on('pageerror',e=>errors.push(e.message));fs.mkdirSync('output/web-game/coastal-geography',{recursive:true});await page.goto('http://127.0.0.1:4173/learn/coastal-connections.html');
+ const page=await browser.newPage({viewport:{width:1440,height:900}}),errors=[];page.on('pageerror',e=>errors.push(e.message));fs.mkdirSync('output/web-game/coastal-geography',{recursive:true});await page.goto('http://127.0.0.1:4173/learn/coastal-connections.html');await page.locator('[data-mode=normal]').click();
  const state=()=>page.evaluate(()=>JSON.parse(render_game_to_text())),time=ms=>page.evaluate(ms=>advanceTime(ms),ms);
  const point=async id=>{const s=await state(),p=s.stops[id],r=await page.locator('canvas').boundingBox(),scale=Math.min(r.width/1000,r.height/600);return {x:r.x+(r.width-1000*scale)/2+(p.x*s.camera.zoom+s.camera.x)*scale,y:r.y+(r.height-600*scale)/2+(p.y*s.camera.zoom+s.camera.y)*scale};};
  const drag=async(a,b,type)=>{await page.locator(`[data-tool="${type}"]`).click();const p=await point(a),q=await point(b);await page.mouse.move(p.x,p.y);await page.mouse.down();await page.mouse.move(q.x,q.y,{steps:10});await page.mouse.up();};

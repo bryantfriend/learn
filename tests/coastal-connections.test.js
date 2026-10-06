@@ -1,9 +1,21 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {routeAllowed,createGameState,findRoute,findShapeRoute,advanceGame,nextRound,upgradeVehicle,vehicleStats,buyRoute,removeRoute,repairGeography,upgradeTerminal,roundDuration,chooseCard,goodCards,badCards,buildFacility,arrivalInterval,routeIssue,vehicleUnlocked} from '../src/coastal-connections.js';
+import {routeAllowed,createGameState,findRoute,findShapeRoute,advanceGame,nextRound,upgradeVehicle,vehicleUpgradeCost,vehicleStats,buyRoute,removeRoute,repairGeography,upgradeTerminal,roundDuration,chooseCard,goodCards,badCards,buildFacility,arrivalInterval,routeIssue,vehicleUnlocked} from '../src/coastal-connections.js';
 import {regions,geoStops,activeForRound,discoveryForRound} from '../src/coastal-geography.js';
 import {drawCards} from '../src/coastal-cards.js';
 const atRound=r=>{const s=createGameState(123);while(s.round<r){s.complete=true;s.cardPhase='done';nextRound(s);}s.credits=1000;return s;};
+
+test('Bus upgrades require growing investments but careful players can buy level 4 before round 20',()=>{
+ const s=atRound(15);s.credits=1300;
+ for(const cost of [100,300]){assert.equal(vehicleUpgradeCost(s,'road'),cost);const before=s.credits;assert.equal(upgradeVehicle(s,'road'),true);assert.equal(s.credits,before-cost);}
+ assert.equal(vehicleUpgradeCost(s,'road'),900);const before=s.credits;
+ assert.equal(before,900);s.credits=899;assert.equal(upgradeVehicle(s,'road'),false);assert.equal(s.credits,899);assert.equal(s.levels.road,3);
+ s.credits=900;assert.equal(upgradeVehicle(s,'road'),true);assert.equal(s.credits,0);assert.equal(s.levels.road,4);assert.equal(upgradeVehicle(s,'road'),false);
+});
+test('Upgrade discounts let careful savers buy bus level 4 earlier',()=>{
+ const s=atRound(15);s.mods.upgradeCost=-.5;s.levels.road=3;
+ assert.equal(vehicleUpgradeCost(s,'road'),450);assert.equal(upgradeVehicle(s,'road'),true);assert.equal(s.credits,550);
+});
 test('Older water routes and inland harbours are refunded once on repair',()=>{const s=atRound(18);s.facilities[22]=['port'];s.links.push({a:9,b:7,type:'road',position:0,direction:1,cargo:[],paid:20});const credits=s.credits;assert.equal(repairGeography(s),2);assert.equal(s.credits,credits+65);assert.equal(s.links.length,0);assert.ok(!s.facilities[22].includes('port'));assert.equal(repairGeography(s),0);assert.equal(s.credits,credits+65);});
 test('Land routes reject water crossings within the same island without spending credits',()=>{
  const s=atRound(20);for(const type of ['road','rail','highspeed']){for(const [a,b]of [[9,7],[7,9],[2,5],[5,2]]){const credits=s.credits;assert.equal(routeAllowed(type,a,b,s),false);assert.equal(routeIssue(s,a,b,type).code,'sea');assert.equal(buyRoute(s,a,b,type),false);assert.equal(s.credits,credits);}assert.equal(routeAllowed(type,9,8,s),true);assert.equal(routeAllowed(type,3,7,s),true);}
@@ -13,10 +25,11 @@ test('Harbours require a named coastal or tidal waterfront even when credits are
  assert.equal(buildFacility(s,5,'port'),true);assert.equal(buildFacility(s,7,'port'),true);assert.equal(buildFacility(s,2,'port'),true);
 
 });
-test('Three reusable shapes introduce triangles in round 3 without changing existing stops',()=>{
+test('Common reusable shapes start early and rare shapes join every five rounds',()=>{
  for(const r of [1,2])assert.deepEqual(new Set(activeForRound(r).map(id=>geoStops[id].shape)),new Set(['circle','square']));
  assert.equal(geoStops[4].round,3);assert.equal(geoStops[4].shape,'triangle');
- assert.deepEqual(new Set(geoStops.map(s=>s.shape)),new Set(['circle','square','triangle']));
+ for(const [round,shape]of [[5,'diamond'],[10,'pentagon'],[15,'hexagon'],[20,'star'],[25,'cross']]){assert.ok(!activeForRound(round-1).some(id=>geoStops[id].shape===shape));assert.ok(activeForRound(round).some(id=>geoStops[id].shape===shape));}
+ assert.ok(geoStops.filter(s=>!['circle','square','triangle'].includes(s.shape)).length<=geoStops.length*.25);
  assert.equal(geoStops[0].shape,geoStops[2].shape);
 });
 test('Passengers reach any matching shape through transfers, even with their representative city disconnected',()=>{
@@ -39,7 +52,7 @@ test('Training grant funds only the first expansion and retry cannot compound it
 test('Early income cannot fund a complete network and maxed bus fleet by round 4',()=>{
  // Optimistic budget: three stars every round, no paid upgrades or challenge taxes.
  const faresThroughFour=[5,9,13,17].reduce((n,target)=>n+target*3,0),stars=4*3*2,starter=20+11;
- const minimumNetwork=6*20,fullFleet=20+40+60;
+ const minimumNetwork=6*20,fullFleet=100+300+900;
  assert.equal(starter+faresThroughFour+stars-minimumNetwork,67);
  assert.ok(starter+faresThroughFour+stars<minimumNetwork+fullFleet);
 });

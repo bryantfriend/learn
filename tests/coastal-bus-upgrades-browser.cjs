@@ -1,0 +1,20 @@
+const {chromium}=require('C:/Users/fangb_kyiapn1/.codex/skills/develop-web-game/node_modules/playwright');
+const assert=require('node:assert/strict'),fs=require('node:fs');
+(async()=>{const browser=await chromium.launch();try{
+ const page=await browser.newPage({viewport:{width:1440,height:900}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('http://127.0.0.1:4173/learn/coastal-connections.html');await page.locator('[data-mode=normal]').click();
+ const fixture=round=>page.evaluate(async round=>{const m=await import('./src/coastal-connections.js'),s=m.createGameState(1);while(s.round<round){s.complete=true;s.cardPhase='done';m.nextRound(s);}s.credits=1300;s.tutorial.status='skipped';document.body.replaceChildren(m.createCoastalGame(s).element);advanceTime(0);},round);
+ await fixture(15);await page.locator('[data-vehicle-info="road"]').click();
+ await page.locator('[data-upgrade="road"][data-level="2"]').click();await page.locator('[data-upgrade="road"][data-level="3"]').click();
+ const last=page.locator('[data-upgrade="road"][data-level="4"]');assert.equal(await last.isDisabled(),false);assert.match(await last.innerText(),/Upgrade to level 4.*900 credits/);
+ assert.equal(await page.evaluate(()=>JSON.parse(render_game_to_text()).credits),900);
+ fs.mkdirSync('output/web-game/coastal-bus-investment',{recursive:true});await page.screenshot({path:'output/web-game/coastal-bus-investment/round15-affordable.png'});
+ await last.click();assert.equal(await page.evaluate(()=>JSON.parse(render_game_to_text()).levels.road),4);assert.equal(await page.evaluate(()=>JSON.parse(render_game_to_text()).credits),0);
+ await fixture(20);await page.locator('[data-vehicle-info="road"]').click();
+ for(const level of [2,3,4])await page.locator(`[data-upgrade="road"][data-level="${level}"]`).click();
+ const state=await page.evaluate(()=>JSON.parse(render_game_to_text()));assert.equal(state.levels.road,4);assert.equal(state.credits,0);
+ await page.screenshot({path:'output/web-game/coastal-bus-investment/round20.png'});
+ await page.setViewportSize({width:390,height:844});await fixture(19);await page.locator('[data-vehicle-info="road"]').click();
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);await page.locator('[data-upgrade="road"][data-level="4"]').scrollIntoViewIfNeeded();await page.screenshot({path:'output/web-game/coastal-bus-investment/mobile.png'});
+ assert.deepEqual(errors,[]);console.log('PASS bus upgrade pricing, round-15 level-4 purchase, credit deductions and mobile panel.');
+ }finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

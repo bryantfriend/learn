@@ -2,6 +2,15 @@ import {regionShapes} from './coastal-boundaries.js';
 import {project} from './coastal-geography.js';
 const polygons=Object.values(regionShapes).flat().map(ring=>ring.map(([lon,lat])=>project(lon,lat)));
 const cross=(a,b)=>a.x*b.y-a.y*b.x;
+// A shared station is a junction; overlapping road interiors are conflicts.
+export function roadSegmentsConflict(a,b,c,d){
+ const r={x:b.x-a.x,y:b.y-a.y},s={x:d.x-c.x,y:d.y-c.y},q={x:c.x-a.x,y:c.y-a.y},den=cross(r,s),epsilon=1e-7;
+ if(Math.abs(den)>epsilon){const t=cross(q,s)/den,u=cross(q,r)/den;if(t<-epsilon||t>1+epsilon||u<-epsilon||u>1+epsilon)return false;return !((t<epsilon||t>1-epsilon)&&(u<epsilon||u>1-epsilon));}
+ if(Math.abs(cross(q,r))>epsilon)return false;
+ const length=r.x*r.x+r.y*r.y;if(length<epsilon)return false;
+ const t=(q.x*r.x+q.y*r.y)/length,v=t+(s.x*r.x+s.y*r.y)/length;
+ return Math.min(1,Math.max(t,v))-Math.max(0,Math.min(t,v))>epsilon;
+}
 function inside(p,ring){let yes=false;for(let i=0,j=ring.length-1;i<ring.length;j=i++){const a=ring[i],b=ring[j];if((a.y>p.y)!==(b.y>p.y)&&p.x<(b.x-a.x)*(p.y-a.y)/(b.y-a.y)+a.x)yes=!yes;}return yes;}
 const cache=new Map();
 export function landRouteClear(a,b){const key=[a.x+','+a.y,b.x+','+b.y].sort().join('|');if(!cache.has(key))cache.set(key,checkLandRoute(a,b));return cache.get(key);}

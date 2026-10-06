@@ -2,7 +2,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'C:/Users/fangb_kyiapn1/
 const assert=require('node:assert/strict'),fs=require('node:fs');
 (async()=>{const browser=await chromium.launch();try{
  const page=await browser.newPage({viewport:{width:1366,height:768}}),errors=[];page.on('pageerror',e=>errors.push(e.message));fs.mkdirSync('output/web-game/coastal-vehicles',{recursive:true});
- await page.goto('http://127.0.0.1:4173/learn/coastal-connections.html');
+ await page.goto('http://127.0.0.1:4173/learn/coastal-connections.html');await page.locator('[data-mode=normal]').click();
  const state=()=>page.evaluate(()=>JSON.parse(render_game_to_text()));
  assert.equal(await page.locator('.coastal-sidebar [data-tool]').count(),0);
  assert.equal(await page.locator('.coastal-vehicle-dock [data-tool]').count(),6);

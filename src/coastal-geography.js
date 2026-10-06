@@ -1,3 +1,4 @@
+import {shapeCollection,stationShape} from './coastal-shapes.js';
 export const project=(lon,lat)=>({x:(lon+12)*65,y:(61-lat)*95});
 export const regions=[
  {id:'england',name:'England',round:1,capital:'London',label:[-.9,53.1],colour:'#b6d797',source:'https://www.visitbritain.com/en/destinations',facts:['London is the capital of both England and the United Kingdom.','England, Wales and Scotland share the island of Great Britain.','The River Thames flows through London towards the North Sea.']},
@@ -23,8 +24,8 @@ const cities=[
  ['Berlin',13.405,52.52,'germany',25,'capital'],['Cologne',6.96,50.9375,'germany',26],['Hamburg',9.9937,53.5511,'germany',27]
 ];
 export const harbourWaterfronts={2:'Bristol Harbour',5:'Cardiff Bay',6:'Swansea Bay',7:'Menai Strait',12:'River Mersey',13:'Holyhead Harbour',14:'Belfast Lough',15:'Dublin Bay',16:'Cork Harbour',17:'Galway Bay',19:'River Foyle',20:'Southampton Water',23:'Folkestone Harbour',25:'Tidal River Garonne',27:'Tidal River Scheldt',30:'Rhine–Meuse delta',31:'Scheveningen Harbour',34:'Tidal River Elbe'};
-export const stationShapes=['circle','square','triangle'];
-export const geoStops=cities.map(([name,lon,lat,region,round,special],id)=>({id,name,...project(lon,lat),region,round,kind:'town',capital:special==='capital',tunnel:special==='tunnel',coastal:Boolean(harbourWaterfronts[id]),waterfront:harbourWaterfronts[id]??null,land:['england','wales','scotland'].includes(region)?'great-britain':['ireland','northern-ireland'].includes(region)?'ireland':'europe',shape:round<3?stationShapes[id%2]:stationShapes[(id-2)%3]}));
+export const stationShapes=shapeCollection.map(s=>s.id);
+export const geoStops=cities.map(([name,lon,lat,region,round,special],id)=>({id,name,...project(lon,lat),region,round,kind:'town',capital:special==='capital',tunnel:special==='tunnel',coastal:Boolean(harbourWaterfronts[id]),waterfront:harbourWaterfronts[id]??null,land:['england','wales','scotland'].includes(region)?'great-britain':['ireland','northern-ireland'].includes(region)?'ireland':'europe',shape:stationShape(id,round,id===cities.findIndex(c=>c[4]===round))}));
 export const unlockRounds={road:1,rail:8,highspeed:20,ferry:10,flight:13,tunnel:18};
 export const vehicleLabels={road:'Bus',rail:'Train',highspeed:'High-speed train',ferry:'Boat',flight:'Flight',tunnel:'Tunnel train'};
 export const activeForRound=round=>geoStops.filter(s=>s.round<=round).map(s=>s.id);
