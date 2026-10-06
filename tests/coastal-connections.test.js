@@ -1,9 +1,27 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {routeAllowed,createGameState,findRoute,advanceGame,nextRound,upgradeVehicle,vehicleStats,buyRoute,removeRoute,upgradeTerminal,roundDuration,chooseCard,goodCards,badCards,buildFacility,arrivalInterval,routeIssue,vehicleUnlocked} from '../src/coastal-connections.js';
+import {routeAllowed,createGameState,findRoute,findShapeRoute,advanceGame,nextRound,upgradeVehicle,vehicleStats,buyRoute,removeRoute,upgradeTerminal,roundDuration,chooseCard,goodCards,badCards,buildFacility,arrivalInterval,routeIssue,vehicleUnlocked} from '../src/coastal-connections.js';
 import {regions,geoStops,activeForRound,discoveryForRound} from '../src/coastal-geography.js';
 import {drawCards} from '../src/coastal-cards.js';
 const atRound=r=>{const s=createGameState(123);while(s.round<r){s.complete=true;s.cardPhase='done';nextRound(s);}s.credits=1000;return s;};
+test('Three reusable shapes introduce triangles in round 3 without changing existing stops',()=>{
+ for(const r of [1,2])assert.deepEqual(new Set(activeForRound(r).map(id=>geoStops[id].shape)),new Set(['circle','square']));
+ assert.equal(geoStops[4].round,3);assert.equal(geoStops[4].shape,'triangle');
+ assert.deepEqual(new Set(geoStops.map(s=>s.shape)),new Set(['circle','square','triangle']));
+ assert.equal(geoStops[0].shape,geoStops[2].shape);
+});
+test('Passengers reach any matching shape through transfers, even with their representative city disconnected',()=>{
+ const s=atRound(3);s.passengers=[{id:0,at:0,destination:3,mode:'waiting',wait:0}];s.target=1;
+ buyRoute(s,0,4,'road');buyRoute(s,4,1,'road');
+ assert.equal(findRoute(s,0,3),null);assert.deepEqual(findShapeRoute(s,0,'square'),[0,4,1]);
+ s.running=true;advanceGame(s,20);assert.equal(s.complete,true);assert.equal(s.passengers[0].at,1);assert.equal(s.delivered,1);
+});
+test('Generated passengers always request a shape different from their starting station',()=>{
+ for(const round of [2,3,10,27]){const s=atRound(round);s.running=true;advanceGame(s,arrivalInterval(s)*s.activeStops.length*1.5);assert.ok(s.passengers.length>0);for(const p of s.passengers)assert.notEqual(geoStops[p.at].shape,geoStops[p.destination].shape);}
+});
+test('Selling a vehicle before arrival returns matching-shape riders to a usable departure stop',()=>{
+ const s=createGameState();buyRoute(s,0,1,'road');s.running=true;advanceGame(s,.6);assert.ok(s.links[0].position>.5);removeRoute(s,0);assert.equal(s.passengers[0].at,0);assert.equal(s.passengers[0].mode,'waiting');assert.equal(s.delivered,0);
+});
 test('Starts in England with one-seat vehicles and only a bus budget',()=>{const s=createGameState(1);assert.deepEqual(s.activeStops,[0,1,2]);assert.equal(s.credits,20);for(const type of Object.keys(s.levels))assert.equal(vehicleStats(s,type).capacity,1);assert.equal(vehicleUnlocked(s,'road'),true);assert.equal(vehicleUnlocked(s,'ferry'),false);});
 test('Country unlocks expose capitals and preserve country distinctions',()=>{for(const r of regions){assert.ok(!activeForRound(r.round-1).some(id=>geoStops[id].region===r.id));assert.ok(activeForRound(r.round).some(id=>geoStops[id].region===r.id&&geoStops[id].capital));}assert.equal(geoStops[14].region,'northern-ireland');assert.equal(geoStops[15].region,'ireland');assert.equal(geoStops[14].land,geoStops[15].land);});
 test('Vehicle unlocks cannot be bypassed through purchases or upgrades',()=>{for(const [type,round]of Object.entries({rail:8,highspeed:20,ferry:10,flight:13,tunnel:18})){const s=atRound(round-1);assert.equal(vehicleUnlocked(s,type),false);assert.equal(upgradeVehicle(s,type),false);assert.equal(buyRoute(s,0,1,type),false);assert.equal(vehicleUnlocked(atRound(round),type),true);}});

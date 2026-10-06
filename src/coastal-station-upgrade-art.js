@@ -1,0 +1,8 @@
+// Code-native illustrations stay crisp alongside the game's vehicle previews.
+export function stationUpgradeArtwork(kind,level=1){
+ const colour=['#769995','#137c83','#346cb7','#ad7e26'][level-1]||'#137c83';
+ const terminal=`<rect x="30" y="45" width="140" height="65" rx="9" fill="${colour}"/><path d="M20 45L100 18l80 27" fill="#274c59"/><rect x="85" y="72" width="30" height="38" rx="4" fill="#ffda79"/>${Array.from({length:level+1},(_,i)=>`<rect x="${40+i*27}" y="54" width="18" height="13" rx="3" fill="#e5f3ed"/>`).join('')}<path d="M18 119h164" stroke="#7a9f8b" stroke-width="6" stroke-linecap="round"/>${Array.from({length:level},(_,i)=>`<circle cx="${58+i*28}" cy="128" r="6" fill="${colour}"/>`).join('')}`;
+ const harbour='<path d="M12 119q20-12 40 0t40 0t40 0t40 0" fill="none" stroke="#61aab7" stroke-width="9"/><path d="M35 87h137l-22 25H57z" fill="#dca438"/><rect x="80" y="55" width="48" height="31" rx="5" fill="#fff6d9"/><path d="M105 55V27m0 2h34l-34 23" stroke="#274c59" fill="#dca438" stroke-width="4"/><path d="M25 95V40h35" fill="none" stroke="#7a9f8b" stroke-width="9"/>';
+ const airport='<path d="M20 119h160" stroke="#7c9695" stroke-width="23"/><path d="M25 119h150" stroke="#fffdf5" stroke-width="2" stroke-dasharray="12 8"/><path d="M100 19l8 35 58 30v9l-58-13-4 26-4 5-4-5-4-26-58 13v-9l58-30z" fill="#8261ae" stroke="#274c59" stroke-width="3"/>';
+ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150"><rect width="200" height="150" rx="18" fill="#e9f2e7"/>${kind==='port'?harbour:kind==='airport'?airport:terminal}</svg>`);
+}
