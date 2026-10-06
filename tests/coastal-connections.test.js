@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {routeAllowed,createGameState,findRoute,advanceGame,nextRound,upgradeVehicle,vehicleStats,buyRoute,removeRoute,upgradeTerminal,roundDuration} from '../src/coastal-connections.js';
+import {routeAllowed,createGameState,findRoute,advanceGame,nextRound,upgradeVehicle,vehicleStats,buyRoute,removeRoute,upgradeTerminal,roundDuration,chooseCard,goodCards,badCards,buildFacility,arrivalInterval,routeIssue} from '../src/coastal-connections.js';
 const link=(a,b,type)=>({a,b,type,position:0,direction:1,cargo:[]});
 test('Coastal transport respects land, ports and airports',()=>{
  assert.equal(routeAllowed('road',0,1),true);assert.equal(routeAllowed('road',0,2),false);
@@ -9,8 +9,8 @@ test('Coastal transport respects land, ports and airports',()=>{
 });
 test('Round rewards buy fleet upgrades and new rounds keep the network',()=>{
  const s=createGameState();s.links=[link(0,1,'road'),link(1,2,'ferry')];s.running=true;advanceGame(s,90);
- const credits=s.credits;assert.ok(credits>=4);assert.equal(upgradeVehicle(s,'ferry'),true);assert.equal(s.credits,credits-35);assert.equal(vehicleStats(s,'ferry').capacity,5);
- assert.equal(nextRound(s),true);assert.equal(s.round,2);assert.equal(s.target,9);assert.ok(s.activeStops.includes(5));assert.equal(s.links.length,2);assert.equal(s.levels.ferry,2);
+ const credits=s.credits;assert.ok(credits>=4);assert.equal(upgradeVehicle(s,'ferry'),true);assert.equal(s.credits,credits-35);assert.equal(vehicleStats(s,'ferry').capacity,2);
+ assert.equal(nextRound(s),false);chooseCard(s,s.cardOffers[0]);chooseCard(s,s.cardOffers[0]);assert.equal(nextRound(s),true);assert.equal(s.round,2);assert.ok(s.target>=9);assert.ok(s.activeStops.includes(5));assert.equal(s.links.length,2);assert.equal(s.levels.ferry,2);
  s.credits=0;s.running=true;assert.equal(upgradeVehicle(s,'road'),false);advanceGame(s,8);assert.ok(s.passengers.length>0&&s.passengers.length<9);
 });
 test('Trains take the fastest land route; crowding can be retried without losing upgrades',()=>{
@@ -32,15 +32,33 @@ test('Cancelled ferry needs a valid airport route; pause preserves simulation',(
  assert.deepEqual(findRoute(s,0,2),[0,3,4,2]);s.running=true;advanceGame(s,150);assert.equal(s.delivered,5);
 });
 test('Starting budget funds the bus, local fares fund a boat, and deliveries pay once',()=>{
- const s=createGameState();assert.equal(buyRoute(s,1,2,'ferry'),false);assert.equal(buyRoute(s,0,1,'road'),true);assert.equal(s.credits,0);s.running=true;advanceGame(s,8);assert.equal(s.delivered,3);assert.equal(s.credits,45);assert.equal(buyRoute(s,1,2,'ferry'),true);advanceGame(s,30);assert.equal(s.complete,true);assert.equal(s.roundIncome,75);const balance=s.credits;advanceGame(s,10);assert.equal(s.credits,balance);
+ const s=createGameState();assert.equal(buyRoute(s,1,2,'ferry'),false);assert.equal(buyRoute(s,0,1,'road'),true);assert.equal(s.credits,0);s.running=true;advanceGame(s,17);assert.equal(s.delivered,3);assert.equal(s.credits,45);assert.equal(buyRoute(s,1,2,'ferry'),true);advanceGame(s,30);assert.equal(s.complete,true);assert.equal(s.roundIncome,75);const balance=s.credits;advanceGame(s,10);assert.equal(s.credits,balance);
 });
 test('Selling a ridden route returns passengers safely and refunds only 75 percent',()=>{
  const s=createGameState();buyRoute(s,0,1,'road');s.running=true;advanceGame(s,1);assert.ok(s.links[0].cargo.length);removeRoute(s,0);assert.equal(s.credits,15);assert.ok(s.passengers.every(p=>p.mode!=='riding'));assert.equal(removeRoute(s,0),false);assert.equal(s.credits,15);
 });
 test('Long waits and full queues start a ten-second alarm; terminal upgrades relieve it',()=>{
- const s=createGameState();s.running=true;advanceGame(s,21);assert.ok(s.danger[0]>0);assert.equal(s.failed,false);s.running=false;const danger=s.danger[0];advanceGame(s,9);assert.equal(s.danger[0],danger);s.credits=40;assert.equal(upgradeTerminal(s,0),true);assert.equal(upgradeTerminal(s,1),true);s.running=true;advanceGame(s,1);assert.equal(s.danger[0],0);advanceGame(s,20);assert.equal(s.failed,true);assert.match(s.lossReason,/10 seconds/);
+ const s=createGameState();s.running=true;advanceGame(s,36);assert.ok(s.danger[0]>0);assert.equal(s.failed,false);s.running=false;const danger=s.danger[0];advanceGame(s,9);assert.equal(s.danger[0],danger);s.credits=40;assert.equal(upgradeTerminal(s,0),true);assert.equal(upgradeTerminal(s,1),true);s.running=true;advanceGame(s,1);assert.equal(s.danger[0],0);advanceGame(s,20);assert.equal(s.failed,true);assert.match(s.lossReason,/10 seconds/);
  const timer=createGameState();timer.passengers=[];timer.running=true;advanceGame(timer,roundDuration(timer)+1);assert.equal(timer.failed,true);assert.match(timer.lossReason,/timer/);
 });
 test('Retry rolls back spending and delivery income to prevent farming credits',()=>{
  const s=createGameState();buyRoute(s,0,1,'road');s.running=true;advanceGame(s,8);buyRoute(s,1,2,'ferry');nextRound(s,true);assert.equal(s.credits,0);assert.equal(s.links.length,1);assert.equal(s.delivered,0);assert.equal(s.roundIncome,0);
+});
+test('Thirty good and thirty bad cards offer three choices and both picks are mandatory',()=>{
+ assert.equal(goodCards.length,30);assert.equal(badCards.length,30);assert.equal(new Set([...goodCards,...badCards].map(c=>c.id)).size,60);
+ const s=createGameState(123);s.links=[link(0,1,'road'),link(1,2,'ferry')];s.running=true;advanceGame(s,90);assert.equal(s.complete,true);assert.equal(s.cardPhase,'good');assert.equal(new Set(s.cardOffers).size,3);assert.equal(chooseCard(s,'not-offered'),false);assert.equal(nextRound(s),false);chooseCard(s,s.cardOffers[0]);assert.equal(s.cardPhase,'bad');assert.equal(nextRound(s),false);chooseCard(s,s.cardOffers[0]);assert.equal(s.cardHistory.length,2);assert.equal(nextRound(s),true);assert.equal(s.cardHistory.length,2);
+});
+test('Every card has a working lasting effect and seeded choices reproduce',()=>{
+ for(const card of [...goodCards,...badCards]){const s=createGameState(42);s.credits=100;s.cardPhase=goodCards.includes(card)?'good':'bad';s.cardOffers=[card.id];assert.equal(chooseCard(s,card.id),true);for(const [key,value]of Object.entries(card.effects)){if(key==='credits')assert.equal(s.credits,100+value);else assert.equal(s.mods[key],value);}}
+ const a=createGameState(12),b=createGameState(12);for(const s of [a,b]){s.links=[link(0,1,'road'),link(1,2,'ferry')];s.running=true;advanceGame(s,60);}assert.deepEqual(a.cardOffers,b.cardOffers);
+});
+test('One-seat vehicles, station construction and growing all-stop demand',()=>{
+ const s=createGameState(7);for(const type of ['road','rail','ferry','flight'])assert.equal(vehicleStats(s,type).capacity,1);s.credits=500;assert.equal(buildFacility(s,0,'port'),true);assert.equal(buildFacility(s,0,'port'),false);assert.equal(routeAllowed('ferry',0,2,s),true);assert.equal(buildFacility(s,1,'airport'),true);assert.equal(routeAllowed('flight',1,4,s),true);assert.equal(upgradeVehicle(s,'road'),true);assert.equal(vehicleStats(s,'road').capacity,2);
+ const interval=arrivalInterval(s);s.complete=true;s.cardPhase='done';nextRound(s);assert.ok(arrivalInterval(s)<interval);s.links=[];s.running=true;advanceGame(s,arrivalInterval(s)*s.activeStops.length+1);assert.deepEqual(new Set(s.passengers.map(p=>p.at)),new Set(s.activeStops));
+ for(let i=0;i<10;i++){s.complete=true;s.cardPhase='done';nextRound(s);}assert.ok(s.activeStops.length>12);
+});
+test('Route failures explain the remedy and never spend credits',()=>{
+ const s=createGameState(77);assert.equal(routeIssue(s,0,2,'road').code,'sea');assert.equal(routeIssue(s,3,1,'flight').code,'mixed');assert.match(routeIssue(s,3,1,'flight').message,/harbour and an airport/);assert.equal(routeIssue(s,3,4,'flight').code,'credits');assert.match(routeIssue(s,3,4,'flight').hint,/Need 80.*have 20.*60 more/);
+ assert.equal(buyRoute(s,3,4,'flight'),false);assert.equal(s.credits,20);assert.equal(s.links.length,0);assert.equal(routeIssue(s,0,0,'road').code,'same');assert.equal(routeIssue(s,0,1,'rail').code,'locked');buyRoute(s,0,1,'road');assert.equal(routeIssue(s,0,1,'road').code,'duplicate');
+ s.credits=500;assert.equal(routeIssue(s,3,1,'road'),null);buildFacility(s,1,'airport');assert.equal(routeIssue(s,3,1,'flight'),null);assert.equal(buyRoute(s,3,1,'flight'),true);
 });

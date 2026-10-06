@@ -1,5 +1,12 @@
 # Learn deployment
 
+## Version 2.6.4 — Coastal Connections roguelite
+
+Adds drag-to-build routes, one-seat starting vehicles, twenty expanding stops, zoom/pan/pinch controls, station and fleet upgrade dialogs, paid harbour and airport construction, faster arrivals, and mandatory benefit/challenge card choices from sixty cards. Invalid drags show red previews and clear explanations, including missing facilities, insufficient credits and duplicate routes.
+
+Validation: 95 unit tests and focused desktop/mobile/touch browser checks pass. The gameplay client completed round 1 with the card draft ready. Stage 5 remains deferred.
+
+
 ## Version 2.6.3 — Coastal Connections rounds and economy
 
 Adds growing passenger waves, new towns, trains, paid routes, vehicle and terminal upgrades, delivery income, route selling, round deadlines and ten-second stop alarms to the 7B Geography Lesson 2 transport game. Includes illustrated coastal scenery, detailed vehicles, animated water and passenger feedback, and a dismissible rounded completion panel with golden stars and confetti. Starts with 20 credits for a bus; local deliveries fund the first boat.

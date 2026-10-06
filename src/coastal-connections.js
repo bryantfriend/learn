@@ -1,4 +1,6 @@
 import {createCoastalArtwork} from './coastal-art.js';
+import {goodCards,badCards,drawCards,chooseCard} from './coastal-cards.js';
+export {goodCards,badCards,chooseCard};
 export const stops=[
  {id:0,name:'Hilltown',kind:'town',land:'mainland',x:170,y:290,shape:'circle'},
  {id:1,name:'Harbour',kind:'port',land:'mainland',x:410,y:385,shape:'square'},
@@ -6,31 +8,70 @@ export const stops=[
  {id:3,name:'Mainland Airport',kind:'airport',land:'mainland',x:240,y:135,shape:'diamond'},
  {id:4,name:'Island Airport',kind:'airport',land:'island',x:855,y:165,shape:'hexagon'},
  {id:5,name:'Woodland',kind:'town',land:'mainland',x:110,y:460,shape:'star'},
- {id:6,name:'Island Market',kind:'town',land:'island',x:870,y:340,shape:'pentagon'}
+ {id:6,name:'Island Market',kind:'town',land:'island',x:870,y:340,shape:'pentagon'},
+ {id:7,name:'Meadow',kind:'town',land:'mainland',x:285,y:450,shape:'diamond'},
+ {id:8,name:'Clifftop',kind:'town',land:'island',x:900,y:250,shape:'star'},
+ {id:9,name:'Northwood',kind:'town',land:'mainland',x:100,y:100,shape:'hexagon'},
+ {id:10,name:'South Bay',kind:'town',land:'island',x:825,y:450,shape:'square'},
+ {id:11,name:'Orchard',kind:'town',land:'mainland',x:180,y:590,shape:'pentagon'},
+ {id:12,name:'Seabrook',kind:'town',land:'island',x:810,y:585,shape:'circle'},
+ {id:13,name:'Pine Valley',kind:'town',land:'mainland',x:140,y:730,shape:'triangle'},
+ {id:14,name:'East Gardens',kind:'town',land:'island',x:940,y:660,shape:'hexagon'},
+ {id:15,name:'Farmstead',kind:'town',land:'mainland',x:240,y:850,shape:'star'},
+ {id:16,name:'Lakeside',kind:'town',land:'island',x:810,y:800,shape:'diamond'},
+ {id:17,name:'Cedar Grove',kind:'town',land:'mainland',x:80,y:910,shape:'square'},
+ {id:18,name:'Southport',kind:'town',land:'island',x:960,y:920,shape:'pentagon'},
+ {id:19,name:'Windmill',kind:'town',land:'mainland',x:270,y:990,shape:'circle'}
 ];
 const colours={road:'#137c83',rail:'#df7154',ferry:'#dca438',flight:'#8261ae'};
-export function routeAllowed(type,a,b){
+export function routeAllowed(type,a,b,state){
  if(a===b)return false;
  const first=stops[a],last=stops[b];if(!first||!last)return false;
- return type==='road'||type==='rail'?first.land===last.land:type==='ferry'?first.kind==='port'&&last.kind==='port'&&first.land!==last.land:type==='flight'?first.kind==='airport'&&last.kind==='airport':false;
+ const has=(s,kind)=>Boolean(s.kind===kind||state?.facilities[s.id]?.includes(kind));
+ return type==='road'||type==='rail'?first.land===last.land:type==='ferry'?has(first,'port')&&has(last,'port')&&first.land!==last.land:type==='flight'?has(first,'airport')&&has(last,'airport'):false;
 }
 export const prices={road:20,rail:55,ferry:35,flight:80},deliveryReward=15;
-export const vehicleUpgradeCost=(state,type)=>prices[type]*state.levels[type];
-export const terminalUpgradeCost=(state,id)=>20*state.terminals[id];
-export function createGameState(){return {tool:'road',selected:null,links:[],passengers:makePassengers(),running:false,delivered:0,ferryClosed:false,speed:1,complete:false,round:1,target:5,elapsed:0,spawnClock:0,pressure:0,failed:false,credits:20,levels:{road:1,rail:1,ferry:1,flight:1},terminals:Object.fromEntries(stops.map(s=>[s.id,1])),danger:{},activeStops:[0,1,2,3,4],stars:0,roundIncome:0,roundStart:null,lossReason:'',celebrationDismissed:false};}
+const mod=(state,key)=>state.mods?.[key]??0;
+export const routeCost=(state,type)=>Math.max(5,Math.round(prices[type]*Math.max(.3,1+mod(state,type+'Cost')+mod(state,'allCost'))));
+export const vehicleUpgradeCost=(state,type)=>Math.max(5,Math.round(prices[type]*state.levels[type]*Math.max(.3,1+mod(state,'upgradeCost'))));
+export const terminalUpgradeCost=(state,id)=>Math.max(5,Math.round(20*state.terminals[id]*Math.max(.3,1+mod(state,'terminalCost'))));
+export const stationStats=(state,id)=>({queue:Math.max(2,5+(state.terminals[id]-1)*3+mod(state,'queue')),patience:Math.max(12,35+(state.terminals[id]-1)*10+mod(state,'patience')),alarm:Math.max(5,10+mod(state,'alarm'))});
+export const arrivalInterval=state=>Math.max(.12,Math.max(3,12-state.round*.7)/state.activeStops.length/Math.max(.4,1+mod(state,'arrival')));
+export const fare=state=>Math.max(5,deliveryReward+mod(state,'fare'));
+export function createGameState(seed=(Date.now()+Math.floor(Math.random()*1e9))>>>0){return {tool:'road',selected:null,links:[],passengers:makePassengers(),running:false,delivered:0,ferryClosed:false,speed:1,complete:false,round:1,target:5,elapsed:0,spawnClock:0,pressure:0,failed:false,credits:20,levels:{road:1,rail:1,ferry:1,flight:1},terminals:Object.fromEntries(stops.map(s=>[s.id,1])),facilities:{},mods:{},rng:seed,cardHistory:[],cardPhase:'none',cardOffers:[],camera:{zoom:1,x:0,y:0},danger:{},activeStops:[0,1,2,3,4],stars:0,roundIncome:0,roundStart:null,lossReason:'',celebrationDismissed:false};}
 function makePassengers(){return [[0,1],[0,1],[1,0],[1,2],[2,1]].map(([at,destination],id)=>({id,at,destination,mode:'waiting',wait:0}));}
-export const roundDuration=state=>Math.max(75,45+state.target*Math.max(7,12-state.round*.4));
-export function buyRoute(state,a,b,type){if(!routeAllowed(type,a,b)||!state.activeStops.includes(a)||!state.activeStops.includes(b)||(type==='rail'&&state.round<2)||state.credits<prices[type]||state.links.some(l=>l.type===type&&(l.a===a&&l.b===b||l.a===b&&l.b===a)))return false;state.credits-=prices[type];state.links.push({a,b,type,position:0,direction:1,cargo:[],paid:prices[type]});return true;}
-export function removeRoute(state,index){const link=state.links[index];if(!link)return false;for(const id of link.cargo){const p=state.passengers[id];p.at=link.position<.5?(link.direction===1?link.a:link.b):(link.direction===1?link.b:link.a);p.mode='waiting';p.wait=0;}state.credits+=Math.floor((link.paid??prices[link.type])*.75);state.links.splice(index,1);return true;}
+export const roundDuration=state=>Math.max(75,60+state.target*Math.max(9,15-state.round*.3)+mod(state,'time'));
+export const refundRate=state=>Math.max(.25,Math.min(.95,.75+mod(state,'refund')));
+export function routeIssue(state,a,b,type){
+ const names={road:'bus',rail:'train',ferry:'boat',flight:'plane'};
+ if(!(type in prices))return {code:'tool',message:'Choose Bus, Train, Boat or Flight first.'};
+ if(!state.activeStops.includes(a)||!state.activeStops.includes(b))return {code:'inactive',message:'This stop has not opened yet.'};
+ if(a===b)return {code:'same',message:'Choose a different stop.',hint:'Drag from one stop to another.'};
+ if(type==='rail'&&state.round<2)return {code:'locked',message:'Trains unlock in round 2.',hint:'Use a bus for now.'};
+ if(!routeAllowed(type,a,b,state)){
+  if(type==='road'||type==='rail')return {code:'sea',message:'A '+names[type]+" can't cross the sea.",hint:'Use a boat between harbours or a plane between airports.'};
+  const first=stops[a],last=stops[b],mixed=first.kind==='airport'&&last.kind==='port'||first.kind==='port'&&last.kind==='airport';
+  if(mixed)return {code:'mixed',message:"You can't link a harbour and an airport with a "+names[type]+'.',hint:type==='flight'?'Planes need an airport at both ends. Build an airport here, or use a bus on the same land.':'Boats need a harbour at both ends. Build a harbour here, or use a bus on the same land.'};
+  return {code:'facility',message:type==='flight'?'Planes need two airports.':'Boats need two harbours on different land.',hint:'Tap a stop to build the missing facility, or choose another transport.'};
+ }
+ if(state.links.some(l=>l.type===type&&(l.a===a&&l.b===b||l.a===b&&l.b===a)))return {code:'duplicate',message:'This '+names[type]+' route already exists.',hint:'Upgrade its vehicles or connect another stop.'};
+ if(state.links.length>=6+state.round*2)return {code:'limit',message:'No route permits left this round.',hint:'Sell a route to free a permit.'};
+ const cost=routeCost(state,type);if(state.credits<cost)return {code:'credits',message:'Not enough credits.',hint:'Need '+cost+' · You have '+state.credits+' · Earn '+(cost-state.credits)+' more from deliveries or sell a route.'};
+ return null;
+}
+export function buyRoute(state,a,b,type){if(routeIssue(state,a,b,type))return false;const cost=routeCost(state,type);state.credits-=cost;state.links.push({a,b,type,position:0,direction:1,cargo:[],paid:cost});return true;}
+export function removeRoute(state,index){const link=state.links[index];if(!link)return false;for(const id of link.cargo){const p=state.passengers[id];p.at=link.position<.5?(link.direction===1?link.a:link.b):(link.direction===1?link.b:link.a);p.mode='waiting';p.wait=0;}state.credits+=Math.floor((link.paid??prices[link.type])*refundRate(state));state.links.splice(index,1);return true;}
+export const facilityCost=(state,kind)=>Math.max(10,Math.round((kind==='port'?45:85)*Math.max(.3,1+mod(state,kind+'Cost'))));
+export function buildFacility(state,id,kind){if(!['port','airport'].includes(kind)||!state.activeStops.includes(id)||stops[id].kind===kind||state.facilities[id]?.includes(kind)||state.credits<facilityCost(state,kind))return false;state.credits-=facilityCost(state,kind);(state.facilities[id]??=[]).push(kind);return true;}
 export function upgradeTerminal(state,id){if(!state.activeStops.includes(id))return false;const cost=terminalUpgradeCost(state,id);if(state.terminals[id]>=4||state.credits<cost)return false;state.credits-=cost;state.terminals[id]++;return true;}
-export const vehicleStats=(state,type)=>({capacity:({road:3,rail:5,ferry:3,flight:3}[type])+(state.levels[type]-1)*2,speed:({road:80,rail:145,ferry:95,flight:155}[type])*(1+(state.levels[type]-1)*.3)});
+export const vehicleStats=(state,type)=>({capacity:Math.max(1,1+(state.levels[type]-1)+mod(state,'seats')+mod(state,type+'Seats')),speed:({road:80,rail:145,ferry:95,flight:155}[type])*(1+(state.levels[type]-1)*.3)*Math.max(.35,1+mod(state,type+'Speed')+mod(state,'allSpeed'))});
 export function upgradeVehicle(state,type){if(!(type in state.levels)||(type==='rail'&&state.round<2))return false;const cost=vehicleUpgradeCost(state,type);if(state.levels[type]>=4||state.credits<cost)return false;state.credits-=cost;state.levels[type]++;return true;}
 export function nextRound(state,retry=false){
- if(!retry&&!state.complete)return false;
- if(retry&&state.roundStart){for(const key of ['credits','links','levels','terminals'])state[key]=structuredClone(state.roundStart[key]);}
+ if(!retry&&(!state.complete||state.cardPhase!=='done'))return false;
+ if(retry&&state.roundStart){for(const key of ['credits','links','levels','terminals','facilities','rng'])if(key in state.roundStart)state[key]=structuredClone(state.roundStart[key]);}
  if(!retry)state.round++;
- state.target=5+(state.round-1)*4;state.activeStops=[0,1,2,3,4,...(state.round>=2?[5]:[]),...(state.round>=3?[6]:[])];
- state.passengers=state.round===1?makePassengers():[];state.delivered=0;state.elapsed=0;state.spawnClock=0;state.pressure=0;state.danger={};state.roundIncome=0;state.roundStart=null;state.lossReason='';state.celebrationDismissed=false;state.complete=false;state.failed=false;state.running=false;state.selected=null;
+ state.activeStops=stops.slice(0,Math.min(stops.length,state.round+4)).map(s=>s.id);state.target=state.round===1?5:Math.max(state.activeStops.length,5+(state.round-1)*4+mod(state,'demand'));
+ state.passengers=state.round===1?makePassengers():[];state.delivered=0;state.elapsed=0;state.spawnClock=0;state.pressure=0;state.danger={};state.roundIncome=0;state.roundStart=null;state.lossReason='';state.celebrationDismissed=false;state.cardPhase='none';state.cardOffers=[];state.complete=false;state.failed=false;state.running=false;state.selected=null;
  for(const l of state.links){l.cargo=[];l.position=0;l.direction=1;}return true;
 }
 export function findRoute(state,start,destination){
@@ -50,17 +91,17 @@ function board(state,link,at,next){
 }
 export function advanceGame(state,seconds){
  if(!state.running||state.complete||state.failed)return;
- if(!state.roundStart)state.roundStart=structuredClone({credits:state.credits,links:state.links,levels:state.levels,terminals:state.terminals});
+ if(!state.roundStart)state.roundStart=structuredClone({credits:state.credits,links:state.links,levels:state.levels,terminals:state.terminals,facilities:state.facilities,rng:state.rng});
  for(let time=0;time<seconds;time+=.05){
   const dt=Math.min(.05,seconds-time)*state.speed;
   state.elapsed+=dt;state.spawnClock+=dt;
-  const interval=Math.max(.9,4-state.round*.35);
+  const interval=arrivalInterval(state);
   if(state.round>1&&state.passengers.length<state.target&&state.spawnClock>=interval){
-   state.spawnClock=0;const id=state.passengers.length,at=state.activeStops[(id*3+state.round)%state.activeStops.length],destination=state.activeStops[(id*3+state.round+1+id%(state.activeStops.length-1))%state.activeStops.length];
+   state.spawnClock=0;const id=state.passengers.length,at=state.activeStops[id%state.activeStops.length];state.rng=(Math.imul(state.rng,1664525)+1013904223)>>>0;const destination=state.activeStops[(id%state.activeStops.length+1+state.rng%(state.activeStops.length-1))%state.activeStops.length];
    state.passengers.push({id,at,destination,mode:'waiting',wait:0});
   }
   for(const p of state.passengers)if(p.mode==='waiting'||p.mode==='riding'&&state.ferryClosed&&state.links.some(l=>l.type==='ferry'&&l.cargo.includes(p.id)))p.wait=(p.wait??0)+dt;
-  for(const id of state.activeStops){const queue=state.passengers.filter(p=>p.at===id&&(p.mode==='waiting'||p.mode==='riding'&&state.ferryClosed&&state.links.some(l=>l.type==='ferry'&&l.cargo.includes(p.id)))),level=state.terminals[id],crowded=queue.length>=5+(level-1)*3||queue.some(p=>p.wait>=20+(level-1)*10);state.danger[id]=crowded?(state.danger[id]??0)+dt:0;if(state.danger[id]>=10){state.failed=true;state.lossReason=stops[id].name+' stayed blocked for 10 seconds.';}}
+  for(const id of state.activeStops){const queue=state.passengers.filter(p=>p.at===id&&(p.mode==='waiting'||p.mode==='riding'&&state.ferryClosed&&state.links.some(l=>l.type==='ferry'&&l.cargo.includes(p.id)))),stats=stationStats(state,id),crowded=queue.length>=stats.queue||queue.some(p=>p.wait>=stats.patience);state.danger[id]=crowded?(state.danger[id]??0)+dt:0;if(state.danger[id]>=stats.alarm){state.failed=true;state.lossReason=stops[id].name+' stayed blocked for '+stats.alarm+' seconds.';}}
   state.pressure=Math.max(0,...Object.values(state.danger));
   if(state.elapsed>=roundDuration(state)){state.failed=true;state.lossReason='The round timer ran out.';}
   if(state.failed){state.running=false;break;}
@@ -71,16 +112,18 @@ export function advanceGame(state,seconds){
    const a=stops[link.a],b=stops[link.b],length=Math.hypot(a.x-b.x,a.y-b.y);
    link.position+=dt*vehicleStats(state,link.type).speed/length;
    if(link.position>=1){
-    for(const id of link.cargo){const p=state.passengers[id];p.at=end;p.wait=0;p.mode=end===p.destination?'delivered':'waiting';if(p.mode==='delivered'){state.delivered++;state.credits+=deliveryReward;state.roundIncome+=deliveryReward;}}
+    for(const id of link.cargo){const p=state.passengers[id];p.at=end;p.wait=0;p.mode=end===p.destination?'delivered':'waiting';if(p.mode==='delivered'){state.delivered++;state.credits+=fare(state);state.roundIncome+=fare(state);}}
     link.cargo=[];link.direction*=-1;link.position=0;
    }
   }
-  if(state.delivered===state.target){state.complete=true;state.running=false;const stars=state.elapsed<state.target*5?3:state.elapsed<state.target*9?2:1;state.stars=stars;state.credits+=stars*5;break;}
+  if(state.delivered===state.target){state.complete=true;state.running=false;const stars=state.elapsed<state.target*8?3:state.elapsed<state.target*14?2:1;state.stars=stars;state.credits+=stars*Math.max(1,5+mod(state,'star'));state.cardPhase='good';state.cardOffers=drawCards(state,'good');break;}
  }
 }
 const node=(tag,text,cls)=>{const n=document.createElement(tag);if(text)n.textContent=text;if(cls)n.className=cls;return n;};
 export function createCoastalGame(saved){
  const state=saved?{...createGameState(),...structuredClone(saved)}:createGameState();state.running=false;
+ state.terminals={...Object.fromEntries(stops.map(s=>[s.id,1])),...state.terminals};
+ if(state.complete&&state.cardPhase==='none'){state.cardPhase='good';state.cardOffers=drawCards(state,'good');}
  const root=node('section',null,'coastal-game'),head=node('header',null,'coastal-heading');
  head.append(node('h2','Coastal Connections'),node('p','Build your network. Keep queues moving. Earn upgrades each round.'));
  const body=node('div',null,'coastal-body'),map=node('div',null,'coastal-map'),canvas=node('canvas');canvas.width=1000;canvas.height=600;
@@ -90,10 +133,13 @@ export function createCoastalGame(saved){
  const effects=[],previousPassengers=new Map(),stationBirth=new Map(state.activeStops.map(id=>[id,-10]));
  function effect(id,label,colour='#137c83'){if(!reducedMotion)effects.push({id,label,colour,born:visualTime});}
  let inspected=null,removing=false,completionShown=Boolean(state.celebrationDismissed),routeListKey='';
+ let rejected=null,feedbackUntil=0;
+ const toast=node('div',null,'coastal-route-feedback');toast.hidden=true;toast.setAttribute('role','status');toast.setAttribute('aria-live','polite');map.append(toast);
+ function feedback(title,hint='',kind='error',persistent=false){toast.dataset.kind=kind;toast.replaceChildren(node('strong',(kind==='error'?'✕ ':kind==='success'?'✓ ':'➜ ')+title),node('span',hint));toast.hidden=false;feedbackUntil=performance.now()+(persistent?60000:6500);message.textContent=title+(hint?' '+hint:'');message.dataset.kind=kind;}
  const hud=node('div',null,'coastal-hud'),money=node('strong'),clock=node('span'),alarm=node('strong');hud.append(money,clock,alarm);map.append(hud);
  const celebration=node('div',null,'coastal-celebration');celebration.hidden=true;celebration.setAttribute('role','dialog');celebration.setAttribute('aria-label','Round complete');
  const dismiss=node('button','×','coastal-dismiss');dismiss.type='button';dismiss.setAttribute('aria-label','Dismiss celebration');dismiss.onclick=()=>{celebration.hidden=true;state.celebrationDismissed=true;};
- const congrats=node('h3','Good job, network builder!'),goldStars=node('div',null,'coastal-gold-stars'),result=node('p'),bonus=node('p'),continueButton=node('button','Continue →');continueButton.type='button';continueButton.onclick=()=>{celebration.hidden=true;next.click();};celebration.append(dismiss,congrats,goldStars,result,bonus,continueButton);map.append(celebration);
+ const congrats=node('h3','Good job, network builder!'),goldStars=node('div',null,'coastal-gold-stars'),result=node('p'),bonus=node('p'),continueButton=node('button','Continue →');continueButton.type='button';continueButton.onclick=()=>{celebration.hidden=true;openCards();};celebration.append(dismiss,congrats,goldStars,result,bonus,continueButton);map.append(celebration);
  const accessible=node('div',null,'coastal-stops');
  for(const stop of stops){const b=node('button',stop.name);b.type='button';b.dataset.stop=stop.id;b.setAttribute('aria-label','Connect '+stop.name);b.onclick=()=>select(stop.id);accessible.append(b);}map.append(accessible);
  const side=node('aside',null,'coastal-sidebar'),mission=node('h3','Your mission'),count=node('strong'),bar=node('progress');bar.max=5;
@@ -101,23 +147,34 @@ export function createCoastalGame(saved){
  const tools=node('div',null,'coastal-tools'),toolButtons=[];
  for(const [type,label,description]of [['road','Bus','Flexible routes on land.'],['rail','Train','Fast, high-capacity land routes. Round 2.'],['ferry','Boat','Connect the ports across the sea.'],['flight','Flight','Connect the two airports.']]){
   const b=node('button',null,'coastal-tool');b.type='button';b.dataset.tool=type;b.style.setProperty('--route',colours[type]);b.append(node('strong',label),node('span',description));
-  b.onclick=()=>{state.tool=type;state.selected=null;message.textContent='Choose two stops for your '+label.toLowerCase()+'.';refresh();};tools.append(b);toolButtons.push(b);
+  b.onclick=()=>{state.tool=type;state.selected=null;toast.hidden=true;rejected=null;message.dataset.kind='info';message.textContent='Choose two stops for your '+label.toLowerCase()+'.';refresh();};tools.append(b);toolButtons.push(b);
  }
  side.append(tools);
  const message=node('p','Choose a transport type, then tap two stops.','coastal-message');message.setAttribute('role','status');side.append(message);
  const inspector=node('div',null,'coastal-inspector'),stationName=node('strong'),stationInfo=node('p'),stationUpgrade=node('button');stationUpgrade.type='button';stationUpgrade.onclick=()=>{if(inspected!==null&&upgradeTerminal(state,inspected)){effect(inspected,'UPGRADED');refresh();}};inspector.append(stationName,stationInfo,stationUpgrade);inspector.hidden=true;side.insertBefore(inspector,message);
+ const stationDialog=node('dialog',null,'coastal-shop'),stationClose=node('button','Close station ×'),buildButtons=[];
+ stationClose.type='button';stationClose.onclick=()=>stationDialog.close();stationDialog.append(stationClose,inspector);root.append(stationDialog);
+ const construction=node('div',null,'coastal-construction');inspector.append(construction);
+ for(const [kind,label]of [['port','harbour'],['airport','airport']]){const b=node('button');b.type='button';b.dataset.build=kind;b.onclick=()=>{if(buildFacility(state,inspected,kind)){effect(inspected,'NEW '+label.toUpperCase());refresh();}};construction.append(b);buildButtons.push(b);}
+ const routeFrom=node('button','Build a route from here');routeFrom.type='button';routeFrom.onclick=()=>{state.selected=inspected;stationDialog.close();message.textContent='Drag from this stop, or use another keyboard stop button.';refresh();};inspector.append(routeFrom);
+ let resumeStation=false;stationDialog.addEventListener('close',()=>{if(resumeStation&&!state.complete&&!state.failed)state.running=true;resumeStation=false;refresh();});
+ const cardDialog=node('dialog',null,'coastal-card-dialog'),cardTitle=node('h3'),cardIntro=node('p'),cardGrid=node('div',null,'coastal-card-grid');cardDialog.append(cardTitle,cardIntro,cardGrid);cardDialog.setAttribute('aria-label','Choose round cards');cardDialog.addEventListener('cancel',e=>e.preventDefault());root.append(cardDialog);
+ function openCards(){if(state.cardPhase==='done'){beginRound();return;}if(!['good','bad'].includes(state.cardPhase))return;cardTitle.textContent=state.cardPhase==='good'?'Choose one benefit':'Choose one challenge';cardIntro.textContent=state.cardPhase==='good'?'Pick 1 of 3 good cards. Then pick 1 of 3 bad cards. Both last for this run.':'Pick the challenge you want to face. The next round begins after this choice.';cardGrid.replaceChildren();const deck=state.cardPhase==='good'?goodCards:badCards;for(const id of state.cardOffers){const card=deck.find(c=>c.id===id),b=node('button',null,'coastal-choice '+state.cardPhase);b.type='button';b.dataset.card=id;b.append(node('span',state.cardPhase==='good'?'BENEFIT':'CHALLENGE'),node('strong',card.name),node('p',card.description));b.onclick=()=>{if(chooseCard(state,id)){if(state.cardPhase==='done'){cardDialog.close();beginRound();}else openCards();refresh();}};cardGrid.append(b);}if(!cardDialog.open)cardDialog.showModal();}
+ function beginRound(){if(!nextRound(state))return;celebration.hidden=true;completionShown=false;fitMap();message.textContent='New stop opened! Drag routes to connect it, then press Play.';refresh();}
+ const fleet=node('dialog',null,'coastal-shop'),fleetClose=node('button','Close upgrades ×');fleetClose.type='button';fleetClose.onclick=()=>fleet.close();fleet.append(fleetClose,node('h3','Upgrade your vehicles'),node('p','Each level adds one seat and 30% of base speed. Applies to every route of that type.'));root.append(fleet);
  const routes=node('details',null,'coastal-upgrades'),routeList=node('div');routes.append(node('summary','Manage routes · 75% refund'),routeList);side.append(routes);
  const upgrades=node('details',null,'coastal-upgrades');upgrades.append(node('summary','Vehicle upgrades'));const upgradeButtons=[];
- for(const [type,label]of [['road','Bus'],['rail','Train'],['ferry','Boat'],['flight','Plane']]){const b=node('button');b.type='button';b.dataset.upgrade=type;b.onclick=()=>{if(upgradeVehicle(state,type)){message.textContent=label+' upgraded! All its routes carry more passengers and move faster.';refresh();}};upgrades.append(b);upgradeButtons.push(b);}side.insertBefore(upgrades,tools);
+ for(const [type,label]of [['road','Bus'],['rail','Train'],['ferry','Boat'],['flight','Plane']]){const b=node('button');b.type='button';b.dataset.upgrade=type;b.onclick=()=>{if(upgradeVehicle(state,type)){message.textContent=label+' upgraded! More seats and faster journeys.';refresh();}};fleet.append(b);upgradeButtons.push(b);}const fleetOpen=node('button','Vehicle upgrades');fleetOpen.type='button';fleetOpen.onclick=()=>{state.running=false;fleet.showModal();refresh();};side.insertBefore(fleetOpen,tools);
+ const activeCards=node('details',null,'coastal-upgrades'),history=node('div');activeCards.append(node('summary','Your run cards'),history);side.append(activeCards);
  const controls=node('div',null,'coastal-controls');
  function button(label,action){const b=node('button',label);b.type='button';b.onclick=action;controls.append(b);return b;}
- const play=button('▶ Play',()=>{if(state.complete||state.failed)return;if(!state.links.length){message.textContent='Build a route first: choose Bus and connect Hilltown to Harbour.';return;}state.running=true;message.textContent='Earn 15 credits per delivery. Clear red stops before their 10-second countdown ends.';refresh();});
+ const play=button('▶ Play',()=>{if(state.complete||state.failed)return;if(!state.links.length){feedback('Build a route first.','Choose Bus, then drag Hilltown to Harbour.','warning');return;}state.running=true;message.textContent='Earn 15 credits per delivery. Clear red stops before their 10-second countdown ends.';refresh();});
  const pause=button('Ⅱ Pause',()=>{state.running=false;refresh();});
  button('↶ Undo',()=>{removeRoute(state,state.links.length-1);refresh();});
  const remove=button('Remove routes',()=>{removing=!removing;state.selected=null;message.textContent=removing?'Tap a route to sell it for 75% of its purchase price.':'Choose two stops to buy a route.';refresh();});
- button('↻ Reset',()=>{Object.assign(state,createGameState());completionShown=false;celebration.hidden=true;inspected=null;message.textContent='Start with a 20-credit bus between Hilltown and Harbour.';refresh();});
+ button('↻ Reset',()=>{Object.assign(state,createGameState());completionShown=false;celebration.hidden=true;inspected=null;toast.hidden=true;rejected=null;message.textContent='Start with a 20-credit bus between Hilltown and Harbour.';refresh();});
  const speed=button('1× speed',()=>{state.speed=state.speed===1?2:1;refresh();});
- const next=button('Next round →',()=>{nextRound(state);celebration.hidden=true;completionShown=false;message.textContent=state.round===2?'Woodland has opened! Trains are unlocked. Connect the new stop before you play.':state.round===3?'Island Market has opened! More passengers are arriving.':'Demand is growing. Spend your credits and check every connection.';refresh();});
+ const next=button('Choose round cards →',()=>{celebration.hidden=true;openCards();});
  const retry=button('Retry round',()=>{nextRound(state,true);completionShown=false;message.textContent='Back to the start of this round. Improve your network and try again.';refresh();});
  const challenge=node('button','Ferry challenge','coastal-challenge');challenge.type='button';challenge.onclick=()=>{
   state.ferryClosed=!state.ferryClosed;
@@ -125,22 +182,25 @@ export function createCoastalGame(saved){
  };controls.append(challenge);
  body.append(map,side);root.append(head,body,controls,node('p','Bus / train: land  ·  Boat: sea  ·  Flight: air  ·  Passenger shape = destination  ·  F: fullscreen','coastal-legend'));
  function connect(a,b){
-  if(!state.activeStops.includes(a)||!state.activeStops.includes(b))return;
-  if(!routeAllowed(state.tool,a,b)){message.textContent=state.tool==='road'||state.tool==='rail'?'Buses and trains cannot cross the sea. Try a boat between ports, or a flight between airports.':state.tool==='ferry'?'Boats connect the square Harbour port and triangular Island Town port.':'Flights connect the two airport stops. Connect towns to airports by road.';state.selected=null;refresh();return;}
-  if(state.tool==='rail'&&state.round<2){message.textContent='Trains unlock in round 2.';return;}
-  if(state.links.some(l=>l.type===state.tool&&(l.a===a&&l.b===b||l.a===b&&l.b===a))){message.textContent='These stops are already connected by this transport.';state.selected=null;refresh();return;}
-  if(state.links.length>=6+state.round*2){message.textContent='No route permits left. Undo a route to redesign your network.';state.selected=null;refresh();return;}
-  if(!buyRoute(state,a,b,state.tool)){message.textContent='You need '+prices[state.tool]+' credits for this route. Deliver passengers or sell a route to earn more.';state.selected=null;refresh();return;}
-  effect(a,'CONNECTED',colours[state.tool]);effect(b,'CONNECTED',colours[state.tool]);state.selected=null;message.textContent='Route bought for '+prices[state.tool]+' credits. Deliveries earn 15 credits each.';refresh();
+  const issue=routeIssue(state,a,b,state.tool);state.selected=null;
+  if(issue){rejected={a,b,until:performance.now()+2400};feedback(issue.message,issue.hint);refresh();return;}
+  buyRoute(state,a,b,state.tool);rejected=null;effect(a,'CONNECTED',colours[state.tool]);effect(b,'CONNECTED',colours[state.tool]);feedback('Route built · '+routeCost(state,state.tool)+' credits',state.tool==='ferry'&&state.ferryClosed?'The ferry is closed. Reopen it to carry passengers.':state.running?'Passengers can use this route now.':'Press Play when your network is ready.',state.tool==='ferry'&&state.ferryClosed?'warning':'success');refresh();
  }
- function select(id){inspected=id;if(state.selected===null){state.selected=id;message.textContent=stops[id].name+' selected. Upgrade it in the panel, or choose another stop to buy a route.';refresh();}else if(state.selected===id){state.selected=null;refresh();}else connect(state.selected,id);}
- let dragStart=null,pointer=null;
- const location=e=>{const r=canvas.getBoundingClientRect(),scale=Math.min(r.width/1000,r.height/600),left=r.left+(r.width-1000*scale)/2,top=r.top+(r.height-600*scale)/2;return {x:(e.clientX-left)/scale,y:(e.clientY-top)/scale};};
- const nearest=p=>stops.find(s=>state.activeStops.includes(s.id)&&Math.hypot(s.x-p.x,s.y-p.y)<38)?.id??null;
- canvas.onpointerdown=e=>{const p=location(e);dragStart=nearest(p);pointer=p;canvas.setPointerCapture(e.pointerId);};
- canvas.onpointermove=e=>{if(dragStart!==null){pointer=location(e);draw();}};
- canvas.onpointerup=e=>{const p=location(e),end=nearest(p),start=dragStart;dragStart=null;pointer=null;if(removing){const index=state.links.findIndex(l=>{const a=stops[l.a],b=stops[l.b],dx=b.x-a.x,dy=b.y-a.y,t=Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.y-a.y)*dy)/(dx*dx+dy*dy)));return Math.hypot(p.x-a.x-t*dx,p.y-a.y-t*dy)<14;});if(removeRoute(state,index))message.textContent='Route sold. Its passengers are safely back at a stop.';refresh();}else if(start!==null&&end!==null&&start!==end)connect(start,end);else if(end!==null)select(end);else draw();};
- canvas.onpointercancel=()=>{dragStart=null;pointer=null;draw();};
+ function select(id){if(state.selected!==null&&state.selected!==id){connect(state.selected,id);return;}inspected=id;resumeStation=state.running;state.running=false;stationDialog.setAttribute('aria-label',stops[id].name+' station upgrades');refresh();stationDialog.showModal();}
+ let dragStart=null,pointer=null,dragOrigin=null,moved=false,panMode=false,pinch=null;
+ const pointers=new Map();
+ const screen=e=>{const r=canvas.getBoundingClientRect(),scale=Math.min(r.width/1000,r.height/600);return {x:(e.clientX-r.left-(r.width-1000*scale)/2)/scale,y:(e.clientY-r.top-(r.height-600*scale)/2)/scale};};
+ const world=p=>({x:(p.x-state.camera.x)/state.camera.zoom,y:(p.y-state.camera.y)/state.camera.zoom});
+ const nearest=p=>stops.find(s=>state.activeStops.includes(s.id)&&Math.hypot(s.x-p.x,s.y-p.y)<32/state.camera.zoom)?.id??null;
+ function zoomMap(factor,anchor={x:500,y:300}){const p=world(anchor),zoom=Math.max(.3,Math.min(3,state.camera.zoom*factor));state.camera={zoom,x:anchor.x-p.x*zoom,y:anchor.y-p.y*zoom};draw();}
+ function fitMap(){const visible=stops.filter(s=>state.activeStops.includes(s.id)),left=Math.min(...visible.map(s=>s.x))-75,right=Math.max(...visible.map(s=>s.x))+75,top=Math.min(...visible.map(s=>s.y))-80,bottom=Math.max(...visible.map(s=>s.y))+100,zoom=Math.min(1,850/(right-left),460/(bottom-top));state.camera={zoom,x:500-(left+right)/2*zoom,y:310-(top+bottom)/2*zoom};draw();}
+ const mapTools=node('div',null,'coastal-map-tools');
+ for(const [label,action]of [['Zoom in',()=>zoomMap(1.2)],['Zoom out',()=>zoomMap(1/1.2)],['Fit map',()=>fitMap()],['Pan map',()=>{panMode=!panMode;panButton.setAttribute('aria-pressed',String(panMode));}]]){const b=node('button',label);b.type='button';b.onclick=action;mapTools.append(b);}const panButton=mapTools.lastChild;map.append(mapTools);
+ canvas.onwheel=e=>{e.preventDefault();zoomMap(e.deltaY<0?1.12:1/1.12,screen(e));};
+ canvas.onpointerdown=e=>{const p=screen(e);rejected=null;toast.hidden=true;pointers.set(e.pointerId,p);canvas.setPointerCapture(e.pointerId);if(pointers.size===2){const [a,b]=[...pointers.values()];pinch={distance:Math.hypot(a.x-b.x,a.y-b.y),zoom:state.camera.zoom};dragStart=null;return;}dragStart=panMode?null:nearest(world(p));pointer=world(p);dragOrigin=p;moved=false;};
+ canvas.onpointermove=e=>{if(!pointers.has(e.pointerId))return;const p=screen(e),prior=pointers.get(e.pointerId);pointers.set(e.pointerId,p);if(pointers.size===2&&pinch){const [a,b]=[...pointers.values()],distance=Math.hypot(a.x-b.x,a.y-b.y);zoomMap(pinch.zoom*distance/pinch.distance/state.camera.zoom,{x:(a.x+b.x)/2,y:(a.y+b.y)/2});return;}if(Math.hypot(p.x-dragOrigin.x,p.y-dragOrigin.y)>5)moved=true;if(dragStart!==null){pointer=world(p);draw();}else if(moved){state.camera.x+=p.x-prior.x;state.camera.y+=p.y-prior.y;draw();}};
+ canvas.onpointerup=e=>{if(!pointers.has(e.pointerId))return;const p=world(screen(e)),end=nearest(p),start=dragStart,wasPinch=Boolean(pinch);pointers.delete(e.pointerId);if(wasPinch){if(!pointers.size)pinch=null;dragStart=null;return;}dragStart=null;pointer=null;if(removing&&!moved){const index=state.links.findIndex(l=>{const a=stops[l.a],b=stops[l.b],dx=b.x-a.x,dy=b.y-a.y,t=Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.y-a.y)*dy)/(dx*dx+dy*dy)));return Math.hypot(p.x-a.x-t*dx,p.y-a.y-t*dy)<14/state.camera.zoom;});removeRoute(state,index);refresh();}else if(start!==null&&end!==null&&start!==end&&moved)connect(start,end);else if(start!==null&&moved){if(end===start)connect(start,end);else{feedback('Route not built.','Drop on a stop to connect it. Your credits have not been spent.');draw();}}else if(end!==null&&!moved&&!panMode)select(end);else draw();};
+ canvas.onpointercancel=e=>{const cancelled=dragStart!==null&&moved&&!pinch;pointers.delete(e.pointerId);dragStart=null;pointer=null;pinch=null;toast.hidden=true;if(cancelled)feedback('Route cancelled.','No credits were spent. Try dragging again.','warning');draw();};
  function shape(kind,x,y,size,fill,stroke='#112d4d'){
   ctx.beginPath();if(kind==='circle')ctx.arc(x,y,size,0,Math.PI*2);else if(kind==='square')ctx.rect(x-size,y-size,size*2,size*2);else if(['diamond','hexagon','pentagon','star'].includes(kind)){const n={diamond:4,hexagon:6,pentagon:5,star:10}[kind];for(let i=0;i<n;i++){const angle=-Math.PI/2+i*Math.PI*2/n,r=size*(kind==='star'&&i%2?.5:1.15);ctx.lineTo(x+Math.cos(angle)*r,y+Math.sin(angle)*r);}ctx.closePath();}else {ctx.moveTo(x,y-size*1.15);ctx.lineTo(x+size,y+size);ctx.lineTo(x-size,y+size);ctx.closePath();}
   ctx.fillStyle=fill;ctx.fill();ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke();
@@ -148,6 +208,7 @@ export function createCoastalGame(saved){
  function text(value,x,y,size=18,colour='#112d4d',align='center'){ctx.font=`${size}px system-ui`;ctx.fillStyle=colour;ctx.textAlign=align;ctx.fillText(value,x,y);}
  function land(){art.land(ctx,visualTime);text('GREENSTONE MAINLAND',170,567,15,'#426d61');text('BLUEWATER BAY',575,140,17,'#377f98');text('SUNSHINE ISLAND',835,535,15,'#426d61');}
  function draw(){
+  ctx.fillStyle='#94cfdc';ctx.fillRect(0,0,1000,600);ctx.save();ctx.translate(state.camera.x,state.camera.y);ctx.scale(state.camera.zoom,state.camera.zoom);
   land();
   for(const link of state.links){const a=stops[link.a],b=stops[link.b],closed=link.type==='ferry'&&state.ferryClosed;
    ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle='#fffdf8b0';ctx.lineWidth=12;ctx.setLineDash([]);ctx.stroke();ctx.strokeStyle=closed?'#b96a58':colours[link.type];ctx.lineWidth=6;ctx.setLineDash(link.type==='road'||link.type==='rail'?[]:[8,10]);ctx.lineDashOffset=link.type==='ferry'&&!reducedMotion?-visualTime*8:0;ctx.stroke();ctx.setLineDash([]);ctx.lineDashOffset=0;
@@ -158,38 +219,43 @@ export function createCoastalGame(saved){
     for(let i=0;i<link.cargo.length;i++)shape(stops[state.passengers[link.cargo[i]].destination].shape,x-16+i*12,y-20,5,'#fffdf8',colours[link.type]);
    }
   }
-  if(dragStart!==null&&pointer){ctx.beginPath();ctx.moveTo(stops[dragStart].x,stops[dragStart].y);ctx.lineTo(pointer.x,pointer.y);ctx.strokeStyle=colours[state.tool];ctx.lineWidth=4;ctx.setLineDash([6,6]);ctx.stroke();ctx.setLineDash([]);}
+  if(dragStart!==null&&pointer&&moved){const target=nearest(pointer),issue=target!==null?routeIssue(state,dragStart,target,state.tool):null,end=target===null?pointer:stops[target],colour=issue?'#c04436':target===null?colours[state.tool]:'#218454';ctx.beginPath();ctx.moveTo(stops[dragStart].x,stops[dragStart].y);ctx.lineTo(end.x,end.y);ctx.strokeStyle=colour;ctx.lineWidth=5;ctx.setLineDash([8,6]);ctx.stroke();ctx.setLineDash([]);if(target!==null){ctx.beginPath();ctx.arc(end.x,end.y,32,0,Math.PI*2);ctx.stroke();const title=issue?.message??'Release to build · '+routeCost(state,state.tool)+' credits',hint=issue?.hint??'Your route will connect these two stops.';if(toast.firstChild?.textContent!==((issue?'✕ ':'➜ ')+title))feedback(title,hint,issue?'error':'preview',true);}else if(toast.dataset.kind==='preview'||toast.dataset.kind==='error'){toast.hidden=true;}}
+  if(rejected&&performance.now()<rejected.until){const a=stops[rejected.a],b=stops[rejected.b];ctx.save();ctx.strokeStyle='#c04436';ctx.lineWidth=4;ctx.setLineDash([7,7]);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();ctx.setLineDash([]);for(const s of [a,b]){ctx.beginPath();ctx.arc(s.x,s.y,32,0,Math.PI*2);ctx.stroke();}const x=(a.x+b.x)/2,y=(a.y+b.y)/2;ctx.fillStyle='#fff8f1';ctx.beginPath();ctx.arc(x,y,17,0,Math.PI*2);ctx.fill();text('×',x,y+8,28,'#c04436');ctx.restore();}
   for(const stop of stops){
    if(!state.activeStops.includes(stop.id))continue;
    const birth=visualTime-(stationBirth.get(stop.id)??-10);
    if(birth<2&&!reducedMotion){ctx.beginPath();ctx.arc(stop.x,stop.y,28+birth*25,0,Math.PI*2);ctx.strokeStyle=`rgba(19,124,131,${1-birth/2})`;ctx.lineWidth=3;ctx.stroke();text('NEW STOP',stop.x,stop.y-45,14,'#137c83');}
    if(state.selected===stop.id){ctx.beginPath();ctx.arc(stop.x,stop.y,31+(reducedMotion?0:Math.sin(visualTime*5)*3),0,Math.PI*2);ctx.strokeStyle='#e3ad41';ctx.lineWidth=4;ctx.stroke();}
    ctx.save();ctx.shadowColor='#224f4940';ctx.shadowBlur=8;ctx.shadowOffsetY=4;shape(stop.shape||'square',stop.x,stop.y,21,'#fffdf8');ctx.restore();
-   if(stop.kind==='airport')text('✈',stop.x,stop.y+8,27);
+   if(stop.kind==='airport'||state.facilities[stop.id]?.includes('airport'))text('✈',stop.x,stop.y+8,23);
+   if(stop.kind==='port'||state.facilities[stop.id]?.includes('port'))text('⚓',stop.x+28,stop.y+7,17,'#137c83');
    const label=stop.kind==='airport'?'Airport':stop.name;ctx.font='600 16px system-ui';const labelWidth=ctx.measureText(label).width+18;ctx.fillStyle='#fffdf8df';ctx.beginPath();ctx.roundRect(stop.x-labelWidth/2,stop.y+29,labelWidth,24,8);ctx.fill();text(label,stop.x,stop.y+46,16);
    const queue=state.passengers.filter(p=>p.mode==='waiting'&&p.at===stop.id);
    queue.forEach((p,i)=>shape(stops[p.destination].shape||'square',stop.x-18+(i%6)*15,stop.y+62+Math.floor(i/6)*16,6,colours.ferry));
-   if(state.danger[stop.id]>0){ctx.beginPath();ctx.arc(stop.x,stop.y,32,0,Math.PI*2);ctx.lineWidth=5;ctx.strokeStyle=reducedMotion?'#d34e42':`rgba(211,78,66,${.55+.45*Math.sin(visualTime*Math.PI*2)})`;ctx.stroke();text(Math.ceil(10-state.danger[stop.id])+'s TO CLEAR',stop.x,stop.y-38,14,'#b73832');}
+   if(state.danger[stop.id]>0){ctx.beginPath();ctx.arc(stop.x,stop.y,32,0,Math.PI*2);ctx.lineWidth=5;ctx.strokeStyle=reducedMotion?'#d34e42':`rgba(211,78,66,${.55+.45*Math.sin(visualTime*Math.PI*2)})`;ctx.stroke();text(Math.ceil(stationStats(state,stop.id).alarm-state.danger[stop.id])+'s TO CLEAR',stop.x,stop.y-38,14,'#b73832');}
   }
   if(state.ferryClosed){text('Ferry cancelled',590,425,20,'#a44932');}
   for(let i=effects.length-1;i>=0;i--){const e=effects[i],age=visualTime-e.born;if(age>1.4){effects.splice(i,1);continue;}const s=stops[e.id];ctx.save();ctx.globalAlpha=1-age/1.4;ctx.beginPath();ctx.arc(s.x,s.y,24+age*22,0,Math.PI*2);ctx.strokeStyle=e.colour;ctx.lineWidth=3;ctx.stroke();text(e.label,s.x,s.y-35-age*25,15,e.colour);ctx.restore();}
   if(state.complete&&!reducedMotion){const age=visualTime-(stationBirth.get('celebrate')??-10);if(age<5)for(let i=0;i<90;i++){const x=(i*79)%1000+Math.sin(age+i)*18,y=-160+age*160+(i*29)%180;ctx.save();ctx.translate(x,y);ctx.rotate(age*2+i);ctx.fillStyle=['#e5b348','#137c83','#e98771','#8261ae'][i%4];ctx.fillRect(-3,-3,6,9);ctx.restore();}}
   if(state.failed){ctx.fillStyle='#fffdf8f5';ctx.beginPath();ctx.roundRect(230,220,540,140,24);ctx.fill();text('Network stopped',500,263,28,'#b73832');text(state.lossReason,500,305,18);text('Choose Retry round to try a new plan.',500,337,17);}
+  ctx.restore();
+  if(!toast.hidden&&dragStart===null&&performance.now()>feedbackUntil)toast.hidden=true;
  }
  function refresh(){
   if(state.round!==previousRound||state.delivered<previousDelivered){previousPassengers.clear();effects.length=0;previousRound=state.round;}
   for(const id of state.activeStops)if(!stationBirth.has(id))stationBirth.set(id,visualTime);
-  for(const p of state.passengers){const prior=previousPassengers.get(p.id);if(prior&&prior!==p.mode)effect(p.at,p.mode==='delivered'?'+15 CREDITS':p.mode==='riding'?'BOARDING':'TRANSFER',p.mode==='delivered'?'#137c83':'#b88128');else if(!prior&&state.round>1)effect(p.at,'NEW PASSENGER');previousPassengers.set(p.id,p.mode);}
+  for(const p of state.passengers){const prior=previousPassengers.get(p.id);if(prior&&prior!==p.mode)effect(p.at,p.mode==='delivered'?'+'+fare(state)+' CREDITS':p.mode==='riding'?'BOARDING':'TRANSFER',p.mode==='delivered'?'#137c83':'#b88128');else if(!prior&&state.round>1)effect(p.at,'NEW PASSENGER');previousPassengers.set(p.id,p.mode);}
   if(state.delivered===state.target&&previousDelivered!==state.delivered)stationBirth.set('celebrate',visualTime);previousDelivered=state.delivered;
-  money.textContent='● '+state.credits+' credits';clock.textContent='Round '+state.round+' · '+Math.ceil(Math.max(0,roundDuration(state)-state.elapsed))+'s left';alarm.textContent=state.pressure>0?'⚠ CLEAR QUEUE: '+Math.ceil(10-state.pressure)+'s':'';alarm.hidden=state.pressure===0;
-  if(state.complete&&!completionShown){completionShown=true;celebration.hidden=false;goldStars.textContent='★'.repeat(state.stars)+'☆'.repeat(3-state.stars);result.textContent='Round '+state.round+' complete · '+state.delivered+' passengers delivered';bonus.textContent=state.roundIncome+' delivery credits + '+state.stars*5+' star bonus';}
-  if(inspected!==null){const level=state.terminals[inspected];inspector.hidden=false;stationName.textContent=stops[inspected].name+' · Level '+level;stationInfo.textContent=(5+(level-1)*3)+' queue spaces · '+(20+(level-1)*10)+'s before alarm';stationUpgrade.textContent=level===4?'Terminal fully upgraded':'Upgrade terminal · '+terminalUpgradeCost(state,inspected)+' credits';stationUpgrade.disabled=level===4||state.credits<terminalUpgradeCost(state,inspected);}else inspector.hidden=true;
-  remove.setAttribute('aria-pressed',String(removing));const listKey=state.links.map(l=>[l.a,l.b,l.type,l.paid].join('-')).join('|');if(listKey!==routeListKey){routeListKey=listKey;routeList.replaceChildren();state.links.forEach((l,i)=>{const b=node('button','Sell '+stops[l.a].name+' ↔ '+stops[l.b].name+' · +'+Math.floor((l.paid??prices[l.type])*.75));b.type='button';b.onclick=()=>{removeRoute(state,i);refresh();};routeList.append(b);});}
-  mission.textContent='Round '+state.round;task.textContent='Deliver '+state.target+' passengers. '+(state.round>1?'New arrivals every '+Math.max(.9,4-state.round*.35).toFixed(1)+' seconds.':'Buy a bus: Hilltown ↔ Harbour. Earn 35 credits, then buy a boat.');
-  count.textContent=state.delivered+' / '+state.target+' delivered';bar.max=state.target;bar.value=state.delivered;wallet.textContent='+15 credits per delivery';pressure.textContent=state.pressure>0?'Clear the blinking stop in '+Math.ceil(10-state.pressure)+'s!':'Long waits or full queues trigger a 10s alarm.';pressure.style.color=state.pressure>0?'#b73832':'';
+  money.textContent='● '+state.credits+' credits';clock.textContent='Round '+state.round+' · '+Math.ceil(Math.max(0,roundDuration(state)-state.elapsed))+'s left';const warning=Math.min(...state.activeStops.filter(id=>state.danger[id]>0).map(id=>stationStats(state,id).alarm-state.danger[id]));alarm.textContent=state.pressure>0?'⚠ CLEAR QUEUE: '+Math.max(0,Math.ceil(warning))+'s':'';alarm.hidden=state.pressure===0;
+  if(state.complete&&!completionShown){completionShown=true;celebration.hidden=false;goldStars.textContent='★'.repeat(state.stars)+'☆'.repeat(3-state.stars);result.textContent='Round '+state.round+' complete · '+state.delivered+' passengers delivered';bonus.textContent=state.roundIncome+' delivery credits · Choose a benefit and a challenge';continueButton.textContent='Choose round cards →';}
+  if(inspected!==null){const level=state.terminals[inspected],stats=stationStats(state,inspected);inspector.hidden=false;stationName.textContent=stops[inspected].name+' · Level '+level;stationInfo.textContent=stats.queue+' queue spaces · '+stats.patience+' seconds of patience. Upgrade adds 3 queue spaces and 10 seconds of patience.';stationUpgrade.textContent=level===4?'Terminal fully upgraded':'Upgrade terminal · '+terminalUpgradeCost(state,inspected)+' credits';stationUpgrade.disabled=level===4||state.credits<terminalUpgradeCost(state,inspected);for(const b of buildButtons){const kind=b.dataset.build,exists=stops[inspected].kind===kind||state.facilities[inspected]?.includes(kind);b.textContent=exists?(kind==='port'?'Harbour built':'Airport built'):'Build '+(kind==='port'?'harbour':'airport')+' · '+facilityCost(state,kind)+' credits';b.disabled=exists||state.credits<facilityCost(state,kind);}}else inspector.hidden=true;
+  const historyKey=state.cardHistory.map(c=>c.id).join('|');if(history.dataset.key!==historyKey){history.dataset.key=historyKey;history.replaceChildren(...state.cardHistory.map(c=>node('p',(c.kind==='good'?'✓ ':'⚠ ')+c.name+': '+c.description)));}
+  remove.setAttribute('aria-pressed',String(removing));routes.firstChild.textContent='Manage routes · '+Math.round(refundRate(state)*100)+'% refund';const listKey=refundRate(state)+'|'+state.links.map(l=>[l.a,l.b,l.type,l.paid].join('-')).join('|');if(listKey!==routeListKey){routeListKey=listKey;routeList.replaceChildren();state.links.forEach((l,i)=>{const b=node('button','Sell '+stops[l.a].name+' ↔ '+stops[l.b].name+' · +'+Math.floor((l.paid??prices[l.type])*refundRate(state)));b.type='button';b.onclick=()=>{removeRoute(state,i);refresh();};routeList.append(b);});}
+  mission.textContent='Round '+state.round;task.textContent='Deliver '+state.target+' passengers. '+(state.round>1?'Passengers visit every stop; arrivals every '+arrivalInterval(state).toFixed(1)+' seconds.':'Drag Hilltown → Harbour to buy a bus. Earn boat money with local trips.');
+  count.textContent=state.delivered+' / '+state.target+' delivered';bar.max=state.target;bar.value=state.delivered;wallet.textContent='+'+fare(state)+' credits per delivery';pressure.textContent=state.pressure>0?'Clear the blinking stop in '+Math.max(0,Math.ceil(warning))+'s!':'Drag stops to connect · Tap stops to upgrade · Drag water to pan';pressure.style.color=state.pressure>0?'#b73832':'';
   play.disabled=state.running||state.complete||state.failed;pause.disabled=!state.running;speed.textContent=state.speed+'× speed';challenge.textContent=state.ferryClosed?'Reopen ferry':'Ferry challenge';next.hidden=!state.complete;retry.hidden=!state.failed;
-  toolButtons.forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.tool===state.tool));b.disabled=b.dataset.tool==='rail'&&state.round<2;b.querySelector('strong').textContent=({road:'Bus',rail:'Train',ferry:'Boat',flight:'Flight'}[b.dataset.tool])+' · '+prices[b.dataset.tool];});
-  for(const b of upgradeButtons){const t=b.dataset.upgrade,level=state.levels[t],stats=vehicleStats(state,t);b.textContent=({road:'Bus',rail:'Train',ferry:'Boat',flight:'Plane'}[t])+' Lv '+level+' · '+stats.capacity+' seats · '+(level===4?'MAX':vehicleUpgradeCost(state,t)+' credits');b.disabled=level===4||state.credits<vehicleUpgradeCost(state,t)||(t==='rail'&&state.round<2);}
+  toolButtons.forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.tool===state.tool));b.disabled=b.dataset.tool==='rail'&&state.round<2;b.querySelector('strong').textContent=({road:'Bus',rail:'Train',ferry:'Boat',flight:'Flight'}[b.dataset.tool])+' · '+routeCost(state,b.dataset.tool);});
+  for(const b of upgradeButtons){const t=b.dataset.upgrade,level=state.levels[t],stats=vehicleStats(state,t);b.textContent=({road:'Bus',rail:'Train',ferry:'Boat',flight:'Plane'}[t])+' · Level '+level+' · '+stats.capacity+' seat'+(stats.capacity===1?'':'s')+' → '+(stats.capacity+1)+' · '+(level===4?'MAX':vehicleUpgradeCost(state,t)+' credits');b.disabled=level===4||state.credits<vehicleUpgradeCost(state,t)||(t==='rail'&&state.round<2);}
   for(const b of accessible.children)b.disabled=!state.activeStops.includes(Number(b.dataset.stop));
   if(state.complete)message.textContent='Good job! Close the celebration to shop, or choose Continue for the next round.';if(state.failed)message.textContent=state.lossReason+' Retry restores the start-of-round budget and network.';draw();
  }
@@ -198,7 +264,7 @@ export function createCoastalGame(saved){
  const oldText=window.render_game_to_text,oldAdvance=window.advanceTime;
  window.render_game_to_text=()=>JSON.stringify({coordinates:'1000 × 600; origin top left; x right, y down',...state,stops});
  window.advanceTime=ms=>{manualStepping=true;if(!reducedMotion)visualTime+=ms/1000;advanceGame(state,ms/1000);refresh();};
- const key=e=>{if(!root.isConnected)return;if(e.key==='f'){if(document.fullscreenElement)document.exitFullscreen();else root.requestFullscreen?.();}else if(e.code==='Space'&&!['BUTTON','INPUT','TEXTAREA'].includes(e.target.tagName)){e.preventDefault();if(state.running)pause.click();else play.click();}};document.addEventListener('keydown',key);
+ const key=e=>{if(!root.isConnected)return;if(e.key==='Escape'&&dragStart!==null){e.preventDefault();pointers.clear();dragStart=null;pointer=null;feedback('Route cancelled.','No credits were spent.','warning');draw();}else if(e.key==='f'){if(document.fullscreenElement)document.exitFullscreen();else root.requestFullscreen?.();}else if(e.code==='Space'&&!['BUTTON','INPUT','TEXTAREA'].includes(e.target.tagName)){e.preventDefault();if(state.running)pause.click();else play.click();}};document.addEventListener('keydown',key);
  refresh();
  return {element:root,state,destroy(){alive=false;cancelAnimationFrame(animation);document.removeEventListener('keydown',key);window.render_game_to_text=oldText;window.advanceTime=oldAdvance;}};
 }
