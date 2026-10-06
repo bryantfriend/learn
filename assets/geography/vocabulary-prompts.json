@@ -1,0 +1,18 @@
+{
+  "tool": "Built-in image_gen",
+  "style": "Naturalistic atlas illustration, imaginary educational scene, no text",
+  "scenes": [
+    [
+      "erosion",
+      "Cutaway close view of a steep river bank being undercut by flowing blue water, exposed roots and small soil fragments falling into water. Show removal of material, no houses."
+    ],
+    [
+      "transportation",
+      "Clear side cross-section of a river showing small suspended sediment grains, gravel rolling along the bed, and flowing water carrying particles downstream. No levitating giant boulders, physically plausible."
+    ],
+    [
+      "deposition",
+      "Close oblique aerial view of a gently sloping gravel and sand bar on the inner bank of a river meander. Calm shallow water alongside newly accumulated sediment, grass beyond."
+    ]
+  ]
+}

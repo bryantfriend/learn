@@ -1,0 +1,33 @@
+{
+  "tool": "Built-in image_gen",
+  "prompts": [
+    {
+      "name": "map-skills",
+      "prompt": "Use case: scientific-educational. Asset type: landscape 16:9 background illustration for Grade 7 Geography classroom screens. A beautiful atlas-inspired overhead still life on an ivory desk: unfolded fictional topographic map with contour lines, a compass, ruler, notebook and pencil. Map is illustrative, no legible writing or numbers, no country outlines. Warm natural light and teal details. Style: refined naturalistic hand-painted educational concept art, muted greens, blue teal water, warm ivory highlights. Clean composition, rich detail, mature and calm. Fill the whole image. No interface, no border, no slogans, no typography, no people. This is an imagined teaching illustration, not photographic evidence of a named place."
+    },
+    {
+      "name": "settlements",
+      "prompt": "Use case: scientific-educational. Asset type: landscape 16:9 background illustration for Grade 7 Geography classroom screens. A beautiful atlas-inspired oblique aerial illustration of an imaginary British-inspired town beside green countryside: clustered houses, road, railway, small market square, parks, and coastline in the distance. Clearly fictional place, not a real city. No text or labels. Style: refined naturalistic hand-painted educational concept art, muted greens, blue teal water, warm ivory highlights. Clean composition, rich detail, mature and calm. Fill the whole image. No interface, no border, no slogans, no typography, no people. This is an imagined teaching illustration, not photographic evidence of a named place."
+    },
+    {
+      "name": "glaciers",
+      "prompt": "Use case: scientific-educational. Asset type: landscape 16:9 background illustration for Grade 7 Geography classroom screens. A beautiful scientifically plausible atlas-inspired aerial illustration of a mountain glacier filling a U-shaped valley, snowy accumulation high above, flowing blue-white ice below, rocky side moraines and meltwater stream in foreground. No houses on ice, no polar animals, no text. Style: refined naturalistic hand-painted educational concept art, muted greens, blue teal water, warm ivory highlights. Clean composition, rich detail, mature and calm. Fill the whole image. No interface, no border, no slogans, no typography, no people. This is an imagined teaching illustration, not photographic evidence of a named place."
+    },
+    {
+      "name": "rivers",
+      "prompt": "Use case: scientific-educational. Asset type: landscape 16:9 background illustration for Grade 7 Geography classroom screens. A beautiful atlas-inspired aerial illustration of one clear river meander in green countryside. Concave outer bank is steep and eroding, convex inner bank has a gently sloping pale gravel bar. Plausible continuous flowing river, no islands, no text or arrows. Style: refined naturalistic hand-painted educational concept art, muted greens, blue teal water, warm ivory highlights. Clean composition, rich detail, mature and calm. Fill the whole image. No interface, no border, no slogans, no typography, no people. This is an imagined teaching illustration, not photographic evidence of a named place."
+    },
+    {
+      "name": "erosion",
+      "prompt": "Use case: scientific-educational. Generate one landscape 16:9 educational illustration for a Grade 7 Geography vocabulary card. Cutaway close view of a steep river bank being undercut by flowing blue water, exposed roots and small soil fragments falling into water. Show removal of material, no houses. Refined naturalistic hand-painted atlas illustration, blue teal water, muted green vegetation and warm earth, beautiful but scientifically clear. Edge-to-edge scene, no text, no labels, no symbols, no diagram arrows, no border. Imagined teaching example, not a real named place."
+    },
+    {
+      "name": "transportation",
+      "prompt": "Use case: scientific-educational. Generate one landscape 16:9 educational illustration for a Grade 7 Geography vocabulary card. Clear side cross-section of a river showing small suspended sediment grains, gravel rolling along the bed, and flowing water carrying particles downstream. No levitating giant boulders, physically plausible. Refined naturalistic hand-painted atlas illustration, blue teal water, muted green vegetation and warm earth, beautiful but scientifically clear. Edge-to-edge scene, no text, no labels, no symbols, no diagram arrows, no border. Imagined teaching example, not a real named place."
+    },
+    {
+      "name": "deposition",
+      "prompt": "Use case: scientific-educational. Generate one landscape 16:9 educational illustration for a Grade 7 Geography vocabulary card. Close oblique aerial view of a gently sloping gravel and sand bar on the inner bank of a river meander. Calm shallow water alongside newly accumulated sediment, grass beyond. Refined naturalistic hand-painted atlas illustration, blue teal water, muted green vegetation and warm earth, beautiful but scientifically clear. Edge-to-edge scene, no text, no labels, no symbols, no diagram arrows, no border. Imagined teaching example, not a real named place."
+    }
+  ]
+}

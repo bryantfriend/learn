@@ -6,7 +6,7 @@ test('Every Geography mission has six sourced board questions with concealed tea
   c.questions.forEach(q=>assert.ok(q.prompt&&q.answer.length>5,code));
  });
  for(const l of lessons.filter(l=>l.geoRedesign)){
-  const frames=l.stages.flatMap(s=>s.frames),rounds=frames.filter(f=>f.boardRound);assert.equal(rounds.length,l.id==='g7b-geo-w02-1'?0:l.boardCaseFiles.length*2,l.id);assert.ok(l.boardTeachingGuide);assert.ok(l.boardFirst);
+  const frames=l.stages.flatMap(s=>s.frames),rounds=frames.filter(f=>f.boardRound);assert.equal(rounds.length,l.id==='g7b-geo-w02-1'?0:l.boardCaseFiles.length*2,l.id);assert.ok(l.boardTeachingGuide);assert.equal(l.boardFirst,false);
   rounds.forEach(f=>{assert.equal(f.type,'question');assert.ok(f.sourceCard&&f.geoDisplay&&f.boardWork&&f.teacherPrompt&&f.explanation);assert.ok(!f.lines.includes(f.explanation));});
   assert.equal(l.stages.reduce((n,s)=>n+s.durationMinutes,0),40);assert.ok(l.stages.every(s=>s.frames.every(f=>f.expectedSeconds>0)));
  }
@@ -21,7 +21,7 @@ test('Generated review examples stay geographically and mathematically valid',()
 });
 test('Assessments keep independent assessment conditions',()=>{for(const l of lessons.filter(l=>l.catalog?.subjectId==='geography'&&l.examId)){assert.ok(!l.boardFirst);assert.ok(!l.boardCaseFiles);}});
 
-test('Smart-board lessons have revealable models, specific reviews and spoken departures',()=>{
+test('Smart-board lessons have revealable models, specific reviews and independent exit tickets',()=>{
  for(const lesson of lessons.filter(l=>l.geoRedesign)){
   const frames=lesson.stages.flatMap(s=>s.frames);
   assert.ok(frames.some(f=>f.geoDisplay?.demo?.steps.length||f.geoDisplay?.atlas?.fill),lesson.id);
@@ -30,6 +30,6 @@ test('Smart-board lessons have revealable models, specific reviews and spoken de
    assert.ok(f.taskInstructions[0]&&f.sourceCard&&f.geoDisplay.workpad);
    assert.ok(lesson.stages.find(s=>s.id==='apply').frames.some(task=>task.workspaceId===f.workspaceId),lesson.id);
   }
-  assert.ok(lesson.stages.at(-1).frames.filter(f=>!f.final).every(f=>/as you leave/i.test(f.lines.join(' '))),lesson.id);
+  assert.ok(lesson.stages.at(-1).frames.filter(f=>!f.final).every(f=>/independently/i.test(f.lines.join(' '))),lesson.id);
  }
 });

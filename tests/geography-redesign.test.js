@@ -12,7 +12,7 @@ test('all 86 Geography workshops are self-contained with exact core budgets and 
   assert.ok(l.stages.every(s=>s.frames.length&&s.notes));
   for(const s of l.stages){assert.equal(s.frames.reduce((n,f)=>n+f.expectedSeconds,0),s.durationMinutes*60,l.id);assert.ok(s.frames.every(f=>f.timerSeconds>0));}
   const simulations=l.stages.flatMap(s=>s.frames.filter(f=>f.simulation).map(f=>[s.id,f.simulation]));
-  assert.ok(simulations.length||l.id==='g7b-geo-w02-1');assert.ok(simulations.every(([id])=>id==='investigate'));
+  assert.ok(simulations.length||l.id==='g7b-geo-w02-1');assert.ok(simulations.every(([id])=>id==='model'));
   assert.equal(new Set(simulations.map(([,s])=>s.code)).size,simulations.length);
   const text=l.stages.flatMap(s=>s.frames.flatMap(f=>[...(f.lines||[]),typeof f.sourceCard==='string'?f.sourceCard:''])).join(' ');
   assert.doesNotMatch(text,/open section|use the book|in the book|textbook (map|key|diagram)|original weekly task/i,l.id);
@@ -53,7 +53,7 @@ test('Geography teaching sessions have distinct tasks, instruction and exit prom
  for(const classId of ['7a','7b']){
   const seen=new Map();
   for(const l of geo.filter(l=>l.catalog.classes.includes(classId)&&!l.title.startsWith('Review and repair:'))){
-   for(const stage of ['teach','apply','finish']){
+   for(const stage of ['model','apply','finish']){
     const signature=stage+JSON.stringify(l.stages.find(s=>s.id===stage).frames.map(f=>[f.lines,f.geoDisplay?.demo?.steps]));
     assert.ok(!seen.has(signature),`${l.id} repeats ${stage} from ${seen.get(signature)}`);
     seen.set(signature,l.id);
@@ -65,8 +65,8 @@ test('7B week 2 progresses from locating countries to constrained journey planni
  const first=geo.find(l=>l.id==='g7b-geo-w02-1'),second=geo.find(l=>l.id==='g7b-geo-w02-2');
  assert.equal(second.title,'Plan an Irish Sea journey');
  assert.match(second.stages.find(s=>s.id==='teach').frames.flatMap(f=>f.geoDisplay?.demo?.steps||f.lines).join(' '),/constraint|waiting/i);
- assert.equal(second.stages.find(s=>s.id==='investigate').frames[0].simulation.kind,'journey');
+ assert.equal(second.stages.find(s=>s.id==='model').frames.find(f=>f.simulation).simulation.kind,'journey');
  const prompts=new Set(first.extensions[0].rounds.map(r=>r.prompt));
  assert.ok(second.extensions[0].rounds.every(r=>!prompts.has(r.prompt)));
- assert.match(second.stages.find(s=>s.id==='check').frames[0].explanation,/neither listed option/i);
+ assert.ok(second.stages.find(s=>s.id==='check').frames.some(f=>/neither listed option/i.test(f.explanation)));
 });

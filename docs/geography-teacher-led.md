@@ -1,5 +1,7 @@
 # Teacher-led Geography — 2 October 2026
 
+Historical description of the earlier six-section route. The current lessons follow the [eight-section concept-screen redesign](geography-concepts.md), approved on 6 October 2026.
+
 Replaces the pupil-work-heavy core of all 86 Geography teaching and review sessions for 7A and 7B. The ten Geography assessments retain their assessment conditions. Lesson IDs, scheduled positions, section references and mission-specific examples remain intact.
 
 The teacher’s classroom report was that the illustrated Irish Sea journey lesson lasted approximately ten minutes. A sum of suggested slide timings had been mistaken for sufficient instructional content. The revised teaching materials address the explanations and examples rather than extending the timers.

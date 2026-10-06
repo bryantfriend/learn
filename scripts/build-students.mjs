@@ -12,15 +12,16 @@ const out=lessons.filter(l=>!l.bookTrial&&!l.classroomOnly).map(lesson=>{
    if(frame.final||frame.printExam)continue;
    const key=si+'-'+fi;
    if(frame.type==='question'){
-    item.questions.push({id:key,prompt:frame.title,lines:(frame.lines||[]).map(adapt),options:questionOptions(frame),answer:frame.answer||null,model:frame.explanation||frame.answerText||'',open:!!frame.answerText});
+    item.questions.push({id:key,prompt:frame.title,lines:[...(frame.lines||[]),...(lesson.geoConcept&&typeof frame.sourceCard==='string'?[frame.sourceCard]:[])].map(adapt),options:questionOptions(frame),answer:frame.answer||null,model:frame.explanation||frame.answerText||'',open:!!frame.answerText});
     if(frame.explanation)item.cards.push({front:frame.title,back:frame.explanation});
     continue;
    }
-   const visual=visualSpec(lesson,stage,frame),lines=(frame.lines||[]).map(adapt).filter(Boolean);
+   const visual=visualSpec(lesson,stage,frame),lines=[...(frame.lines||[]),...(frame.successCriteria||[]),...(lesson.geoConcept&&typeof frame.sourceCard==='string'?[frame.sourceCard]:[]),...(frame.takeaways||[])].map(adapt).filter(Boolean);
+   const media=frame.geoArt||frame.illustration;
    if(frame.quote)lines.push(frame.quote);
    if(visual?.steps)for(const step of visual.steps)if(!lines.includes(step))lines.push(step);
    if(!lines.length&&!visual&&!frame.diagram&&!frame.visual)continue;
-   section.blocks.push({id:key,title:frame.title,lines,footnote:frame.footnote||'',visual:visual||null,imageAlt:!visual&&frame.illustration?frame.illustration.alt:'',imageCaption:!visual&&frame.illustration?frame.illustration.caption:'',image:!visual&&frame.illustration?frame.illustration.image:diagrams[frame.diagram]?diagrams[frame.diagram]+'.svg':frame.visual==='schoolyard'?'schoolyard.svg':null});
+   section.blocks.push({id:key,title:frame.title,lines,footnote:frame.footnote||'',visual:visual||null,...(frame.geoDisplay?{geographyDisplay:frame.geoDisplay}:{}),imageAlt:!visual&&media?media.alt:'',imageCaption:!visual&&media?media.caption:'',image:!visual&&media?media.image:diagrams[frame.diagram]?diagrams[frame.diagram]+'.svg':frame.visual==='schoolyard'?'schoolyard.svg':null});
    if(frame.mode==='listen'&&lines.length&&item.cards.length<8)item.cards.push({front:frame.title,back:lines.slice(0,3).join('\n')});
   }
   if(section.blocks.length)item.sections.push(section);
@@ -35,5 +36,5 @@ for(const item of out.filter(x=>x.assessment)){
  item.cards=related.flatMap(x=>x.cards.slice(0,1)).slice(0,8);
 }
 fs.writeFileSync('students/lessons.json',JSON.stringify(out));
-const strings=new Set();const walk=(v,key)=>{if(typeof v==='string'){if(!['id','subject','quarter','unit','answer','image','kind','scene','group','code'].includes(key)&&v.trim()&&!/^\d+$/.test(v))strings.add(v);}else if(Array.isArray(v)){if(!['classes','related','values'].includes(key))v.forEach(x=>walk(x,key));}else if(v&&typeof v==='object')Object.entries(v).forEach(([k,x])=>walk(x,k));};out.forEach(x=>walk(x));
+const strings=new Set();const walk=(v,key)=>{if(key==='geographyDisplay')return;if(typeof v==='string'){if(!['id','subject','quarter','unit','answer','image','kind','scene','group','code'].includes(key)&&v.trim()&&!/^\d+$/.test(v))strings.add(v);}else if(Array.isArray(v)){if(!['classes','related','values'].includes(key))v.forEach(x=>walk(x,key));}else if(v&&typeof v==='object')Object.entries(v).forEach(([k,x])=>walk(x,k));};out.forEach(x=>walk(x));
 fs.writeFileSync('students/source-strings.json',JSON.stringify([...strings]));console.log(`${out.length} lessons, ${strings.size} study strings, ${[...strings].join('').length} characters.`);

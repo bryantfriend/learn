@@ -7,6 +7,7 @@ import {createGPLab} from './gp-lab.js';
 import {createGeographyEvidence} from './geography-evidence.js';
 import {createPostcardGame,initialPostState} from './geography-postcards.js';
 import {createGeographyWorkspace,initialWorkspaceState} from './geography-workspace.js';
+import {createConceptScreen} from './geography-concept-screen.js';
 const geographyBoardStates=new Map();
 const geographyEvidenceStates=new Map();
 import {visualSpec,createVisual,pauseVisuals} from './visuals.js';
@@ -165,7 +166,7 @@ function renderHome() {
 function renderPlayer() {
     const stage = currentStage();
     const frame = currentFrame();
-    const graphic = visualSpec(lesson,stage,frame);
+    const graphic = lesson.geoConcept ? null : visualSpec(lesson,stage,frame);
     const scene = !graphic && frame.illustration;
     const mode = modes[currentMode()];
     const modeButton = button(mode.icon + ' ' + mode.label, 'mode', 'mode mode-' + currentMode(), { 'aria-label': 'Working mode: ' + mode.label + '. Change mode' });
@@ -232,7 +233,7 @@ function renderPlayer() {
     if (lesson.vocabulary) markVocabulary(copy,lesson.vocabulary);
     const content = element('section', { className: 'teaching-content' + (graphic || scene ? ' illustrated' : '') + (scene ? ' scene-layout' : '') + (frame.visual || answerPanel ? ' split' : '') + (lesson.summary ? ' practice-content' : '') + (lesson.gp ? ' gp-content' : '') + (lesson.geoRedesign ? ' geo-workshop' : '') + (lesson.teacherLed ? ' teacher-led-geography' : '') + (frame.type === 'question' ? ' quiz' : ''), 'aria-labelledby': 'student-title' }, [copy]);
     if (graphic) content.append(createVisual(graphic));
-    if (frame.geoDisplay) {content.classList.add('geography-visual-layout');content.append(createFrameEvidence());}
+    if (frame.geoDisplay && !lesson.geoConcept) {content.classList.add('geography-visual-layout');content.append(createFrameEvidence());}
     if (scene) content.append(element('figure', {className:'lesson-scene'},[
         element('img',{src:'./assets/'+scene.image,alt:scene.alt,decoding:'async'}),
         element('figcaption',{},[scene.caption])
@@ -269,7 +270,8 @@ function renderPlayer() {
         ...(lesson.extensions ? [button('Extra time', 'extensions')] : []),
         button('☰ Teacher tools', 'tools')
     ]);
-    const player = element('main', { className: 'player' }, [header, heading, content, stepControls]);
+    const lessonContent = lesson.geoConcept ? createConceptScreen(lesson,stage,frame,copy,createFrameEvidence) : content;
+    const player = element('main', { className: 'player' + (lesson.geoConcept ? ' geography-concept-player' : '') }, [header, heading, lessonContent, stepControls]);
     if (session.preferences.timerVisible) player.append(renderTimer());
     player.append(toolbar);
     app.replaceChildren(player);

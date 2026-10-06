@@ -1,5 +1,17 @@
 # Learn testing
 
+## Geography concept screens — 6 October 2026
+
+- Full unit suite: 82 passed, 0 failed. The student tests also passed after the final catalogue rebuild.
+- Geography browser suite: 96 lessons and 4,362 classroom screens checked at 1280 × 720 and 1920 × 1080; no page overflow or JavaScript errors.
+- Eight section screenshots reviewed at 1366 × 768. Phone width checked at 390 × 844. Preview files are in `output/playwright/geography-concepts/`.
+- Answer models remain concealed until revealed. Teaching notes, three-card vocabulary, success criteria, printable assessments, and the eight-section teacher guide were checked. Printing displays only the selected teacher-guide lesson.
+- Student browser checks passed for filters, notes, cards, practice feedback, persistence, language controls and mobile layout.
+- Russian, Chinese and Turkish catalogues cover all 5,694 current study strings, with no missing or excessive-length entries in the translation audit. Numerical audit flags include changes in number formatting and sentence order; these machine translations remain study aids alongside the English source.
+- Seven generated illustrations are local assets; the full image prompts are saved in `assets/geography/full-prompts.json`.
+
+Use `npm run test:geography-concepts` for the current eight-section route. Older Geography browser scripts describe previous lesson routes.
+
 Test date: 17 September 2026.
 
 ## Original release checks

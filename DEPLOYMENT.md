@@ -1,5 +1,11 @@
 # Learn deployment
 
+## Version 2.6.1 — Geography concept-art redesign
+
+Updates all 96 Geography lessons for 7A and 7B to the approved ivory, navy and teal design. The 86 teaching and review lessons follow eight sections over 40 minutes, with vocabulary cards, worked examples, supported practice, concealed check answers and exit tickets. The 10 assessments use matching styling. Includes seven generated illustrations and refreshed teacher guides, student notes and translations.
+
+Validation: 82 unit tests passed, 4,362 classroom screen checks across two resolutions, all eight section previews, mobile layout, teacher notes, printable guides and independent-study browser checks. Release metadata is synchronized in `package.json` and `src/version.js`. Publish through the existing main/root GitHub Pages deployment.
+
 ## Version 2.5.2 — remove temporary online collection
 
 Removes the four online read-aloud lessons, the temporary Online category, their reading guide and its generator at the teacher's request on 6 October 2026. The usual curriculum and workbook trial categories remain available. Publish through the existing main/root GitHub Pages deployment.

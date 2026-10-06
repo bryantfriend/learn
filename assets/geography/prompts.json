@@ -1,0 +1,22 @@
+{
+  "tool": "Built-in image_gen",
+  "style": "Naturalistic atlas illustration, imaginary teaching scene, no text",
+  "scenes": [
+    [
+      "map-skills",
+      "A beautiful atlas-inspired overhead still life on an ivory desk: unfolded fictional topographic map with contour lines, a compass, ruler, notebook and pencil. Map is illustrative, no legible writing or numbers, no country outlines. Warm natural light and teal details."
+    ],
+    [
+      "settlements",
+      "A beautiful atlas-inspired oblique aerial illustration of an imaginary British-inspired town beside green countryside: clustered houses, road, railway, small market square, parks, and coastline in the distance. Clearly fictional place, not a real city. No text or labels."
+    ],
+    [
+      "glaciers",
+      "A beautiful scientifically plausible atlas-inspired aerial illustration of a mountain glacier filling a U-shaped valley, snowy accumulation high above, flowing blue-white ice below, rocky side moraines and meltwater stream in foreground. No houses on ice, no polar animals, no text."
+    ],
+    [
+      "rivers",
+      "A beautiful atlas-inspired aerial illustration of one clear river meander in green countryside. Concave outer bank is steep and eroding, convex inner bank has a gently sloping pale gravel bar. Plausible continuous flowing river, no islands, no text or arrows."
+    ]
+  ]
+}
