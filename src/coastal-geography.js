@@ -22,8 +22,9 @@ const cities=[
  ['Amsterdam',4.9041,52.3676,'netherlands',22,'capital'],['Rotterdam',4.4777,51.9244,'netherlands',23],['The Hague',4.3,52.07,'netherlands',24],
  ['Berlin',13.405,52.52,'germany',25,'capital'],['Cologne',6.96,50.9375,'germany',26],['Hamburg',9.9937,53.5511,'germany',27]
 ];
+export const harbourWaterfronts={2:'Bristol Harbour',5:'Cardiff Bay',6:'Swansea Bay',7:'Menai Strait',12:'River Mersey',13:'Holyhead Harbour',14:'Belfast Lough',15:'Dublin Bay',16:'Cork Harbour',17:'Galway Bay',19:'River Foyle',20:'Southampton Water',23:'Folkestone Harbour',25:'Tidal River Garonne',27:'Tidal River Scheldt',30:'Rhine–Meuse delta',31:'Scheveningen Harbour',34:'Tidal River Elbe'};
 export const stationShapes=['circle','square','triangle'];
-export const geoStops=cities.map(([name,lon,lat,region,round,special],id)=>({id,name,...project(lon,lat),region,round,kind:'town',capital:special==='capital',tunnel:special==='tunnel',coastal:[2,6,7,12,13,14,15,16,17,19,20,22,23,25,27,30,31,34].includes(id),land:['england','wales','scotland'].includes(region)?'great-britain':['ireland','northern-ireland'].includes(region)?'ireland':'europe',shape:round<3?stationShapes[id%2]:stationShapes[(id-2)%3]}));
+export const geoStops=cities.map(([name,lon,lat,region,round,special],id)=>({id,name,...project(lon,lat),region,round,kind:'town',capital:special==='capital',tunnel:special==='tunnel',coastal:Boolean(harbourWaterfronts[id]),waterfront:harbourWaterfronts[id]??null,land:['england','wales','scotland'].includes(region)?'great-britain':['ireland','northern-ireland'].includes(region)?'ireland':'europe',shape:round<3?stationShapes[id%2]:stationShapes[(id-2)%3]}));
 export const unlockRounds={road:1,rail:8,highspeed:20,ferry:10,flight:13,tunnel:18};
 export const vehicleLabels={road:'Bus',rail:'Train',highspeed:'High-speed train',ferry:'Boat',flight:'Flight',tunnel:'Tunnel train'};
 export const activeForRound=round=>geoStops.filter(s=>s.round<=round).map(s=>s.id);

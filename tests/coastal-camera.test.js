@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {cameraForNewStops,automaticMinimumZoom} from '../src/coastal-camera.js';
+import {geoStops} from '../src/coastal-geography.js';
+test('Every new-city round stays readable and centres its newly opened stops',()=>{let camera={zoom:.4,x:0,y:0};for(let round=2;round<=27;round++){const opened=geoStops.filter(s=>s.round===round);camera=cameraForNewStops(camera,opened);assert.ok(camera.zoom>=automaticMinimumZoom);for(const s of opened){const x=s.x*camera.zoom+camera.x,y=s.y*camera.zoom+camera.y;assert.ok(x>=100&&x<=900,`Round ${round}: ${s.name} horizontal visibility`);assert.ok(y>=90&&y<=500,`Round ${round}: ${s.name} vertical visibility`);}}});
+test('A tight manual view widens only enough for a new cluster and manual distant views get a readable focus',()=>{const france=geoStops.filter(s=>s.round===16),camera=cameraForNewStops({zoom:3,x:0,y:0},france);assert.ok(camera.zoom<3);assert.ok(camera.zoom>=.9);const close=cameraForNewStops({zoom:1.5,x:0,y:0},[geoStops[4]]);assert.equal(close.zoom,1.5);const distant=cameraForNewStops({zoom:.3,x:0,y:0},[geoStops[4]]);assert.equal(distant.zoom,.9);});
+test('Rounds without new cities keep the current zoom and pan',()=>{const camera={zoom:.3,x:123,y:-456};assert.deepEqual(cameraForNewStops(camera,[]),camera);});
