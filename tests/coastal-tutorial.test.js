@@ -1,0 +1,6 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {createGameState} from '../src/coastal-connections.js';
+import {observeTutorial} from '../src/coastal-tutorial.js';
+test('Guided tutorial advances only after its actual network tasks',()=>{const s=createGameState();s.tutorial.status='active';s.tutorial.step=1;assert.equal(observeTutorial(s),false);s.links.push({a:1,b:0,type:'road'});observeTutorial(s);assert.equal(s.tutorial.step,2);assert.equal(observeTutorial(s),false);s.running=true;observeTutorial(s);assert.equal(s.tutorial.step,3);s.delivered=2;assert.equal(observeTutorial(s),false);s.delivered=3;observeTutorial(s);assert.equal(s.tutorial.step,4);assert.equal(s.running,false);s.links.push({a:2,b:1,type:'road'});observeTutorial(s);assert.equal(s.tutorial.step,5);assert.equal(observeTutorial(s),false);s.complete=true;observeTutorial(s);assert.equal(s.tutorial.step,6);});
+test('Walkthrough and skipped tutorials do not change gameplay',()=>{for(const [status,mode]of [['skipped','guided'],['active','tour'],['done','guided']]){const s=createGameState();s.tutorial={status,mode,step:3,tipsSeen:[]};s.running=true;s.delivered=3;assert.equal(observeTutorial(s),false);assert.equal(s.running,true);assert.equal(s.tutorial.step,3);}});

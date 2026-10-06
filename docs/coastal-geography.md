@@ -29,3 +29,17 @@ Facts are original concise summaries of stable map relationships and destination
 - [LeShuttle terminals](https://www.leshuttle.com/uk-en/eurotunnel), [Visit Brussels](https://www.visit.brussels/en/visitors), [Holland.com](https://www.holland.com/global/tourism), [Germany Travel: Berlin](https://www.germany.travel/en/cities-culture/berlin.html).
 
 No claims about current transport availability, opening hours or fares are used in the classroom facts.
+
+## Learning atlas and quiz coins
+
+The Country atlas button opens only unlocked countries. Each page contains a local SVG flag, capital, country/UK context, three or four representative landmark cards, waterways and facts. Northern Ireland uses the Union Flag with an explanatory note rather than treating the former Ulster Banner as an official national flag. Flags are local copies from FlagCDN's Wikimedia-derived collection; no runtime connection is needed.
+
+A quiz coin appears after 12 seconds of running simulation. After answering it, the next coin appears after 30 more running seconds; only one coin is pending at a time. Questions follow the most recently unlocked region, alternating Northern Ireland and the Republic of Ireland at their shared unlock. There are three questions per region (capital, geography, landmark), with reordered choices. A correct answer awards 15 credits once; a wrong answer gives the answer/explanation with no deduction. Closing an unanswered quiz leaves the coin available. Reading either dialog pauses the simulation and its countdowns, then resumes previous play on close. Quiz state survives lesson reopening, and retry rolls quiz income back with other round income.
+
+Additional primary references for the atlas:
+
+- [Visit Wales: Cardiff Castle](https://www.visitwales.com/attraction/castle/cardiff-castle-532571), [Eryri](https://www.visitwales.com/things-do/nature-and-landscapes/national-parks/eryri-snowdonia-national-park-what-see-and-do), [Welsh castles](https://www.visitwales.com/things-do/attractions/castles-and-heritage/10-great-castles-wales-visit).
+- [English Heritage: Stonehenge](https://www.english-heritage.org.uk/visit/places/stonehenge/history-and-stories/), [VisitScotland: Ben Nevis](https://www.visitscotland.com/things-to-do/outdoor-activities/walking/mountains-hills/ben-nevis), [Loch Ness](https://www.visitscotland.com/places-to-go/loch-ness).
+- [National Trust: Giant's Causeway](https://www.nationaltrust.org.uk/visit/northern-ireland/giants-causeway), [Tourism Ireland destinations](https://www.ireland.com/en/destinations/where-to-go/), [UK government: Union Flag](https://www.gov.uk/guidance/designated-days-for-union-flag-flying), [Parliament: Northern Ireland flag question](https://questions-statements.parliament.uk/written-questions/detail/2023-10-13/201972).
+- [France: Paris](https://www.france.fr/fr/destination/paris/), [Mont-Saint-Michel](https://montsaintmichel.gouv.fr/), [Visit Brussels attractions](https://www.visit.brussels/en/visitors/what-to-do/attractions-and-monuments).
+- [Holland: Kinderdijk](https://www.holland.com/global/tourism/get-inspired/current/unesco/the-windmills-of-kinderdijk), [Dutch water management](https://www.holland.com/global/tourism/getting-around/interests/water-story/holland-land-of-water), [Germany: Rhine Valley](https://www.germany.travel/en/inspiring-germany/magic-by-the-river-dragons-knights-and-courageous-maidens.html).
