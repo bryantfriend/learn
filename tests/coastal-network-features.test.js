@@ -14,7 +14,7 @@ test('One multi-stop bus serves intermediate stops and reverses at the ends',()=
 test('Line purchases are atomic; extension obeys geography and the budget',()=>{
  const s=fixture(10),before=structuredClone(s);assert.equal(buyLine(s,[0,1,15],'road').code,'sea');assert.deepEqual(s.links,before.links);assert.equal(s.credits,before.credits);
  assert.equal(buyRoute(s,0,1,'road'),true);assert.equal(extendLine(s,0,4),null);assert.deepEqual(lineStops(s.links[0]),[0,1,4]);assert.equal(s.links[0].paid,40);
- const credits=s.credits;assert.equal(extendLine(s,0,0).code,'loop');assert.equal(s.credits,credits);s.credits=0;assert.equal(extendLine(s,0,3).code,'credits');
+ const credits=s.credits;assert.equal(extendLine(s,0,1).code,'loop');assert.equal(s.credits,credits);s.credits=0;assert.equal(extendLine(s,0,3).code,'credits');
  assert.equal(routeIssue(s,1,4,'road').code,'duplicate');
 });
 test('Journey previews distinguish a through line from a vehicle transfer',()=>{
