@@ -16,6 +16,7 @@ import {planEvent,eventActive,eventSpeed} from './coastal-events.js';
 import {installNetworkFeatures} from './coastal-network-ui.js';
 import {installShapeFilter} from './coastal-shapes.js';
 import {ensureLineSlots,freeLineSlot,lineColour,lineName,installLineDock} from './coastal-lines.js';
+import {routeGeometry,pointAlong,traceSegment,curveHit} from './coastal-route-curves.js';
 export const stops=geoStops;
 const waterwaysForText=round=>waterways.filter(w=>w[3]<=round).map(w=>w[0]);
 const colours={road:'#137c83',rail:'#df7154',ferry:'#dca438',flight:'#8261ae',highspeed:'#346cb7',tunnel:'#9b6699'};
@@ -270,7 +271,7 @@ export function createCoastalGame(saved){
  const screen=e=>{const r=canvas.getBoundingClientRect(),scale=Math.min(r.width/1000,r.height/600);return {x:(e.clientX-r.left-(r.width-1000*scale)/2)/scale,y:(e.clientY-r.top-(r.height-600*scale)/2)/scale};};
  const world=p=>({x:(p.x-state.camera.x)/state.camera.zoom,y:(p.y-state.camera.y)/state.camera.zoom});
  const nearest=p=>stops.filter(s=>state.activeStops.includes(s.id)&&Math.hypot(s.x-p.x,s.y-p.y)<24/state.camera.zoom).sort((a,b)=>Math.hypot(a.x-p.x,a.y-p.y)-Math.hypot(b.x-p.x,b.y-p.y))[0]?.id??null;
- function routeAt(p){const edge=networkEdges(state).find(l=>{const a=stops[l.a],b=stops[l.b],dx=b.x-a.x,dy=b.y-a.y,t=Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.y-a.y)*dy)/(dx*dx+dy*dy)));return Math.hypot(p.x-a.x-t*dx,p.y-a.y-t*dy)<12/state.camera.zoom;});return edge?state.links.indexOf(edge.link):-1;}
+ function routeAt(p){return state.links.findIndex(l=>routeGeometry(l,stops).some(segment=>curveHit(segment,p,12/state.camera.zoom)));}
  function passengerAt(point){for(const id of state.activeStops){const stop=stops[id],queue=state.passengers.filter(p=>(p.mode==='waiting'||p.mode==='boarding')&&p.at===id);for(let i=0;i<queue.length;i++){const row=Math.floor(i/4),columns=Math.min(4,queue.length-row*4),x=stop.x+((i%4)-(columns-1)/2)*14,y=stop.y-27-row*14;if(Math.hypot(point.x-x,point.y-y)<Math.max(8,9/state.camera.zoom))return queue[i].id;}}return null;}
  function zoomMap(factor,anchor={x:500,y:300}){const p=world(anchor),zoom=Math.max(.3,Math.min(3,state.camera.zoom*factor));state.camera={zoom,x:anchor.x-p.x*zoom,y:anchor.y-p.y*zoom};draw();}
  function fitMap(){const {left,right,top,bottom}=geographyBounds(state.round),zoom=Math.min(1.8,850/(right-left),450/(bottom-top));state.camera={zoom,x:500-(left+right)/2*zoom,y:310-(top+bottom)/2*zoom};state.cameraReady=true;draw();}
@@ -291,14 +292,14 @@ export function createCoastalGame(saved){
   ctx.fillStyle='#94cfdc';ctx.fillRect(0,0,1000,600);ctx.save();ctx.translate(state.camera.x,state.camera.y);ctx.scale(state.camera.zoom,state.camera.zoom);
   land();
   tutorialUI.draw(ctx,stops);
-  for(const link of state.links){for(const segment of lineSegments(link)){const a=stops[segment.a],b=stops[segment.b],closed=link.type==='ferry'&&state.ferryClosed;
-   ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle='#fffdf8b0';ctx.lineWidth=12;ctx.setLineDash([]);ctx.stroke();ctx.strokeStyle=closed?'#b96a58':lineColour(link.slot);ctx.lineWidth=6;ctx.setLineDash(['road','rail','highspeed'].includes(link.type)?[]:[8,10]);ctx.lineDashOffset=link.type==='ferry'&&!reducedMotion?-visualTime*8:0;ctx.stroke();ctx.setLineDash([]);ctx.lineDashOffset=0;
+  for(const link of state.links){const geometry=routeGeometry(link,stops);for(const [index,segment]of lineSegments(link).entries()){const a=stops[segment.a],b=stops[segment.b],closed=link.type==='ferry'&&state.ferryClosed,curve=geometry[index];
+   ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();traceSegment(ctx,curve);ctx.strokeStyle='#fffdf8b0';ctx.lineWidth=12;ctx.setLineDash([]);ctx.stroke();ctx.strokeStyle=closed?'#b96a58':lineColour(link.slot);ctx.lineWidth=6;ctx.setLineDash(['road','rail','highspeed'].includes(link.type)?[]:[8,10]);ctx.lineDashOffset=link.type==='ferry'&&!reducedMotion?-visualTime*8:0;ctx.stroke();ctx.setLineDash([]);ctx.lineDashOffset=0;
    if(link.type==='tunnel')text('Channel Tunnel',(a.x+b.x)/2,(a.y+b.y)/2-28,12/state.camera.zoom,'#7b4d88');
-   if(['rail','highspeed','tunnel'].includes(link.type)){const length=Math.hypot(b.x-a.x,b.y-a.y),nx=-(b.y-a.y)/length,ny=(b.x-a.x)/length;ctx.strokeStyle='#74584b';ctx.lineWidth=2;for(let d=30;d<length-25;d+=12){const x=a.x+(b.x-a.x)*d/length,y=a.y+(b.y-a.y)*d/length;ctx.beginPath();ctx.moveTo(x-nx*6,y-ny*6);ctx.lineTo(x+nx*6,y+ny*6);ctx.stroke();}ctx.strokeStyle='#fff1d5';ctx.lineWidth=1;for(const side of [-2,2]){ctx.beginPath();ctx.moveTo(a.x+nx*side,a.y+ny*side);ctx.lineTo(b.x+nx*side,b.y+ny*side);ctx.stroke();}}
-   if(link.type==='road'){ctx.strokeStyle='#fffdf8b0';ctx.lineWidth=1;ctx.setLineDash([4,10]);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();ctx.setLineDash([]);}
-   }const a=stops[link.a],b=stops[link.b],closed=link.type==='ferry'&&state.ferryClosed;const t=link.direction===1?link.position:1-link.position,x=a.x+(b.x-a.x)*t,y=a.y+(b.y-a.y)*t;
+   if(['rail','highspeed','tunnel'].includes(link.type)){ctx.strokeStyle='#74584b';ctx.lineWidth=2;for(let d=18;d<curve.length-12;d+=12){const p=pointAlong(curve,d/curve.length),nx=-Math.sin(p.angle),ny=Math.cos(p.angle);ctx.beginPath();ctx.moveTo(p.x-nx*6,p.y-ny*6);ctx.lineTo(p.x+nx*6,p.y+ny*6);ctx.stroke();}ctx.strokeStyle='#fff1d5';ctx.lineWidth=1;for(const side of [-2,2]){ctx.beginPath();traceSegment(ctx,curve,side);ctx.stroke();}}
+   if(link.type==='road'){ctx.strokeStyle='#fffdf8b0';ctx.lineWidth=1;ctx.setLineDash([4,10]);ctx.beginPath();traceSegment(ctx,curve);ctx.stroke();ctx.setLineDash([]);}
+   }const a=stops[link.a],b=stops[link.b],closed=link.type==='ferry'&&state.ferryClosed;const t=link.direction===1?link.position:1-link.position,location=pointAlong(geometry[link.segment??0],t),{x,y}=location;
    if(link.service){const handling=stationStats(state,link.service.at).handling;ctx.beginPath();ctx.arc(x,y,19,-Math.PI/2,-Math.PI/2+Math.PI*2*Math.min(1,link.service.clock/handling));ctx.strokeStyle=link.service.phase==='unload'?'#dca438':'#137c83';ctx.lineWidth=3;ctx.stroke();}
-   ctx.beginPath();ctx.arc(x,y,11,0,Math.PI*2);ctx.fillStyle=lineColour(link.slot);ctx.fill();if(!closed){const transit=trainStationVisual(link.type,state.levels[link.type],link.position,Math.hypot(b.x-a.x,b.y-a.y));art.vehicle(ctx,link.type,x,y,Math.atan2((b.y-a.y)*link.direction,(b.x-a.x)*link.direction),visualTime,state.levels[link.type],state.running&&!link.service,transit);
+   ctx.beginPath();ctx.arc(x,y,11,0,Math.PI*2);ctx.fillStyle=lineColour(link.slot);ctx.fill();if(!closed){const transit=trainStationVisual(link.type,state.levels[link.type],link.position,geometry[link.segment??0].length);art.vehicle(ctx,link.type,x,y,location.angle+(link.direction===-1?Math.PI:0),visualTime,state.levels[link.type],state.running&&!link.service,transit);
     ctx.save();if(transit)ctx.globalAlpha=Math.min(1,transit.visible/24);
     for(let i=0;i<link.cargo.length;i++)shape(stops[state.passengers[link.cargo[i]].destination].shape,x-16+i*12,y-20,5,'#fffdf8',colours[link.type]);ctx.restore();
    }

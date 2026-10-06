@@ -1,0 +1,13 @@
+// Keep bends within station footprints; transport rules and fares use the original edges.
+const cache=new WeakMap(),distance=(a,b)=>Math.hypot(b.x-a.x,b.y-a.y);
+const mix=(a,b,t)=>({x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t});
+export function buildRouteGeometry(points,closed=false){
+ const cities=closed?points.slice(0,-1):points,n=cities.length;
+ const corners=cities.map((p,i)=>{if(!closed&&(i===0||i===n-1))return {entry:p,exit:p,center:p};const prev=cities[(i+n-1)%n],next=cities[(i+1)%n],before=distance(p,prev),after=distance(p,next),radius=Math.min(12,before*.24,after*.24);return {entry:mix(p,prev,radius/(before||1)),exit:mix(p,next,radius/(after||1)),center:p};});
+ function curve(c,t){const a=mix(c.entry,c.center,t),b=mix(c.center,c.exit,t),p=mix(a,b,t);return {...p,angle:Math.atan2(b.y-a.y,b.x-a.x)};}
+ const segments=[];for(let i=0;i<points.length-1;i++){const a=corners[i],b=corners[(i+1)%n],samples=[];for(let k=0;k<=8;k++)samples.push(curve(a,.5+k/16));const straight=Math.atan2(b.entry.y-a.exit.y,b.entry.x-a.exit.x);samples.at(-1).angle=straight; samples.push({...b.entry,angle:straight});for(let k=1;k<=8;k++)samples.push(curve(b,k/16));if(distance(a.entry,a.exit)<1e-9)for(let j=0;j<=8;j++)samples[j].angle=straight;if(distance(b.entry,b.exit)<1e-9)for(let j=9;j<samples.length;j++)samples[j].angle=straight;let length=0;for(let j=0;j<samples.length;j++){if(j)length+=distance(samples[j-1],samples[j]);samples[j].distance=length;}segments.push({samples,length});}return segments;
+}
+export function routeGeometry(link,stops){const ids=link.nodes??[link.a,link.b],key=ids.join(','),old=cache.get(link);if(old?.key===key)return old.segments;const segments=buildRouteGeometry(ids.map(id=>stops[id]),ids.length>=4&&ids[0]===ids.at(-1));cache.set(link,{key,segments});return segments;}
+export function pointAlong(segment,fraction){const target=Math.max(0,Math.min(1,fraction))*segment.length,samples=segment.samples;for(let i=1;i<samples.length;i++){const b=samples[i];if(b.distance<target)continue;const a=samples[i-1],t=(target-a.distance)/(b.distance-a.distance||1),p=mix(a,b,t),delta=Math.atan2(Math.sin(b.angle-a.angle),Math.cos(b.angle-a.angle));return {...p,angle:a.angle+delta*t};}return samples.at(-1);}
+export function traceSegment(ctx,segment,offset=0){segment.samples.forEach((p,i)=>{const x=p.x-Math.sin(p.angle)*offset,y=p.y+Math.cos(p.angle)*offset;if(i)ctx.lineTo(x,y);else ctx.moveTo(x,y);});}
+export function curveHit(segment,p,tolerance){for(let i=1;i<segment.samples.length;i++){const a=segment.samples[i-1],b=segment.samples[i],dx=b.x-a.x,dy=b.y-a.y,t=Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.y-a.y)*dy)/(dx*dx+dy*dy||1)));if(Math.hypot(p.x-a.x-t*dx,p.y-a.y-t*dy)<tolerance)return true;}return false;}
