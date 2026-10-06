@@ -1,5 +1,11 @@
 # Learn deployment
 
+## Version 2.6.3 — Coastal Connections rounds and economy
+
+Adds growing passenger waves, new towns, trains, paid routes, vehicle and terminal upgrades, delivery income, route selling, round deadlines and ten-second stop alarms to the 7B Geography Lesson 2 transport game. Includes illustrated coastal scenery, detailed vehicles, animated water and passenger feedback, and a dismissible rounded completion panel with golden stars and confetti. Starts with 20 credits for a bus; local deliveries fund the first boat.
+
+Validation: 91 unit tests, focused browser checks through three rounds including purchases, upgrades, selling/rebuilding, completion dismissal, loss/retry, mobile and lesson reopening, plus the bundled gameplay client completing round 1. Stage 5 review is deferred. Publishes through the existing main/root GitHub Pages deployment.
+
 ## Version 2.6.2 — 7B Lesson 2 classroom prototype
 
 Publishes the current section-by-section review of 7B Geography Lesson 2. Includes the approved map starter with an animated border reveal, the UK/Great Britain explanation, English vocabulary with Chinese and Russian support and enlarged card modals, the Coastal Connections transport game, and generated weather/climate and rain-shadow illustrations.
