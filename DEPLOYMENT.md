@@ -1,5 +1,11 @@
 # Learn deployment
 
+## Version 2.6.2 — 7B Lesson 2 classroom prototype
+
+Publishes the current section-by-section review of 7B Geography Lesson 2. Includes the approved map starter with an animated border reveal, the UK/Great Britain explanation, English vocabulary with Chinese and Russian support and enlarged card modals, the Coastal Connections transport game, and generated weather/climate and rain-shadow illustrations.
+
+Sections 1–3 are approved. Part 4 now includes the transport game and artwork; remaining lesson sections await classroom review. This prototype has not been applied to other lessons. Teacher-guide and independent-study exports remain at their previous revision while this lesson is being reviewed. Validation: 85 unit tests and focused game browser checks covering passenger transfers, route restrictions, the ferry challenge, mobile layout and lesson launch/resume. Publish through the existing main/root GitHub Pages deployment.
+
 ## Version 2.6.1 — Geography concept-art redesign
 
 Updates all 96 Geography lessons for 7A and 7B to the approved ivory, navy and teal design. The 86 teaching and review lessons follow eight sections over 40 minutes, with vocabulary cards, worked examples, supported practice, concealed check answers and exit tickets. The 10 assessments use matching styling. Includes seven generated illustrations and refreshed teacher guides, student notes and translations.

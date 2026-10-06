@@ -51,6 +51,42 @@ export function rebuildGeographyConceptFlow(lesson,active,makeStage){
   const link=frames.teach.find(f=>f.conceptId==='1.1-3');if(link)link.title='What does “make a link” mean?';
   frames.apply.push(common(first,{title:'Connection builders',mode:'think',lines:['Choose hill + road or river + farm.','Explain the link using “because” or “so”.'],sourceCard:first.mission.source,geoDisplay:frames.teach[0].geoDisplay,discussionId:'connection-builders',teacherScript:'A hill can affect road gradient and route; a river can provide water for crops. A list of two labels does not explain the link.'}));
  }
+ // Review this lesson section by section before extending its design to the course.
+ if(lesson.id==='g7b-geo-w01-2'){
+  const transport=frames.teach.find(f=>f.conceptId==='3.1-3');
+  if(transport)transport.geoDisplay={transportConnections:true};
+  const weather=frames.teach.find(f=>f.conceptId==='3.3-0');
+  if(weather){weather.conceptLayout='artwork';weather.geoArt={image:'geography/weather-and-climate.png',contain:true,alt:'Weather: a rainy, windy day at a coastal cottage. Climate: seasonal views of the same place and calendars showing observations across years.',caption:'Illustrative comparison: one day’s weather versus patterns over many years.'};}
+  const rainShadow=frames.teach.find(f=>f.conceptId==='3.3-3');
+  if(rainShadow){rainShadow.conceptLayout='artwork';rainShadow.geoArt={image:'geography/rain-shadow.png',contain:true,alt:'Moist air from the sea rises and cools on the windward slope, bringing clouds and rain. Air descends and warms on the leeward slope, where conditions are often drier.',caption:'Concept illustration: wind blows left to right. The leeward side can still receive rain.'};}
+  frames.begin=[{
+   title:'Look at the map',mode:'think',
+   lines:['Does every country boundary have sea on both sides?'],
+   type:'question',answerText:'No.',revealLabel:'Reveal answer',
+   explanation:'England and Wales share a land boundary, with no sea between them.',
+   responseHint:'Look for evidence on the map.',discussionMode:'think',
+   revealAtlasBorder:true,
+   recallCue:'Think quietly',kicker:'UK and Ireland · Country boundaries',
+   conceptLayout:'evidence',
+   geoDisplay:{atlas:{view:'islands',labels:true,caption:'UK and Ireland · Countries and surrounding seas'}},
+   geoArt:geographyArt('3.1'),discussionId:'lesson-2-map-starter',
+   teacherScript:'Give pupils quiet thinking time. Ask them to find a boundary between two countries on the map. England and Wales, or England and Scotland, share a land boundary: there is no sea between them. Invite a short answer after pupils have thought.'
+  }];
+  frames.goal=[{
+   title:'I can explain the difference between the UK and Great Britain.',mode:'listen',
+   lines:['The UK includes England, Scotland, Wales and Northern Ireland.','Great Britain is the island containing England, Scotland and Wales.','Northern Ireland is part of the UK, on the island of Ireland.'],
+   successCriteria:['Name the four countries of the UK.','Identify the three countries on Great Britain.','Show a shared land boundary.'],
+   conceptLayout:'evidence',kicker:'Our learning goal · UK and Great Britain',
+   geoDisplay:{atlas:{membershipAnimation:true}},geoArt:geographyArt('3.1'),
+   teacherScript:'Read the learning goal. Play the short map explanation: four countries belong to the UK; three are on Great Britain; Northern Ireland belongs to the UK but is on the island of Ireland. Pause or replay as needed. Point to England and Wales to connect the goal to the starter. The UK is a country made up of four constituent countries; Great Britain names an island.'
+  }];
+  const vocabulary=[
+   {term:'United Kingdom',meaning:'England, Scotland, Wales and Northern Ireland.',zh:'英国（联合王国）',ru:'Соединённое Королевство',picture:'uk'},
+   {term:'Great Britain',meaning:'The island containing England, Scotland and Wales.',zh:'大不列颠',ru:'Великобритания',picture:'gb'},
+   {term:'Island',meaning:'Land surrounded by water on every side.',zh:'岛屿',ru:'Остров',picture:'island'}
+  ];
+  frames.vocabulary=[{title:'Words for today',mode:'listen',lines:vocabulary.map(v=>`${v.term}: ${v.meaning}`),vocabularyCards:vocabulary,geoArt:geographyArt('3.1'),recallCue:'Listen • Say the word • Look at the picture',teacherScript:'Read each English word and model its pronunciation. Use the smaller Chinese and Russian translations as support. Compare the two highlighted maps: Northern Ireland is included in the UK, but not in Great Britain. The island picture shows water all the way around the land.'}];
+ }
  frames.finish.push({title:'Lesson complete',mode:'listen',lines:['Check your space. Listen for dismissal.'],geoArt:geographyArt(first.code),final:true});
  let elapsed=0;
  lesson.stages=geographySections.map(([id,title,minutes])=>{
@@ -58,7 +94,7 @@ export function rebuildGeographyConceptFlow(lesson,active,makeStage){
   const stage=makeStage(id,title,minutes,frames[id],notes||'Use this section to check progress towards the lesson goal.');stage.timeRange=`${elapsed}–${elapsed+minutes} min`;elapsed+=minutes;
   stage.frames.forEach(f=>f.conceptSection=id);return stage;
  });
- lesson.geoConcept=true;lesson.teacherLed=true;lesson.teachingApproach='guided-to-independent';lesson.contentRevision=8000;lesson.boardFirst=false;
+ lesson.geoConcept=true;lesson.teacherLed=true;lesson.teachingApproach='guided-to-independent';lesson.contentRevision=lesson.id==='g7b-geo-w01-2'?8005:8000;lesson.boardFirst=false;
  lesson.openingScript='40-minute Geography: recall, goal, vocabulary, explanation, worked example, student practice, understanding check and exit ticket. Bring an exercise book, pencil and ruler where needed. '+lesson.learningObjectives.join(' / ');
  lesson.pacingNote='40-minute route: recall 4, goal 2, vocabulary 3, explanation 8, worked example 5, practice 10, check 5, exit 3. Divide each section between the topics in combined lessons. Timings are estimates.';
  lesson.boardTeachingGuide={...lesson.boardTeachingGuide,message:lesson.pacingNote,routine:['Explain and point to the visual.','Model a worked example.','Let pupils practise, then check and improve.'],stages:lesson.stages.map(s=>({title:s.title,minutes:s.durationMinutes,notes:s.notes}))};

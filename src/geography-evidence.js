@@ -2,8 +2,23 @@ import {geographyArt} from './geography-lab.js';
 import {createAtlas,atlasArt} from './geography-atlas.js';
 import {workpadArt} from './geography-workpads.js';
 import {createJourneyVisual} from './journey-visual.js';
+import {openCoastalGame} from './coastal-connections.js';
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text)n.textContent=text;if(cls)n.className=cls;return n;};
 export function createGeographyEvidence(spec,onChange=()=>{}){
+ if(spec.transportConnections){
+  const root=el('figure',null,'geography-evidence transport-connections');
+  root.append(el('h3','Different transport for land and sea'));
+  const pictures=el('div',null,'transport-picture-grid');
+  for(const [kind,title,description]of [['coach','Road','Travel over land.'],['ferry','Ferry','Carry people across the sea.'],['flight','Flight','Fly across the sea.']]){
+   const panel=el('article',null,'transport-picture-card'),img=el('img');
+   img.src=`./assets/illustrations/journey-${kind}.png`;img.alt={coach:'Coach travelling on a road',ferry:'Passenger ferry crossing the sea',flight:'Airplane flying above the sea'}[kind];
+   panel.append(img,el('h4',title),el('p',description));pictures.append(panel);
+  }
+  root.append(pictures,el('figcaption','A road alone cannot cross the sea. Use a ferry or a flight for the crossing.'));
+  const play=el('button','Play Coastal Connections','transport-game-button');play.type='button';
+  play.onclick=()=>openCoastalGame(spec.coastalState,state=>{spec={...spec,coastalState:state};onChange(spec);play.focus();});root.append(play);
+  return root;
+ }
  if(spec.journey)return createJourneyVisual(spec,onChange);
  if(spec.atlas)return createAtlas(spec.atlas,atlas=>onChange({...spec,atlas}));
  if(spec.kind==='uk'&&!spec.demo)return createAtlas({layers:spec.code==='3.2',physical:spec.code==='3.2',caption:spec.code==='3.2'?'Country boundaries and physical features answer different questions. Toggle the physical layer.':spec.caption},atlas=>onChange({...spec,atlas}));

@@ -86,14 +86,20 @@ function currentFrame() {
 }
 function responseKey() { return responseKeyFor(lesson, session.stage, session.steps[session.stage]); }
 function response() { return session.responses[responseKey()] || { selected: null, revealed: false }; }
+let animateEvidenceReveal=false;
 function createFrameEvidence() {
     const key=lesson.id+':'+lesson.contentRevision+':'+session.stage+':'+session.steps[session.stage];
-    return createGeographyEvidence(geographyEvidenceStates.get(key)||currentFrame().geoDisplay,spec=>geographyEvidenceStates.set(key,spec));
+    let spec=geographyEvidenceStates.get(key)||currentFrame().geoDisplay;
+    if(currentFrame().revealAtlasBorder && response().revealed){
+        spec={...spec,atlas:{...spec.atlas,focusBorder:true,animateFocus:animateEvidenceReveal}};
+        animateEvidenceReveal=false;
+    }
+    return createGeographyEvidence(spec,spec=>geographyEvidenceStates.set(key,spec));
 }
 function currentMode() {
     if (session.modeOverride) return session.modeOverride;
     const frame = currentFrame();
-    if (frame.type === 'question' && (response().selected || response().revealed) && (!lesson.showVoiceLevels || frame.discussionVoice !== undefined)) return 'share';
+    if (frame.type === 'question' && (response().selected || response().revealed) && (!lesson.showVoiceLevels || frame.discussionVoice !== undefined)) return frame.discussionMode || 'share';
     return currentFrame().mode;
 }
 function currentVoiceLevel() {
@@ -295,9 +301,10 @@ function renderQuestion(copy) {
             ...(frame.explanation ? [element('p', {}, [frame.explanation])] : []),
             ...(frame.followUp ? [element('p', { className: 'follow-up' }, [frame.followUp])] : [])
         ]));
+        if(frame.revealAtlasBorder)copy.append(button('Replay zoom','replay-map-zoom','reveal-button'));
     } else {
         copy.append(element('p', { className: 'response-hint' }, [result.selected ? 'Discussing ' + result.selected + ' · Explanation is still hidden.' : frame.responseHint || (frame.answerText ? 'Think quietly. Share when invited.' : 'Think first. Show 1 or 2 fingers when invited.')]));
-        copy.append(button(frame.answerText ? 'Reveal response' : frame.suggested ? 'Reveal suggested answer' : 'Reveal explanation', 'reveal', 'reveal-button'));
+        copy.append(button(frame.revealLabel || (frame.answerText ? 'Reveal response' : frame.suggested ? 'Reveal suggested answer' : 'Reveal explanation'), 'reveal', 'reveal-button'));
     }
 }
 function renderTimer() {
@@ -813,8 +820,12 @@ function handleAction(event) {
         if (!questionOptions(currentFrame()).some(function(option) { return option.id === target.dataset.answer; })) return;
         session.responses[responseKey()] = { ...response(), selected: target.dataset.answer };
         save(); render();
+    } else if (action === 'replay-map-zoom') {
+        if(!currentFrame().revealAtlasBorder || !response().revealed)return;
+        animateEvidenceReveal=true;render();
     } else if (action === 'reveal') {
         if (currentFrame().type !== 'question') return;
+        animateEvidenceReveal=!!currentFrame().revealAtlasBorder && !response().revealed;
         session.responses[responseKey()] = { ...response(), revealed: true };
         save(); render();
     } else if (action === 'mode') {

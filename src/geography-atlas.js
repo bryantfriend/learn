@@ -29,7 +29,77 @@ export function atlasArt({view='islands',labels=true,highlight='',cities=false,p
  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="${esc(view==='world'?'World map highlighting the UK in north-west Europe':view==='europe'?'UK offshore from mainland Europe, with France and the North Sea':`UK and Ireland map${labels?', with countries and surrounding seas labelled':''}`)}"><rect width="100%" height="100%" fill="#e3f1f7"/><g font-family="system-ui,sans-serif" fill="#294f54">${body}</g></svg>`;
 }
 const el=(tag,text,cls)=>{const e=document.createElement(tag);if(text)e.textContent=text;if(cls)e.className=cls;return e;};
+// Follow the shared segments in the existing country outlines, rather than drawing
+// an approximate line across the map.
+function landBorder(){
+ const edges=path=>path.split('M').filter(Boolean).flatMap(part=>{
+  const points=[...part.matchAll(/(?:^|L)([\d.]+) ([\d.]+)/g)].map(m=>m[1]+' '+m[2]);
+  return points.slice(1).map((p,i)=>[points[i],p]);
+ });
+ const key=pair=>[...pair].sort().join('|');
+ const england=new Set(edges(ukMapPaths.England).map(key));
+ const shared=edges(ukMapPaths.Wales).filter(pair=>england.has(key(pair)));
+ return shared.map(([a,b],i)=>`${i===0||shared[i-1][1]!==a?'M'+a:''}L${b}`).join('');
+}
+function focusLandBorder(canvas,animate){
+ const svg=canvas.querySelector('svg');
+ svg.setAttribute('aria-label','Zoomed map of England and Wales highlighting their shared land border');
+ svg.querySelector('rect').setAttribute('width','720');
+ svg.querySelector('rect').setAttribute('height','520');
+ for(const n of [...svg.querySelector(':scope > g').children]){
+  if(!n.matches('path[data-country]'))n.remove();
+ }
+ const overlay=document.createElementNS('http://www.w3.org/2000/svg','g');
+ overlay.innerHTML=`<path d="${landBorder()}" fill="none" stroke="#fffdf8" stroke-width="8" vector-effect="non-scaling-stroke"/><path class="atlas-land-border" d="${landBorder()}" fill="none" stroke="#c44727" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>${labelled(338,370,'Wales',10)}${labelled(433,377,'England',10)}${labelled(400,324,'Land border',9)}<path d="M400 328L388 341" fill="none" stroke="#c44727" stroke-width="1"/>`;
+ svg.append(overlay);
+ const end=[320,295,190,145];
+ if(!animate||matchMedia('(prefers-reduced-motion: reduce)').matches){svg.setAttribute('viewBox',end.join(' '));return;}
+ overlay.classList.add('atlas-border-reveal');
+ const start=[0,0,720,520];let began;
+ function tick(now){
+  if(!svg.isConnected)return;
+  began??=now;const t=Math.min((now-began)/1100,1),ease=t*t*(3-2*t);
+  svg.setAttribute('viewBox',start.map((n,i)=>n+(end[i]-n)*ease).join(' '));
+  if(t<1)requestAnimationFrame(tick);
+ }
+ requestAnimationFrame(tick);
+}
+function createMembershipExplanation(spec,onChange){
+ const root=el('figure',null,'geo-atlas atlas-membership'),title=el('h3'),canvas=el('div',null,'atlas-canvas'),caption=el('figcaption'),controls=el('div',null,'atlas-controls');
+ canvas.innerHTML=atlasArt({labels:true});caption.setAttribute('aria-live','polite');
+ canvas.querySelector('text[x="24"][y="506"]').textContent='Colour = places highlighted in this explanation';
+ const scenes=[
+  ['United Kingdom · 4 countries',ukCountries,'England, Scotland, Wales and Northern Ireland are all part of the UK.'],
+  ['Great Britain · 1 island',['England','Scotland','Wales'],'England, Scotland and Wales are on the island of Great Britain.'],
+  ['Northern Ireland · the difference',['Northern Ireland'],'Northern Ireland is part of the UK, but it is on the island of Ireland.'],
+  ['UK = Great Britain + Northern Ireland',ukCountries,'The UK and Great Britain are different: Northern Ireland is in the UK, but not on Great Britain.']
+ ];
+ let run=0,step=spec.membershipStep||0;
+ function show(index){
+  step=index;const [heading,active,explanation]=scenes[index];title.textContent=heading;caption.textContent=explanation;
+  for(const path of canvas.querySelectorAll('[data-country]')){
+   const name=path.dataset.country,on=active.includes(name);
+   path.style.fill=on?countryColours[name]:'#e0e4dc';
+   path.style.stroke=on?'#137c83':'#879c99';path.style.strokeWidth=on?'3':'1.3';
+   path.setAttribute('vector-effect','non-scaling-stroke');
+  }
+  canvas.querySelector('svg').setAttribute('aria-label',heading+'. '+explanation);
+  onChange({...spec,membershipStep:step});
+ }
+ const play=el('button','Play explanation');play.type='button';
+ play.onclick=()=>{
+  const current=++run;play.textContent='Replay explanation';show(0);
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){show(3);return;}
+  for(let i=1;i<scenes.length;i++)setTimeout(()=>{if(current===run&&root.isConnected)show(i);},i*2800);
+ };
+ controls.append(play);
+ for(const [index,label]of [[0,'UK'],[1,'Great Britain'],[2,'Northern Ireland']]){
+  const b=el('button',label);b.type='button';b.onclick=()=>{run++;show(index);};controls.append(b);
+ }
+ root.append(title,canvas,caption,controls);show(step);return root;
+}
 export function createAtlas(spec={},onChange=()=>{}){
+ if(spec.membershipAnimation)return createMembershipExplanation(spec,onChange);
  const root=el('figure',null,'geo-atlas'),controls=el('div',null,'atlas-controls'),canvas=el('div',null,'atlas-canvas'),caption=el('figcaption');
  let view=spec.view||'islands',highlight=spec.highlight||'',labels=spec.labels!==false,physical=!!spec.physical;
  let revealed=[...(spec.revealed||[])];
@@ -40,6 +110,7 @@ export function createAtlas(spec={},onChange=()=>{}){
    canvas.replaceChildren();canvas.classList.add('atlas-comparison');
    for(const [key,title,subtitle]of [['uk','United Kingdom','England + Scotland + Wales + Northern Ireland'],['gb','Great Britain','England + Scotland + Wales · one island']]){const map=el('section');map.append(el('h3',title),el('p',subtitle));const art=el('div');art.innerHTML=atlasArt({highlight:key});map.append(art);canvas.append(map);}
   }else canvas.innerHTML=atlasArt({view,highlight,labels,cities:spec.cities,physical,marker:spec.marker,revealed:spec.fill?revealed:null});
+  if(spec.focusBorder)focusLandBorder(canvas,spec.animateFocus);
   if(spec.fill){
    canvas.querySelector('svg').setAttribute('role','group');
    for(const path of canvas.querySelectorAll('[data-country]')){const name=path.dataset.country;if(!ukCountries.includes(name))continue;
@@ -47,7 +118,7 @@ export function createAtlas(spec={},onChange=()=>{}){
     const reveal=()=>{if(!revealed.includes(name))revealed.push(name);update();canvas.querySelector(`[data-country="${name}"]`).focus({preventScroll:true});};path.onclick=reveal;path.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();reveal();}};
    }
   }
-  caption.textContent=spec.fill?`${revealed.length} of 4 countries labelled. ${revealed.length===4?'Now point to the country on the other island.':'Predict a name, then tap its outline to add it.'}`:spec.caption||descriptions[view];
+  caption.textContent=spec.focusBorder?'Highlighted: the shared land border between England and Wales.':spec.fill?`${revealed.length} of 4 countries labelled. ${revealed.length===4?'Now point to the country on the other island.':'Predict a name, then tap its outline to add it.'}`:spec.caption||descriptions[view];
   controls.querySelectorAll('button').forEach(b=>{if(b.dataset.view)b.setAttribute('aria-pressed',String(b.dataset.view===view));if(b.dataset.highlight)b.setAttribute('aria-pressed',String(b.dataset.highlight===highlight));});
   onChange(root.currentAtlasState());
  }

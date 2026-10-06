@@ -14,7 +14,7 @@ test('Every Geography section has subject explanations, visual slide text and an
 test('All 86 teaching/review lessons preserve explanations in the eight-section timetable',()=>{
  const geo=lessons.filter(l=>l.geoRedesign);assert.equal(geo.length,86);
  for(const l of geo){
-  assert.equal(l.teacherLed,true,l.id);assert.equal(l.contentRevision,8000,l.id);
+  assert.equal(l.teacherLed,true,l.id);assert.ok(l.contentRevision>=8000,l.id);
   assert.deepEqual(l.stages.map(s=>s.durationMinutes),[4,2,3,8,5,10,5,3],l.id);
   const frames=l.stages.flatMap(s=>s.frames);
   assert.ok(frames.filter(f=>!f.final).every(f=>f.teacherScript&&(f.geoDisplay||f.geoArt)),l.id);

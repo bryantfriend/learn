@@ -1,0 +1,45 @@
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'C:/Users/fangb_kyiapn1/.codex/skills/develop-web-game/node_modules/playwright');
+const assert=require('node:assert/strict'),fs=require('node:fs');
+(async()=>{
+ const browser=await chromium.launch();
+ try{
+  const page=await browser.newPage({viewport:{width:1280,height:720}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
+  page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+  await page.goto('http://127.0.0.1:4173/learn/coastal-connections.html');
+  fs.mkdirSync('output/web-game/coastal-verified',{recursive:true});
+  const state=()=>page.evaluate(()=>JSON.parse(window.render_game_to_text()));
+  const point=async id=>{const s=(await state()).stops[id],r=await page.locator('canvas').boundingBox(),scale=Math.min(r.width/1000,r.height/600);return {x:r.x+(r.width-1000*scale)/2+s.x*scale,y:r.y+(r.height-600*scale)/2+s.y*scale};};
+  const stop=async id=>{const p=await point(id);await page.mouse.click(p.x,p.y);};
+  const tool=type=>page.locator(`[data-tool="${type}"]`).click();
+  const route=async(a,b,type)=>{await tool(type);await stop(a);await stop(b);};
+  const bounds=await page.locator('canvas').boundingBox(),ferryBox=await page.locator('[data-tool="ferry"]').boundingBox();
+  const clickAction=p=>({buttons:['left_mouse_button'],frames:2,mouse_x:p.x-bounds.x,mouse_y:p.y-bounds.y});
+  fs.writeFileSync('output/web-game/coastal-actions-play.json',JSON.stringify({steps:[clickAction(await point(0)),clickAction(await point(1)),clickAction({x:ferryBox.x+ferryBox.width/2,y:ferryBox.y+ferryBox.height/2}),clickAction(await point(1)),clickAction(await point(2)),{buttons:['space'],frames:600}]}));
+  await route(0,2,'road');assert.equal((await state()).links.length,0);assert.match(await page.locator('.coastal-message').innerText(),/cannot cross/);
+  const a=await point(0),b=await point(1);await page.mouse.move(a.x,a.y);await page.mouse.down();await page.mouse.move(b.x,b.y,{steps:8});await page.mouse.up();assert.equal((await state()).links.length,1);
+  await route(1,2,'ferry');await route(1,2,'ferry');assert.equal((await state()).links.length,2);
+  await page.getByRole('button',{name:'▶ Play',exact:true}).click();await page.evaluate(()=>window.advanceTime(3500));
+  assert.ok((await state()).passengers.some(p=>p.mode==='riding'));
+  await page.screenshot({path:'output/web-game/coastal-verified/playing.png'});
+  await page.getByRole('button',{name:'Ⅱ Pause',exact:true}).click();const paused=await state();await page.evaluate(()=>window.advanceTime(20000));assert.deepEqual(await state(),paused);
+  await page.getByRole('button',{name:'▶ Play',exact:true}).click();await page.evaluate(()=>window.advanceTime(90000));assert.equal((await state()).delivered,5);
+  await page.screenshot({path:'output/web-game/coastal-verified/complete.png'});
+  await page.getByRole('button',{name:'Ferry challenge',exact:true}).click();assert.equal((await state()).ferryClosed,true);
+  await page.getByRole('button',{name:'▶ Play',exact:true}).click();await page.evaluate(()=>window.advanceTime(90000));assert.equal((await state()).delivered,0);
+  await route(0,3,'road');await route(2,4,'road');await route(3,4,'flight');await page.evaluate(()=>window.advanceTime(150000));assert.equal((await state()).delivered,5);
+  await page.screenshot({path:'output/web-game/coastal-verified/challenge.png'});
+  await page.getByRole('button',{name:'↶ Undo',exact:true}).click();assert.equal((await state()).links.length,4);
+  await page.getByRole('button',{name:'1× speed',exact:true}).click();assert.equal((await state()).speed,2);
+  await page.getByRole('button',{name:'↻ Reset',exact:true}).click();assert.equal((await state()).links.length,0);assert.equal((await state()).delivered,0);assert.equal((await state()).speed,1);
+  await page.setViewportSize({width:390,height:844});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await route(0,1,'road');assert.equal((await state()).links.length,1);await page.screenshot({path:'output/web-game/coastal-verified/mobile.png',fullPage:true});
+  await page.setViewportSize({width:1280,height:720});await page.goto('http://127.0.0.1:4173/learn/');
+  await page.locator('[data-action="choose-lesson"]').click();await page.locator('[data-id="7b"]').click();await page.locator('[data-id="geography"]').click();await page.locator('[data-lesson="g7b-geo-w01-2"]').click();await page.locator('[data-action="picker-start"]').click();
+  await page.locator('[data-action="stages"]').click();await page.locator('[data-action="jump"][data-stage="3"]').click();await page.locator('[data-action="next-step"]').click();
+  await page.locator('.transport-game-button').click();assert.equal(await page.locator('.coastal-dialog[open]').count(),1);
+  await page.getByRole('button',{name:'Connect Hilltown',exact:true}).press('Enter');await page.getByRole('button',{name:'Connect Harbour',exact:true}).press('Enter');assert.equal((await state()).links.length,1);
+  await page.getByRole('button',{name:'Close game ×',exact:true}).click();await page.locator('.coastal-dialog').waitFor({state:'detached'});
+  await page.locator('.transport-game-button').click();assert.equal((await state()).links.length,1);await page.screenshot({path:'output/web-game/coastal-verified/lesson-game.png'});
+  await page.keyboard.press('Escape');await page.locator('.coastal-dialog').waitFor({state:'detached'});assert.deepEqual(errors,[]);
+  console.log('PASS routes, drag, invalid crossings, passenger transfers, pause/resume, mission completion, ferry challenge, undo/reset/speed, mobile, keyboard and lesson launch/resume.');
+ }finally{await browser.close();}
+})().catch(e=>{console.error(e);process.exitCode=1;});
