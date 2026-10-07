@@ -1,5 +1,8 @@
 import {registerTranslations} from './coastal-i18n.js';
 const rows=`
+Belgium shares borders with France, the Netherlands, Germany and Luxembourg.|Бельгия граничит с Францией, Нидерландами, Германией и Люксембургом.|Бельгия Франция, Нидерланддар, Германия жана Люксембург менен чектешет.
+The Netherlands borders the North Sea, Belgium and Germany.|Нидерланды граничат с Северным морем, Бельгией и Германией.|Нидерланддар Түндүк деңиз, Бельгия жана Германия менен чектешет.
+Amsterdam is famous for its network of canals.|Амстердам славится своей сетью каналов.|Амстердам каналдар тармагы менен белгилүү.
 Close quiz ×|Закрыть вопрос ×|Суроону жабуу ×
 Close atlas ×|Закрыть атлас ×|Атласты жабуу ×
 Close station ×|Закрыть станцию ×|Бекетти жабуу ×

@@ -38,6 +38,8 @@ const dir='output/web-game/coastal-worlds';fs.mkdirSync(dir,{recursive:true});
  await page.locator('.coastal-quiz-coin').click();const before=await page.evaluate(()=>testGame.state.credits);
  await page.locator('[data-answer="Chuy River"]').click();assert.ok(await page.evaluate(()=>testGame.state.credits)>=before+15);assert.equal(await page.evaluate(()=>testGame.state.learning.earned),15);
  await page.screenshot({path:dir+'/kg-ky-quiz.png'});await page.locator('.coastal-quiz-shop button').first().click();
+ await page.locator('.coastal-postcard .coastal-atlas-button').evaluate(el=>el.click());
+ assert.ok(await page.locator('.coastal-atlas-landmark-picture').count()>=3);await page.screenshot({path:dir+'/kg-ky-atlas.png'});await page.locator('dialog[open] button').first().click();
  await page.locator('[data-stop="0"]').evaluate(el=>el.click());const station=await page.locator('dialog[open]').innerText();assert.ok(!station.includes('harbour'));assert.ok(station.includes('Бекетти жакшыртуу'));await page.screenshot({path:dir+'/kg-ky-station.png'});await page.locator('dialog[open] button').first().click();
  await page.locator('.coastal-vehicle-info').first().click();assert.ok((await page.locator('dialog[open]').innerText()).includes('Маршрутка'));await page.screenshot({path:dir+'/kg-ky-vehicle.png'});await page.locator('dialog[open] button').first().click();
  // Saved journeys switch the active world and language as well as round state.
