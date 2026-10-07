@@ -105,3 +105,21 @@ Loop follow-up: Enabled multi-stop and closed loops for boats/flights too, prese
 2026-10-06 rounded station routes: Added cached coastal-route-curves.js geometry with compact quadratic bends split at each station. Connected sections and closed-loop seams share both position and tangent; two-stop routes remain straight. Routes, road markings, rail ties and paired rails use curved geometry. Vehicles interpolate distance along the same path and rotate with its tangent; service endpoints remain inside station markers. Route hit testing follows the drawn curves. Geography, road-crossing rules, journey timing, costs and passenger simulation retain their established edges. Validation: all 153 unit tests pass, including bend/loop tangent continuity, short edges, straight endpoints, cache invalidation and hit tests. Zoomed bus/train motion and mobile screenshots inspected; loop/planner/refund browser suite and required gameplay client pass without errors. Changes remain local. Sync coastal-route-curves.js and its OIS syntax check on the next push.
 
 2026-10-06 release: Learn 2.6.11 / OIS 0.3.11 include rounded station joins, curved vehicle movement, smooth loop seams, curved tracks and matching route hit testing. Synced all 19 game modules and CSS exactly. Prior full suite passed 153 tests; OIS syntax and Year 7/8 Geography launch/mobile checks passed after syncing. Updated release versions and asset fingerprints.
+
+2026-10-07 — Compact Coastal Connections UI and city quizzes
+- Removed the game heading/tagline; moved the Normal/Hard badge into existing controls.
+- Currency display text now uses 💷; map tools show +, −, a map-fit SVG and 🤚 with descriptive tooltips/ARIA labels.
+- Country atlas and discovery references now use Wikipedia; retained map licensing attribution.
+- Added five researched questions per city (35 cities / 175 new questions), combining them with existing country questions. Coins follow newest cities, use persisted shuffled bags, avoid repeats until each pool is exhausted, and support legacy country-only coins.
+- Validation: full 156-test unit suite passed; learning/compact-controls browser test passed with correct/wrong rewards, pause/resume, Wikipedia links and mobile atlas. Required web-game client passed after fixing a removed-header reference; screenshot inspected and no page errors.
+- Changes are local; no version bump or push requested in this turn.
+`n2026-10-07 — Moved Build a route from here directly below the city name, above city artwork, stats and upgrades. Browser check confirmed it is visible without scrolling and closes the modal with the clicked city selected as the route origin.
+
+2026-10-07 — Remove only the clicked route section
+- Added removeRouteSection: cut loops into an open line, trim an end section, or split a middle section into independently editable colours. Preserve vehicles, riders, service timers and stats on untouched sections; safely return passengers if their vehicle occupies the deleted section.
+- Refund only the removed section; retain the original remaining investment without rounding loss. Select the newly opened endpoint so players can rebuild immediately.
+- Map hit testing identifies individual curved sections. Manage routes now lists section removal buttons instead of whole-line sales; removal exits the tool and explains the result.
+- Validation: 163 unit tests passed; dedicated browser check passed for curved section clicks, loop reopening/reclosing, split colours and sidebar removal. Screenshots inspected.
+
+2026-10-07 release — Learn 2.6.12 / OIS 0.3.12
+Synced all Coastal game modules and CSS exactly. Includes compact controls and currency labels, header removal, Wikipedia geography links, 175 additional city questions with nonrepeating pools, top-of-modal route creation and individual curved section removal for loops/open routes. Prior full suite passed 163 tests; learning, section removal and crossing/redraw browser checks passed. OIS syntax checks, Geography Year 7/8 launches, return navigation and mobile layout passed. Updated package/release versions and OIS asset fingerprints before pushing both main branches.
