@@ -1,5 +1,7 @@
 import {shapeCollection,stationShape} from './coastal-shapes.js';
-export const project=(lon,lat)=>({x:(lon+12)*65,y:(61-lat)*95});
+export let worldId='uk';
+export function setWorldProjection(id){worldId=id;}
+export const project=(lon,lat)=>worldId==='kyrgyzstan'?({x:(lon-69)*105,y:(43.3-lat)*155}):({x:(lon+12)*65,y:(61-lat)*95});
 export const regions=[
  {id:'england',name:'England',round:1,capital:'London',label:[-.9,53.1],colour:'#b6d797',source:'https://en.wikipedia.org/wiki/England',facts:['London is the capital of both England and the United Kingdom.','England, Wales and Scotland share the island of Great Britain.','The River Thames flows through London towards the North Sea.']},
  {id:'wales',name:'Wales',round:4,capital:'Cardiff',label:[-4.25,52.3],colour:'#b7d5ae',source:'https://en.wikipedia.org/wiki/Wales',facts:['Cardiff is the capital of Wales; its Welsh name is Caerdydd.','Wales shares a land border with England and has a coast on the Irish Sea.','Cardiff Castle stands in the heart of the Welsh capital.']},
@@ -29,7 +31,7 @@ export const geoStops=cities.map(([name,lon,lat,region,round,special],id)=>({id,
 export const unlockRounds={road:1,rail:8,highspeed:20,ferry:10,flight:13,tunnel:18};
 export const vehicleLabels={road:'Bus',rail:'Train',highspeed:'High-speed train',ferry:'Boat',flight:'Flight',tunnel:'Tunnel train'};
 export const activeForRound=round=>geoStops.filter(s=>s.round<=round).map(s=>s.id);
-export function facilitiesForRound(round){const facilities={};if(round>=10)for(const id of [12,13,14,15])facilities[id]=['port'];if(round>=13)for(const id of [0,8,14,15])facilities[id]=[...(facilities[id]??[]),'airport'];if(round>=16)facilities[21]=['airport'];return facilities;}
+export function facilitiesForRound(round){if(worldId==='kyrgyzstan')return round>=13?{0:['airport'],7:['airport'],18:['airport'],21:['airport']}:{};const facilities={};if(round>=10)for(const id of [12,13,14,15])facilities[id]=['port'];if(round>=13)for(const id of [0,8,14,15])facilities[id]=[...(facilities[id]??[]),'airport'];if(round>=16)facilities[21]=['airport'];return facilities;}
 export function discoveryForRound(round,seed){const newly=regions.filter(r=>r.round===round),region=newly.length?newly[seed%newly.length]:regions.filter(r=>r.round<=round)[seed%regions.filter(r=>r.round<=round).length];return {region:region.id,title:(newly.length?'Discover ':'Map moment · ')+region.name,text:region.facts[(seed>>>8)%3],source:region.source,newlyUnlocked:newly.length>0};}
 export const waterways=[
  ['North Sea',3,55,1],['English Channel',-.5,50.2,1],['Atlantic Ocean',-11,54,1],['Bristol Channel',-4.5,51.35,4],['Irish Sea',-4.95,53.8,4],['Celtic Sea',-8,50,10],['North Channel',-5.5,55.15,10],['Bay of Biscay',-5.3,46.9,16],['Strait of Dover',1.75,51.0,16],['Mediterranean Sea',5,43.1,16],['Baltic Sea',13.7,55.4,25]

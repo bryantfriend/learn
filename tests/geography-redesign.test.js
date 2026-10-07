@@ -22,13 +22,13 @@ test('all 86 Geography workshops are self-contained with exact core budgets and 
 test('the first 7A workshop explicitly models linking before independent linking',()=>{
  const l=geo.find(l=>l.id==='g7a-geo-w02-1'),frames=l.stages.flatMap(s=>s.frames);
  const model=frames.findIndex(f=>f.title==='What does “make a link” mean?');
- const independent=frames.findIndex(f=>f.title==='Connection builders');
+ const independent=frames.findIndex(f=>f.fingerPractice&&/interaction|farm|Physical geography|Human geography/.test(f.title));
  assert.ok(model>=0&&independent>model);assert.match(frames[model].lines.join(' '),/so people can reach/);
 });
 test('7A combined weeks retain their applied and independent missions',()=>{
  const kit=geo.find(l=>l.id==='g7a-geo-w04-1');
  assert.deepEqual(kit.workshopMissions.map(m=>m.index),[1,2]);
- assert.ok(kit.stages.find(s=>s.id==='apply').frames.some(f=>f.title.includes('Three equipment stations')));
+ assert.ok(kit.stages.find(s=>s.id==='model').frames.some(f=>f.title.includes('Three equipment stations')));
  assert.equal(kit.stages.flatMap(s=>s.frames).filter(f=>f.simulation).length,1);
 });
 test('numerical models conserve water, convert scale and encode grid references',()=>{
@@ -54,7 +54,7 @@ test('Geography teaching sessions have distinct tasks, instruction and exit prom
   const seen=new Map();
   for(const l of geo.filter(l=>l.catalog.classes.includes(classId)&&!l.title.startsWith('Review and repair:'))){
    for(const stage of ['model','apply','finish']){
-    const signature=stage+JSON.stringify(l.stages.find(s=>s.id===stage).frames.map(f=>[f.lines,f.geoDisplay?.demo?.steps]));
+    const signature=stage+JSON.stringify(l.stages.find(s=>s.id===stage).frames.map(f=>[f.title,f.lines,f.choices,f.geoDisplay?.demo?.steps]));
     assert.ok(!seen.has(signature),`${l.id} repeats ${stage} from ${seen.get(signature)}`);
     seen.set(signature,l.id);
    }
@@ -68,5 +68,6 @@ test('7B week 2 progresses from locating countries to constrained journey planni
  assert.equal(second.stages.find(s=>s.id==='model').frames.find(f=>f.simulation).simulation.kind,'journey');
  const prompts=new Set(first.extensions[0].rounds.map(r=>r.prompt));
  assert.ok(second.extensions[0].rounds.every(r=>!prompts.has(r.prompt)));
- assert.ok(second.stages.find(s=>s.id==='check').frames.some(f=>/neither listed option/i.test(f.explanation)));
+ assert.ok(second.stages.find(s=>s.id==='check').frames.every(f=>f.sourceCard&&f.answerText&&!f.options));
+ assert.match(second.stages.find(s=>s.id==='model').notes,/constraint|waiting|journey/i);
 });

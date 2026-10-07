@@ -1,3 +1,4 @@
+import {geographyWordSupport} from './geography-word-support.js';
 // Plain-English definitions tied to the textbook sections, not inferred from artwork.
 const groups = {
  '1.1':[['Physical geography','Natural features and processes'],['Human geography','People, places and activities'],['Interaction','How people and nature affect each other']],
@@ -43,4 +44,4 @@ const groups = {
  '5.9':[['Cause','A factor contributing to an event'],['Impact','An effect of the event'],['Response','An action taken before, during or after']],
  '5.10':[['Flood defence','A measure intended to reduce flood risk'],['Warning','Information helping people prepare'],['Risk','The likelihood and consequences of harm']]
 };
-export const conceptVocabulary=Object.fromEntries(Object.entries(groups).map(([code,words])=>[code,words.map(([term,meaning],i)=>({term,meaning,symbol:['◈','⌖','↗'][i],...(code.startsWith('5.')&&['Erosion','Transportation','Deposition'].includes(term)?{image:`geography/${term.toLowerCase()}.png`}:{})}))]));
+export const conceptVocabulary=Object.fromEntries(Object.entries(groups).map(([code,words])=>[code,words.map(([term,meaning],i)=>({term,meaning,...geographyWordSupport[term],symbol:['◈','⌖','↗'][i],...(code==='3.1'?{picture:['uk','gb','island'][i]}:{}),...(code.startsWith('5.')&&['Erosion','Transportation','Deposition'].includes(term)?{image:`geography/${term.toLowerCase()}.png`}:{})}))]));

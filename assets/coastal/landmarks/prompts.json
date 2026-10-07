@@ -1,0 +1,52 @@
+[
+  {
+    "id": "place-1",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: scientific-educational. Create a polished full-color illustrated travel postcard for a Year 7/8 geography game's landmark information card. Subject: Stonehenge on Salisbury Plain in Wiltshire, England. Accurate weathered standing sarsen stones with horizontal lintels forming the recognizable prehistoric stone circle, rolling grassland. Warm painterly storybook realism, accurate recognizable geography and architecture, rich natural colors, subtle paper texture, inviting daylight, generous scenic context, detailed landscape illustration, horizontal composition. Depict the actual place rather than a generic symbol. No text, borders, logos, watermarks or UI. Match a cohesive educational travel journal style."
+  },
+  {
+    "id": "place-2",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: scientific-educational. Create a polished full-color illustrated travel postcard for a Year 7/8 geography game's landmark information card. Subject: White Cliffs of Dover in Kent, England. Towering white chalk cliffs above the turquoise English Channel, green grassy cliff tops, coastal perspective. Warm painterly storybook realism, accurate recognizable geography and architecture, rich natural colors, subtle paper texture, inviting daylight, generous scenic context, detailed landscape illustration, horizontal composition. Depict the actual place rather than a generic symbol. No text, borders, logos, watermarks or UI. Match a cohesive educational travel journal style."
+  },
+  {
+    "id": "place-3",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: scientific-educational. Create a polished full-color illustrated travel postcard for a Year 7/8 geography game's landmark information card. Subject: Lake District in Cumbria, England. A glacial lake framed by green fell mountains, stone walls and rural walking paths. Warm painterly storybook realism, accurate recognizable geography and architecture, rich natural colors, subtle paper texture, inviting daylight, generous scenic context, detailed landscape illustration, horizontal composition. Depict the actual place rather than a generic symbol. No text, borders, logos, watermarks or UI. Match a cohesive educational travel journal style."
+  },
+  {
+    "id": "place-5",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: scientific-educational. Create a polished full-color illustrated travel postcard for a Year 7/8 geography game's landmark information card. Subject: Eryri / Snowdonia in north Wales. Yr Wyddfa / Snowdon mountain ridges and a blue glacial lake, rugged slate-grey rock, Welsh mountain landscape. Warm painterly storybook realism, accurate recognizable geography and architecture, rich natural colors, subtle paper texture, inviting daylight, generous scenic context, detailed landscape illustration, horizontal composition. Depict the actual place rather than a generic symbol. No text, borders, logos, watermarks or UI. Match a cohesive educational travel journal style."
+  },
+  {
+    "id": "place-7",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: scientific-educational. Create a polished full-color illustrated travel postcard for a Year 7/8 geography game's landmark information card. Subject: Loch Ness in the Scottish Highlands. Long deep freshwater loch surrounded by green hills, recognizable Urquhart Castle ruins in the foreground; no mythical monster. Warm painterly storybook realism, accurate recognizable geography and architecture, rich natural colors, subtle paper texture, inviting daylight, generous scenic context, detailed landscape illustration, horizontal composition. Depict the actual place rather than a generic symbol. No text, borders, logos, watermarks or UI. Match a cohesive educational travel journal style."
+  },
+  {
+    "id": "place-8",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: scientific-educational. Create a polished full-color illustrated travel postcard for a Year 7/8 geography game's landmark information card. Subject: Ben Nevis in the Scottish Highlands, UK's highest mountain. Broad rocky summit and steep mountain slopes above a green glen, dramatic clear daylight. Warm painterly storybook realism, accurate recognizable geography and architecture, rich natural colors, subtle paper texture, inviting daylight, generous scenic context, detailed landscape illustration, horizontal composition. Depict the actual place rather than a generic symbol. No text, borders, logos, watermarks or UI. Match a cohesive educational travel journal style."
+  },
+  {
+    "id": "place-9",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: scientific-educational. Create a polished full-color illustrated travel postcard for a Year 7/8 geography game's landmark information card. Subject: Giant's Causeway on Northern Ireland's Antrim coast. Accurate interlocking hexagonal basalt columns stepping down to the ocean, dark volcanic rock, coastal cliffs. Warm painterly storybook realism, accurate recognizable geography and architecture, rich natural colors, subtle paper texture, inviting daylight, generous scenic context, detailed landscape illustration, horizontal composition. Depict the actual place rather than a generic symbol. No text, borders, logos, watermarks or UI. Match a cohesive educational travel journal style."
+  },
+  {
+    "id": "place-10",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: scientific-educational. Create a polished full-color illustrated travel postcard for a Year 7/8 geography game's landmark information card. Subject: Cliffs of Moher on Ireland's Atlantic coast in County Clare. Towering layered dark sea cliffs with green tops and Atlantic waves, distant O'Brien's Tower. Warm painterly storybook realism, accurate recognizable geography and architecture, rich natural colors, subtle paper texture, inviting daylight, generous scenic context, detailed landscape illustration, horizontal composition. Depict the actual place rather than a generic symbol. No text, borders, logos, watermarks or UI. Match a cohesive educational travel journal style."
+  },
+  {
+    "id": "place-12",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: scientific-educational. Create a polished full-color illustrated travel postcard for a Year 7/8 geography game's landmark information card. Subject: Mont-Saint-Michel in Normandy, France. Recognizable fortified tidal island crowned by the medieval abbey and tall spire, stone village, surrounding shallow tidal water. Warm painterly storybook realism, accurate recognizable geography and architecture, rich natural colors, subtle paper texture, inviting daylight, generous scenic context, detailed landscape illustration, horizontal composition. Depict the actual place rather than a generic symbol. No text, borders, logos, watermarks or UI. Match a cohesive educational travel journal style."
+  },
+  {
+    "id": "place-14",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: scientific-educational. Create a polished full-color illustrated travel postcard for a Year 7/8 geography game's landmark information card. Subject: Kinderdijk windmills in the Netherlands. Historic Dutch brick windmills with four large sails beside a canal, low-lying grassy polder landscape, reflections. Warm painterly storybook realism, accurate recognizable geography and architecture, rich natural colors, subtle paper texture, inviting daylight, generous scenic context, detailed landscape illustration, horizontal composition. Depict the actual place rather than a generic symbol. No text, borders, logos, watermarks or UI. Match a cohesive educational travel journal style."
+  }
+]

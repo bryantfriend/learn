@@ -2,11 +2,14 @@ import {conceptVocabulary} from './geography-concept-vocabulary.js';
 import {content as foundationsBank} from './g7-geo-content.js';
 import {content as regionalBank} from './g7b-geo-content.js';
 import {createFingerPractice} from './geography-finger-practice.js';
+import {createCoursePractice,createCourseChecks} from './geography-course-practice.js';
 export const geographySections=[['begin','Starter and recall',4],['goal','Today’s learning goal',2],['vocabulary','Key vocabulary',3],['teach','Teacher explanation',8],['model','Worked example',5],['apply','Student practice',10],['check','Check understanding',5],['finish','Exit ticket and wrap-up',3]];
 const split=text=>text.split(/(?<=[.!?])\s+/);
 export function geographyArt(code){
- const name=code?.startsWith('4.')?'glaciers':code?.startsWith('5.')?'rivers':code?.startsWith('3.')?'settlements':code==='1.1'||code==='1.4'?'settlements':'map-skills';
- return {image:`geography/${name}.png`,alt:{glaciers:'Illustrated mountain glacier, rocky valley and meltwater stream.',rivers:'Illustrated river bend with a steep outer bank and gravel on the inner bank.',settlements:'Illustrated imaginary coastal town, countryside and transport links.','map-skills':'Illustrated map, compass, notebook and ruler.'}[name],caption:'Imagined teaching illustration • use the lesson source for exact facts.'};
+ const names={'1.1':'fieldwork','1.3':'fieldwork','1.4':'land-use-change','1.6':'urban-access','1.7':'urban-access','2.3':'aerial-plan','2.4':'aerial-plan','3.3':'weather-and-climate','3.4':'urban-access','3.5':'settlements','3.6':'urban-access','3.7':'urban-access','3.8':'settlements','4.5':'corrie-landscape','4.6':'glacial-deposits','4.7':'corrie-landscape','5.2':'water-cycle','5.3':'drainage-basin','5.4':'erosion','5.5':'rivers','5.7':'river-estuary','5.8':'flood-management','5.9':'flood-management','5.10':'flood-management'};
+ const name=names[code]||(code?.startsWith('4.')?'glaciers':code?.startsWith('5.')?'rivers':code?.startsWith('3.')?'settlements':'map-skills');
+ const descriptions={'water-cycle':'Water cycle landscape showing evaporation, rainfall, rivers, infiltration and groundwater flow.','drainage-basin':'Tributaries joining a main river within surrounding watershed ridges.','fieldwork':'Students counting and recording observations in imaginary school grounds.','land-use-change':'Matched imagined views showing a ferry replaced by a bridge and changing land use.','aerial-plan':'Overhead view of an imaginary school and park, showing relative positions.','urban-access':'Imaginary neighbourhood with shops, services, a bus stop and accessible crossing.','corrie-landscape':'Glacial mountain landscape with a corrie, tarn, sharp ridge and peak.','glacial-deposits':'Retreating glacier with moraine ridges, mixed deposits and an erratic boulder.','river-estuary':'River widening into a tidal estuary with mudflats, marshes and a harbour.','flood-management':'Imagined river landscape with woodland, flood storage and a set-back embankment.','weather-and-climate':'One day of weather compared with observations over seasons and years.',transportation:'Illustration of sediment moving in a river.',erosion:'Illustration of river erosion.',glaciers:'Illustrated mountain glacier, rocky valley and meltwater stream.',rivers:'Illustrated river bend with a steep outer bank and gravel on the inner bank.',settlements:'Illustrated imaginary coastal town, countryside and transport links.','map-skills':'Illustrated map, compass, notebook and ruler.'};
+ return {image:`geography/${name}.png`,contain:true,alt:descriptions[name],caption:'Teaching illustration • use the lesson source for exact locations and quantities.'};
 }
 export function rebuildGeographyConceptFlow(lesson,active,makeStage){
  const old=Object.fromEntries(lesson.stages.map(s=>[s.id,s]));
@@ -151,13 +154,51 @@ export function rebuildGeographyConceptFlow(lesson,active,makeStage){
    }
   }
  }
+ if(lesson.id!=='g7b-geo-w01-2'){
+  frames.apply=createCoursePractice(lesson,unique,geographyArt);
+  frames.check=createCourseChecks(lesson,unique,geographyArt);
+  for(const [index,frame]of frames.begin.entries()){
+   const u=unique[index],cards=frames.teach.filter(f=>f.conceptId?.startsWith(u.code+'-'));
+   Object.assign(frame,{title:frame.lines[0],type:'question',answerText:'One possible answer',explanation:cards[0]?.oralCheck?.answer||u.p.correct,revealLabel:'Reveal answer',allowHideAnswer:true,lines:['Think quietly. Share an observation and explain your reason.']});
+   if(cards[0]?.geoDisplay?.atlas){frame.geoDisplay=cards[0].geoDisplay;frame.conceptLayout='evidence';frame.enlargeMapButton=true;}
+  }
+  for(const frame of [...frames.model.filter(f=>f.teachingModel)]){
+   const u=active.find(u=>frame.kicker.includes(`· ${u.code} ·`)&&frame.title.includes(u.p.objective));
+   if(!u)continue;
+   if(frame.geoDisplay?.journey||frame.geoDisplay?.atlas)continue;
+   // The mini-lesson has one demonstrated case and a different student case.
+   // Keep its exact numbers together instead of reusing a mismatched diagram.
+   frame.modelSteps=null;
+   frame.title='Teacher example · '+u.mission.title;
+   const followup={...frame};
+   const examples=/\bwhich\b/i.test(u.p.prompt)?((lesson.catalog.order+u.missionIndex)%2?[u.p.wrong,u.p.correct]:[u.p.correct,u.p.wrong]).map((text,i)=>`Example ${i?'B':'A'}: ${text}`):[];
+   Object.assign(followup,{title:u.p.prompt,mode:'think',type:'question',lines:[...examples,'Use the demonstrated method. Explain your answer before revealing.'],
+    modelSteps:null,answerText:u.p.correct,explanation:u.p.explanation,revealLabel:'Reveal answer',allowHideAnswer:true,
+    sourceCard:[u.p.prompt,...examples].join('\n'),conceptLayout:'artwork',geoDisplay:null,teachingExample:u.p.model,
+    teacherScript:`Demonstrate this example first: ${u.p.model}\nThen read the different case on screen and invite an explanation before revealing: ${u.p.correct} ${u.p.explanation}`});
+   frames.model.splice(frames.model.indexOf(frame)+1,0,followup);
+  }
+  for(const frame of frames.teach){
+   if(frame.geoDisplay)frame.enlargeMapButton=true;
+   const [code,index]=frame.conceptId?.match(/^(\d+\.\d+)-(\d+)$/)?.slice(1)||[];
+   if(code==='4.5'||code==='4.6'&&Number(index)<4||code==='5.2'&&Number(index)<3||code==='5.7'&&index==='0'||code==='5.10'&&Number(index)<2){frame.conceptLayout='artwork';frame.geoArt=geographyArt(code);}
+   if(code==='3.3'&&index==='0'){frame.conceptLayout='artwork';frame.geoArt=geographyArt(code);}
+   if(code==='3.3'&&index==='3'){frame.conceptLayout='artwork';frame.geoArt={image:'geography/rain-shadow.png',contain:true,alt:'Moist air rises and cools on the windward slope. Descending air on the leeward side is often drier.',caption:'Relief rainfall concept illustration • rain can still occur on the leeward side.'};}
+  }
+  for(const frame of frames.finish){
+   if(frame.final){frame.title='Remember today’s geography';frame.lines=[...new Set(unique.map(u=>u.p.objective))];}
+   frame.geoArt=geographyArt(unique.find(u=>frame.discussionId===`exit-${u.code}`)?.code||first.code);
+   const code=unique.find(u=>frame.discussionId===`exit-${u.code}`)?.code||first.code;
+   if(['3.1','3.2'].includes(code)){frame.geoDisplay={atlas:{view:'islands',labels:true,cities:true}};frame.conceptLayout='evidence';frame.enlargeMapButton=true;}
+  }
+ }
  let elapsed=0;
  lesson.stages=geographySections.map(([id,title,minutes])=>{
   const notes=frames[id].map(f=>`${f.title}\n${f.teacherScript||''}${f.oralCheck?'\nCheck: '+f.oralCheck.question+'\nAnswer: '+f.oralCheck.answer:''}`).join('\n\n');
   const stage=makeStage(id,title,minutes,frames[id],notes||'Use this section to check progress towards the lesson goal.');stage.timeRange=`${elapsed}–${elapsed+minutes} min`;elapsed+=minutes;
   stage.frames.forEach(f=>f.conceptSection=id);return stage;
  });
- lesson.geoConcept=true;lesson.teacherLed=true;lesson.teachingApproach='guided-to-independent';lesson.contentRevision=lesson.id==='g7b-geo-w01-2'?8005:8000;lesson.boardFirst=false;
+ lesson.geoConcept=true;lesson.teacherLed=true;lesson.teachingApproach='guided-to-independent';lesson.contentRevision=lesson.id==='g7b-geo-w01-2'?8005:8100;lesson.boardFirst=false;
  lesson.openingScript='40-minute Geography: recall, goal, vocabulary, explanation, worked example, student practice, understanding check and exit ticket. Bring an exercise book, pencil and ruler where needed. '+lesson.learningObjectives.join(' / ');
  lesson.pacingNote='40-minute route: recall 4, goal 2, vocabulary 3, explanation 8, worked example 5, practice 10, check 5, exit 3. Divide each section between the topics in combined lessons. Timings are estimates.';
  lesson.boardTeachingGuide={...lesson.boardTeachingGuide,message:lesson.pacingNote,routine:['Explain and point to the visual.','Model a worked example.','Let pupils practise, then check and improve.'],stages:lesson.stages.map(s=>({title:s.title,minutes:s.durationMinutes,notes:s.notes}))};

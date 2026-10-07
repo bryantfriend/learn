@@ -1,0 +1,12 @@
+[
+  {
+    "id": "passport-spread",
+    "prompt": "Use case: stylized-concept. Create a production background texture for an educational geography game's Expedition Passport modal. A top-down flat open antique travel passport / field notebook, wide landscape 3:2 format. Two blank warm ivory parchment pages with very subtle aged paper grain, faint decorative vintage cartographic linework ONLY around outer margins, teal leather binding border, fine tan stitching, central vertical book gutter and subtle curved paper edges, small binding stitches down gutter. Fill almost whole image with book, crop tight. Both pages must be predominantly blank very light cream for dark readable UI text placed later. No letters, no text, no icons, no map labels, no stamps, no objects or shadows crossing central writing areas. Elegant realistic tactile illustration, match a cozy geography travel journal. No perspective tilt, front-on perfectly symmetric layout. No UI screenshot.",
+    "tool": "built-in image_gen"
+  },
+  {
+    "id": "passport-compass",
+    "prompt": "Use case: stylized-concept. Create a single vintage nautical compass rose embellishment for a geography expedition passport game UI. Transparent background. Delicate navy and muted teal ink engraved linework, brass gold center, eight-point compass star inside thin ornamental circle with tiny decorative dots, wisps of faint cartographic waves around lower edge. Crisp charming illustrated ink stamp, centered square composition. No letters, no labels, no text, no words, no rectangular backing. Art only, suitable to sit on cream parchment as a decorative emblem.",
+    "tool": "built-in image_gen"
+  }
+]

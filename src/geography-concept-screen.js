@@ -14,6 +14,13 @@ function vocabularyPicture(kind){
  }
  return visual;
 }
+function enlargeIllustration(figure,title,trigger){
+ const dialog=node('dialog',null,'concept-illustration-dialog');dialog.setAttribute('aria-label',title);
+ const close=node('button','Close ×','text-button');close.type='button';close.onclick=()=>dialog.close();
+ dialog.append(close,figure.cloneNode(true));
+ dialog.addEventListener('close',()=>{dialog.remove();trigger.focus();},{once:true});
+ document.body.append(dialog);dialog.showModal();close.focus();
+}
 function art(spec){const figure=node('figure',null,'concept-art'+(spec.contain?' concept-art-labelled':''));const img=node('img');img.src='./assets/'+spec.image;img.alt=spec.alt;img.decoding='async';figure.append(img,node('figcaption',spec.caption));return figure;}
 function card(title,text,cls){const root=node('aside',null,cls);root.append(node('strong',title),node('p',text));return root;}
 function enlargeVocabularyCard(tile){
@@ -44,11 +51,11 @@ export function createConceptScreen(lesson,stage,frame,copy,evidence){
   for(const [i,v]of frame.vocabularyCards.entries()){
    const tile=node('article',null,'concept-word');
    const visual=v.picture?vocabularyPicture(v.picture):node('div',null,'concept-word-art');
-   if(!v.picture){visual.style.backgroundImage=`linear-gradient(0deg,#102c4c30,#102c4c05),url("./assets/${v.image||frame.geoArt.image}")`;visual.style.backgroundPosition=`${i*50}% center`;if(!v.image)visual.append(node('span',v.symbol,'concept-word-symbol'));}
+   if(!v.picture){visual.style.backgroundImage=`linear-gradient(0deg,#102c4c30,#102c4c05),url("./assets/${v.image||frame.geoArt.image}")`;visual.style.backgroundPosition=`${i*50}% center`;}
    tile.append(visual,node('h3',v.term));
    if(v.zh||v.ru){const translations=node('div',null,'concept-word-translations');for(const [lang,text]of [['zh-Hans',v.zh],['ru',v.ru]])if(text){const line=node('p',text);line.lang=lang;translations.append(line);}tile.append(translations);}
    tile.append(node('p',v.meaning));
-   if(lesson.id==='g7b-geo-w01-2'){
+   {
     tile.classList.add('concept-word-interactive');tile.tabIndex=0;tile.setAttribute('role','button');tile.setAttribute('aria-haspopup','dialog');tile.setAttribute('aria-label','Enlarge '+v.term+' vocabulary card');
     tile.onclick=()=>enlargeVocabularyCard(tile);
     tile.onkeydown=event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();enlargeVocabularyCard(tile);}};
@@ -59,9 +66,15 @@ export function createConceptScreen(lesson,stage,frame,copy,evidence){
  }else{
   const useArt=frame.conceptLayout==='artwork'||frame.conceptLayout!=='evidence'&&(['begin','goal','finish','assessment'].includes(frame.conceptSection)||!frame.geoDisplay);
   const visual=useArt?art(frame.geoArt):evidence();
+  if(useArt){
+   const enlarge=node('button','Enlarge illustration ⛶','text-button geo-enlarge');enlarge.type='button';enlarge.setAttribute('aria-haspopup','dialog');
+   // Clone only the figure so the modal has one close control, not an active copy of its trigger.
+   enlarge.onclick=()=>{const figure=visual.cloneNode(true);figure.querySelector('.geo-enlarge')?.remove();enlargeIllustration(figure,frame.title,enlarge);};
+   visual.prepend(enlarge);
+  }
   if(frame.enlargeMapButton){
    const enlarge=copy.querySelector('.geo-enlarge');
-   if(enlarge){enlarge.textContent='Enlarge map ⛶';enlarge.setAttribute('aria-haspopup','dialog');enlarge.setAttribute('aria-controls','panel');visual.prepend(enlarge);}
+   if(enlarge&&!useArt){enlarge.textContent=frame.geoDisplay?.atlas?'Enlarge map ⛶':'Enlarge diagram ⛶';enlarge.setAttribute('aria-haspopup','dialog');enlarge.setAttribute('aria-controls','panel');visual.prepend(enlarge);}
   }
   body.append(visual,copy);
  }

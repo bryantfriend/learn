@@ -220,7 +220,7 @@ function renderPlayer() {
     if (frame.postcardActivity) copy.append(button(frame.postcardActivity.mode==='sorting'?'Open island sorting office ⛶':'Open postcard delivery ⛶','geography-postcards','question-bank-button'));
     if (frame.boardWork) copy.append(button('Work this out on the board ⛶','geography-workspace','board-work-button'));
     if (frame.boardRound||frame.boardTask) copy.append(element('p',{className:'board-round-routine'},['Everyone thinks → two pupils explain → check and improve.']));
-    if (frame.geoDisplay&&(frame.geoDisplay.journey||(!frame.simulation&&!frame.postcardActivity&&!frame.boardWork))) copy.append(button('Enlarge visual ⛶','geography-evidence','geo-enlarge'));
+    if (frame.geoDisplay&&(frame.enlargeMapButton||frame.geoDisplay.journey||(!frame.simulation&&!frame.postcardActivity&&!frame.boardWork))) copy.append(button('Enlarge visual ⛶','geography-evidence','geo-enlarge'));
     if (frame.simulation) copy.append(button(frame.boardActivity?'Explore the model ⛶':'Open investigation ⛶', 'geography-lab', 'question-bank-button'));
     if (typeof frame.sourceCard === 'string') copy.append(button('Show task source ⛶', 'task-source', 'question-bank-button'));
     if(lesson.geoRedesign){const actions=[...copy.querySelectorAll('.question-bank-button,.board-work-button,.geo-enlarge')];if(actions.length){const row=element('div',{className:'geo-frame-actions'});actions.forEach(b=>row.append(b));copy.append(row);}}

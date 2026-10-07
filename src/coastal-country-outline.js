@@ -1,0 +1,7 @@
+import {regionShapes} from './coastal-boundaries.js';
+import {regions,geoStops,project} from './coastal-geography.js';
+import {t} from './coastal-i18n.js';
+export function countryOutline(id){
+ const region=regions.find(r=>r.id===id),capital=geoStops.find(s=>s.region===id&&s.capital),rings=regionShapes[id].map(r=>r.map(([lon,lat])=>project(lon,lat))),points=rings.flat(),left=Math.min(...points.map(p=>p.x)),right=Math.max(...points.map(p=>p.x)),top=Math.min(...points.map(p=>p.y)),bottom=Math.max(...points.map(p=>p.y)),scale=Math.min(120/(right-left),105/(bottom-top)),canvas=document.createElement('canvas');canvas.width=160;canvas.height=160;canvas.className='coastal-country-outline';canvas.setAttribute('role','img');canvas.setAttribute('aria-label','Outline map of '+region.name+' showing '+region.capital);const c=canvas.getContext('2d'),x=80-(left+right)/2*scale,y=67-(top+bottom)/2*scale;
+ c.fillStyle='#eef2df';c.fillRect(0,0,160,160);c.fillStyle=region.colour;c.strokeStyle='#447b70';c.lineWidth=1.2;for(const ring of rings){c.beginPath();ring.forEach((p,i)=>c[i?'lineTo':'moveTo'](p.x*scale+x,p.y*scale+y));c.closePath();c.fill();c.stroke();}c.fillStyle='#ad6d20';c.beginPath();c.arc(capital.x*scale+x,capital.y*scale+y,3,0,Math.PI*2);c.fill();c.font='600 12px system-ui';c.textAlign='center';c.fillStyle='#285b62';c.fillText('● '+t(region.capital),80,143);c.font='10px system-ui';c.fillText(t('North ↑'),80,157);return canvas;
+}

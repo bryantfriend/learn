@@ -24,7 +24,7 @@ test('every Geography mission has authored instruction and every session has a b
 test('reviews as well as teaching sessions have distinct independent tasks within each class',()=>{
  for(const classId of ['7a','7b']){const seen=new Map();
   for(const l of geo.filter(l=>l.catalog.classes.includes(classId))){
-   const key=JSON.stringify(l.stages.find(s=>s.id==='apply').frames.map(f=>[f.lines,f.sourceCard]));
+   const key=JSON.stringify(l.stages.find(s=>s.id==='apply').frames.map(f=>[f.title,f.lines,f.choices,f.sourceCard]));
    assert.ok(!seen.has(key),`${l.id} duplicates ${seen.get(key)}`);seen.set(key,l.id);
   }
  }

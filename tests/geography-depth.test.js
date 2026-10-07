@@ -6,7 +6,7 @@ test('Every Geography mission has six sourced board questions with concealed tea
   c.questions.forEach(q=>assert.ok(q.prompt&&q.answer.length>5,code));
  });
  for(const l of lessons.filter(l=>l.geoRedesign)){
-  const frames=l.stages.flatMap(s=>s.frames),rounds=frames.filter(f=>f.boardRound);assert.equal(rounds.length,['g7b-geo-w02-1','g7b-geo-w01-2'].includes(l.id)?0:l.boardCaseFiles.length*2,l.id);assert.ok(l.boardTeachingGuide);assert.equal(l.boardFirst,false);
+  const frames=l.stages.flatMap(s=>s.frames),rounds=frames.filter(f=>f.boardRound);assert.equal(rounds.length,0,l.id);assert.equal(l.stages.find(s=>s.id==='check').frames.length,2);assert.ok(l.boardTeachingGuide);assert.equal(l.boardFirst,false);
   rounds.forEach(f=>{assert.equal(f.type,'question');assert.ok(f.sourceCard&&f.geoDisplay&&f.boardWork&&f.teacherPrompt&&f.explanation);assert.ok(!f.lines.includes(f.explanation));});
   assert.equal(l.stages.reduce((n,s)=>n+s.durationMinutes,0),40);assert.ok(l.stages.every(s=>s.frames.every(f=>f.expectedSeconds>0)));
  }

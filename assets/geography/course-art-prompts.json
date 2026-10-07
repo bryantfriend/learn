@@ -1,0 +1,47 @@
+{
+  "generator": "Built-in image_gen",
+  "assets": [
+    {
+      "name": "fieldwork",
+      "prompt": "Use case: scientific-educational. Asset: landscape 3:2 classroom geography illustration for age 11–13, displayed large on classroom board. Primary subject: Two students conducting careful geography fieldwork in an imaginary school grounds: one counts people at a gate while another records observations on a clipboard; visible second gate, paths, grass and trees. No readable tally values. Style: clear polished hand-painted educational illustration, natural colours, readable feature shapes and modest detail; no decorative frame, no text, no lettering, no numbers, no logos. Composition must make geographical evidence easy to observe, without suggesting the artwork is measured data. Save a separate image for this single subject."
+    },
+    {
+      "name": "land-use-change",
+      "prompt": "Use case: scientific-educational. Asset: landscape 3:2 classroom geography illustration for age 11–13, displayed large on classroom board. Primary subject: A matched pair of views of the same imaginary riverside settlement, same viewpoint and terrain. Left: a ferry crossing, small workshop and fields. Right: a bridge crossing and additional workshops replacing some fields. River remains in identical position. Clearly fictional before and after comparison, not a real historical claim. Style: clear polished hand-painted educational illustration, natural colours, readable feature shapes and modest detail; no decorative frame, no text, no lettering, no numbers, no logos. Composition must make geographical evidence easy to observe, without suggesting the artwork is measured data. Save a separate image for this single subject."
+    },
+    {
+      "name": "aerial-plan",
+      "prompt": "Use case: scientific-educational. Asset: landscape 3:2 classroom geography illustration for age 11–13, displayed large on classroom board. Primary subject: A clean directly overhead aerial view of an imaginary small park and school: pond west of rectangular school building, two paths intersect, gate, sports pitch, scattered trees. Clear spatial layout. No map symbols or labels. Style: clear polished hand-painted educational illustration, natural colours, readable feature shapes and modest detail; no decorative frame, no text, no lettering, no numbers, no logos. Composition must make geographical evidence easy to observe, without suggesting the artwork is measured data. Save a separate image for this single subject."
+    },
+    {
+      "name": "urban-access",
+      "prompt": "Use case: scientific-educational. Asset: landscape 3:2 classroom geography illustration for age 11–13, displayed large on classroom board. Primary subject: An imaginary town neighbourhood with a bus stop, shops, park, school, pavement and step-free crossing, with people of varied ages including a wheelchair user. Show access to services and safe street connections; avoid national stereotypes. Style: clear polished hand-painted educational illustration, natural colours, readable feature shapes and modest detail; no decorative frame, no text, no lettering, no numbers, no logos. Composition must make geographical evidence easy to observe, without suggesting the artwork is measured data. Save a separate image for this single subject."
+    },
+    {
+      "name": "corrie-landscape",
+      "prompt": "Use case: scientific-educational. Asset: landscape 3:2 classroom geography illustration for age 11–13, displayed large on classroom board. Primary subject: Geographically accurate glacial corrie landscape after ice retreat: a bowl-shaped hollow high on a mountainside with steep back wall, shallow rock lip and small tarn; nearby sharp ridge separating two hollows and pyramidal peak. No active glacier covering the features. Style: clear polished hand-painted educational illustration, natural colours, readable feature shapes and modest detail; no decorative frame, no text, no lettering, no numbers, no logos. Composition must make geographical evidence easy to observe, without suggesting the artwork is measured data. Save a separate image for this single subject."
+    },
+    {
+      "name": "glacial-deposits",
+      "prompt": "Use case: scientific-educational. Asset: landscape 3:2 classroom geography illustration for age 11–13, displayed large on classroom board. Primary subject: Geographically accurate retreating valley glacier with terminal moraine ridge across the valley below the glacier snout, lateral moraine along both edges, patchy unsorted till exposed in foreground and a large erratic boulder resting on bedrock. Meltwater stream passes through a gap. No arrows or labels. Style: clear polished hand-painted educational illustration, natural colours, readable feature shapes and modest detail; no decorative frame, no text, no lettering, no numbers, no logos. Composition must make geographical evidence easy to observe, without suggesting the artwork is measured data. Save a separate image for this single subject."
+    },
+    {
+      "name": "river-estuary",
+      "prompt": "Use case: scientific-educational. Asset: landscape 3:2 classroom geography illustration for age 11–13, displayed large on classroom board. Primary subject: Geographically plausible river estuary at the coast, oblique aerial view: single river widens gradually into tidal inlet and sea, salt marshes and exposed mudflats along the sides, small harbour nearby. No branched delta or desert. Style: clear polished hand-painted educational illustration, natural colours, readable feature shapes and modest detail; no decorative frame, no text, no lettering, no numbers, no logos. Composition must make geographical evidence easy to observe, without suggesting the artwork is measured data. Save a separate image for this single subject."
+    },
+    {
+      "name": "flood-management",
+      "prompt": "Use case: scientific-educational. Asset: landscape 3:2 classroom geography illustration for age 11–13, displayed large on classroom board. Primary subject: Imaginary river floodplain town showing a coherent combination of upstream woodland, a flood storage area beside the river, a set-back embankment protecting a neighbourhood, and undeveloped riverside meadow. Gentle river bend, moderate high water staying within embankment. No invented numerical claims. Style: clear polished hand-painted educational illustration, natural colours, readable feature shapes and modest detail; no decorative frame, no text, no lettering, no numbers, no logos. Composition must make geographical evidence easy to observe, without suggesting the artwork is measured data. Save a separate image for this single subject."
+    },
+    {
+      "name": "water-cycle",
+      "subject": "A scientifically coherent water cycle landscape: sea at left, clouds over hills, rain over higher ground, surface streams joining river returning to sea; a small cutaway at bottom reveals porous ground and groundwater moving downslope toward river and sea. Include restrained translucent upward arrows only from sea and lake evaporation, downward rain streaks from clouds and river flowing downhill; no circular arrows that imply uphill rivers. No text, labels, numbers.",
+      "prompt": "Use case: scientific-educational. Landscape 3:2 classroom illustration for geography students aged 11–13. A scientifically coherent water cycle landscape: sea at left, clouds over hills, rain over higher ground, surface streams joining river returning to sea; a small cutaway at bottom reveals porous ground and groundwater moving downslope toward river and sea. Include restrained translucent upward arrows only from sea and lake evaporation, downward rain streaks from clouds and river flowing downhill; no circular arrows that imply uphill rivers. No text, labels, numbers. Match polished hand-painted natural-colour educational illustrations, large readable feature shapes, no decorative frame, no logos. This is an imagined conceptual landscape, not measured field data."
+    },
+    {
+      "name": "drainage-basin",
+      "subject": "Oblique aerial illustration of a clear mountainous drainage basin: high ridge surrounding a valley on three sides, several small tributaries flowing downhill and joining one larger main river that leaves through one valley outlet in foreground. On the far side of the ridge, a separate stream drains away in the opposite direction. No arrows, text, labels, numbers, or political borders. Make ridges and channel connections distinctly visible.",
+      "prompt": "Use case: scientific-educational. Landscape 3:2 classroom illustration for geography students aged 11–13. Oblique aerial illustration of a clear mountainous drainage basin: high ridge surrounding a valley on three sides, several small tributaries flowing downhill and joining one larger main river that leaves through one valley outlet in foreground. On the far side of the ridge, a separate stream drains away in the opposite direction. No arrows, text, labels, numbers, or political borders. Make ridges and channel connections distinctly visible. Match polished hand-painted natural-colour educational illustrations, large readable feature shapes, no decorative frame, no logos. This is an imagined conceptual landscape, not measured field data."
+    }
+  ]
+}
