@@ -1,5 +1,11 @@
 # Learn deployment
 
+## Version 2.6.13 — approved Geography lesson
+
+Publishes the completed review of 7B Geography Lesson 2 (Week 1, Lesson 2). Includes concrete worked examples with concealed answers, enlarged maps, ten whole-class finger-vote practice rounds, two independent explanation checks, and relevant exit-ticket visuals. Fixes revealed answers on artwork screens.
+
+Validation: the workspace unit suite passes, with reviewed classroom previews and answer/navigation checks for the revised lesson. The teacher guide is regenerated. Other Geography lessons retain their existing content until the approved design is adapted to their topics. Publishes through the existing main/root GitHub Pages deployment; pending Coastal Connections changes are outside this release.
+
 ## Version 2.6.4 — Coastal Connections roguelite
 
 Adds drag-to-build routes, one-seat starting vehicles, twenty expanding stops, zoom/pan/pinch controls, station and fleet upgrade dialogs, paid harbour and airport construction, faster arrivals, and mandatory benefit/challenge card choices from sixty cards. Invalid drags show red previews and clear explanations, including missing facilities, insufficient credits and duplicate routes.

@@ -24,7 +24,7 @@ test('Postcards require four correct countries, not merely four placements',()=>
 test('All workshops display teaching diagrams and source evidence; exits allow an independent response',()=>{
  for(const l of lessons.filter(l=>l.geoRedesign)){
   assert.ok(l.stages.find(s=>s.id==='teach').frames.every(f=>f.geoDisplay),l.id);
-  for(const f of l.stages.find(s=>s.id==='apply').frames)if(f.sourceCard)assert.ok(f.geoDisplay,l.id);
+  for(const f of l.stages.find(s=>s.id==='apply').frames)if(f.sourceCard)assert.ok(f.geoDisplay||f.conceptLayout==='artwork'&&f.geoArt?.contain,l.id);
   assert.ok(!l.stages.find(s=>s.id==='teach').frames.some(f=>f.title.startsWith('Read the investigation source')),l.id);
   assert.ok(l.stages.at(-1).frames.filter(f=>!f.final).every(f=>f.mode==='think'&&f.lines.length<=2),l.id);
  }

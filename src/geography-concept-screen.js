@@ -33,6 +33,7 @@ function enlargeVocabularyCard(tile){
 }
 export function createConceptScreen(lesson,stage,frame,copy,evidence){
  const root=node('section',null,'teaching-content geo-concept-content concept-'+frame.conceptSection);root.setAttribute('aria-labelledby','student-title');
+ if(frame.fingerPractice)root.classList.add('concept-finger-practice');
  root.append(node('h2',stage.title,'concept-section-title'));
  const body=node('div',null,'concept-body');root.append(body);copy.classList.add('concept-copy');
  const tools=node('details',null,'concept-tools');tools.append(node('summary','Teaching aids'));
@@ -56,7 +57,13 @@ export function createConceptScreen(lesson,stage,frame,copy,evidence){
   }
   copy.querySelector('.instructions')?.remove();copy.querySelector('h1').hidden=true;body.append(grid,copy);root.classList.add('concept-wide');
  }else{
-  const useArt=frame.conceptLayout==='artwork'||frame.conceptLayout!=='evidence'&&(['begin','goal','finish','assessment'].includes(frame.conceptSection)||!frame.geoDisplay);body.append(useArt?art(frame.geoArt):evidence(),copy);
+  const useArt=frame.conceptLayout==='artwork'||frame.conceptLayout!=='evidence'&&(['begin','goal','finish','assessment'].includes(frame.conceptSection)||!frame.geoDisplay);
+  const visual=useArt?art(frame.geoArt):evidence();
+  if(frame.enlargeMapButton){
+   const enlarge=copy.querySelector('.geo-enlarge');
+   if(enlarge){enlarge.textContent='Enlarge map ⛶';enlarge.setAttribute('aria-haspopup','dialog');enlarge.setAttribute('aria-controls','panel');visual.prepend(enlarge);}
+  }
+  body.append(visual,copy);
  }
  if(frame.successCriteria){const criteria=node('div',null,'concept-success');frame.successCriteria.forEach((text,i)=>criteria.append(card('0'+(i+1),text,'concept-success-card')));root.append(criteria);}
  if(frame.modelSteps){const steps=node('ol',null,'concept-model-steps');frame.modelSteps.forEach(text=>steps.append(node('li',text)));copy.insertBefore(steps,copy.querySelector('.instructions'));}

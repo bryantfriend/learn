@@ -1,6 +1,7 @@
 import {conceptVocabulary} from './geography-concept-vocabulary.js';
 import {content as foundationsBank} from './g7-geo-content.js';
 import {content as regionalBank} from './g7b-geo-content.js';
+import {createFingerPractice} from './geography-finger-practice.js';
 export const geographySections=[['begin','Starter and recall',4],['goal','Today’s learning goal',2],['vocabulary','Key vocabulary',3],['teach','Teacher explanation',8],['model','Worked example',5],['apply','Student practice',10],['check','Check understanding',5],['finish','Exit ticket and wrap-up',3]];
 const split=text=>text.split(/(?<=[.!?])\s+/);
 export function geographyArt(code){
@@ -53,6 +54,57 @@ export function rebuildGeographyConceptFlow(lesson,active,makeStage){
  }
  // Review this lesson section by section before extending its design to the course.
  if(lesson.id==='g7b-geo-w01-2'){
+  frames.apply=createFingerPractice();
+  frames.check=[{
+   title:'Explain Cardiff’s location',kicker:'Explain in your own words · 1 of 2',mode:'think',type:'question',
+   lines:['Find Cardiff. Name its country and its island.','Explain why the country name and island name are different.'],
+   responseHint:'Think on your own. Give a short explanation using the map.',
+   geoDisplay:{atlas:{view:'islands',labels:true,cities:true,caption:'Use Cardiff’s city marker, the country boundaries and the coastline.'}},
+   conceptLayout:'evidence',enlargeMapButton:true,geoArt:geographyArt('3.1'),
+   answerText:'One possible explanation',revealLabel:'Reveal example answer',allowHideAnswer:true,
+   explanation:'Cardiff is in Wales, on the island of Great Britain. Wales is a country; Great Britain is an island containing Wales, England and Scotland.',
+   discussionId:'lesson-2-explain-cardiff',
+   teacherScript:'Allow independent thinking without choices or finger voting. Ask two pupils to explain where Cardiff is and why the two place names describe different things. Listen for Wales as the country and Great Britain as the island. Ask pupils to point to the boundary and trace the coastline as evidence. Reveal the example only after their explanations. Accept equivalent wording; help pupils distinguish country boundaries from the sea around an island.'
+  },{
+   title:'Explain how the mountain helps rain form',kicker:'Explain in your own words · 2 of 2',mode:'think',type:'question',
+   lines:['Follow the moist air from the sea up the mountain.','Explain the chain: rises → cools → condenses → rain can fall.'],
+   responseHint:'Use “because” or “so” to link the steps. Explain what happens to the water vapour.',
+   conceptLayout:'artwork',
+   geoArt:{image:'geography/rain-shadow.png',contain:true,alt:'Moist air rises and cools on the windward slope, forming clouds and rain; air descends on the leeward slope.',caption:'Use the arrows as evidence for your explanation.'},
+   answerText:'One possible explanation',revealLabel:'Reveal example answer',allowHideAnswer:true,
+   explanation:'The mountain forces moist air to rise. As the air rises, it cools, so water vapour can condense into cloud droplets. When droplets grow large enough, rain can fall. The water comes from moisture in the air; the mountain does not create it.',
+   discussionId:'lesson-2-explain-rainfall',
+   teacherScript:'Ask pupils to explain the process in their own words rather than vote on choices. The arrow chain is a scaffold, not a complete answer: listen for causal links between rising, cooling, condensation and precipitation. Ask where the water came from. Invite two explanations before revealing the example. Correct the idea that the mountain creates water. Rain is possible under suitable conditions, not guaranteed whenever air rises.'
+  }];
+  const ukModel=frames.model.find(f=>f.teachingModel&&f.kicker.includes('3.1'));
+  if(ukModel){
+   Object.assign(ukModel,{
+    title:'Belfast is in the UK. Is it also on Great Britain?',
+    lines:['Look at the map. Think quietly, then explain your answer.'],
+    modelSteps:null,enlargeMapButton:true,allowHideAnswer:true,
+    type:'question',answerText:'No.',revealLabel:'Reveal answer',
+    explanation:'Belfast is in the UK, but it is on the island of Ireland. It is not on Great Britain.',
+    conceptLayout:'evidence',responseHint:'Point to Belfast and follow the coastline before revealing.',
+    geoDisplay:{atlas:{view:'islands',cities:true,labels:true,caption:'Find Belfast. Which island contains it?'}},
+    teacherScript:'Read the question without revealing the answer. Model finding Belfast in Northern Ireland, tracing the coastline of the island of Ireland, then comparing it with Great Britain. Invite pupils to answer with a reason from the map. Reveal: Belfast is in the UK, but on the island of Ireland, not Great Britain. Country membership and island location answer different questions.',
+    oralCheck:{question:'Why can Belfast be in the UK without being on Great Britain?',answer:'The UK includes Northern Ireland, which is on the island of Ireland.'}
+   });
+  }
+  const rainModel=frames.model.find(f=>f.teachingModel&&f.kicker.includes('3.3'));
+  if(rainModel){
+   Object.assign(rainModel,{
+    title:'Less moisture reaches the mountain. What happens to the rainfall?',
+    lines:['Keep the same wind and mountain. Change only the incoming air: it now contains less moisture.'],
+    modelSteps:['Trace the incoming air up the windward slope.','The rising air still cools, but carries less moisture.','Predict how this changes the amount of rain.'],
+    type:'question',answerText:'We expect less rain.',revealLabel:'Reveal prediction',
+    explanation:'With less moisture available, we expect less rainfall if the other conditions stay the same. The mountain lifts the air; it does not create water.',
+    conceptLayout:'artwork',
+    geoArt:{image:'geography/rain-shadow.png',contain:true,alt:'Moist air rises and cools on the windward slope of a mountain. Air descends on the leeward slope.',caption:'Use the Stage 4 diagram to test one change: less moisture in the incoming air.'},
+    responseHint:'Use the diagram from the previous stage to explain your prediction.',
+    teacherScript:'Briefly recall the Stage 4 diagram rather than repeating the full explanation. Keep wind direction, mountain and other conditions the same; reduce only the incoming moisture. Trace the rising air and explain that it still cools, but there is less moisture available for precipitation. Ask for a prediction before revealing. Expect less rainfall, not a guarantee of no rain. A mountain does not create the missing water.',
+    oralCheck:{question:'Does the mountain create water when the incoming air has less moisture?',answer:'No. Less moisture is available, so we expect less rainfall with other conditions unchanged.'}
+   });
+  }
   const transport=frames.teach.find(f=>f.conceptId==='3.1-3');
   if(transport)transport.geoDisplay={transportConnections:true};
   const weather=frames.teach.find(f=>f.conceptId==='3.3-0');
@@ -88,6 +140,17 @@ export function rebuildGeographyConceptFlow(lesson,active,makeStage){
   frames.vocabulary=[{title:'Words for today',mode:'listen',lines:vocabulary.map(v=>`${v.term}: ${v.meaning}`),vocabularyCards:vocabulary,geoArt:geographyArt('3.1'),recallCue:'Listen • Say the word • Look at the picture',teacherScript:'Read each English word and model its pronunciation. Use the smaller Chinese and Russian translations as support. Compare the two highlighted maps: Northern Ireland is included in the UK, but not in Great Britain. The island picture shows water all the way around the land.'}];
  }
  frames.finish.push({title:'Lesson complete',mode:'listen',lines:['Check your space. Listen for dismissal.'],geoArt:geographyArt(first.code),final:true});
+ if(lesson.id==='g7b-geo-w01-2'){
+  for(const frame of frames.finish){
+   if(frame.discussionId==='exit-3.3'){
+    frame.conceptLayout='artwork';
+    frame.geoArt={image:'geography/rain-shadow.png',contain:true,alt:'Moist air rises and cools over a mountain, with rain on the windward slope and often drier conditions on the leeward side.',caption:'Use the mountain and wind arrows to support your final explanation.'};
+   }else{
+    frame.conceptLayout='evidence';frame.enlargeMapButton=true;
+    frame.geoDisplay={atlas:{view:'islands',labels:true,cities:true,caption:frame.final?'UK and Ireland · Today’s map learning':'Use the country boundaries and coastlines to support your final sentence.'}};
+   }
+  }
+ }
  let elapsed=0;
  lesson.stages=geographySections.map(([id,title,minutes])=>{
   const notes=frames[id].map(f=>`${f.title}\n${f.teacherScript||''}${f.oralCheck?'\nCheck: '+f.oralCheck.question+'\nAnswer: '+f.oralCheck.answer:''}`).join('\n\n');

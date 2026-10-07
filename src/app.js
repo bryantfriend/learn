@@ -229,7 +229,7 @@ function renderPlayer() {
         return element('div', { className: 'memory-item' }, [element('span', { 'aria-hidden': 'true' }, [item.symbol]), element('span', { className: 'memory-label' }, [item.label])]);
     })));
     if (frame.symbol) copy.append(element('div', { className: 'mission-symbol', 'aria-hidden': 'true' }, [frame.symbol]));
-    const answerPanel = !frame.visual && !frame.geoDisplay && frame.type === 'question' && response().revealed;
+    const answerPanel = !lesson.geoConcept && !frame.visual && !frame.geoDisplay && frame.type === 'question' && response().revealed;
     if (frame.diagram && !graphic) {
         const diagrams = {'g7b-uk':['g7b-uk','Geographic map of the United Kingdom and neighbouring Ireland.'],'g7b-valley':['g7b-valley','V-shaped and U-shaped valley cross-sections.'],'g7b-cycle':['g7b-cycle','Water cycle: evaporation, condensation, precipitation, runoff and infiltration.'],'g7b-bend':['g7b-bend','River bend with outer-bank erosion and inner-bank deposition.'],'2.4':['g7-plan','Invented plan: school west, pond east, park north, road south.'],'2.5':['g7-grid','Practice grid. Tree six tenths across and two tenths up inside square 2345.'],'2.8':['g7-profile','Profile: 100, 120, 160 and 180 metres at 0, 100, 200 and 300 metres distance.'],'2.9':['g7-world','Coordinate sketch: A north and east, B south and east, C at zero latitude and longitude.']};
         const item = diagrams[frame.diagram];
@@ -302,6 +302,7 @@ function renderQuestion(copy) {
             ...(frame.followUp ? [element('p', { className: 'follow-up' }, [frame.followUp])] : [])
         ]));
         if(frame.revealAtlasBorder)copy.append(button('Replay zoom','replay-map-zoom','reveal-button'));
+        if(frame.allowHideAnswer)copy.append(button('Hide answer','hide-answer','reveal-button'));
     } else {
         copy.append(element('p', { className: 'response-hint' }, [result.selected ? 'Discussing ' + result.selected + ' · Explanation is still hidden.' : frame.responseHint || (frame.answerText ? 'Think quietly. Share when invited.' : 'Think first. Show 1 or 2 fingers when invited.')]));
         copy.append(button(frame.revealLabel || (frame.answerText ? 'Reveal response' : frame.suggested ? 'Reveal suggested answer' : 'Reveal explanation'), 'reveal', 'reveal-button'));
@@ -759,7 +760,8 @@ function handleAction(event) {
         if (callback) callback();
     } else if (action === 'conversation-cards') showConversationCards();
     else if (action === 'geography-board') showGeographyBoard();
-    else if (action === 'geography-evidence') {openPanel('Look closely · '+currentFrame().title,[createFrameEvidence()],'geography-evidence');panel.classList.add('geography-evidence-panel');}
+    else if (action === 'geography-evidence') {openPanel('Look closely · '+currentFrame().title,[createFrameEvidence()],'geography-evidence');panel.classList.add('geography-evidence-panel');if(currentFrame().enlargeMapButton)panel.classList.add('lesson-map-panel');}
+    else if (action === 'hide-answer' && currentFrame().allowHideAnswer) {session.responses[responseKey()]={...response(),revealed:false};save();render();}
     else if (action === 'geography-postcards') {
         const spec=currentFrame().postcardActivity,key=lesson.id+':'+spec.id;
         if(!geographyBoardStates.has(key))geographyBoardStates.set(key,initialPostState());

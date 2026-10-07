@@ -20,7 +20,12 @@ test('Every topic has vocabulary, success criteria, practice evidence and a conc
   assert.equal(stage('goal').frames.length,l.id==='g7b-geo-w01-2'?1:l.workshopMissions.length,l.id);
   assert.ok(stage('vocabulary').frames.every(f=>f.vocabularyCards.length===3&&f.vocabularyCards.every(v=>v.term&&v.meaning)));
   assert.ok(stage('apply').frames.every(f=>f.sourceCard&&f.teacherScript&&f.lines.length));
-  const questions=stage('check').frames.filter(f=>f.options);assert.ok(questions.length);
+  const questions=stage('check').frames.filter(f=>f.options);
+  if(l.id==='g7b-geo-w01-2'){
+   assert.equal(stage('check').frames.length,2);
+   assert.equal(questions.length,0);
+   for(const f of stage('check').frames){assert.equal(f.type,'question');assert.ok(f.answerText&&f.explanation&&f.teacherScript);assert.ok(!f.choices);assert.ok(!f.lines.includes(f.explanation));}
+  }else assert.ok(questions.length);
   for(const f of questions){assert.equal(f.options.length,4);assert.equal(new Set(f.options.map(o=>o.label)).size,4);assert.ok(f.options.some(o=>o.id===f.answer));assert.ok(f.explanation&&!f.lines.includes(f.explanation));}
   assert.doesNotMatch(JSON.stringify(l),/undefined/);
  }

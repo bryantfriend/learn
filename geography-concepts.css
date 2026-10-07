@@ -1,4 +1,8 @@
 /* The Geography classroom route follows the approved atlas concept screens. */
+#panel.lesson-map-panel .atlas-canvas svg{height:76dvh;max-height:76dvh;width:100%;}
+.concept-finger-practice .opening-choices{list-style:none;padding:0;margin:16px 0;display:grid;gap:12px;}
+.concept-finger-practice .opening-choices li{font-size:23px;line-height:1.35;padding:12px;background:#e9f1ed;border-radius:12px;}
+.concept-finger-practice .instructions p{font-size:20px;line-height:1.35;}
 .transport-connections{display:flex;flex-direction:column;gap:14px;}
 .transport-game-button{padding:12px 18px;border:0;border-radius:12px;background:#137c83;color:white;font:600 19px system-ui;cursor:pointer;min-height:48px;flex-shrink:0;}
 .transport-connections h3{font:600 24px/1.15 Georgia,serif;color:#112d4d;}
