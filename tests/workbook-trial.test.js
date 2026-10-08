@@ -10,7 +10,7 @@ test('trial exposes two separate lessons per assigned class and preserves origin
   assert.equal(new Set(lessons.map(l => l.id)).size, lessons.length);
   for (const [classId, count] of [['7b',95], ['7a',64], ['8',45]]) {
     const trial = lessonsFor(classId, workbookSubjectId).filter(l => l.catalog);
-    assert.equal(trial.length, 2);
+    assert.equal(trial.length, 3);
     assert.ok(trial.every(l => l.bookTrial && l.catalog.classes.includes(classId)));
     assert.equal(lessonsFor(classId, 'global-perspectives').length, count);
     assert.ok(lessonsFor(classId, 'global-perspectives').every(l => !l.bookTrial));

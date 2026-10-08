@@ -19,7 +19,7 @@ test('retained GP pilot covers six topics in eight scheduled lessons with explic
   const model=frames.findIndex(f=>f.learningRole==='model');
   if(model>=0)assert.ok(frames.slice(0,model).filter(f=>f.discussionId&&f.mode==='pair').length>=2,l.id+' model follows student attempts');
  }
- assert.equal(lessons.length,304);
+ assert.equal(lessons.length,307);
 });
 test('every pilot migrates old checkpoints and preserves current reveals',()=>{
  for(const id of Object.keys(pilotLessons)){

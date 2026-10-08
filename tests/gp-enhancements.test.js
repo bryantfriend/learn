@@ -4,7 +4,7 @@ import {lessons} from '../src/lessons.js';
 import {sampleRate} from '../src/gp-lab.js';
 import {gpLabMethods} from '../src/lessons/gp-enhancements.js';
 test('Every GP session has a guide; teaching models stay within existing stages',()=>{
- const gp=lessons.filter(l=>['global-perspectives','global-perspectives-books'].includes(l.catalog?.subjectId));assert.equal(gp.length,204);
+ const gp=lessons.filter(l=>['global-perspectives','global-perspectives-books'].includes(l.catalog?.subjectId));assert.equal(gp.length,207);
  for(const l of gp){assert.ok(l.teacherGuide,l.id);assert.equal(l.teacherGuide.stages.length,l.stages.length);
   if(l.examId){assert.ok(!l.gpLab);continue;}
   assert.ok(gpLabMethods[l.gpLab.kind]);assert.ok(l.gpLab.sources.length,l.id);assert.ok(l.gpLab.task.length,l.id);

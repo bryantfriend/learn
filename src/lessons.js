@@ -4,6 +4,7 @@ import { styleGeographyAssessment } from './lessons/geography-concept-flow.js';
 import { addExtraTime } from './lessons/extra-time.js';
 import {english7BLessons} from './lessons/english-7b.js';
 import { workbookTrialLessons } from './lessons/gp-workbook-trial.js';
+import { researchFollowOnLessons } from './lessons/gp-research-follow-on.js';
 import {illustrateExamples} from './lesson-illustrations.js';
 import {supportEnglish} from './lessons/esl.js';
 import {strengthenPacing} from './lessons/pacing.js';
@@ -114,7 +115,7 @@ export const lesson = {
     ]
 };
 
-export const lessons = [...[lesson, practiceLesson, ...gpLessons, ...grade7Lessons, ...grade7BLessons].map(redesignGeography).map(styleGeographyAssessment).map(strengthenPacing).map(illustrateExamples).map(supportEnglish), ...workbookTrialLessons,...english7BLessons].map(addExtraTime).map(enhanceGlobalPerspectives);
+export const lessons = [...[lesson, practiceLesson, ...gpLessons, ...grade7Lessons, ...grade7BLessons].map(redesignGeography).map(styleGeographyAssessment).map(strengthenPacing).map(illustrateExamples).map(supportEnglish), ...workbookTrialLessons, ...researchFollowOnLessons,...english7BLessons].map(addExtraTime).map(enhanceGlobalPerspectives);
 let lessonStorage; try { lessonStorage = globalThis.localStorage; } catch {}
 registerLessons(lessons, lessonStorage);
 export function getLesson(id) {

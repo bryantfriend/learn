@@ -1,5 +1,11 @@
 # Learn deployment
 
+## Version 2.6.16 — Global Perspectives research follow-ons
+
+Adds one 40-minute teacher-created notebook lesson for each of 7A, 7B and Year 8 in **Global Perspectives · Workbook trial**, following the Research Lesson 1 pages supplied by the teacher. 7B chooses how to find information, 7A builds a method plan, and Year 8 plans evidence and perspectives. Includes concealed model responses, partner feedback, reflection, teacher notes and separate saved progress. Existing workbook parts remain available.
+
+Validated the isolated release with 192 passing unit tests and 149 browser frames across all nine workbook/follow-on lessons, including navigation, reveals, saved reload, summary and responsive layout. Publish through the existing main/root GitHub Pages deployment. Unrelated pending Coastal Connections changes are excluded.
+
 ## Version 2.6.13 — approved Geography lesson
 
 Publishes the completed review of 7B Geography Lesson 2 (Week 1, Lesson 2). Includes concrete worked examples with concealed answers, enlarged maps, ten whole-class finger-vote practice rounds, two independent explanation checks, and relevant exit-ticket visuals. Fixes revealed answers on artwork screens.

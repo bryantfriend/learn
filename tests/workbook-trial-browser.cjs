@@ -2,10 +2,13 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright'),assert=req
 const {createServer}=require('../scripts/serve.cjs');const server=createServer();let browser;
 (async()=>{
  const {getLesson}=await import('../src/lessons.js'),{workbookTrialLessons}=await import('../src/lessons/gp-workbook-trial.js');
+ const {researchFollowOnLessons}=await import('../src/lessons/gp-research-follow-on.js');
  await new Promise(r=>server.listen(4193,'127.0.0.1',r));browser=await chromium.launch({headless:true});
  const errors=[],bad=[],topics=new Set();let frames=0;
  fs.mkdirSync('output/playwright/workbook-trial',{recursive:true});
- for(const id of workbookTrialLessons.map(l=>l.id)){
+ const targets=[...workbookTrialLessons,...researchFollowOnLessons].filter(l=>!process.env.WORKBOOK_LESSON||l.id===process.env.WORKBOOK_LESSON);
+ assert.ok(targets.length,'No matching workbook lesson');
+ for(const id of targets.map(l=>l.id)){
   const l=getLesson(id),context=await browser.newContext({viewport:{width:1280,height:720}}),page=await context.newPage();
   page.on('pageerror',e=>errors.push(id+': '+e.message));await page.goto(process.env.LEARN_URL||'http://127.0.0.1:4193/learn/');
   const a=n=>page.locator('[data-action="'+n+'"]').first().click();
@@ -70,6 +73,6 @@ const {createServer}=require('../scripts/serve.cjs');const server=createServer()
   for(const [width,height]of [[1366,768],[1920,1080],[390,844]]){await page.setViewportSize({width,height});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,id+' responsive');if(width>900)await bounds('responsive '+width);}
   console.log('PASS flow '+id);await context.close();
  }
- assert.deepEqual(errors,[]);assert.deepEqual(bad,[]);console.log('PASS '+frames+' frames across 6 workbook trial lessons; reveals, summary, reload and responsive checks');
+ assert.deepEqual(errors,[]);assert.deepEqual(bad,[]);console.log('PASS '+frames+' frames across '+targets.length+' workbook/follow-on lessons; reveals, summary, reload and responsive checks');
 })().catch(e=>{console.error(e);process.exitCode=1}).finally(async()=>{if(browser)await browser.close();server.close()});
 

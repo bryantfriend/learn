@@ -41,4 +41,22 @@ Page numbers cropped in some photos were established from continuation text, nei
 
 ## Scope
 
+### Year 8 next lesson · 8 October 2026
+
+The teacher identified the latest photograph (`codex-clipboard-36a57ef7-9a96-46e7-a1b7-f49b8cc1f0d8.png`) as Year 8 and confirmed that it is the point from which to plan the next lesson. It shows Research Lesson 1's best-question discussion and independent reflection. The original two parts remain unchanged.
+
+Year 8 now has **Next lesson · From question to evidence plan**, a 40-minute teacher-created bridge in the Workbook trial category. Pupils bring forward their chosen question, match methods to evidence, challenge an overgeneralisation from fictional survey responses, compare possible perspectives, and produce a notebook evidence plan with peer feedback and limitations. No unseen workbook tasks or page numbers are assigned.
+
+### 7A next lesson · 8 October 2026
+
+The teacher supplied four photographs identified as 7A: `d367741e` (p. 4 prior learning/starter), `dafa8cf4` (starter checks/mind map, p. 5 by sequence), `436b865e` (p. 6 peer judgement, two further questions and rewording), and `b083ee3c` (p. 7 reflection/goals check). These are prefixes of the attached `codex-clipboard-*.png` filenames. The sequence confirms the existing Book 8 assignment. Blank printed answer spaces do not establish that pupils have completed the work.
+
+7A now has **Next lesson · Plan how to answer your question**. The 40-minute teacher-created notebook follow-on uses one question reworded on p. 6, models observation/asking/reading, practises neutral questions, and produces a method plan with peer feedback and a limitation. Its closing reflection follows the photographed p. 7 options, including evaluation. The opening allows pupils to finish one revision if needed. Existing workbook parts remain unchanged. The next printed lesson has not been supplied.
+
+### 7B next lesson · 8 October 2026
+
+The teacher supplied three photographs identified as 7B: `f8dc81ac` (ranking continuation and three checks), `078e87a7` (mind map and three chosen questions), and `ff5f638b` (reasons, best class question, reflection and goals check). These are prefixes of the attached `codex-clipboard-*.png` filenames. The content matches Book 7 pp. 4–6 in the existing source sequence; the new photographs do not clearly show those page numbers. The next lesson is only partly visible and has not been reconstructed.
+
+7B now has **Next lesson · Choose how to find out**, a 40-minute teacher-created notebook follow-on. Pupils bring forward the class question, choose whether to look, ask or read, practise fair questioning with invented replies, write a simple information plan, revise after partner feedback and name an unanswered point. Reflection follows the photographed ways of working; listening/teamwork are supporting examples for its open other-skills prompt. All three classes now have a separate follow-on after their existing two workbook parts.
+
 Six new IDs in the separate `global-perspectives-books` category preserve existing curriculum lessons and saved sessions. Original student study guides remain unchanged during this teacher-led trial. No existing timetable slot has been replaced or reassigned. The new category has no quarter filter.
