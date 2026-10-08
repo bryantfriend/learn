@@ -95,3 +95,48 @@
 @media(max-width:900px){.coastal-world-grid{grid-template-columns:repeat(6,minmax(0,1fr))}.coastal-world-tile:nth-child(-n+2){grid-column:span 3}.coastal-world-coming{grid-column:span 2}.coastal-world-coming svg{height:95px}.coastal-start-options{grid-template-columns:1fr}.coastal-world-tile strong{font-size:20px}}
 .coastal-dialog>.coastal-world-host{flex:1}.coastal-game[data-world=kyrgyzstan] .coastal-map{background:#e7e3cf}.coastal-game[data-world=kyrgyzstan] .coastal-tool[data-tool=ferry] strong:before{content:'🚙'}.coastal-game[data-world=kyrgyzstan] .coastal-vehicle-picture-large{max-width:100%;width:360px;height:220px;object-fit:cover;border-radius:18px}
 .coastal-atlas-landmark-picture{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px;margin-bottom:10px}
+.coastal-passport-shop{margin:auto}
+.coastal-celebration{z-index:5}
+@media(min-width:801px){
+ .coastal-passport-shop{max-height:none;overflow:visible}
+}
+/* A shorter spread keeps classroom laptop/projector text comfortably readable. */
+@media(min-width:801px) and (max-height:900px){
+ .coastal-passport-shop{padding:24px 22px 12px;border-width:5px}
+ .coastal-passport{gap:12px 32px}
+ .coastal-passport-left,.coastal-passport-right{padding:0 6px}
+ .coastal-passport-mast{gap:8px}.coastal-passport-mast img{width:42px;height:42px}
+ .coastal-passport-mast span{font-size:14px;letter-spacing:1px}.coastal-passport-mast small{font-size:9px;margin-top:3px}
+ .coastal-passport-left>h3{font-size:30px;margin:9px 0 5px}
+ .coastal-passport-stars{font-size:30px;letter-spacing:6px}
+ .coastal-passport-welcome{font-size:13px;line-height:1.35;margin:6px 0 12px;max-width:none}
+ .coastal-passport-photo{margin:0 12px 12px 0;padding:6px 6px 14px}
+ .coastal-passport-photo>img{height:clamp(110px,20dvh,165px)}
+ .coastal-passport-photo figcaption{font-size:12px;padding-top:6px}
+ .coastal-passport-stamp{width:104px;height:104px;border-width:4px;right:-12px;bottom:6px;gap:4px}
+ .coastal-passport-stamp strong{font-size:12px;max-width:84px}.coastal-passport-stamp img{width:38px;height:24px}
+ .coastal-passport-discovery{padding:9px 12px}.coastal-passport-discovery h4{font-size:22px;margin:5px 0}
+ .coastal-passport-discovery p{font-size:13px;line-height:1.35;margin:5px 0 7px}
+ .coastal-passport-discovery small{font-size:10px;margin-top:7px}
+ .coastal-passport-motto{font-size:13px;margin:12px 5px 0}
+ .coastal-passport-heading{margin:2px 0 7px}.coastal-passport-tags{gap:8px;padding-top:4px}
+ .coastal-passport-tag{min-height:88px;padding:17px 7px 8px}
+ .coastal-passport-tag>span{font-size:20px}.coastal-passport-tag>strong{font-size:23px;margin:3px 0}
+ .coastal-passport-tag>small{font-size:11px;line-height:1.3}
+ .coastal-passport-network{gap:10px;margin:10px 0}
+ .coastal-passport-route,.coastal-passport-tip{padding:8px}
+ .coastal-passport-route h4,.coastal-passport-tip h4{font-size:10px;margin-bottom:5px}
+ .coastal-passport-route-map{height:68px;object-fit:contain}
+ .coastal-passport-route p{font-size:12px;margin:5px 0;line-height:1.3}
+ .coastal-passport-tip>span{font-size:22px}.coastal-passport-tip p{font-size:13px;line-height:1.3}
+ .coastal-passport-spotlight{padding-top:8px;margin:9px 0}
+ .coastal-passport-spotlight h4{font-size:21px;margin:5px 0}
+ .coastal-passport-spotlight p{font-size:13px;line-height:1.35;margin:5px 0}
+ .coastal-passport-spotlight small{font-size:11px;line-height:1.35}
+ .coastal-passport-quiz{padding:9px}.coastal-passport-quiz h4{font-size:10px;margin-bottom:5px}
+ .coastal-passport-quiz>p{font-size:13px;line-height:1.3;margin:6px 0}
+ .coastal-passport-answers button{padding:6px;font-size:12px}
+ .coastal-passport-notes{font-size:12px;line-height:1.35}
+ .coastal-passport-shop .coastal-passport-continue{padding:9px 18px;font-size:17px;margin:3px auto}
+ .coastal-passport-footer small{margin-top:4px}
+}
