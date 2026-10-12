@@ -1,0 +1,19 @@
+{
+  "generator": "Built-in image_gen",
+  "lessonId": "g7a-geo-w03-1",
+  "styleReference": "school-directions.png",
+  "assets": [
+    {
+      "image": "school-shaded-bench.png",
+      "prompt": "Landscape 3:2 Grade 7 geography lesson illustration. Reference image is a STYLE REFERENCE only: match softly hand-painted realistic school textbook artwork, textured brushwork, muted greens, warm natural light, navy school uniforms when students appear. No text, letters, captions, numbers or watermark. A clear close view of a wooden bench beneath a large leafy tree in imaginary school grounds, with branches casting visible shade over the bench and adjoining soil. A sunlit paved path runs beside it, school building softly visible in background. Show both shaded and sunny areas clearly. No people, no thermometers, no invented measurement results. Make the bench and tree dominant so students can describe a human feature and a physical feature and ask a question about temperature."
+    },
+    {
+      "image": "school-garden-care.png",
+      "prompt": "Landscape 3:2 Grade 7 geography lesson illustration. Reference image is a STYLE REFERENCE only: match softly hand-painted realistic school textbook artwork, textured brushwork, muted greens, warm natural light, navy school uniforms when students appear. No text, letters, captions, numbers or watermark. Exactly two young secondary school students caring for a small planted garden in school grounds. One uses a watering can to water plants rooted in soil, the other kneels beside the bed and observes a plant. Show soil, leafy plants, watering can and human action clearly; a paved path and school building in the modest background. Clear classroom projection composition. Natural plant materials and human planting/watering must be easy to distinguish. Do not imply that students have measured growth."
+    },
+    {
+      "image": "school-path-puddle.png",
+      "prompt": "Landscape 3:2 Grade 7 geography lesson illustration. Reference image is a STYLE REFERENCE only: match softly hand-painted realistic school textbook artwork, textured brushwork, muted greens, warm natural light, navy school uniforms when students appear. No text, letters, captions, numbers or watermark. A clear close view of a wet paved path beside grass and exposed soil outside a school building. One unmistakable shallow puddle lies on the paved path, reflecting light and part of the building. The nearby grass and soil are visible but make no comparative claim about drainage. Cloudy bright sky, no falling rain, no students. This image must allow students to observe a puddle but not prove when or why it formed. Puddle in foreground, path leads toward school. No arrows or diagrams."
+    }
+  ]
+}

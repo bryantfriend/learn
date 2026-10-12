@@ -3,6 +3,7 @@ import {content as foundationsBank} from './g7-geo-content.js';
 import {content as regionalBank} from './g7b-geo-content.js';
 import {createFingerPractice} from './geography-finger-practice.js';
 import {createCoursePractice,createCourseChecks} from './geography-course-practice.js';
+import {updateSchoolExhibitStages} from './geography-school-exhibit.js';
 export const geographySections=[['begin','Starter and recall',4],['goal','Today’s learning goal',2],['vocabulary','Key vocabulary',3],['teach','Teacher explanation',8],['model','Worked example',5],['apply','Student practice',10],['check','Check understanding',5],['finish','Exit ticket and wrap-up',3]];
 const split=text=>text.split(/(?<=[.!?])\s+/);
 export function geographyArt(code){
@@ -192,13 +193,47 @@ export function rebuildGeographyConceptFlow(lesson,active,makeStage){
    if(['3.1','3.2'].includes(code)){frame.geoDisplay={atlas:{view:'islands',labels:true,cities:true}};frame.conceptLayout='evidence';frame.enlargeMapButton=true;}
   }
  }
+ if(lesson.id==='g7a-geo-w03-1'){
+  const [location,direction]=frames.begin;
+  for(const frame of [location,direction])Object.assign(frame,{lines:[],recallCue:null,responseHint:false,conceptLayout:'artwork'});
+  Object.assign(location,{
+   title:'What are some ways we can ask questions about location?',
+   answerText:'Some possible questions',revealLabel:'Reveal examples',
+   explanation:'Where is the library? How do I get to the school garden? Where is the playground in relation to the main building?',
+   teacherScript:'Invite pupils to suggest questions they could ask when finding a place at school. Use the illustration of two students asking for directions as a starting point. Accept questions about where something is, how to reach it, or its position relative to another place. Reveal the example questions after pupils have contributed.',
+   geoArt:{image:'geography/school-directions.png',contain:true,alt:'One student asks another for directions in school grounds; the second student points along a path.',caption:'Asking for directions at school.'}
+  });
+  Object.assign(direction,{
+   teacherScript:'Ask whether the ruler in the illustration can identify north. Invite answers before revealing: a ruler measures length; finding north needs a compass or a map’s north arrow. The picture deliberately shows no compass or north arrow.',
+   geoArt:{image:'geography/map-with-ruler.png',contain:true,alt:'A wooden ruler lies across a fictional map of paths, buildings, woodland and a river, with no compass or north arrow.',caption:'A map and a ruler.'}
+  });
+  const [exhibitGoal,toolsGoal]=frames.goal;
+  Object.assign(exhibitGoal,{
+   title:'I can create a geography label for a place at school.',
+   lines:['Example label · Shaded bench','A built seat beneath a tree.','Question: Is it cooler here at noon than on the sunny path?'],
+   successCriteria:['Name and describe the feature.','Identify its physical and human features.','Ask a question we could investigate.'],
+   teacherScript:'Introduce the exhibit as a display that helps visitors understand places at school. Point to the sample bench label: it names and describes a visible feature, brings together a human feature (the built seat) and a physical feature (the tree), and asks a question that observations or measurements could answer. Explain that the question is not a measured conclusion. Pupils will learn to create a label for a school feature. Keep this preview brief; teach the categories and the method in the following stages.',
+   conceptLayout:'artwork',
+   geoArt:{image:'geography/school-geography-exhibit.png',contain:true,alt:'A classroom geography exhibit displays drawings of a shaded bench, a paved path and a school building, each with space for a label.',caption:'A school geography exhibit · read the example label beside the picture.'}
+  });
+  Object.assign(toolsGoal,{
+   title:'I can choose the right tool for a geography question.',
+   lines:['Where is it? → Map','Which way is north? → Compass','How long is the line on the map? → Ruler'],
+   successCriteria:['Say what information I need.','Choose a suitable tool.','Explain how the tool helps.'],
+   teacherScript:'Link back to the opening questions about location and north. Point to the three resources: use a map to locate a place, a compass to find direction, and a ruler to measure a line. Distinguish measuring a line on the map from finding the real distance, which also needs the map scale. Preview the goal: pupils should explain their choice using the information the tool provides. Keep the questions within the school context.',
+   conceptLayout:'artwork',
+   geoArt:{image:'geography/geography-tool-kit.png',contain:true,alt:'A map, a compass with a magnetic needle and a centimetre ruler are arranged separately on a school desk.',caption:'Choose the tool that gives the information you need.'}
+  });
+  lesson.learningObjectives=[exhibitGoal.title,toolsGoal.title];
+ }
+ updateSchoolExhibitStages(lesson,frames);
  let elapsed=0;
  lesson.stages=geographySections.map(([id,title,minutes])=>{
   const notes=frames[id].map(f=>`${f.title}\n${f.teacherScript||''}${f.oralCheck?'\nCheck: '+f.oralCheck.question+'\nAnswer: '+f.oralCheck.answer:''}`).join('\n\n');
   const stage=makeStage(id,title,minutes,frames[id],notes||'Use this section to check progress towards the lesson goal.');stage.timeRange=`${elapsed}–${elapsed+minutes} min`;elapsed+=minutes;
-  stage.frames.forEach(f=>f.conceptSection=id);return stage;
+  stage.frames.forEach(f=>{f.conceptSection=id;if(f.pacingSeconds){f.expectedSeconds=f.pacingSeconds;f.timerSeconds=f.pacingSeconds;}});return stage;
  });
- lesson.geoConcept=true;lesson.teacherLed=true;lesson.teachingApproach='guided-to-independent';lesson.contentRevision=lesson.id==='g7b-geo-w01-2'?8005:8100;lesson.boardFirst=false;
+ lesson.geoConcept=true;lesson.teacherLed=true;lesson.teachingApproach='guided-to-independent';lesson.contentRevision=lesson.id==='g7b-geo-w01-2'?8005:lesson.id==='g7a-geo-w03-1'?8103:8100;lesson.boardFirst=false;
  lesson.openingScript='40-minute Geography: recall, goal, vocabulary, explanation, worked example, student practice, understanding check and exit ticket. Bring an exercise book, pencil and ruler where needed. '+lesson.learningObjectives.join(' / ');
  lesson.pacingNote='40-minute route: recall 4, goal 2, vocabulary 3, explanation 8, worked example 5, practice 10, check 5, exit 3. Divide each section between the topics in combined lessons. Timings are estimates.';
  lesson.boardTeachingGuide={...lesson.boardTeachingGuide,message:lesson.pacingNote,routine:['Explain and point to the visual.','Model a worked example.','Let pupils practise, then check and improve.'],stages:lesson.stages.map(s=>({title:s.title,minutes:s.durationMinutes,notes:s.notes}))};

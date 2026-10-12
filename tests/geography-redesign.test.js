@@ -12,7 +12,7 @@ test('all 86 Geography workshops are self-contained with exact core budgets and 
   assert.ok(l.stages.every(s=>s.frames.length&&s.notes));
   for(const s of l.stages){assert.equal(s.frames.reduce((n,f)=>n+f.expectedSeconds,0),s.durationMinutes*60,l.id);assert.ok(s.frames.every(f=>f.timerSeconds>0));}
   const simulations=l.stages.flatMap(s=>s.frames.filter(f=>f.simulation).map(f=>[s.id,f.simulation]));
-  assert.ok(simulations.length||l.id==='g7b-geo-w02-1');assert.ok(simulations.every(([id])=>id==='model'));
+  assert.ok(simulations.length||l.id==='g7b-geo-w02-1'||l.schoolExhibit);assert.ok(simulations.every(([id])=>id==='model'));
   assert.equal(new Set(simulations.map(([,s])=>s.code)).size,simulations.length);
   const text=l.stages.flatMap(s=>s.frames.flatMap(f=>[...(f.lines||[]),typeof f.sourceCard==='string'?f.sourceCard:''])).join(' ');
   assert.doesNotMatch(text,/open section|use the book|in the book|textbook (map|key|diagram)|original weekly task/i,l.id);

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 460" role="img" aria-labelledby="title desc">
+ <title id="title">Map scale worked example</title><desc id="desc">Three equal map centimetres correspond to three ten metre sections, making thirty metres. A schematic ruler begins at zero.</desc>
+ <rect width="660" height="460" rx="18" fill="#faf7ef"/>
+ <g font-family="sans-serif" fill="#112d4d"><text x="30" y="45" font-size="26" font-weight="bold">Scale: 1 cm = 10 m</text><text x="30" y="88" font-size="20">On the map</text></g>
+ <path d="M105 120H555" stroke="#137c83" stroke-width="10"/>
+ <rect x="85" y="145" width="490" height="72" rx="6" fill="#e5cea0" stroke="#a78a5e"/>
+ <g stroke="#574933" stroke-width="3"><path d="M105 145v30m150-30v30m150-30v30m150-30v30"/></g>
+ <g font-family="sans-serif" font-size="22" fill="#112d4d" text-anchor="middle"><text x="105" y="203">0</text><text x="255" y="203">1</text><text x="405" y="203">2</text><text x="555" y="203">3 cm</text></g>
+ <g font-family="sans-serif" fill="#112d4d"><text x="30" y="259" font-size="20">On the ground</text></g>
+ <g fill="#e1f0ed" stroke="#137c83" stroke-width="2"><rect x="105" y="280" width="150" height="55"/><rect x="255" y="280" width="150" height="55"/><rect x="405" y="280" width="150" height="55"/></g>
+ <g font-family="sans-serif" font-size="23" fill="#112d4d" text-anchor="middle"><text x="180" y="315">10 m</text><text x="330" y="315">10 m</text><text x="480" y="315">10 m</text><text x="330" y="391" font-size="30" font-weight="bold">3 × 10 m = 30 m</text><text x="330" y="438" font-size="16">Schematic ruler · use the values shown, not a ruler on the screen.</text></g>
+</svg>

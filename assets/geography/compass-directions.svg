@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 360" role="img" aria-labelledby="title desc">
+ <title id="title">Compass directions</title><desc id="desc">An oriented compass diagram with north at the top, east to the right, south at the bottom and west to the left. The red needle points north.</desc>
+ <rect width="460" height="360" fill="#faf7ef"/><circle cx="230" cy="180" r="130" fill="#e5cea0" stroke="#a78a5e" stroke-width="6"/><circle cx="230" cy="180" r="113" fill="#fffdf8" stroke="#112d4d" stroke-width="2"/>
+ <path d="M230 95L248 180H212Z" fill="#b54c40"/><path d="M230 265L248 180H212Z" fill="#112d4d"/><circle cx="230" cy="180" r="10" fill="#dca438"/>
+ <g font-family="sans-serif" font-size="28" font-weight="bold" fill="#112d4d" text-anchor="middle"><text x="230" y="83">N</text><text x="331" y="190">E</text><text x="230" y="300">S</text><text x="129" y="190">W</text></g>
+</svg>

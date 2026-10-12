@@ -6,7 +6,7 @@ import {geographyTeaching} from '../src/lessons/geography-teaching.js';
 import {geographyTwists} from '../src/lessons/geography-twists.js';
 import {initialBoardState,evaluateBoard} from '../src/geography-board.js';
 const geo=lessons.filter(l=>l.geoRedesign);
-test('every Geography mission has authored instruction and every session has a board challenge',()=>{
+test('every Geography mission has authored instruction and sessions have a board challenge or exhibit task',()=>{
  for(const [code,w]of Object.entries(workshops))w.missions.forEach((m,i)=>{
   const p=geographyTeaching[`${code}.${i}`];assert.ok(p,`${code}.${i}`);
   for(const k of ['objective','model','prompt','correct','wrong','explanation'])assert.ok(p[k]?.trim().length>=2,`${code}.${i}: ${k}`);
@@ -16,7 +16,7 @@ test('every Geography mission has authored instruction and every session has a b
  for(const l of geo){
   const frames=l.stages.flatMap(s=>s.frames);
   assert.ok(frames.some(f=>f.teachingModel),l.id);
-  assert.ok(frames.some(f=>f.boardActivity||f.postcardActivity),l.id);
+  assert.ok(frames.some(f=>f.boardActivity||f.postcardActivity)||l.schoolExhibit,l.id);
   assert.ok(l.learningObjectives.length,l.id);
   assert.doesNotMatch(JSON.stringify(l),/Transfer the method, not the old result|Assume a plausible answer needs no evidence|Keep the previous answer without checking/);
  }

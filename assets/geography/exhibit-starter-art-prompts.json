@@ -1,0 +1,16 @@
+{
+  "generator": "Built-in image_gen",
+  "lessonId": "g7a-geo-w03-1",
+  "assets": [
+    {
+      "image": "school-directions.png",
+      "styleReference": "fieldwork.png",
+      "prompt": "Use case: illustration-story. Asset type: Geography Grade 7 classroom lesson illustration, landscape 3:2. Input image is a STYLE REFERENCE only: match the softly painted realistic school textbook illustration, natural proportions, warm sun, textured brushwork, navy school uniforms and muted green palette. Create a new scene of exactly two young secondary school students outdoors in school grounds. One student is asking the other for directions, with a questioning conversational gesture; the other listens and points toward a school path/building. Both students clearly visible, friendly and natural, school building and branching paths in background. Clear composition suitable for projection. No speech bubbles, no written words, no watermark."
+    },
+    {
+      "image": "map-with-ruler.png",
+      "styleReference": "map-skills.png",
+      "prompt": "Use case: scientific-educational. Asset type: Geography Grade 7 classroom lesson illustration, landscape 3:2. Input image is a STYLE REFERENCE only: match the warm softly painted detailed school textbook illustration, textured paper, muted green terrain and teal water, natural sunlight on a wooden desk. Create a new close overhead scene with a simple fictional paper map laid flat and a prominent wooden centimetre ruler resting diagonally across the map. Show paths, a river, woodland and a few buildings. Ruler markings must read as length measurements. The ruler is the sole measuring tool. No compass, no north arrow, no compass rose, no directional letters, so pupils can discuss whether the ruler alone tells north. No captions, no watermark, no other prominent objects."
+    }
+  ]
+}

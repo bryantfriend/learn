@@ -204,7 +204,7 @@ function renderPlayer() {
     copy.append(element('h1', { id: 'student-title', tabindex: '-1' }, [graphic?.intro && lesson.catalog?.classes ? graphic.title : frame.title]));
     if (frame.quote) copy.append(element('blockquote', {}, [frame.quote]));
     if (frame.choices) copy.append(element('ol', { className: 'opening-choices' + (frame.choiceLayout === 'grid' ? ' choice-grid' : '') }, frame.choices.map(function(choice) { return element('li', {}, [choice]); })));
-    if (frame.lines) copy.append(element('div', { className: 'instructions' }, (graphic?.intro && !frame.expectedSeconds ? [graphic.prompt] : frame.lines).map(function(line) { return element('p', {}, [line]); })));
+    if (frame.lines && !(frame.hideInstructionsOnReveal && response().revealed)) copy.append(element('div', { className: 'instructions' }, (graphic?.intro && !frame.expectedSeconds ? [graphic.prompt] : frame.lines).map(function(line) { return element('p', {}, [line]); })));
     if (frame.footnote) copy.append(element('p', { className: 'footnote' }, [frame.footnote]));
     if (frame.questionBank?.length) {
         const bankButton = button('Show all questions ⛶', 'question-bank', 'question-bank-button');
@@ -304,7 +304,7 @@ function renderQuestion(copy) {
         if(frame.revealAtlasBorder)copy.append(button('Replay zoom','replay-map-zoom','reveal-button'));
         if(frame.allowHideAnswer)copy.append(button('Hide answer','hide-answer','reveal-button'));
     } else {
-        copy.append(element('p', { className: 'response-hint' }, [result.selected ? 'Discussing ' + result.selected + ' · Explanation is still hidden.' : frame.responseHint || (frame.answerText ? 'Think quietly. Share when invited.' : 'Think first. Show 1 or 2 fingers when invited.')]));
+        if(frame.responseHint!==false)copy.append(element('p', { className: 'response-hint' }, [result.selected ? 'Discussing ' + result.selected + ' · Explanation is still hidden.' : frame.responseHint || (frame.answerText ? 'Think quietly. Share when invited.' : 'Think first. Show 1 or 2 fingers when invited.')]));
         copy.append(button(frame.revealLabel || (frame.answerText ? 'Reveal response' : frame.suggested ? 'Reveal suggested answer' : 'Reveal explanation'), 'reveal', 'reveal-button'));
     }
 }

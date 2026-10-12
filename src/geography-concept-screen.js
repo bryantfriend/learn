@@ -51,7 +51,7 @@ export function createConceptScreen(lesson,stage,frame,copy,evidence){
   for(const [i,v]of frame.vocabularyCards.entries()){
    const tile=node('article',null,'concept-word');
    const visual=v.picture?vocabularyPicture(v.picture):node('div',null,'concept-word-art');
-   if(!v.picture){visual.style.backgroundImage=`linear-gradient(0deg,#102c4c30,#102c4c05),url("./assets/${v.image||frame.geoArt.image}")`;visual.style.backgroundPosition=`${i*50}% center`;}
+   if(!v.picture){visual.style.backgroundImage=`linear-gradient(0deg,#102c4c30,#102c4c05),url("./assets/${v.image||frame.geoArt.image}")`;visual.style.backgroundPosition=`${i*50}% center`;if(v.imageContain){visual.style.backgroundSize='contain';visual.style.backgroundRepeat='no-repeat';visual.style.backgroundPosition='center';}}
    tile.append(visual,node('h3',v.term));
    if(v.zh||v.ru){const translations=node('div',null,'concept-word-translations');for(const [lang,text]of [['zh-Hans',v.zh],['ru',v.ru]])if(text){const line=node('p',text);line.lang=lang;translations.append(line);}tile.append(translations);}
    tile.append(node('p',v.meaning));

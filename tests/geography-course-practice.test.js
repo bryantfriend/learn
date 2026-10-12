@@ -4,7 +4,7 @@ import {lessons} from '../src/lessons.js';
 import {conceptVocabulary} from '../src/lessons/geography-concept-vocabulary.js';
 
 test('Course practice has ten distinct binary questions, balanced answers and whole-lesson coverage',()=>{
- for(const l of lessons.filter(l=>l.geoRedesign)){
+ for(const l of lessons.filter(l=>l.geoRedesign&&!l.schoolExhibit)){
   const practice=l.stages.find(s=>s.id==='apply').frames;
   assert.equal(practice.length,10,l.id);
   assert.equal(new Set(practice.map(f=>f.title)).size,10,l.id);
