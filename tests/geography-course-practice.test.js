@@ -6,6 +6,14 @@ import {conceptVocabulary} from '../src/lessons/geography-concept-vocabulary.js'
 test('Course practice has ten distinct binary questions, balanced answers and whole-lesson coverage',()=>{
  for(const l of lessons.filter(l=>l.geoRedesign&&!l.schoolExhibit)){
   const practice=l.stages.find(s=>s.id==='apply').frames;
+  if(l.courseModelVersion){
+   assert.ok(practice.some(f=>f.independentTask),l.id);assert.ok(practice.some(f=>f.revisionTask),l.id);
+   assert.ok(practice.every(f=>!f.fingerPractice&&!f.choices&&f.sourceCard&&f.teacherScript),l.id);
+   for(const m of l.workshopMissions)assert.ok(practice.some(f=>f.discussionId===`course-investigation-${m.code}-${m.index}`),l.id);
+   const checks=l.stages.find(s=>s.id==='check').frames;assert.equal(checks.length,2);
+   for(const f of checks){assert.ok(f.answerText&&f.allowHideAnswer&&f.explanation&&!f.choices&&!f.options);assert.equal(f.expectedSeconds,150);}
+   continue;
+  }
   assert.equal(practice.length,10,l.id);
   assert.equal(new Set(practice.map(f=>f.title)).size,10,l.id);
   assert.equal(practice.filter(f=>f.answerText.startsWith('1 finger')).length,5,l.id);

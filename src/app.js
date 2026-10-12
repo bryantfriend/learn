@@ -257,7 +257,7 @@ function renderPlayer() {
     const canDiscuss = frame.discussionId && (frame.type !== 'question' || response().revealed);
     const discussed = session.discussedQuestions.includes(frame.discussionId);
     const stepControls = element('section', { className: 'step-controls', 'aria-label': 'Current teaching step' }, [
-        element('span', { className: 'step-label' }, ['Step ' + (step + 1) + ' of ' + stage.frames.length + (frame.expectedSeconds ? ' · ~' + (frame.expectedSeconds / 60) + ' min' : '')]),
+        element('span', { className: 'step-label' }, ['Step ' + (step + 1) + ' of ' + stage.frames.length + (frame.expectedSeconds ? ' · ~' + (frame.expectedSeconds / 60).toFixed(1).replace(/\.0$/, '') + ' min' : '')]),
         ...(frame.cue ? [button('◉ ' + frame.cue, 'attention', 'cue text-button')] : []),
         ...(canDiscuss ? [button(discussed ? '✓ Discussed' : 'Mark discussed', 'mark-discussed', 'subtle discussion-button', { 'aria-pressed': String(discussed) })] : []),
         ...(step > 0 ? [button('← Previous step', 'previous-step', 'subtle')] : []),

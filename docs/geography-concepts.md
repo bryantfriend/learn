@@ -1,4 +1,18 @@
-# Geography concept-screen redesign — 6 October 2026
+# Geography course model — 12 October 2026
+
+The school geography exhibit lesson is now the model for all 86 teaching and review lessons. Each topic has an explicit starter question, a plain learning goal, three specific success criteria and vocabulary linked to concrete examples. The 42 topic methods are authored in `src/lessons/geography-course-methods.js`.
+
+Worked examples show their complete evidence. Students then apply the method to a different case and create an appropriate product: a map, record, calculation, diagram, explanation or justified decision. They compare and revise their work before sharing. The ten-minute practice block replaces the former ten-question finger-voting block. Review lessons retain their distinct repair, evidence-hearing and counterexample formats.
+
+Checks use a supplied new case and conceal the model until revealed. Exit tickets require an independent response. Generic discussion footers and automatic homework have been removed. The original eight section budgets still total 40 minutes; timings are estimates.
+
+Exact grid, coordinate, contour, height-profile and oxbow diagrams supplement the painted artwork. Numerical sources are visible beside the task; unrelated default lab figures are not offered as teaching evidence. Actual UK maps and useful optional map challenges remain available. The ten assessments use neutral paper-and-pencil artwork and preserve independent conditions.
+
+The teacher guide and Geography study entries have been regenerated. Other subjects’ study entries remain intact. Existing translated study aids have been refreshed, including corrections for several numerical patterns. A content revision resets obsolete Geography lesson checkpoints while retaining class preferences.
+
+The detailed audit is in `docs/geography-course-model-audit.json`. Run `node scripts/audit-geography-course-model.mjs`, `npm test` and `node tests/geography-course-model-browser.cjs`. Classroom previews are saved under `output/playwright/course-model/previews/`.
+
+## Earlier screen design — 6 October 2026
 
 All 86 teaching and review lessons for 7A and 7B now use the approved eight-section flow. The ten assessments use the same ivory, navy and teal screen style with their preparation, independent assessment and reflection structure.
 

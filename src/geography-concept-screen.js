@@ -55,6 +55,7 @@ export function createConceptScreen(lesson,stage,frame,copy,evidence){
    tile.append(visual,node('h3',v.term));
    if(v.zh||v.ru){const translations=node('div',null,'concept-word-translations');for(const [lang,text]of [['zh-Hans',v.zh],['ru',v.ru]])if(text){const line=node('p',text);line.lang=lang;translations.append(line);}tile.append(translations);}
    tile.append(node('p',v.meaning));
+   if(v.example)tile.append(node('p',v.example,'concept-word-example'));
    {
     tile.classList.add('concept-word-interactive');tile.tabIndex=0;tile.setAttribute('role','button');tile.setAttribute('aria-haspopup','dialog');tile.setAttribute('aria-label','Enlarge '+v.term+' vocabulary card');
     tile.onclick=()=>enlargeVocabularyCard(tile);

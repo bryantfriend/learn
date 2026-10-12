@@ -963,5 +963,65 @@
     "ru": "Сэм хочет недорогую поездку. Ким хочет поехать куда-нибудь поблизости.",
     "zh": "山姆希望旅行费用低。金希望去附近的地方。",
     "tr": "Sam ucuz bir gezi istiyor. Kim yakındaki bir yere gitmek istiyor."
+  },
+  "Fictional plan: a bridge crosses a river. 12 homes cluster beside the bridge; 9 lie farther upstream. A road links the bridge to a market. The plan contains no interviews.": {
+    "ru": "Вымышленный план: мост пересекает реку. Рядом с мостом расположены 12 домов; ещё 9 находятся дальше вверх по течению. Дорога соединяет мост с рынком. Интервью не проводились.",
+    "zh": "虚构平面图：一座桥跨过河流。桥边聚集着 12 栋住宅；另有 9 栋位于更远的上游。一条道路连接桥和市场。图中没有访谈资料。",
+    "tr": "Kurgusal planda bir köprü nehri geçer. Köprünün yanında 12 ev kümelenmiştir; 9 ev ise daha yukarıdadır. Bir yol köprüyü pazara bağlar. Görüşme verisi yoktur."
+  },
+  "Fictional plan: a bridge crosses a river. 13 homes cluster beside the bridge; 10 lie farther upstream. A road links the bridge to a market. The plan contains no interviews.": {
+    "ru": "Вымышленный план: мост пересекает реку. Рядом с мостом расположены 13 домов; ещё 10 находятся дальше вверх по течению. Дорога соединяет мост с рынком. Интервью не проводились.",
+    "zh": "虚构平面图：一座桥跨过河流。桥边聚集着 13 栋住宅；另有 10 栋位于更远的上游。一条道路连接桥和市场。图中没有访谈资料。",
+    "tr": "Kurgusal planda bir köprü nehri geçer. Köprünün yanında 13 ev kümelenmiştir; 10 ev ise daha yukarıdadır. Bir yol köprüyü pazara bağlar. Görüşme verisi yoktur."
+  },
+  "Fictional plan: a bridge crosses a river. 10 homes cluster beside the bridge; 7 lie farther upstream. A road links the bridge to a market. The plan contains no interviews.": {
+    "ru": "Вымышленный план: мост пересекает реку. Рядом с мостом расположены 10 домов; ещё 7 находятся дальше вверх по течению. Дорога соединяет мост с рынком. Интервью не проводились.",
+    "zh": "虚构平面图：一座桥跨过河流。桥边聚集着 10 栋住宅；另有 7 栋位于更远的上游。一条道路连接桥和市场。图中没有访谈资料。",
+    "tr": "Kurgusal planda bir köprü nehri geçer. Köprünün yanında 10 ev kümelenmiştir; 7 ev ise daha yukarıdadır. Bir yol köprüyü pazara bağlar. Görüşme verisi yoktur."
+  },
+  "Fictional plan: a bridge crosses a river. 14 homes cluster beside the bridge; 11 lie farther upstream. A road links the bridge to a market. The plan contains no interviews.": {
+    "ru": "Вымышленный план: мост пересекает реку. Рядом с мостом расположены 14 домов; ещё 11 находятся дальше вверх по течению. Дорога соединяет мост с рынком. Интервью не проводились.",
+    "zh": "虚构平面图：一座桥跨过河流。桥边聚集着 14 栋住宅；另有 11 栋位于更远的上游。一条道路连接桥和市场。图中没有访谈资料。",
+    "tr": "Kurgusal planda bir köprü nehri geçer. Köprünün yanında 14 ev kümelenmiştir; 11 ev ise daha yukarıdadır. Bir yol köprüyü pazara bağlar. Görüşme verisi yoktur."
+  },
+  "Fictional plan: a bridge crosses a river. 11 homes cluster beside the bridge; 8 lie farther upstream. A road links the bridge to a market. The plan contains no interviews.": {
+    "ru": "Вымышленный план: мост пересекает реку. Рядом с мостом расположены 11 домов; ещё 8 находятся дальше вверх по течению. Дорога соединяет мост с рынком. Интервью не проводились.",
+    "zh": "虚构平面图：一座桥跨过河流。桥边聚集着 11 栋住宅；另有 8 栋位于更远的上游。一条道路连接桥和市场。图中没有访谈资料。",
+    "tr": "Kurgusal planda bir köprü nehri geçer. Köprünün yanında 11 ev kümelenmiştir; 8 ev ise daha yukarıdadır. Bir yol köprüyü pazara bağlar. Görüşme verisi yoktur."
+  },
+  "Fictional plan: a bridge crosses a river. 17 homes cluster beside the bridge; 14 lie farther upstream. A road links the bridge to a market. The plan contains no interviews.": {
+    "ru": "Вымышленный план: мост пересекает реку. Рядом с мостом расположены 17 домов; ещё 14 находятся дальше вверх по течению. Дорога соединяет мост с рынком. Интервью не проводились.",
+    "zh": "虚构平面图：一座桥跨过河流。桥边聚集着 17 栋住宅；另有 14 栋位于更远的上游。一条道路连接桥和市场。图中没有访谈资料。",
+    "tr": "Kurgusal planda bir köprü nehri geçer. Köprünün yanında 17 ev kümelenmiştir; 14 ev ise daha yukarıdadır. Bir yol köprüyü pazara bağlar. Görüşme verisi yoktur."
+  },
+  "3 cm. Divide 60 by 20 when going from ground distance to map length.": {
+    "ru": "3 см. Чтобы перейти от расстояния на местности к длине на карте, разделите 60 на 20.",
+    "zh": "3 厘米。从实际距离换算为图上长度时，用 60 除以 20。",
+    "tr": "3 cm. Gerçek mesafeden harita uzunluğuna geçerken 60 sayısını 20 sayısına bölün."
+  },
+  "Practice grid square 2345. Rescue point A is 3 tenths east and 5 tenths north within the square. Point B is 5 tenths east and 3 tenths north.": {
+    "ru": "Учебный квадрат сетки 2345. От нижнего левого угла точка A расположена на 3/10 ширины к востоку и 5/10 высоты к северу. Точка B: 5/10 ширины к востоку и 3/10 высоты к северу.",
+    "zh": "练习方格 2345。从左下角起，救援点 A 向东位于方格宽度的 3/10 处，向北位于高度的 5/10 处。点 B 向东为宽度的 5/10，向北为高度的 3/10。",
+    "tr": "Alıştırma karesi 2345. Sol alt köşeden A noktası, kare genişliğinin 3/10'u kadar doğuda ve yüksekliğinin 5/10'u kadar kuzeydedir. B noktası genişliğin 5/10'u kadar doğuda ve yüksekliğin 3/10'u kadar kuzeydedir."
+  },
+  "Practice grid square 2345. Rescue point A is 5 tenths east and 4 tenths north within the square. Point B is 7 tenths east and 2 tenths north.": {
+    "ru": "Учебный квадрат сетки 2345. От нижнего левого угла точка A расположена на 5/10 ширины к востоку и 4/10 высоты к северу. Точка B: 7/10 ширины к востоку и 2/10 высоты к северу.",
+    "zh": "练习方格 2345。从左下角起，救援点 A 向东位于方格宽度的 5/10 处，向北位于高度的 4/10 处。点 B 向东为宽度的 7/10，向北为高度的 2/10。",
+    "tr": "Alıştırma karesi 2345. Sol alt köşeden A noktası, kare genişliğinin 5/10'u kadar doğuda ve yüksekliğinin 4/10'u kadar kuzeydedir. B noktası genişliğin 7/10'u kadar doğuda ve yüksekliğin 2/10'u kadar kuzeydedir."
+  },
+  "Practice grid square 2345. Rescue point A is 4 tenths east and 8 tenths north within the square. Point B is 6 tenths east and 6 tenths north.": {
+    "ru": "Учебный квадрат сетки 2345. От нижнего левого угла точка A расположена на 4/10 ширины к востоку и 8/10 высоты к северу. Точка B: 6/10 ширины к востоку и 6/10 высоты к северу.",
+    "zh": "练习方格 2345。从左下角起，救援点 A 向东位于方格宽度的 4/10 处，向北位于高度的 8/10 处。点 B 向东为宽度的 6/10，向北为高度的 6/10。",
+    "tr": "Alıştırma karesi 2345. Sol alt köşeden A noktası, kare genişliğinin 4/10'u kadar doğuda ve yüksekliğinin 8/10'u kadar kuzeydedir. B noktası genişliğin 6/10'u kadar doğuda ve yüksekliğin 6/10'u kadar kuzeydedir."
+  },
+  "Practice grid square 2345. Rescue point A is 5 tenths east and 7 tenths north within the square. Point B is 7 tenths east and 5 tenths north.": {
+    "ru": "Учебный квадрат сетки 2345. От нижнего левого угла точка A расположена на 5/10 ширины к востоку и 7/10 высоты к северу. Точка B: 7/10 ширины к востоку и 5/10 высоты к северу.",
+    "zh": "练习方格 2345。从左下角起，救援点 A 向东位于方格宽度的 5/10 处，向北位于高度的 7/10 处。点 B 向东为宽度的 7/10，向北为高度的 5/10。",
+    "tr": "Alıştırma karesi 2345. Sol alt köşeden A noktası, kare genişliğinin 5/10'u kadar doğuda ve yüksekliğinin 7/10'u kadar kuzeydedir. B noktası genişliğin 7/10'u kadar doğuda ve yüksekliğin 5/10'u kadar kuzeydedir."
+  },
+  "Practice grid square 2345. Rescue point A is 2 tenths east and 6 tenths north within the square. Point B is 4 tenths east and 4 tenths north.": {
+    "ru": "Учебный квадрат сетки 2345. От нижнего левого угла точка A расположена на 2/10 ширины к востоку и 6/10 высоты к северу. Точка B: 4/10 ширины к востоку и 4/10 высоты к северу.",
+    "zh": "练习方格 2345。从左下角起，救援点 A 向东位于方格宽度的 2/10 处，向北位于高度的 6/10 处。点 B 向东为宽度的 4/10，向北为高度的 4/10。",
+    "tr": "Alıştırma karesi 2345. Sol alt köşeden A noktası, kare genişliğinin 2/10'u kadar doğuda ve yüksekliğinin 6/10'u kadar kuzeydedir. B noktası genişliğin 4/10'u kadar doğuda ve yüksekliğin 4/10'u kadar kuzeydedir."
   }
 }

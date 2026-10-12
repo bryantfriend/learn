@@ -18,7 +18,7 @@ test('All 86 teaching/review lessons preserve explanations in the eight-section 
   assert.deepEqual(l.stages.map(s=>s.durationMinutes),[4,2,3,8,5,10,5,3],l.id);
   const frames=l.stages.flatMap(s=>s.frames);
   assert.ok(frames.filter(f=>!f.final).every(f=>f.teacherScript&&(f.geoDisplay||f.geoArt)),l.id);
-  assert.ok(l.stages.find(s=>s.id==='check').frames.every(f=>/expla|source/i.test(f.responseHint)||f.lines.some(line=>/explain/i.test(line))),l.id);
+  assert.ok(l.stages.find(s=>s.id==='check').frames.every(f=>f.sourceCard||/expla|source/i.test(f.responseHint)||f.lines.some(line=>/explain/i.test(line))),l.id);
   assert.ok(l.stages.find(s=>s.id==='teach').frames.some(f=>f.teachingConcept),l.id);
   if(!l.geographyReview)for(const code of new Set(l.bookSections)){
    assert.equal(new Set(frames.filter(f=>f.conceptId?.startsWith(code+'-')).map(f=>f.conceptId)).size,geographyConcepts[code].length,l.id);

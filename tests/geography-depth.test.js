@@ -24,7 +24,7 @@ test('Assessments keep independent assessment conditions',()=>{for(const l of le
 test('Smart-board lessons have revealable models, specific reviews and independent exit tickets',()=>{
  for(const lesson of lessons.filter(l=>l.geoRedesign)){
   const frames=lesson.stages.flatMap(s=>s.frames);
-  assert.ok(frames.some(f=>f.geoDisplay?.demo?.steps.length||f.geoDisplay?.atlas?.fill)||(lesson.schoolExhibit&&frames.some(f=>f.teachingModel)),lesson.id);
+  assert.ok(frames.some(f=>f.geoDisplay?.demo?.steps.length||f.geoDisplay?.atlas?.fill||f.teachingModel&&f.geoDisplay?.source)||(lesson.schoolExhibit&&frames.some(f=>f.teachingModel)),lesson.id);
   assert.ok(!frames.some(f=>f.title==='Compare with a worked response'),lesson.id);
   for(const f of frames.filter(f=>f.solutionCheck)){
    assert.ok(f.taskInstructions[0]&&f.sourceCard&&f.geoDisplay.workpad);

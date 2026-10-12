@@ -4,6 +4,7 @@ import {content as regionalBank} from './g7b-geo-content.js';
 import {createFingerPractice} from './geography-finger-practice.js';
 import {createCoursePractice,createCourseChecks} from './geography-course-practice.js';
 import {updateSchoolExhibitStages} from './geography-school-exhibit.js';
+import {upgradeGeographyCourse} from './geography-course-upgrade.js';
 export const geographySections=[['begin','Starter and recall',4],['goal','Today’s learning goal',2],['vocabulary','Key vocabulary',3],['teach','Teacher explanation',8],['model','Worked example',5],['apply','Student practice',10],['check','Check understanding',5],['finish','Exit ticket and wrap-up',3]];
 const split=text=>text.split(/(?<=[.!?])\s+/);
 export function geographyArt(code){
@@ -226,6 +227,7 @@ export function rebuildGeographyConceptFlow(lesson,active,makeStage){
   });
   lesson.learningObjectives=[exhibitGoal.title,toolsGoal.title];
  }
+ upgradeGeographyCourse(lesson,active,frames);
  updateSchoolExhibitStages(lesson,frames);
  let elapsed=0;
  lesson.stages=geographySections.map(([id,title,minutes])=>{
@@ -233,7 +235,7 @@ export function rebuildGeographyConceptFlow(lesson,active,makeStage){
   const stage=makeStage(id,title,minutes,frames[id],notes||'Use this section to check progress towards the lesson goal.');stage.timeRange=`${elapsed}–${elapsed+minutes} min`;elapsed+=minutes;
   stage.frames.forEach(f=>{f.conceptSection=id;if(f.pacingSeconds){f.expectedSeconds=f.pacingSeconds;f.timerSeconds=f.pacingSeconds;}});return stage;
  });
- lesson.geoConcept=true;lesson.teacherLed=true;lesson.teachingApproach='guided-to-independent';lesson.contentRevision=lesson.id==='g7b-geo-w01-2'?8005:lesson.id==='g7a-geo-w03-1'?8103:8100;lesson.boardFirst=false;
+ lesson.geoConcept=true;lesson.teacherLed=true;lesson.teachingApproach='guided-to-independent';lesson.contentRevision=lesson.id==='g7a-geo-w03-1'?8103:8200;lesson.boardFirst=false;
  lesson.openingScript='40-minute Geography: recall, goal, vocabulary, explanation, worked example, student practice, understanding check and exit ticket. Bring an exercise book, pencil and ruler where needed. '+lesson.learningObjectives.join(' / ');
  lesson.pacingNote='40-minute route: recall 4, goal 2, vocabulary 3, explanation 8, worked example 5, practice 10, check 5, exit 3. Divide each section between the topics in combined lessons. Timings are estimates.';
  lesson.boardTeachingGuide={...lesson.boardTeachingGuide,message:lesson.pacingNote,routine:['Explain and point to the visual.','Model a worked example.','Let pupils practise, then check and improve.'],stages:lesson.stages.map(s=>({title:s.title,minutes:s.durationMinutes,notes:s.notes}))};
@@ -241,7 +243,19 @@ export function rebuildGeographyConceptFlow(lesson,active,makeStage){
 }
 export function styleGeographyAssessment(lesson){
  if(lesson.catalog?.subjectId!=='geography'||!lesson.examId)return lesson;
- lesson.geoConcept=true;
- for(const stage of lesson.stages)for(const f of stage.frames){f.geoArt=geographyArt(lesson.catalog.classes.includes('7b')?'3.1':'2.1');f.conceptSection='assessment';}
+ lesson.geoConcept=true;lesson.courseModelVersion=1;lesson.contentRevision=8200;
+ const count=lesson.stages[0].frames[0].lines.join(' ').match(/\d+/)?.[0]||'all';
+ for(const stage of lesson.stages){
+  for(const [i,f]of stage.frames.entries()){
+   f.geoArt={image:'geography/assessment-paper.svg',contain:true,alt:'Assessment paper and pencil, with no instructional clues.',caption:'Work independently using the sources in your assessment paper.'};f.conceptSection='assessment';f.recallCue=null;f.responseHint=false;
+   if(stage.id==='prepare'&&i===0){f.title=lesson.title;f.lines=[`${count} questions. Use the source information supplied for each.`,`Circle one answer: A, B, C or D.`];}
+   if(stage.id==='prepare'&&i===1){f.title='Ready to work independently';f.lines=['Write your name, class and date.','Ask about unclear instructions before you begin.'];}
+   if(stage.id==='test'){f.title='Read the source and choose';f.lines=['Work independently. Read each question and its source.','Circle one answer per question: A, B, C or D.','Check for unanswered questions before handing in.'];}
+   if(stage.id==='reflect'){f.title='Check, hand in, then reflect';f.lines=[`Check your name and all ${count} responses. Hand in when instructed.`,'After handing in: name one skill you found difficult.'];}
+   if(stage.id==='finish'){f.title='Assessment complete';f.lines=['Keep the paper closed after submission.','Listen for the next instruction.'];}
+   f.teacherScript=stage.id==='test'?'Maintain independent assessment conditions. Clarify instructions without giving hints or model answers. Use the printed assessment’s source information.':stage.id==='reflect'?'Collect the papers before discussing content. Use pupils’ reflections to select future practice; do not expose answers while other pupils are working.':'Explain the assessment instructions and maintain the conditions specified on the paper. The illustration supplies no content hints.';
+  }
+  stage.notes=stage.frames.map(f=>`${f.title}\n${f.teacherScript}`).join('\n\n');
+ }
  return lesson;
 }

@@ -1,5 +1,16 @@
 # Learn testing
 
+## Geography model lesson applied across the course — 12 October 2026
+
+- All 86 teaching/review lessons now use concrete goals, topic-specific vocabulary examples, worked evidence, independent investigation products, peer revision, concealed checks and independent exits. The 10 assessments retain independent conditions with neutral artwork.
+- `node scripts/audit-geography-course-model.mjs`: 96 lessons, 42 topics, zero issues. The lesson-by-lesson record is in `docs/geography-course-model-audit.json`.
+- Full unit suite: 201 passed, zero failed.
+- `node tests/geography-course-model-browser.cjs`: 4,920 slide states across all 96 lessons at 1280 × 720 and 1920 × 1080; no text scrolling, overlaps, generic cues or JavaScript errors.
+- Student browser checks passed for filters, notes, cards, quiz feedback, persistence, languages and mobile layout. Only Geography entries in the study catalogue changed.
+- Five new painted illustrations and five exact teaching diagrams were reviewed in classroom previews. Preview screenshots are in `output/playwright/course-model/previews/`.
+- All 5,698 study strings have Russian, Chinese and Turkish entries. These remain machine-translated study aids; numerical audit flags include localisation and changed word order. The grid-fraction, house-count and division patterns identified during review have explicit translation corrections.
+- Refresh commands: `node scripts/build-geography-course-diagrams.mjs`, `node scripts/build-students.mjs --subject=geography`, `node scripts/build-student-visuals.cjs`, then `scripts/translate-students.py`, `node scripts/fix-geography-study-translations.mjs` and `node scripts/audit-student-translations.mjs`.
+
 ## Geography concept screens — 6 October 2026
 
 - Full unit suite: 82 passed, 0 failed. The student tests also passed after the final catalogue rebuild.

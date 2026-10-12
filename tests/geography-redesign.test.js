@@ -22,7 +22,7 @@ test('all 86 Geography workshops are self-contained with exact core budgets and 
 test('the first 7A workshop explicitly models linking before independent linking',()=>{
  const l=geo.find(l=>l.id==='g7a-geo-w02-1'),frames=l.stages.flatMap(s=>s.frames);
  const model=frames.findIndex(f=>f.title==='What does “make a link” mean?');
- const independent=frames.findIndex(f=>f.fingerPractice&&/interaction|farm|Physical geography|Human geography/.test(f.title));
+ const independent=frames.findIndex(f=>f.independentTask);
  assert.ok(model>=0&&independent>model);assert.match(frames[model].lines.join(' '),/so people can reach/);
 });
 test('7A combined weeks retain their applied and independent missions',()=>{

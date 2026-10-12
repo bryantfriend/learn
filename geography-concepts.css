@@ -70,6 +70,7 @@
 .concept-word{border:1px solid #dadfd4;background:#fffdf8;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;min-width:0;}
 .concept-word-art{flex:1;min-height:65px;background-size:cover;display:grid;place-items:center;}
 .concept-word-symbol{width:66px;height:66px;background:#faf7efe8;color:#126e78;border-radius:50%;display:grid;place-items:center;font-size:40px;}
+.concept-word .concept-word-example{font-size:16px;line-height:1.25;color:#18777e;padding-top:0;padding-bottom:10px;}
 .concept-word-picture{position:relative;background:#e3f1f7;overflow:hidden;}
 .concept-word-picture svg{width:100%;height:100%;position:absolute;inset:0;}
 .concept-map-badge{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);white-space:nowrap;background:#fffdf8ed;color:#294f54;padding:5px 12px;border-radius:20px;font-size:16px;}

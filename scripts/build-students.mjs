@@ -2,8 +2,9 @@ import fs from 'node:fs';
 import {lessons,questionOptions} from '../src/lessons.js';
 import {visualSpec} from '../src/visuals.js';
 const diagrams={'g7b-uk':'g7b-uk','g7b-valley':'g7b-valley','g7b-cycle':'g7b-cycle','g7b-bend':'g7b-bend','2.4':'g7-plan','2.5':'g7-grid','2.8':'g7-profile','2.9':'g7-world'};
+const selectedSubject=process.argv.find(a=>a.startsWith('--subject='))?.slice('--subject='.length);
 const adapt=text=>String(text||'').replace(/Use the textbook source/gi,'Use the study notes and diagrams').replace(/from the textbook/gi,'from the study notes and diagrams').replace(/Practise two examples together, then complete one independently\./g,'Study two examples, then explain one in your own words.').replace(/Exchange work\./g,'Review your work.').replace(/Explain it to a partner/gi,'Explain it in your own words').replace(/Talk to a partner/gi,'Write your ideas').replace(/Listen to a partner\. Make one useful correction\./g,'Read your answer again. Make one useful correction.').replace(/Listen for the next instruction\./g,'').replace(/Keep your work\. Listen for the next instruction\./g,'Keep your work.').trim();
-const out=lessons.filter(l=>!l.bookTrial&&!l.classroomOnly).map(lesson=>{
+let out=lessons.filter(l=>!l.bookTrial&&!l.classroomOnly&&(!selectedSubject||l.catalog?.subjectId===selectedSubject)).map(lesson=>{
  const item={id:lesson.id,title:lesson.title,classes:lesson.catalog?.classes||(lesson.catalog?.grades?.includes(8)?['8']:['7a','7b','8']),subject:lesson.catalog?.subjectId||'routines',quarter:lesson.catalog?.quarter||'Start',unit:lesson.catalog?.unit||'Classroom foundations',order:lesson.catalog?.order||0,assessment:!!lesson.examId,sections:[],questions:[],cards:[],related:[]};
  if(lesson.examId)return item;
  for(const [si,stage] of lesson.stages.entries()){
@@ -28,7 +29,13 @@ const out=lessons.filter(l=>!l.bookTrial&&!l.classroomOnly).map(lesson=>{
  }
  item.cards=item.cards.slice(-12);return item;
 });
-for(const item of out.filter(x=>x.assessment)){
+if(selectedSubject){
+ const previous=JSON.parse(fs.readFileSync('students/lessons.json','utf8'));
+ const rebuilt=new Map(out.map(item=>[item.id,item]));const priorIds=new Set(previous.map(item=>item.id));
+ out=previous.map(item=>item.subject===selectedSubject?(rebuilt.get(item.id)||item):item);
+ out.push(...[...rebuilt.values()].filter(item=>!priorIds.has(item.id)));
+}
+for(const item of out.filter(x=>x.assessment&&(!selectedSubject||x.subject===selectedSubject))){
  const related=out.filter(x=>!x.assessment&&x.subject===item.subject&&x.quarter===item.quarter&&x.classes.some(c=>item.classes.includes(c))&&x.order<=item.order).slice(-8);
  item.related=related.map(x=>x.id);
  item.sections=[{title:'Prepare with a short revision routine',blocks:[{id:'revision',title:'Retrieval beats rereading',lines:['Read the notes from your recent lessons. Close them and explain three ideas from memory.','Practise a question, check the explanation, and correct your reasoning.','Revisit the topics you found difficult tomorrow.','This is revision practice from teaching lessons, not an assessment paper or an answer key.'],footnote:'',visual:null,image:null}]}];
@@ -36,5 +43,5 @@ for(const item of out.filter(x=>x.assessment)){
  item.cards=related.flatMap(x=>x.cards.slice(0,1)).slice(0,8);
 }
 fs.writeFileSync('students/lessons.json',JSON.stringify(out));
-const strings=new Set();const walk=(v,key)=>{if(key==='geographyDisplay')return;if(typeof v==='string'){if(!['id','subject','quarter','unit','answer','image','kind','scene','group','code'].includes(key)&&v.trim()&&!/^\d+$/.test(v))strings.add(v);}else if(Array.isArray(v)){if(!['classes','related','values'].includes(key))v.forEach(x=>walk(x,key));}else if(v&&typeof v==='object')Object.entries(v).forEach(([k,x])=>walk(x,k));};out.forEach(x=>walk(x));
+const strings=new Set();const walk=(v,key)=>{if(key==='geographyDisplay'||key==='svg')return;if(typeof v==='string'){if(!['id','subject','quarter','unit','answer','image','kind','scene','group','code'].includes(key)&&v.trim()&&!/^\d+$/.test(v))strings.add(v);}else if(Array.isArray(v)){if(!['classes','related','values'].includes(key))v.forEach(x=>walk(x,key));}else if(v&&typeof v==='object')Object.entries(v).forEach(([k,x])=>walk(x,k));};out.forEach(x=>walk(x));
 fs.writeFileSync('students/source-strings.json',JSON.stringify([...strings]));console.log(`${out.length} lessons, ${strings.size} study strings, ${[...strings].join('').length} characters.`);

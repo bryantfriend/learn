@@ -1,0 +1,26 @@
+{
+  "generator": "Built-in image_gen",
+  "styleReference": "fieldwork.png",
+  "assets": [
+    {
+      "image": "glacial-valley-profile.png",
+      "prompt": "Scientific educational illustration, landscape 3:2, Grade 7 classroom projection. Reference is a STYLE reference only: softly painted realistic educational artwork, natural proportions, textured brushwork, muted greens, teal water and warm ivory highlights. No text, numbers, letters, labels, watermark or UI. Clearly fictional concept scene, not documentary evidence. A clear mountain glacial landscape after ice retreat, with a broad U-shaped main valley with steep sides and wide floor, a smaller hanging tributary valley visibly meeting high above the main floor with a small waterfall, and an abruptly truncated rock spur on the main valley side. Oblique elevated viewpoint makes the main cross-sectional form clear. A river on the broad valley floor. No current ice filling the valley, no people, no ambiguous lake in the valley. Show natural landform shapes clearly, not a diagram."
+    },
+    {
+      "image": "glacier-rock-erosion.png",
+      "prompt": "Scientific educational illustration, landscape 3:2, Grade 7 classroom projection. Reference is a STYLE reference only: softly painted realistic educational artwork, natural proportions, textured brushwork, muted greens, teal water and warm ivory highlights. No text, numbers, letters, labels, watermark or UI. Clearly fictional concept scene, not documentary evidence. Educational cutaway close view of a mountain glacier sliding downhill over bedrock, with angular rock debris embedded along the base scraping distinct grooves into bedrock, and one loosened rock block visibly being carried from a jointed bedrock face by basal ice. Clear blue ice, grey-brown jointed rock, naturalistic painted educational section. Distinguish rock carried within ice from rock still part of ground. No floating particles above ice, no arrows, no text. Concept view illustrates both scraping/abrasion and removal/plucking."
+    },
+    {
+      "image": "waterfall-and-gorge.png",
+      "prompt": "Scientific educational illustration, landscape 3:2, Grade 7 classroom projection. Reference is a STYLE reference only: softly painted realistic educational artwork, natural proportions, textured brushwork, muted greens, teal water and warm ivory highlights. No text, numbers, letters, labels, watermark or UI. Clearly fictional concept scene, not documentary evidence. An imaginary river waterfall with a distinct resistant rock ledge, undercut softer rock below and a plunge pool at its foot. A narrow steep-sided gorge extends downstream from the waterfall toward the viewer. Oblique landscape cutaway viewpoint makes the overhang, lower undercut and downstream gorge visible together. Water flowing naturally downstream from falls along gorge, angular collapsed blocks near plunge pool. No people, no labelled arrows, no cliff unrelated to waterfall."
+    },
+    {
+      "image": "shared-river-uses.png",
+      "prompt": "Scientific educational illustration, landscape 3:2, Grade 7 classroom projection. Reference is a STYLE reference only: softly painted realistic educational artwork, natural proportions, textured brushwork, muted greens, teal water and warm ivory highlights. No text, numbers, letters, labels, watermark or UI. Clearly fictional concept scene, not documentary evidence. A broad imaginary river valley illustrating competing uses of freshwater: a small town taking water, irrigated farm fields, a modest industrial facility and a river wetland habitat downstream. Show all four as distinct elements in one connected river landscape. Water remains in the river supporting habitat. Realistic scale and plausible landscape, no numeric flow claims or allocation quantities, no arrows, no charts, no text."
+    },
+    {
+      "image": "port-trade-connections.png",
+      "prompt": "Scientific educational illustration, landscape 3:2, Grade 7 classroom projection. Reference is a STYLE reference only: softly painted realistic educational artwork, natural proportions, textured brushwork, muted greens, teal water and warm ivory highlights. No text, numbers, letters, labels, watermark or UI. Clearly fictional concept scene, not documentary evidence. A clear imaginary port showing containers transferred between a cargo ship, a dock and a freight truck, with a passenger ferry at a separate berth. Distinguish goods transport from passenger travel, modest coastal town in background. Wide elevated view, naturalistic warm textbook painting, readable scene and no brands. No flags, no inscriptions on ship or containers, no route arrows or text."
+    }
+  ]
+}
