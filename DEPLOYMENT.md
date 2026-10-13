@@ -1,5 +1,11 @@
 # Learn deployment
 
+## Version 2.6.17 — 7A and 7B workbook Research Lesson 2
+
+Adds three 40-minute classroom parts for each of 7A (Book 8, pp. 8–12) and 7B (Book 7, pp. 7–12). Includes original reading texts, page-specific tasks, concealed models, peer feedback, independent reflection and learning-goal checks. Existing lesson IDs and timetable assignments are preserved.
+
+Validated with 205 unit tests and focused browser checks for all six new lessons, including reveals, saved reload, summaries and responsive layout. Publishes through main/root GitHub Pages. Unrelated pending Coastal Connections changes and private photo attachments are excluded.
+
 ## Version 2.6.16 — Global Perspectives research follow-ons
 
 Adds one 40-minute teacher-created notebook lesson for each of 7A, 7B and Year 8 in **Global Perspectives · Workbook trial**, following the Research Lesson 1 pages supplied by the teacher. 7B chooses how to find information, 7A builds a method plan, and Year 8 plans evidence and perspectives. Includes concealed model responses, partner feedback, reflection, teacher notes and separate saved progress. Existing workbook parts remain available.

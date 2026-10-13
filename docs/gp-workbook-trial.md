@@ -41,6 +41,30 @@ Page numbers cropped in some photos were established from continuation text, nei
 
 ## Scope
 
+### 7A Research Lesson 2 · 12 October 2026
+
+The five `image-1791813912434.jpg`–`image-1791813950136.jpg` photographs show Book 8 pp. 8–12: two goals, urbanisation/wildlife question comparison, ten information-source/method slots, three justified methods, teacher-text title and topic words, partner/class feedback, paragraph sub-headings and two-sentence summaries, then interest/evaluation reflection and a return to the p. 8 goals.
+
+Choose **7A → Global Perspectives · Workbook trial → Research Lesson 2**. Three successive 40-minute lessons cover: (1) choose and justify research methods, pp. 8–10; (2) choose a title and topic words, pp. 10–11; (3) summarise each paragraph and reflect, pp. 11–12, returning to p. 8. Part 3 writes paragraph 1 on p. 11 and paragraphs 2–3 on p. 12. Each has a sub-heading and two sentences, rather than the 7B bullet-note/whole-summary format.
+
+An original untitled three-paragraph fictional lunch-waste project provides the teacher reading, continuing the established 7A modelling topic. It describes planned observation and neutral questions without reporting real results. Pupils create and evaluate their own titles; models stay hidden until attempted. The printed urbanisation questions remain the prior-learning task, with different justified choices accepted. Bring books, pencils, another colour and notebooks; no printing or pupil internet is needed. Page 12 asks what was interesting and how evaluation was used. The partly visible Research Lesson 3 is outside this sequence. Existing classes, lesson IDs and timetable assignments are preserved.
+
+### 7B Research Lesson 2 · 12 October 2026
+
+Five supplied photos, `404.jpg`–`408.jpg`, show Book 7 pp. 7–11 in sequence: goals (p. 7), self-assessment and prior learning (p. 8), methods starter and reading instructions (p. 9), main-idea/word and paragraph-note tables (p. 10), summary and peer feedback (p. 11).
+
+Choose **7B → Global Perspectives · Workbook trial → Research Lesson 2**. Three successive 40-minute parts follow the existing lessons:
+
+| Part | Focus | Workbook work |
+|---|---|---|
+| 1 | Find information and the main idea | pp. 8–9 prior learning/methods; p. 10 upper table and peer feedback |
+| 2 | Make useful paragraph notes | p. 10 lower table; p. 8 progress check |
+| 3 | Write and improve a summary | p. 11 summary, peer feedback and revision; p. 12 independent reflection; p. 8 final goals check |
+
+The additional photo `409.jpg` supplies p. 12: independent reflection on finding information, identifying the main idea, subject-specific words and summarising in own words, plus other skills used. Part 3 now includes these prompts before returning to the p. 8 goals table as instructed by the Check your learning box. Its core remains 40 minutes, with seven minutes reserved for reflection and checking goals. The run covers pp. 7–12; the partly visible Research Lesson 3 is outside this run.
+
+The printed heading is one Research Lesson 2; 1.2/1.3/1.4 are objective codes. The app divides the work across three class meetings. Bring books, pencils, a second colour and notebooks. No printing or pupil internet is required. The original three-paragraph teacher reading **Break spaces for everyone** is supplied in every part and in teacher notes, continuing the existing modelling topic. It describes possible methods and makes no claim that research has already happened. Pupils retain their previous best research question for choosing a method. On-screen reading words can be listed in notebooks; pupils do not underline workbook instructions as if they were the source. Models are supporting examples, not an official answer key. Existing lessons and timetable assignments remain available.
+
 ### Year 8 next lesson · 8 October 2026
 
 The teacher identified the latest photograph (`codex-clipboard-36a57ef7-9a96-46e7-a1b7-f49b8cc1f0d8.png`) as Year 8 and confirmed that it is the point from which to plan the next lesson. It shows Research Lesson 1's best-question discussion and independent reflection. The original two parts remain unchanged.
