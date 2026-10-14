@@ -1,5 +1,11 @@
 # Learn deployment
 
+## Version 2.6.18 — Viking religion substitute lesson
+
+Adds a 40-minute Grades 7–8 lesson with six original illustrations, teacher notes, partner discussion, revealable quiz answers and an exit ticket. The main-page Viking religion link opens the existing class picker; Religion is available to all three classes. Images are labelled as modern reconstructions. Sources and prompts are in `docs/viking-religion.md`.
+
+Validation: 15 focused unit tests and a browser walkthrough of every lesson frame, all six images, answer reveals, the home link and mobile home layout. Publishes through main/root GitHub Pages. Unrelated pending coastal and privacy changes are excluded.
+
 ## Version 2.6.17 — 7A and 7B workbook Research Lesson 2
 
 Adds three 40-minute classroom parts for each of 7A (Book 8, pp. 8–12) and 7B (Book 7, pp. 7–12). Includes original reading texts, page-specific tasks, concealed models, peer feedback, independent reflection and learning-goal checks. Existing lesson IDs and timetable assignments are preserved.

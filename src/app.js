@@ -141,7 +141,7 @@ function brand() {
 function renderHome() {
 
     const start = button('Choose class & lesson →', 'choose-lesson', 'primary');
-    const actions = [start, element('a', { href: './exams/', className: 'exams-button' }, ['Exams'])];
+    const actions = [start, element('a', { href: './?lesson=viking-religion-v1', className: 'exams-button' }, ['Viking religion · 40 min →']), element('a', { href: './exams/', className: 'exams-button' }, ['Exams'])];
     if (session) actions.unshift(button('Resume last class →', 'resume-saved', 'subtle'));
     app.replaceChildren(element('main', { className: 'home' }, [
         element('header', { className: 'home-header' }, [brand(), element('span', {}, ['Mr. Friend'])]),
@@ -151,7 +151,7 @@ function renderHome() {
                 element('h1', {}, ['Clear routines.', element('br'), element('em', {}, ['Active learning.'])]),
                 element('p', { className: 'home-intro' }, ['A shared screen. A fresh start. A whole class ready to think.']),
                 element('div', { className: 'lesson-card' }, [
-                    element('div', { className: 'lesson-picker-row' }, [element('p', { className: 'eyebrow' }, ['YOUR CLASSROOM']), element('span', { className: 'catalog-count' }, ['3 classes · 4 categories'])]),
+                    element('div', { className: 'lesson-picker-row' }, [element('p', { className: 'eyebrow' }, ['YOUR CLASSROOM']), element('span', { className: 'catalog-count' }, ['3 classes · 5 categories'])]),
                     element('h2', {}, [session ? contextLabel(session) : 'Where are we learning today?']),
                     element('p', { className: 'lesson-subtitle' }, [session ? lesson.title : '7A · 7B · 8th Grade']),
                     element('p', { className: 'meta' }, ['Geography · Global Perspectives · Conversational English']),
@@ -229,7 +229,7 @@ function renderPlayer() {
         return element('div', { className: 'memory-item' }, [element('span', { 'aria-hidden': 'true' }, [item.symbol]), element('span', { className: 'memory-label' }, [item.label])]);
     })));
     if (frame.symbol) copy.append(element('div', { className: 'mission-symbol', 'aria-hidden': 'true' }, [frame.symbol]));
-    const answerPanel = !lesson.geoConcept && !frame.visual && !frame.geoDisplay && frame.type === 'question' && response().revealed;
+    const answerPanel = !lesson.geoConcept && !scene && !frame.visual && !frame.geoDisplay && frame.type === 'question' && response().revealed;
     if (frame.diagram && !graphic) {
         const diagrams = {'g7b-uk':['g7b-uk','Geographic map of the United Kingdom and neighbouring Ireland.'],'g7b-valley':['g7b-valley','V-shaped and U-shaped valley cross-sections.'],'g7b-cycle':['g7b-cycle','Water cycle: evaporation, condensation, precipitation, runoff and infiltration.'],'g7b-bend':['g7b-bend','River bend with outer-bank erosion and inner-bank deposition.'],'2.4':['g7-plan','Invented plan: school west, pond east, park north, road south.'],'2.5':['g7-grid','Practice grid. Tree six tenths across and two tenths up inside square 2345.'],'2.8':['g7-profile','Profile: 100, 120, 160 and 180 metres at 0, 100, 200 and 300 metres distance.'],'2.9':['g7-world','Coordinate sketch: A north and east, B south and east, C at zero latitude and longitude.']};
         const item = diagrams[frame.diagram];
@@ -277,7 +277,7 @@ function renderPlayer() {
         button('☰ Teacher tools', 'tools')
     ]);
     const lessonContent = lesson.geoConcept ? createConceptScreen(lesson,stage,frame,copy,createFrameEvidence) : content;
-    const player = element('main', { className: 'player' + (lesson.geoConcept ? ' geography-concept-player' : '') }, [header, heading, lessonContent, stepControls]);
+    const player = element('main', { className: 'player' + (lesson.geoConcept ? ' geography-concept-player' : ''), 'data-lesson-id':lesson.id }, [header, heading, lessonContent, stepControls]);
     if (session.preferences.timerVisible) player.append(renderTimer());
     player.append(toolbar);
     app.replaceChildren(player);
@@ -871,6 +871,10 @@ panel.addEventListener('cancel', function(event) {
 });
 window.addEventListener('pagehide', function() { if (session) save(); });
 render();
+if (new URLSearchParams(window.location.search).get('lesson') === 'viking-religion-v1') {
+    picker = {classId: selectedClassId || '7a', subjectId:'religion', lessonId:'viking-religion-v1'};
+    showPicker();
+}
 if (loaded.message) notify(loaded.message);
 // One scheduler for the entire page, regardless of how often controls are tapped.
 window.setInterval(tick, 200);

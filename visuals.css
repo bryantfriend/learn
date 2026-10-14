@@ -81,6 +81,14 @@
 .lesson-scene img { display:block; width:100%; height:clamp(220px,38vh,480px); object-fit:contain; background:#f4eee2; }
 .lesson-scene figcaption { padding:10px 14px; font-size:14px; line-height:1.35; color:#365d54; }
 .scene-layout .copy { align-self:center; }
+/* Keep the substitute lesson's discussion and reveal controls within the screen. */
+.player[data-lesson-id="viking-religion-v1"] .teaching-content {overflow:auto; align-items:start;}
+.player[data-lesson-id="viking-religion-v1"] .copy {align-self:start; padding-bottom:20px;}
+.player[data-lesson-id="viking-religion-v1"] .copy h1 {font-size:clamp(28px,2.5vw,42px);}
+.player[data-lesson-id="viking-religion-v1"] .instructions p {font-size:clamp(22px,2vw,30px);}
+.player[data-lesson-id="viking-religion-v1"] .answers button {font-size:24px; min-height:50px;}
+.player[data-lesson-id="viking-religion-v1"] .explanation p {font-size:24px;}
+.player[data-lesson-id="viking-religion-v1"] .lesson-scene {position:sticky; top:0;}
 @media(max-height:740px) and (min-width:901px){ .lesson-scene img {height:240px;} .scene-layout .instructions p {font-size:22px;} .scene-layout .copy h1 {font-size:29px;} }
 @media(max-width:900px){ .teaching-content.scene-layout {grid-template-columns:1fr;} .lesson-scene img {height:auto; max-height:420px;} }
 .journey-visual{overflow:auto;max-height:100%;padding:12px;box-sizing:border-box;}

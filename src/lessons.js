@@ -1,3 +1,4 @@
+import { vikingReligionLesson } from './lessons/viking-religion.js';
 import { enhanceGlobalPerspectives } from './lessons/gp-enhancements.js';
 import { redesignGeography } from './lessons/geography-redesign.js';
 import { styleGeographyAssessment } from './lessons/geography-concept-flow.js';
@@ -118,6 +119,7 @@ export const lesson = {
 };
 
 export const lessons = [...[lesson, practiceLesson, ...gpLessons, ...grade7Lessons, ...grade7BLessons].map(redesignGeography).map(styleGeographyAssessment).map(strengthenPacing).map(illustrateExamples).map(supportEnglish), ...workbookTrialLessons, ...researchFollowOnLessons, ...workbookResearch2Lessons, ...sevenAResearch2Lessons,...english7BLessons].map(addExtraTime).map(enhanceGlobalPerspectives);
+lessons.push(vikingReligionLesson);
 let lessonStorage; try { lessonStorage = globalThis.localStorage; } catch {}
 registerLessons(lessons, lessonStorage);
 export function getLesson(id) {

@@ -6,6 +6,7 @@ export const classes = [
     { id: '8', label: '8th Grade', grade: 8 }
 ];
 export const subjects = [
+    { id: 'religion', label: 'Religion · Substitute lessons', grades: [7, 8] },
     { id: 'geography', label: 'Geography', grades: [7] },
     { id: 'global-perspectives', label: 'Global Perspectives', grades: [7, 8] },
     { id: 'global-perspectives-books', label: 'Global Perspectives · Workbook trial', grades: [7, 8] },
