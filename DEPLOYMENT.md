@@ -1,5 +1,11 @@
 # Learn deployment
 
+## Version 2.6.19 — shared Grade 7 IELTS lessons
+
+Adds IELTS Preparation for 7A and 7B, with all 30 selectable lessons, original tasks, teacher-read listening scripts, concealed model responses, transfer practice and exit tickets. Each lesson has a planned 45-minute classroom route. Both classes use identical content and retain separate progress. Classroom lessons are not exported as independent student listening tasks. Publishes through main/root GitHub Pages; unrelated pending workspace changes are excluded.
+
+Validation: eight focused catalog/content/storage checks pass. Browser verification covers 360 lesson screens, 60 hidden-answer reveals, both class pickers, separate checkpoints, reload and mobile layout. The isolated release suite passes 201 of 205 checks; the four remaining failures also occur on the prior committed release (Viking lesson extension/illustration/worksheet expectations and a stale independent-study catalog). Two stale total-lesson assertions are updated for the expanded catalog.
+
 ## Version 2.6.18 — Viking religion substitute lesson
 
 Adds a 40-minute Grades 7–8 lesson with six original illustrations, teacher notes, partner discussion, revealable quiz answers and an exit ticket. The main-page Viking religion link opens the existing class picker; Religion is available to all three classes. Images are labelled as modern reconstructions. Sources and prompts are in `docs/viking-religion.md`.

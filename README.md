@@ -8,6 +8,8 @@ A teacher-operated, whole-class lesson player for **Mr. Friend · Oxford Interna
 
 ## Available lessons
 
+**IELTS Preparation** is available for **7A and 7B**: 30 shared, selectable 45-minute foundation lessons covering exam strategies, Listening, Reading, Speaking and Academic Writing. Includes original practice material, teacher-read listening scripts, concealed model answers and separate class progress. [IELTS lesson guide](docs/ielts-lessons.md).
+
 Geography now follows the [eight-section concept-screen route](docs/geography-concepts.md) across all 86 teaching/review sessions: starter, learning goal, vocabulary, explanation, worked example, student practice, understanding check and exit ticket. Its ivory, navy and teal screens use seven original illustrations alongside accurate maps and source-specific diagrams. The ten assessments share the visual style and retain their assessment structure. Open **Teaching aids** for slide notes and board tools, or use the [separate teacher guide](docs/geography-teacher-guide.html). The 40-minute timing is a teaching estimate.
 
 Use **Exams** on the home screen to choose **Baseline** or **Term 1–4**, then **7A**, **7B**, or **Grade 8**. For 7A and 7B, choose Geography or Global Perspectives. Each paper has **Print / Save as PDF** and a separate **Teacher answer key** link.
