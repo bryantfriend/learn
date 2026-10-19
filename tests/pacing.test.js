@@ -4,7 +4,7 @@ import {lessons,getLesson} from '../src/lessons.js';
 import {validateSession} from '../src/storage.js';
 import {prepareTimer} from '../src/timer.js';
 test('every curriculum teaching lesson has a forty-minute core and twenty optional minutes',()=>{
- const teaching=lessons.filter(l=>l.gp&&!l.examId);assert.equal(teaching.length,284);
+ const teaching=lessons.filter(l=>l.gp&&!l.examId);assert.equal(teaching.length,287);
  for(const l of teaching){assert.equal(l.stages.reduce((n,s)=>n+s.durationMinutes,0),40,l.id);assert.equal(l.durationMinutes,40,l.id);assert.ok(l.stages.every(s=>!s.id.startsWith('practice-')&&!s.id.startsWith('reserve-')),l.id);assert.ok(l.stages.at(-1).frames.some(f=>f.final),l.id);assert.equal(l.extensions.reduce((n,t)=>n+t.minutes,0),20,l.id);for(const t of l.extensions){assert.ok(t.lines.length===3&&t.outcome&&t.rounds.length,l.id);}}
  for(const l of lessons.filter(l=>l.examId))assert.equal(l.extensions,undefined);
 });
@@ -17,3 +17,4 @@ test('standard lessons have complete activity budgets and old checkpoints cannot
  }
  const l=getLesson('g8-gp-1.1');assert.deepEqual(l.stages[1].frames.map(f=>f.timerSeconds),[30,30,180,240]);assert.equal(l.stages.find(s=>s.id==='apply').frames.length,4);
 });
+

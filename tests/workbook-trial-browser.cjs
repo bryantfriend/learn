@@ -5,10 +5,11 @@ const {createServer}=require('../scripts/serve.cjs');const server=createServer()
  const {researchFollowOnLessons}=await import('../src/lessons/gp-research-follow-on.js');
  const {workbookResearch2Lessons}=await import('../src/lessons/gp-workbook-research-2.js');
  const {sevenAResearch2Lessons}=await import('../src/lessons/gp-workbook-research-2-7a.js');
+ const {grade8Research2Lessons}=await import('../src/lessons/gp-workbook-research-2-8.js');
  await new Promise(r=>server.listen(4193,'127.0.0.1',r));browser=await chromium.launch({headless:true});
  const errors=[],bad=[],topics=new Set();let frames=0;
  fs.mkdirSync('output/playwright/workbook-trial',{recursive:true});
- const targets=[...workbookTrialLessons,...researchFollowOnLessons,...workbookResearch2Lessons,...sevenAResearch2Lessons].filter(l=>!process.env.WORKBOOK_LESSON||l.id.startsWith(process.env.WORKBOOK_LESSON));
+ const targets=[...workbookTrialLessons,...researchFollowOnLessons,...workbookResearch2Lessons,...sevenAResearch2Lessons,...grade8Research2Lessons].filter(l=>!process.env.WORKBOOK_LESSON||l.id.startsWith(process.env.WORKBOOK_LESSON));
  assert.ok(targets.length,'No matching workbook lesson');
  for(const id of targets.map(l=>l.id)){
   const l=getLesson(id),context=await browser.newContext({viewport:{width:1280,height:720}}),page=await context.newPage();

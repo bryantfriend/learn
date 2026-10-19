@@ -14,7 +14,7 @@ test('all fourteen class/subject combinations expose starters; future lessons fi
  assert.equal(classes.flatMap(c=>subjectsFor(c.id)).length,14);
  assert.deepEqual(subjectsFor('8').map(s=>s.id),['religion','global-perspectives','global-perspectives-books']);
  assert.deepEqual(lessonsFor('8','geography'),[]);
- for(const c of classes)for(const s of subjectsFor(c.id))assert.equal(lessonsFor(c.id,s.id).length,s.id==='ielts'?32:s.id==='religion'?3:s.id==='global-perspectives-books'?(c.id==='8'?5:8):s.id==='english'?4:c.id==='8'?45:c.id==='7a'?(s.id==='geography'?35:64):(s.id==='geography'?65:95));
+ for(const c of classes)for(const s of subjectsFor(c.id))assert.equal(lessonsFor(c.id,s.id).length,s.id==='ielts'?32:s.id==='religion'?3:s.id==='global-perspectives-books'?8:s.id==='english'?4:c.id==='8'?45:c.id==='7a'?(s.id==='geography'?35:64):(s.id==='geography'?65:95));
  const source=[{id:'shared'}, {id:'geo7',catalog:{subjectId:'geography',grades:[7]}}, {id:'gp8',catalog:{subjectId:'global-perspectives',grades:[8]}}];
  assert.deepEqual(lessonsFor('7a','geography',source).map(x=>x.id),['shared','geo7']);
  assert.deepEqual(lessonsFor('7b','geography',source).map(x=>x.id),['shared','geo7']);
@@ -58,3 +58,4 @@ test('denied storage still retains separate checkpoints in memory',()=>{
  store.clear(session('7b'));
  assert.equal(store.find(session()).stars,4);
 });
+

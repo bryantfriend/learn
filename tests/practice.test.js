@@ -14,7 +14,7 @@ function sessionFor(selected = practiceLesson) {
     };
 }
 test('both complete lessons are registered and practice has nine stages totaling forty minutes', function() {
-    assert.equal(lessons.length, 344);
+    assert.equal(lessons.length, 347);
     assert.equal(getLesson(lesson.id), lesson);
     assert.equal(getLesson('system-practice-01'), practiceLesson);
     assert.equal(getLesson('missing'), null);
@@ -100,3 +100,4 @@ test('preferences share their response across think, respond and partner phases'
     assert.equal(responseKeyFor(practiceLesson,2,2), '2:0');
     assert.equal(responseKeyFor(practiceLesson,2,5), '2:3');
 });
+

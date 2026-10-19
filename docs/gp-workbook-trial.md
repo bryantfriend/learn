@@ -84,3 +84,19 @@ The teacher supplied three photographs identified as 7B: `f8dc81ac` (ranking con
 7B now has **Next lesson · Choose how to find out**, a 40-minute teacher-created notebook follow-on. Pupils bring forward the class question, choose whether to look, ask or read, practise fair questioning with invented replies, write a simple information plan, revise after partner feedback and name an unanswered point. Reflection follows the photographed ways of working; listening/teamwork are supporting examples for its open other-skills prompt. All three classes now have a separate follow-on after their existing two workbook parts.
 
 Six new IDs in the separate `global-perspectives-books` category preserve existing curriculum lessons and saved sessions. Original student study guides remain unchanged during this teacher-led trial. No existing timetable slot has been replaced or reassigned. The new category has no quarter filter.
+
+### Grade 8 Research Lesson 2 · 19 October 2026
+
+Five teacher photographs (`1838e11a`, `dc3e1b05`, `0207f9b3`, `baf53be3`, `02ed29cf`; clipboard filename prefixes) show Book 9 pp. 8–12: goals; predictions and health research questions; methods and search terms; a teacher-selected source and research question; notes on causes, consequences, national/global perspectives and action; peer feedback, a single-feature own-word summary and communication reflection. The partly visible Research Lesson 3 is outside this sequence.
+
+Choose **8th Grade → Global Perspectives · Workbook trial → Research Lesson 2**:
+
+| Part | Focus | Workbook work |
+|---|---|---|
+| 1 | Predictions, questions and methods | p. 9 prior learning, p. 10 starter and feedback; methods goal on p. 9 |
+| 2 | Discuss a source and organise evidence | p. 10 topic/question, p. 11 agreement and five-feature notes table |
+| 3 | Summarise, discuss and improve | p. 12 feedback, summary of one feature on separate paper/notebook, group review, interest and communication reflection; all goals on p. 9 |
+
+Each part has a 40-minute core. Partner turns, groups of four, class comparisons, teacher follow-up questions and a six-question discussion bank on every slide support classroom talk. Quiet thinking and individual writing follow discussion. Bring books, pencils, another colour and notebooks; no printing or pupil internet required.
+
+The supplied original three-paragraph food-waste reading is explicitly fictional: possible causes, imagined national and international viewpoints and a proposed trial are not findings. It appears on screen and in teacher notes in Parts 2–3. Models preserve those limits and distinguish viewpoints from geographic scope. The printed health questions are analysed as research questions without making health claims or requesting personal health information. Existing lessons and timetable assignments remain available.
