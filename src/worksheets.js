@@ -15,6 +15,14 @@ export function worksheetFor(lesson,kind,allLessons){
    {title:'My next step',lines:['After your teacher returns feedback, choose one idea to practise and explain how you will practise it.'],space:4}]}];return base;
  }
  if(lesson.examId)base.note+=' Revision topic: '+teaching.title+'. This sheet contains no assessment questions or answers.';
+ if(teaching.boundaryDetective){
+  base.pages=[{title:'The Boundary Detective · optional consolidation',sources:['Political boundaries mark territorial divisions. Relief describes land height and shape. Wales is a country west of England. The Scottish Highlands are an upland region within Scotland. The Thames is a river in southern England. Some boundaries follow rivers or ridges; others do not.'],sections:[
+   {title:'1. Classify the evidence',lines:['Label each political or physical: Wales; Scottish Highlands; Thames; the Wales–England boundary.'],space:3},
+   {title:'2. Repair the claim',lines:['“Every country boundary is a mountain ridge.” Explain the error.'],space:3},
+   {title:'3. Choose the map information',lines:['Which layer would identify the country containing a place? Which would help judge steepness? Explain.'],space:3},
+   {title:'4. Follow the water',lines:['A river crosses a political boundary in a valley. Explain why the line does not make the river stop.'],space:3}
+  ]}];return base;
+ }
  const frames=teaching.stages.flatMap(s=>s.frames);
  const rounds=teaching.extensions?.[0]?.rounds||[];
  if(homework||teaching.bookTrial){
@@ -56,3 +64,4 @@ export function worksheetFor(lesson,kind,allLessons){
  }
  return base;
 }
+

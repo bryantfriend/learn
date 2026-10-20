@@ -15,6 +15,7 @@ test('All Geography lessons have local art, and assessment conditions stay separ
 test('Every topic has vocabulary, success criteria, practice evidence and a concealed checkpoint',()=>{
  assert.deepEqual(Object.keys(conceptVocabulary).sort(),Object.keys(workshops).sort());
  for(const l of lessons.filter(l=>l.geoRedesign)){
+  if(l.boundaryDetective){assert.equal(l.teachingApproach,'board-led-lecture');continue;} // Bespoke oral route is covered in boundary-detective.test.js.
   const stage=id=>l.stages.find(s=>s.id===id);
   assert.ok(stage('goal').frames.every(f=>f.successCriteria.length===3));
   assert.equal(stage('goal').frames.length,l.id==='g7b-geo-w01-2'?1:l.workshopMissions.length,l.id);
@@ -30,3 +31,4 @@ test('Every topic has vocabulary, success criteria, practice evidence and a conc
   assert.doesNotMatch(JSON.stringify(l),/undefined/);
  }
 });
+

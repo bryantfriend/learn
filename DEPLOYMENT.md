@@ -1,5 +1,12 @@
 # Learn deployment
 
+## Version 2.6.20 — The Boundary Detective
+
+Rebuilds 7B Geography Week 3 Lesson 2 as a 40-minute board-led lesson with 14 screens, detailed teacher explanations, real-outline UK maps, an original three-panel landscape illustration, concealed oral checks and an optional matching printable worksheet. No pupil copying is required.
+
+Validation: three focused content checks pass; all 14 screens checked at 1280×720 and 1920×1080 without overflow or page errors. Publishes through main/root GitHub Pages. Unrelated pending workspace changes are excluded.
+
+
 ## Version 2.6.19 — shared Grade 7 IELTS lessons
 
 Adds IELTS Preparation for 7A and 7B, with all 30 selectable lessons, original tasks, teacher-read listening scripts, concealed model responses, transfer practice and exit tickets. Each lesson has a planned 45-minute classroom route. Both classes use identical content and retain separate progress. Classroom lessons are not exported as independent student listening tasks. Publishes through main/root GitHub Pages; unrelated pending workspace changes are excluded.

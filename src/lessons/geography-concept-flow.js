@@ -1,3 +1,4 @@
+import {rebuildBoundaryDetective} from './geography-boundary-detective.js';
 import {conceptVocabulary} from './geography-concept-vocabulary.js';
 import {content as foundationsBank} from './g7-geo-content.js';
 import {content as regionalBank} from './g7b-geo-content.js';
@@ -239,7 +240,7 @@ export function rebuildGeographyConceptFlow(lesson,active,makeStage){
  lesson.openingScript='40-minute Geography: recall, goal, vocabulary, explanation, worked example, student practice, understanding check and exit ticket. Bring an exercise book, pencil and ruler where needed. '+lesson.learningObjectives.join(' / ');
  lesson.pacingNote='40-minute route: recall 4, goal 2, vocabulary 3, explanation 8, worked example 5, practice 10, check 5, exit 3. Divide each section between the topics in combined lessons. Timings are estimates.';
  lesson.boardTeachingGuide={...lesson.boardTeachingGuide,message:lesson.pacingNote,routine:['Explain and point to the visual.','Model a worked example.','Let pupils practise, then check and improve.'],stages:lesson.stages.map(s=>({title:s.title,minutes:s.durationMinutes,notes:s.notes}))};
- return lesson;
+ return rebuildBoundaryDetective(lesson,makeStage);
 }
 export function styleGeographyAssessment(lesson){
  if(lesson.catalog?.subjectId!=='geography'||!lesson.examId)return lesson;
