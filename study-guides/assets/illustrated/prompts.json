@@ -1,0 +1,232 @@
+[
+  {
+    "id": "geo7a-map",
+    "guide": "geo7a",
+    "topic": "map",
+    "filename": "geo7a-map.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Use case: scientific-educational. Create a richly illustrated professional middle-school geography infographic art plate for a digital multilingual study guide, landscape 3:2 composition. Subject: HOW A MAP REPRESENTS A PLACE, exclusively for class 7A basic map skills, NOT the UK or weather. Design: clean editorial museum-quality educational illustration, cream paper, deep teal ink, forest green and warm ochre, sophisticated shaded cut-paper/isometric terrain, very crisp details. Three visually connected zones: left an isometric small countryside village with school building, woodland, blue pond and river with a bridge; middle a folded plan-view map of that same village, matching features, with a north arrow; right a large elegant map-key panel displaying four clear matching symbol-to-object pairs (tree for woodland, blue water for pond, grey line for road, bridge crossing for bridge). Flow arrows connect real objects to their map symbols. Use only small numeric callout circles 1, 2, 3; NO words, NO letters, NO fake writing, NO title, NO extra numbers, NO decorative pseudo-text. Keep generous clear space around zones so translated explanatory captions can be placed below the image in the webpage. All symbols must have meaningful visual relationships, no random icons. Educational accuracy: map is from above, road crosses river via bridge, all features stay consistent. Output a single finished illustration, not a website screenshot or mockup.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "geo7a-compass",
+    "guide": "geo7a",
+    "topic": "compass",
+    "filename": "geo7a-compass.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Use case: scientific-educational. Asset: finished illustrated infographic plate for an age 12-14 multilingual digital study guide. Landscape 3:2. Visual style: richly detailed professional educational editorial illustration, shaded cut-paper/isometric miniature terrain and precise diagram geometry, warm ivory paper, deep teal ink, ochre and forest green, crisp edges and substantial visual storytelling. NOT flat generic icons, NOT text cards, NOT a webpage mockup. Typography constraints: NO words, NO letters, NO fake writing, NO title, NO watermark. Only the numbered callout circles explicitly requested. The website supplies translated labels and exact data. Generous clear margins, strong reading hierarchy. Subject specification: A polished overhead map-reading compass rose and a small countryside route. A large precise eight-point compass dominates the left, ornate teal and ochre with north point up, no letters or written directions. Right shows a school at lower left and pond at upper right joined by a dashed northeast arrow, with a second contrasting southwest arrow returning. Small woodland is directly north of school, a bridge directly east. Only numeral callouts 1 on compass, 2 on outward route, 3 on return route. The compass itself is an orientation diagram, NOT a magnetic instrument. No UK geography or weather.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "geo7a-ruler",
+    "guide": "geo7a",
+    "topic": "scale",
+    "filename": "geo7a-ruler.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Use case: scientific-educational. Asset: finished illustrated infographic plate for an age 12-14 multilingual digital study guide. Landscape 3:2. Visual style: richly detailed professional educational editorial illustration, shaded cut-paper/isometric miniature terrain and precise diagram geometry, warm ivory paper, deep teal ink, ochre and forest green, crisp edges and substantial visual storytelling. NOT flat generic icons, NOT text cards, NOT a webpage mockup. Typography constraints: NO words, NO letters, NO fake writing, NO title, NO watermark. Only the numbered callout circles explicitly requested. The website supplies translated labels and exact data. Generous clear margins, strong reading hierarchy. Subject specification: Three-stage accurate map measurement teaching illustration. Left stage: a beautiful close view of a wooden metric ruler aligned with a straight teal map path; the start of the path aligns with the zero tick rather than the wooden edge; ruler has finely drawn unlabeled tick marks, NO digits and no units. Middle stage: ruler alignment viewed from overhead with a clean right-angle alignment guide and endpoints emphasised. Right stage: two thin contrasting brackets show endpoint subtraction on a second ruler, using a path that starts at a nonzero tick. Do NOT place any numbers on ruler or equations; exact values will be overlaid in the website. Only three small circular callouts 1, 2, 3 on the three stages. No hands required, no schoolchildren writing. The visual must teach alignment and endpoints rather than random stationery.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "geo7a-scale",
+    "guide": "geo7a",
+    "topic": "scale",
+    "filename": "geo7a-scale.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Use case: scientific-educational. Asset: finished illustrated infographic plate for an age 12-14 multilingual digital study guide. Landscape 3:2. Visual style: richly detailed professional educational editorial illustration, shaded cut-paper/isometric miniature terrain and precise diagram geometry, warm ivory paper, deep teal ink, ochre and forest green, crisp edges and substantial visual storytelling. NOT flat generic icons, NOT text cards, NOT a webpage mockup. Typography constraints: NO words, NO letters, NO fake writing, NO title, NO watermark. Only the numbered callout circles explicitly requested. The website supplies translated labels and exact data. Generous clear margins, strong reading hierarchy. Subject specification: A beautiful map-scale and distance infographic, three linked visual scenes. First: folded overhead local countryside map with a straight teal route and a segmented black-and-cream scale bar. Second: elegant visual multiplication machine, one short map-length strip transforming into several full-size ground segments through a circular arrow, no words or equations. Third: top-down terrain map showing a bent walking route following a road around a pond, and a contrasting dashed direct straight line, clearly different lengths. Three numeric callout circles only 1, 2, 3. No invented measurements, ruler digits, graph data or geography labels. Precise numerical worked examples will appear in native translated captions. NOT UK geography or weather.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "geo7a-features",
+    "guide": "geo7a",
+    "topic": "features",
+    "filename": "geo7a-features.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Use case: scientific-educational. Asset: finished illustrated infographic plate for an age 12-14 multilingual digital study guide. Landscape 3:2. Visual style: richly detailed professional educational editorial illustration, shaded cut-paper/isometric miniature terrain and precise diagram geometry, warm ivory paper, deep teal ink, ochre and forest green, crisp edges and substantial visual storytelling. NOT flat generic icons, NOT text cards, NOT a webpage mockup. Typography constraints: NO words, NO letters, NO fake writing, NO title, NO watermark. Only the numbered callout circles explicitly requested. The website supplies translated labels and exact data. Generous clear margins, strong reading hierarchy. Subject specification: A detailed geographical landscape cross-section teaching natural versus human-made features. Three connected zones with circular callouts 1, 2, 3 only. Zone1 natural landscape with mountain, valley, river, naturally formed lake, meadow and trees; zone2 inhabited landscape with school, grey road, clear bridge across river, built dam and reservoir; zone3 close-up of bridge crossing natural river, riparian habitat on banks showing their interaction. Place human-built structures ONLY in zones2/3. Make natural lake distinct from engineered reservoir held by visible dam. Both greens and blues occur in natural AND human-made zones so colour is not the classification rule. Beautiful shaded cut-paper terrain, rich detail, no words or labels.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "geo7b-countries",
+    "guide": "geo7b",
+    "topic": "countries",
+    "filename": "geo7b-countries.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Use case: scientific-educational. Asset: finished illustrated infographic plate for an age 12-14 multilingual digital study guide. Landscape 3:2. Visual style: richly detailed professional educational editorial illustration, shaded cut-paper/isometric miniature terrain and precise diagram geometry, warm ivory paper, deep teal ink, ochre and forest green, crisp edges and substantial visual storytelling. NOT flat generic icons, NOT text cards, NOT a webpage mockup. Typography constraints: NO words, NO letters, NO fake writing, NO title, NO watermark. Only the numbered callout circles explicitly requested. The website supplies translated labels and exact data. Generous clear margins, strong reading hierarchy. Subject specification: Four equally sized exquisite illustrated landmark vignettes for the four UK capitals. Arrange in a 2x2 museum infographic grid, joined by understated connecting graphic lines and a slim colour stripe per panel. Upper left1: London with Houses of Parliament and Elizabeth Tower, warm ochre. Upper right2: Edinburgh Castle on Castle Rock above stone city rooftops, cool teal. Lower left3: Cardiff Castle including recognisable Norman keep and castle walls amid greenery, green. Lower right4: Belfast City Hall with copper dome and symmetrical pale stone facade, dusty rose. Four numeric circular callouts 1,2,3,4 only, no text. No flags to avoid ambiguity. No invented city maps or country outlines; an authoritative native map will accompany the illustration. Each city needs a clearly different recognisable silhouette.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "geo7b-uk",
+    "guide": "geo7b",
+    "topic": "uk",
+    "filename": "geo7b-uk.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Replace the entire three illustrated island/map objects with ABSTRACT GEOMETRIC MEMBERSHIP BLOCKS. Keep ivory paper, richly shaded teal/ochre/green/rose educational illustration style, three zones and circular numerals1,2,3. Absolutely NO recognisable country outlines, coastline shapes, islands, seas, globes or maps anywhere. Zone1: exactly THREE jewel-like square coloured blocks (teal, green, ochre) touching each other on one neutral rectangular plinth, enclosed together by one thin ring. Zone2: exactly FOUR blocks (same three plus rose) enclosed together by a larger teal outline. Zone3: exactly TWO joined rectangular blocks (rose on one end, larger grey on the other), with only a dividing seam, NO enclosing UK ring. This is a symbolic membership diagram for Great Britain, UK, island of Ireland. Native translated captions supply names. No words, letters, flags or other numbers. Never swap geographic colours or invent coastlines because there are NO coastlines. Make a beautifully finished infographic with generous spacing.",
+    "initialPrompt": "Use case: scientific-educational. Finished richly illustrated professional middle-school infographic art plate for multilingual digital study guide, landscape 3:2. Warm ivory paper, deep teal ink, forest green, ochre, crisp shaded cut-paper/isometric editorial miniature scenes, meaningful precise diagram relationships. NOT generic icons or cards, NOT webpage screenshot. NO words, NO letters, NO fake writing, NO title, NO watermark. Only requested numeral callouts. Website supplies translated labels and exact data. Generous margins. Subject: A conceptual island-versus-political-state membership infographic, not a geographic map. Left zone1 one raised island plinth supports THREE separate coloured country tiles, ochre teal green. Middle zone2 a political grouping outlined by a teal enclosing loop: the SAME three tiles together plus a FOURTH rose tile on a neighbouring island, with a visible sea gap between the two islands. Right zone3 neighbour island split into rose northern tile and separate neutral grey larger tile, NOT enclosed in UK loop. Three big circular callouts1,2,3 only. Great Britain has three country memberships; UK adds Northern Ireland; independent Ireland is separate. Abstract plinths NOT realistic cartography. No flags, words, names or arithmetic.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "geo7b-weather",
+    "guide": "geo7b",
+    "topic": "weather",
+    "filename": "geo7b-weather.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Use case: scientific-educational. Finished richly illustrated professional middle-school infographic art plate for multilingual digital study guide, landscape 3:2. Warm ivory paper, deep teal ink, forest green, ochre, crisp shaded cut-paper/isometric editorial miniature scenes, meaningful precise diagram relationships. NOT generic icons or cards, NOT webpage screenshot. NO words, NO letters, NO fake writing, NO title, NO watermark. Only requested numeral callouts. Website supplies translated labels and exact data. Generous margins. Subject: Four weather instrument stations around a tiny observatory. Station1 glass thermometer, unlabeled graduations, red fluid. Station2 rain gauge funnel feeding graduated cylinder standing upright in open rain. Station3 cup anemometer with THREE hemispherical cups on horizontal rotating arms atop mast, subtle rotational arrow, NOT a propeller. Station4 wind vane with arrow and tail balanced on vertical axis, no compass letters. Bottom strip compares one day (single sun/cloud) to a long succession of seasonal weather symbols across years, no numbers or axes. Only numbered circles1,2,3,4 on stations. No invented readings, results, graphs, units or text.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "geo7b-snow",
+    "guide": "geo7b",
+    "topic": "snow",
+    "filename": "geo7b-snow.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Use case: scientific-educational. Finished richly illustrated professional middle-school infographic art plate for multilingual digital study guide, landscape 3:2. Warm ivory paper, deep teal ink, forest green, ochre, crisp shaded cut-paper/isometric editorial miniature scenes, meaningful precise diagram relationships. NOT generic icons or cards, NOT webpage screenshot. NO words, NO letters, NO fake writing, NO title, NO watermark. Only requested numeral callouts. Website supplies translated labels and exact data. Generous margins. Subject: Scientific cutaway: HOW SNOW FALLS AND BLIZZARDS REDUCE VISIBILITY. Three scenes, callouts1,2,3 only. Left: cold cloud cutaway, enlarged hexagonal ice crystals growing in moisture then snowflakes aggregating. Middle: snowflakes falling through cold blue atmospheric column intact to snowy ground, not rain. Right: school road in blizzard with horizontal wind arrows blowing BOTH falling snow AND loose ground snow, drift beside fence and obscured road. Show wind lifting snow from ground, so new snowfall is not required. No words, temperatures, weather-map claims or other numbers.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "geo7b-vortex",
+    "guide": "geo7b",
+    "topic": "vortex",
+    "filename": "geo7b-vortex.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Preserve the equal-size two scientific panels, globe below high Arctic circulation on left, local ground-touching thunderstorm tornado on right, ivory background and numerals1,2. Change ONLY the left polar circulation illustration: remove ALL arrowheads from high-altitude blue rings, leaving clean continuous glowing curved wind ribbons and subtle rotating visual flow without any specified clockwise or anticlockwise direction. Do not add arrows elsewhere on the globe. Keep the right tornado and its arrows and the fact that it touches ground. No words or new numbers. The two panels compare vast high-atmosphere circulation with local thunderstorm column, not comparable physical sizes. Keep professional detailed editorial quality.",
+    "initialPrompt": "Use case: scientific-educational. Finished richly illustrated professional middle-school infographic art plate for multilingual digital study guide, landscape 3:2. Warm ivory paper, deep teal ink, forest green, ochre, crisp shaded cut-paper/isometric editorial miniature scenes, meaningful precise diagram relationships. NOT generic icons or cards, NOT webpage screenshot. NO words, NO letters, NO fake writing, NO title, NO watermark. Only requested numeral callouts. Website supplies translated labels and exact data. Generous margins. Subject: Scientific TWO-PANEL comparison of stratospheric polar vortex versus tornado, visually equal detail. Left1: Arctic globe from above with VAST blue ring of high-altitude rotating winds well above polar surface, atmospheric cutaway showing height; NOT funnel touching ground. Right2: local landscape with thunderstorm cloud, rotating tapered tornado column continuously TOUCHING ground, small debris near touchdown, spiral flow arrows. Separate panels with whitespace; DIFFERENT spatial contexts, not same-size real phenomena. Only circle1 left and2 right, no words, scale/altitude figures or timelines. Do not connect polar vortex directly to tornado or guaranteed snowfall.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "gp7a-methods",
+    "guide": "gp7a",
+    "topic": "methods",
+    "filename": "gp7a-methods.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Use case: scientific-educational. Finished richly illustrated professional middle-school infographic art plate for multilingual digital study guide, landscape 3:2. Warm ivory paper, deep teal ink, forest green, ochre, crisp shaded cut-paper/isometric editorial miniature scenes, meaningful precise diagram relationships. NOT generic icons or cards, NOT webpage screenshot. NO words, NO letters, NO fake writing, NO title, NO watermark. Only requested numeral callouts. Website supplies translated labels and exact data. Generous margins. Subject: 7A Global Perspectives Book8 fictional SCHOOL LUNCH WASTE research, not break spaces or national policy. Scene1 repeat weighing identical waste containers on scale over several lunches, calendar leaves, no data values. Scene2 student interviewing another neutrally at lunch table, equal speech bubbles containing food/preference icons, no writing. Scene3 researcher comparing menu-record pages with meal illustrations beside measurement record. Callouts1,2,3. Connect to evidence types: amounts, reported reasons, menu background. No completed findings, success ticks, chart values, percentages or invented causal results.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "gp7a-main",
+    "guide": "gp7a",
+    "topic": "mainIdea",
+    "filename": "gp7a-main.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Use case: scientific-educational. Finished richly illustrated professional middle-school infographic art plate for multilingual digital study guide, landscape 3:2. Warm ivory paper, deep teal ink, forest green, ochre, crisp shaded cut-paper/editorial miniature scenes and sophisticated meaningful information design. NOT generic text cards or webpage. NO words, NO letters, NO fake writing, NO title, NO watermark. Only requested numeral callouts; nontext document bars allowed. Website supplies translated labels. Generous margins. Subject: Book8 class7A fictional SCHOOL LUNCH WASTE reading. Three illustrated paragraph scrolls each with tiny scenes:1 research question combining uneaten food and pupils needs;2 repeated weighing and menu records;3 neutral pupil interviews and comparison. Three thin threads converge from these scrolls into ONE elegant overarching title frame at top containing only a small food-waste research icon, no writing. A tiny unrelated magnified crumb at margin is visually subordinate, not the main idea. Number circles1,2,3 on scrolls. Teach whole-text main idea and suitable title. All record sheets blank or icons only. No claims of completed findings.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "gp7a-notes",
+    "guide": "gp7a",
+    "topic": "notes",
+    "filename": "gp7a-notes.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Use case: scientific-educational. Finished richly illustrated professional middle-school infographic art plate for multilingual digital study guide, landscape 3:2. Warm ivory paper, deep teal ink, forest green, ochre, crisp shaded cut-paper/editorial miniature scenes and sophisticated meaningful information design. NOT generic text cards or webpage. NO words, NO letters, NO fake writing, NO title, NO watermark. Only requested numeral callouts; nontext document bars allowed. Website supplies translated labels. Generous margins. Subject: Book8 class7A fictional SCHOOL LUNCH WASTE notes. Three clear horizontal lanes. Each lane begins with a paragraph document represented by nontext grey lines and a relevant icon: lane1 lunch question; lane2 weighing and calendar; lane3 interview. In each lane a coloured selection lens highlights only the key idea, an arrow leads to a small sparse note card with two or three short nontext bars and matching icon. Selected meaning retained, repeated ornamental examples fall softly outside funnel. Three lane circles1,2,3 only. Distinguish selective short notes from copying a whole source. NO readable words, fake letters, data or results.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "gp7a-summary",
+    "guide": "gp7a",
+    "topic": "summary",
+    "filename": "gp7a-summary.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Edit only the RIGHT SIDE instructional diagram of this infographic. Preserve the three numbered horizontal lanes1,2,3 and their illustrated students/scenes on the left, style, colours and overall layout. CRITICAL CORRECTION: currently each lane has TWO separate boxes each containing two lines, which visually teaches FOUR sentences. For EACH lane, replace the entire right side with exactly ONE SINGLE cream rounded rectangle containing: one small blank dark-teal heading tab at top and EXACTLY TWO large separate sentence strips below it, one teal and one ochre. Thus whole illustration must have exactly THREE right-side boxes total and exactly SIX sentence strips total (two per numbered paragraph). No other sentence boxes, no additional line pairs, no extra illustration panels in those three boxes. Small relevant school-lunch icons may sit in the margin beside each box, not on additional cards. Each sentence strip can be a single thick horizontal shape, no actual words or letters. This teaches class7A TWO sentences for EACH paragraph, not a whole-text summary. No writing, numerals beyond lane1,2,3, no new results. Retain rich editorial quality.",
+    "initialPrompt": "Use case: scientific-educational. Finished richly illustrated professional middle-school infographic art plate for multilingual digital study guide, landscape 3:2. Warm ivory paper, deep teal ink, forest green, ochre, crisp shaded cut-paper/editorial miniature scenes and sophisticated meaningful information design. NOT generic text cards or webpage. NO words, NO letters, NO fake writing, NO title, NO watermark. Only requested numeral callouts; nontext document bars allowed. Website supplies translated labels. Generous margins. Subject: Book8 class7A: TWO OWN-WORD SENTENCES FOR EACH OF THREE PARAGRAPHS. Make three horizontal lanes with strong visual separation. Each lane1,2,3 shows a richly illustrated source paragraph page about school lunch waste:1 question+needs,2 weighing+menu,3 asking+comparing; arrow leads to one short heading tab (blank) above EXACTLY TWO distinct long horizontal sentence bands. Each of the six sentence bands contains small geometric nontext line segments, NOT alphabet characters; each pair visibly separate. Do not turn three paragraphs into one whole-text summary. Use calm ivory and teal, warm ochre selection highlights. Only circles1,2,3. NO words or numerical data.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "gp7a-evaluate",
+    "guide": "gp7a",
+    "topic": "feedback",
+    "filename": "gp7a-evaluate.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Use case: scientific-educational. Finished richly illustrated professional middle-school infographic art plate for multilingual digital study guide, landscape 3:2. Warm ivory paper, deep teal ink, forest green, ochre, crisp shaded cut-paper/editorial miniature scenes and sophisticated meaningful information design. NOT generic text cards or webpage. NO words, NO letters, NO fake writing, NO title, NO watermark. Only requested numeral callouts; nontext document bars allowed. Website supplies translated labels. Generous margins. Subject: Book8 class7A evaluation of a title or paragraph summary against SOURCE, not just peer agreement. Three-stage illustration1 magnifying glass compares a proposed blank title and two sentence strips to original lunch-waste paragraph document; highlighted linking threads show supported key ideas. Stage2 two students discussing, speech bubble with question mark shape only, both looking back to source; no applause, no majority vote. Stage3 individual pupil revises one sentence strip with editorial pencil, a curved revision arrow, and a small next-step staircase. Three numeral callouts1,2,3 only. No written words, ticks suggesting research results or data.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "gp7b-question",
+    "guide": "gp7b",
+    "topic": "question",
+    "filename": "gp7b-question.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Use case: scientific-educational. Finished richly illustrated professional middle-school infographic art plate for multilingual digital study guide, landscape 3:2. Warm ivory paper, deep teal ink, forest green, ochre, crisp shaded cut-paper/editorial miniature scenes and sophisticated meaningful information design. NOT generic text cards or webpage. NO words, NO letters, NO fake writing, NO title, NO watermark. Only requested numeral callouts; nontext document bars allowed. Website supplies translated labels. Generous margins. Subject: Book7 class7B research about SCHOOL BREAK SPACES, not lunch waste. Rich playground panorama: some pupils play running games, others read or talk quietly in sheltered seating. Above two contrasting research lenses: a huge unfocused lens covering a vague distant horizon versus a precise teal lens focusing on this one school space and a small calendar. A neutral question emblem (balanced empty speech bubbles, equal alternatives) links to school-specific observation clipboard. Three numeral circles1 playground choices,2 focused investigation,3 neutral question. No words, percentages, assumptions that every pupil wants same activity, or completed findings.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "gp7b-methods",
+    "guide": "gp7b",
+    "topic": "methods",
+    "filename": "gp7b-methods.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Use case: scientific-educational. Finished richly illustrated professional middle-school infographic art plate for multilingual digital study guide, landscape 3:2. Warm ivory paper, deep teal ink, forest green, ochre, crisp shaded cut-paper/editorial miniature scenes and meaningful diagram relationships. NOT generic text cards or webpage. NO words, NO letters, NO fake writing, NO title, NO watermark. Only requested numeral callouts; abstract nontext document bars allowed. Website supplies translated labels. Generous margins. Subject: Book7 class7B fictional investigation of SCHOOL BREAK SPACES. Two equal main panels:1 observer watches running play area and quiet reading seats and counts users on icon tally board (NO numeric results, only abstract small tick placeholders); clock icons show observations at multiple breaks.2 neutral interview with pupils who have different interests, equal speech bubbles containing a running shoe, book and conversation icon, not text. Bottom a researcher brings the two evidence strands together over a plan of space, leaving an explicit open question gap. Three callouts1,2,3 only. Teach counts show use, questions explore reported reasons; do not imply observation reveals motives. No lunch food or national views.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "gp7b-main",
+    "guide": "gp7b",
+    "topic": "mainIdea",
+    "filename": "gp7b-main.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Use case: scientific-educational. Finished richly illustrated professional middle-school infographic art plate for multilingual digital study guide, landscape 3:2. Warm ivory paper, deep teal ink, forest green, ochre, crisp shaded cut-paper/editorial miniature scenes and meaningful diagram relationships. NOT generic text cards or webpage. NO words, NO letters, NO fake writing, NO title, NO watermark. Only requested numeral callouts; abstract nontext document bars allowed. Website supplies translated labels. Generous margins. Subject: Book7 class7B: find whole-text main idea in fictional SCHOOL BREAK SPACE source. Three illustrated page panels depict1 different activity needs including running, reading and quiet conversation,2 observing counts at different breaks,3 asking neutral preference/reason questions and combining evidence. Three flowing teal ribbons from all panels converge to ONE central umbrella-like outline sheltering the whole playground. Small specific detail isolated at side is only one branch. Callouts1,2,3 on source panels. No written sentences, slogans, numeric data or invented findings. Emphasis whole text, not single favourite activity.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "gp7b-notes",
+    "guide": "gp7b",
+    "topic": "notes",
+    "filename": "gp7b-notes.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Use case: scientific-educational. Finished richly illustrated professional middle-school infographic art plate for multilingual digital study guide, landscape 3:2. Warm ivory paper, deep teal ink, forest green, ochre, crisp shaded cut-paper/editorial miniature scenes and meaningful diagram relationships. NOT generic text cards or webpage. NO words, NO letters, NO fake writing, NO title, NO watermark. Only requested numeral callouts; abstract nontext document bars allowed. Website supplies translated labels. Generous margins. Subject: Book7 class7B selective paragraph notes on SCHOOL BREAK SPACE research. Three illustrated lanes, circles1,2,3. Lane1 pupils with different activity needs become sparse note card containing choice pictograms. Lane2 several playground observation snapshots and small clocks become short count/time pictogram notes, with a separate unresolved reason bubble. Lane3 neutral interview speech bubbles become preference/reason pictogram notes, then small comparison lens and remaining evidence gap. Original pages contain grey nontext bars; note cards much shorter. No writing or numerical results. Meaningful selection funnel, no data claims.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "gp7b-summary",
+    "guide": "gp7b",
+    "topic": "summary",
+    "filename": "gp7b-summary.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Use case: scientific-educational. Finished richly illustrated professional middle-school infographic art plate for multilingual digital study guide, landscape 3:2. Warm ivory paper, deep teal ink, forest green, ochre, crisp shaded cut-paper/editorial miniature scenes and meaningful diagram relationships. NOT generic text cards or webpage. NO words, NO letters, NO fake writing, NO title, NO watermark. Only requested numeral callouts; abstract nontext document bars allowed. Website supplies translated labels. Generous margins. Subject: Book7 class7B whole-text summary and feedback about fictional SCHOOL BREAK SPACES. Left three source pages depict1 activity choices,2 observation,3 pupil questions; they flow into ONE single summary sheet at centre containing EXACTLY FIVE clean separate sentence bands, each with tiny nontext bars, no letters. Right shows a pupil checking this summary against original pages with a magnifier and making one careful revision; small next-step arrow. Circles1 source selection,2 one five-band whole-text summary,3 check and revise. Do NOT produce three separate paragraph summaries. No words or findings.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "gp8-prediction",
+    "guide": "gp8",
+    "topic": "question",
+    "filename": "gp8-prediction.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Use case: scientific-educational. Finished richly illustrated professional middle-school infographic art plate for multilingual digital study guide, landscape 3:2. Warm ivory paper, deep teal ink, forest green, ochre, crisp shaded cut-paper/editorial miniature scenes and meaningful diagram relationships. NOT generic text cards or webpage. NO words, NO letters, NO fake writing, NO title, NO watermark. Only requested numeral callouts; abstract nontext document bars allowed. Website supplies translated labels. Generous margins. Subject: Grade8 Book9 research: prediction is NOT proof. A school council considers possible causes of lunch waste: portion size, limited eating time and food preferences. Three speculative translucent thought bubbles show plate, clock and preferred food above a lunch table; all converge through a question-shaped doorway to actual planned investigation tools (scale, calendar, neutral interview), NOT to a success badge. Callouts1 possible explanation,2 investigation plan,3 evidence needed. No medical claims, outcomes, result charts, percentages, real country names or guaranteed cause. Clear contrast of idea and evidence.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "gp8-methods",
+    "guide": "gp8",
+    "topic": "methods",
+    "filename": "gp8-methods.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Use case: scientific-educational. Finished richly illustrated professional middle-school infographic art plate for multilingual digital study guide, landscape 3:2. Warm ivory paper, deep teal ink, forest green, ochre, crisp shaded cut-paper/editorial miniature scenes and meaningful diagram relationships. NOT generic text cards or webpage. NO words, NO letters, NO fake writing, NO title, NO watermark. Only requested numeral callouts; abstract nontext document bars allowed. Website supplies translated labels. Generous margins. Subject: Grade8 Book9 FICTIONAL school-food-waste proposed investigation. Three equal scenes, callouts1,2,3:1 comparing waste measurements before and during a proposed small-portion trial on the SAME scale with two blank calendar cards, no numbers or different bar heights, no implied reduction;2 asking pupils neutral questions with equal food/time preference pictograms in speech bubbles;3 comparing school records from several schools with menus and measuring tools shown different, magnifier notices comparability limitations. Emphasise evidence planning and alternative explanations. No proof of effectiveness, no positive trend chart, no flags or real countries, no medical claims, no writing.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "gp8-features",
+    "guide": "gp8",
+    "topic": "perspectives",
+    "filename": "gp8-features.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Keep this food-waste infographic's overall three-zone layout and style. Preserve zone1 possible causes (portion plate, time clock, food preferences) and zone3 optional smaller first portions WITH MORE FOOD AVAILABLE. Correct zone2 centre: remove the water droplet, tractor, farmland, forest/soil/landfill symbols and ALL arrows pointing to those extra environmental topics. Zone2 should contain ONLY uneaten FOOD INGREDIENTS (rice vegetables bread) and MONEY COINS, connected to the uneaten lunch/waste container. These are the ONLY consequences stated in our classroom reading. Do not invent more source claims. No words, no numbers other than callouts1,2,3, no result charts or proven-success ticks. Maintain rich editorial illustration quality and distinct hypotheses-versus-action layout.",
+    "initialPrompt": "Use case: scientific-educational. Finished richly illustrated professional middle-school infographic art plate for multilingual digital study guide, landscape 3:2. Warm ivory paper, deep teal ink, forest green, ochre, crisp shaded cut-paper/editorial miniature scenes and meaningful diagram relationships. NOT generic text cards or webpage. NO words, NO letters, NO fake writing, NO title, NO watermark. Only requested numeral callouts; abstract nontext document bars allowed. Website supplies translated labels. Generous margins. Subject: Grade8 Book9: distinguish possible CAUSES, possible CONSEQUENCES, and proposed ACTION, school lunch waste. Three connected zones.1 speculative thought bubbles contain portion plate, clock, food preferences above uneaten lunch;2 possible resource losses represented by leftover ingredients and coins beside waste container, no amounts;3 proposed trial of optional smaller first portion with serving spoon and extra food still available, pupil can request more. A dotted rather than solid certainty arrow links hypotheses. Three callouts1,2,3. NO starving child, blame, guaranteed cause, proven success, chart results, percentages, writing or real organisations.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "gp8-perspectives",
+    "guide": "gp8",
+    "topic": "perspectives",
+    "filename": "gp8-perspectives.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "Use case: scientific-educational. Finished richly illustrated professional middle-school infographic art plate for multilingual digital study guide, landscape 3:2. Warm ivory paper, deep teal ink, forest green, ochre, crisp shaded cut-paper/editorial miniature scenes and meaningful diagram relationships. NOT generic text cards or webpage. NO words, NO letters, NO fake writing, NO title, NO watermark. Only requested numeral callouts; abstract nontext document bars allowed. Website supplies translated labels. Generous margins. Subject: Grade8 Book9 FICTIONAL national and international perspectives. FOUR equal portraits with concrete priority objects, all drawn as imagined people not real leaders.1 meals organiser holding affordable school-record binder and modest coin icon;2 pupil representative at discussion table inviting participation with connected equal speech bubbles;3 international researcher beside globe and several country-shaped abstract tiles being compared;4 parent considering several household budgets and daily routine clock icons. Two subtle broad grouping arches separate first pair national-scale discussion from second pair international-scale discussion, but do not use country flags or text. Four callouts1,2,3,4. A perspective means what a PERSON values, not just a globe icon. No character represents everyone in a country. No written text or data.",
+    "encoding": "WebP, quality 92, original dimensions"
+  },
+  {
+    "id": "gp8-action-summary",
+    "guide": "gp8",
+    "topic": "summary",
+    "filename": "gp8-action-summary.webp",
+    "generator": "OpenAI built-in image_gen",
+    "prompt": "The current image is WRONG SUBJECT: plants and gardening. Replace EVERY plant, seedling, pot, plant experiment, soil, garden, plant ruler and sun-growth diagram with the specific SCHOOL LUNCH FOOD-WASTE subject. Keep rich ivory/teal educational editorial style and three callout numerals1,2,3. Composition: LEFT a five-branch notebook with five clearly food-waste research icons: causes=meal portion and clock; consequences=uneaten ingredients and money; national perspective=school organiser and pupil; global perspective=researcher and parent with globe; action=SMALLER FIRST FOOD PORTION WITH MORE FOOD AVAILABLE. ONLY ACTION branch highlighted, all other four grey. CENTRE1 highlighted action picture shows server giving optional small first serving, a clearly full extra-serving tray beside them so pupil may ask for more. Centre2 ONE short summary page with three nontext horizontal bands and food-portion icon, not plants. RIGHT3 planned trial cycle: two blank calendars and SAME weighing scale, pupil interview, question bubble for other explanations. Show NO success or reduced-waste results, no before/after amount differences, no graphs. NO plants anywhere, no gardening, climate, nature studies or generic unrelated topic. No words, letters, real countries or numbers beyond1,2,3. This must clearly teach choosing ONE FEATURE (proposed course of action) for a short summary of the class FOOD WASTE reading.",
+    "initialPrompt": "Use case: scientific-educational. Finished richly illustrated professional middle-school infographic art plate for multilingual digital study guide, landscape 3:2. Warm ivory paper, deep teal ink, forest green, ochre, crisp shaded cut-paper/editorial miniature scenes and meaningful diagram relationships. NOT generic text cards or webpage. NO words, NO letters, NO fake writing, NO title, NO watermark. Only requested numeral callouts; abstract nontext document bars allowed. Website supplies translated labels. Generous margins. Subject: Grade8 Book9 ONE-FEATURE summary of a proposed course of action. Left a five-branch research notebook with distinct icons (possible cause plate/clock, consequence ingredient/coin, national people, international people/globe, proposed action small first serving with extra available). ONLY the proposed action branch is highlighted teal; remaining four muted grey. Highlight flows to ONE short summary sheet with three nontext sentence bands, then to a planned trial cycle showing compare before/during measurements, ask pupils, consider alternative explanations. No result numbers, changed amounts, downward trend or success badge. Three callouts1 choose one feature,2 preserve proposed action,3 check against source and communicate. No readable words.",
+    "encoding": "WebP, quality 92, original dimensions"
+  }
+]

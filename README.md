@@ -8,7 +8,7 @@ A teacher-operated, whole-class lesson player for **Mr. Friend · Oxford Interna
 
 ## Digital study guides
 
-[Open the digital study guides](https://bryantfriend.github.io/learn/study-guides/): 7A and 7B Geography Term 1, plus the latest workbook Research lessons for 7A, 7B and Grade 8 Global Perspectives. All five guides include translated explanations, 33 infographic designs, complete readings, worked examples and self-checks in English, Russian, Turkish and Simplified Chinese. No printing or student account is needed. See [the guide documentation](docs/digital-study-guides.md).
+[Open the digital study guides](https://bryantfriend.github.io/learn/study-guides/): 7A and 7B Geography Term 1, plus the latest workbook Research lessons for 7A, 7B and Grade 8 Global Perspectives. All five guides include translated explanations, five illustrated infographics per guide (25 distinct artworks), complete readings, worked examples and self-checks in English, Russian, Turkish and Simplified Chinese. No printing or student account is needed. See [the guide documentation](docs/digital-study-guides.md).
 
 ## Available lessons
 
