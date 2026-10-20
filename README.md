@@ -6,6 +6,10 @@
 
 A teacher-operated, whole-class lesson player for **Mr. Friend · Oxford International School**. Grades 7–8; no student devices, accounts, worksheets, or external videos.
 
+## Digital study guides
+
+[Open the digital study guides](https://bryantfriend.github.io/learn/study-guides/): 7A and 7B Geography Term 1, plus the latest workbook Research lessons for 7A, 7B and Grade 8 Global Perspectives. All five guides include translated explanations, 33 infographic designs, complete readings, worked examples and self-checks in English, Russian, Turkish and Simplified Chinese. No printing or student account is needed. See [the guide documentation](docs/digital-study-guides.md).
+
 ## Available lessons
 
 **IELTS Preparation** is available for **7A and 7B**: 30 shared, selectable 45-minute foundation lessons covering exam strategies, Listening, Reading, Speaking and Academic Writing. Includes original practice material, teacher-read listening scripts, concealed model answers and separate class progress. [IELTS lesson guide](docs/ielts-lessons.md).

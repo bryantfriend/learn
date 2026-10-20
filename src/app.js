@@ -141,7 +141,7 @@ function brand() {
 function renderHome() {
 
     const start = button('Choose class & lesson →', 'choose-lesson', 'primary');
-    const actions = [start, element('a', { href: './?lesson=viking-religion-v1', className: 'exams-button' }, ['Viking religion · 40 min →']), element('a', { href: './exams/', className: 'exams-button' }, ['Exams'])];
+    const actions = [start, element('a', { href: './study-guides/', className: 'exams-button' }, ['Digital study guides']), element('a', { href: './?lesson=viking-religion-v1', className: 'exams-button' }, ['Viking religion · 40 min →']), element('a', { href: './exams/', className: 'exams-button' }, ['Exams'])];
     if (session) actions.unshift(button('Resume last class →', 'resume-saved', 'subtle'));
     app.replaceChildren(element('main', { className: 'home' }, [
         element('header', { className: 'home-header' }, [brand(), element('span', {}, ['Mr. Friend'])]),

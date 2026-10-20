@@ -1,5 +1,11 @@
 # Learn deployment
 
+## Version 2.8.0 — multilingual digital study guides
+
+Adds five self-contained digital guides: 7A/7B Geography Term 1 and the latest workbook Research Lesson 2 for 7A, 7B and Grade 8 Global Perspectives. All five are available in English, Russian, Turkish and Simplified Chinese, including infographic labels, full classroom readings, worked examples, model responses and explained self-checks. Includes 33 infographic designs, selectable UK maps/capitals, a scale calculator, weather mechanisms, research flows, class-specific summary tasks, English-term comparisons and browser-local progress. Linked from the classroom home and student library. No printing or account is required.
+
+Validation: six focused content checks pass, including exact classroom-source preservation and all translation structures. Browser checks cover all 20 versions at 1280×720, 1920×1080 and 390×844, with 372 correct-answer checks and 744 infographic instances; no overflow or browser errors. Map selection, scale, dialog, language/progress persistence, English-term preference after reload, and both entry routes pass. Screenshots reviewed for maps, compass, scale, natural features, snow, vortex and translated readings/research diagrams. Publishes main/root GitHub Pages; unrelated workspace work is excluded.
+
 ## Version 2.7.0 — board-led Geography across the course
 
 Rebuilds all 86 Geography teaching and review lessons around full subject explanations, worked examples, explained scheduled and changed cases, and brief spoken checks. Adds 42 concrete topic stories, direct Read teaching script access, three new teaching illustrations, an updated printable teaching guide and optional sourced worksheets. Students do not need to copy notes. Existing lesson IDs and timetable topics are retained; all ten assessments keep independent conditions.
