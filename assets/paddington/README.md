@@ -1,6 +1,6 @@
 # Paddington 2 geography artwork
 
-Three original AI illustration sheets, with twelve numbered scenes. Generated with the built-in image-generation tool. These are not movie stills, surveyed maps or documentary photographs. The originals are retained; these copies are bundled locally so the lesson needs no image service.
+Three original AI illustration sheets with twelve numbered scenes, plus eight dedicated activity illustrations. Generated with the built-in image-generation tool. These are not movie stills, surveyed maps or documentary photographs. The originals are retained; these copies are bundled locally so the lesson needs no image service.
 
 ## Prompt set
 
@@ -10,8 +10,10 @@ Three original AI illustration sheets, with twelve numbered scenes. Generated wi
 
 ## Lesson facts
 
+The eight activity illustrations are `transport.png`, `riverside-routes.png`, `tourism.png`, `moving-visiting.png`, `riverbank-improvement.png`, `postcards.png`, `repair-mistakes.png`, and `investigate-next.png`. Their full generation prompts are saved in [activity-art-prompts.json](activity-art-prompts.json). The postcard sheet provides four separate scenes to choose from. Each picture is attached to its matching activity, and the route picture is also retained during the route answer discussion. The repair sheet uses city scenes rather than generated geographic outlines.
+
 - [STUDIOCANAL film synopsis](https://app.powster.com/studiocanalintl/paddington-2/nz/synopsis/): the Browns, neighborhood, Aunt Lucy’s birthday, pop-up book and theft.
 - [PROMPERÚ country overview](https://www.peru.travel/about-peru): Peru’s location and broad geographic regions.
 - [PROMPERÚ climate overview](https://www.peru.travel/useful-data/climate): climate diversity and the Andes.
 
-The route challenge uses explicitly invented times, costs and access conditions. The artwork is deliberately kept separate from exact location work, which uses a classroom atlas.
+The route challenge uses explicitly invented times, costs and access conditions. The artwork is deliberately kept separate from exact location work, which uses the built-in movable world map.
