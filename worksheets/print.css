@@ -3,3 +3,14 @@
 .drawing-space{border:1px solid #999}.drawing-space .answer-line{border:0}
 
 .homework{font-size:10.5pt;line-height:1.3}.homework h1{font-size:16pt}.homework .task{margin:10px 0}.homework .task p{margin:4px 0}.homework .source{padding:6px 9px;margin:6px 0}.homework .answer-line{height:6mm}.homework .identity{margin:10px 0}
+/* A contained static map and compact answer spaces keep lecture sheets printable. */
+.source-diagram svg{display:block;width:100%;height:70mm;max-height:70mm;}
+.board-led-sheet .answer-line{height:6mm;}
+.board-led-sheet .task{margin:10px 0;}
+.board-led-sheet .identity{margin:10px 0;}
+.board-led-sheet .source{padding:6px 9px;}
+.board-led-sheet .source p{font-size:10pt;line-height:1.3;}
+.board-led-sheet .source-diagram svg{height:60mm;max-height:60mm;}
+.worksheet-evidence{display:grid;grid-template-columns:1fr 1.1fr;gap:12px;align-items:center;break-inside:avoid;margin:10px 0;}
+.worksheet-evidence>.source{margin:0;min-width:0;}
+.worksheet-evidence>.source-diagram{width:100%;min-width:0;}

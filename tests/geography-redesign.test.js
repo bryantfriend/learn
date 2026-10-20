@@ -21,14 +21,14 @@ test('all 86 Geography workshops are self-contained with exact core budgets and 
 });
 test('the first 7A workshop explicitly models linking before independent linking',()=>{
  const l=geo.find(l=>l.id==='g7a-geo-w02-1'),frames=l.stages.flatMap(s=>s.frames);
- const model=frames.findIndex(f=>f.title==='What does “make a link” mean?');
- const independent=frames.findIndex(f=>f.independentTask);
- assert.ok(model>=0&&independent>model);assert.match(frames[model].lines.join(' '),/so people can reach/);
+ const model=frames.findIndex(f=>f.conceptId==='1.1-3');
+ const independent=frames.findIndex(f=>f.teachingModel);
+ assert.ok(model>=0&&independent>model);assert.match(frames[model].teacherScript,/because|affect|connection/);
 });
 test('7A combined weeks retain their applied and independent missions',()=>{
  const kit=geo.find(l=>l.id==='g7a-geo-w04-1');
  assert.deepEqual(kit.workshopMissions.map(m=>m.index),[1,2]);
- assert.ok(kit.stages.find(s=>s.id==='model').frames.some(f=>f.title.includes('Three equipment stations')));
+ assert.ok(kit.stages.find(s=>s.id==='model').frames.some(f=>f.kicker.includes('Three equipment stations')));
  assert.equal(kit.stages.flatMap(s=>s.frames).filter(f=>f.simulation).length,1);
 });
 test('numerical models conserve water, convert scale and encode grid references',()=>{

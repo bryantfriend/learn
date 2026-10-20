@@ -56,7 +56,7 @@ const sourceDisplay=(source,title)=>({source:tidy(source),title});
 const base=(u,extra)=>({mode:'listen',lines:[],geoArt:pictures[u.code],conceptLayout:'artwork',kicker:u.mission.reviewFormat?`${u.mission.reviewFormat} · ${u.code}`:u.mission.title,responseHint:false,recallCue:null,...extra});
 const ask=(u,title,lines,answer,script,extra={})=>base(u,{title,lines,mode:'think',type:'question',answerText:'One possible answer',explanation:tidy(answer),revealLabel:'Reveal example answer',allowHideAnswer:true,hideInstructionsOnReveal:true,teacherScript:script,...extra});
 const objective=u=>`I can ${tidy(u.p.objective).replace(/^./,s=>s.toLowerCase()).replace('an investigable exhibit label','a label with a question we can test').replace(/[.]$/,'')}.`;
-function missionCase(u){
+export function missionCase(u){
  let {source,task,answer}=u.mission;
  if(u.mission.reviewFormat&&u.code==='5.10'&&u.missionIndex===1)source='Review case: two flood-management packages fit the budget. Proposed claim: choose the most expensive. No site-performance evidence is supplied. Compare flood mechanisms, maintenance, who benefits and environmental effects.';
  if(!u.mission.reviewFormat){

@@ -15,7 +15,7 @@ test('All 86 teaching/review lessons preserve explanations in the eight-section 
  const geo=lessons.filter(l=>l.geoRedesign);assert.equal(geo.length,86);
  for(const l of geo){
   assert.equal(l.teacherLed,true,l.id);assert.ok(l.contentRevision>=8000,l.id);
-  assert.deepEqual(l.stages.map(s=>s.durationMinutes),[4,2,3,8,5,10,5,3],l.id);
+  assert.deepEqual(l.stages.map(s=>s.durationMinutes),[3,2,3,17,7,4,3,1],l.id);
   const frames=l.stages.flatMap(s=>s.frames);
   assert.ok(frames.filter(f=>!f.final).every(f=>f.teacherScript&&(f.geoDisplay||f.geoArt)),l.id);
   assert.ok(l.stages.find(s=>s.id==='check').frames.every(f=>f.sourceCard||/expla|source/i.test(f.responseHint)||f.lines.some(line=>/explain/i.test(line))),l.id);
@@ -24,8 +24,8 @@ test('All 86 teaching/review lessons preserve explanations in the eight-section 
    assert.equal(new Set(frames.filter(f=>f.conceptId?.startsWith(code+'-')).map(f=>f.conceptId)).size,geographyConcepts[code].length,l.id);
   }
   const instructions=frames.flatMap(f=>f.lines||[]).join(' ');
-  assert.match(instructions,/independently/i,l.id);
-  assert.ok(l.stages.find(s=>s.id==='apply').frames.some(f=>['think','pair'].includes(f.mode)),l.id);
+  assert.doesNotMatch(instructions,/in your notebook|complete independently/i,l.id);
+  assert.ok(l.stages.find(s=>s.id==='apply').frames.every(f=>f.mode==='listen'&&f.teacherDemonstration),l.id);
  }
 });
 test('Journey lesson teaches geography before arithmetic and actually includes its four authored explanations',()=>{
@@ -33,7 +33,7 @@ test('Journey lesson teaches geography before arithmetic and actually includes i
  assert.deepEqual(teach.slice(0,4).map(f=>f.conceptId),['3.1-0','3.1-1','3.1-2','3.1-3']);
  for(const script of workshops['3.1'].missions[1].teaching)assert.ok(teach.some(f=>f.teacherScript===script));
  assert.ok(l.stages.find(s=>s.id==='model').frames.find(f=>f.teachingModel).geoDisplay.journey.view==='worked');
- assert.match(l.stages.find(s=>s.id==='finish').frames[0].teacherScript,/5 hours/);
+ assert.ok(l.stages.find(s=>s.id==='apply').frames.some(f=>f.worksheetTask));
  assert.equal(journeyFeasible(journeyRoutes[0],45,false),true);
  assert.equal(journeyFeasible(journeyRoutes[0],45,true),false);
  assert.equal(journeyFeasible(journeyRoutes[1],45,true),false);

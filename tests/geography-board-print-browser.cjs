@@ -1,0 +1,7 @@
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+const {PDFDocument}=require(process.env.PLAYWRIGHT_MODULE?process.env.PLAYWRIGHT_MODULE+'/../pdf-lib':'pdf-lib');
+const {createServer}=require('../scripts/serve.cjs');const fs=require('node:fs');
+(async()=>{const {lessons}=await import('../src/lessons.js');const geo=lessons.filter(l=>l.boardLecture),server=createServer();await new Promise(r=>server.listen(0,'127.0.0.1',r));const browser=await chromium.launch();const failures=[],kind=process.argv.includes('--homework')?'homework':'lesson';
+try{const page=await browser.newPage({viewport:{width:1280,height:720}});for(const l of geo){await page.goto(`http://127.0.0.1:${server.address().port}/learn/worksheets/?lesson=${l.id}&kind=${kind}`);await page.emulateMedia({media:'print'});const bytes=await page.pdf({format:'A4',preferCSSPageSize:true}),doc=await PDFDocument.load(bytes);if(doc.getPageCount()!==l.workshopMissions.length)failures.push({id:l.id,expected:l.workshopMissions.length,pages:doc.getPageCount()});if(l.id==='g7b-geo-w03-2'&&kind==='lesson'){await page.emulateMedia({media:'screen'});await page.screenshot({path:'output/playwright/board-led/worksheet.png',fullPage:true});}}
+fs.writeFileSync('output/playwright/board-led/print-audit-'+kind+'.json',JSON.stringify({lessons:geo.length,kind,failures},null,2));console.log(JSON.stringify({lessons:geo.length,kind,failures}));if(failures.length)process.exitCode=1;
+}finally{await browser.close();server.close();}})().catch(e=>{console.error(e);process.exitCode=1});

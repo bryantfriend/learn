@@ -13,7 +13,7 @@ test('UK lesson keeps real maps, three view scales and distinct games in the new
  assert.ok(l.stages.find(s=>s.id==='teach').frames.every(f=>f.geoDisplay.atlas));
  assert.ok(l.stages.find(s=>s.id==='teach').frames.some(f=>f.geoDisplay.atlas.scales));
  assert.deepEqual(l.stages.flatMap(s=>s.frames).filter(f=>f.postcardActivity).map(f=>f.postcardActivity.mode),['sorting','postcards']);
- assert.match(l.stages.at(-1).frames[0].lines.join(' '),/independently/i);
+ assert.equal(l.stages.at(-1).frames[0].mode,'listen');
  assert.ok(l.stages.find(s=>s.id==='teach').frames.some(f=>f.geoDisplay.atlas.compare));assert.ok(l.stages.find(s=>s.id==='model').frames.some(f=>f.geoDisplay?.atlas?.fill));
  for(const view of ['world','europe','islands'])assert.match(atlasArt({view}),/<svg/);
  assert.match(atlasArt(),/Irish Sea/);assert.match(atlasArt({labels:false}),/data-country="Northern Ireland"/);
@@ -26,6 +26,6 @@ test('All workshops display teaching diagrams and source evidence; exits allow a
   assert.ok(l.stages.find(s=>s.id==='teach').frames.every(f=>f.geoDisplay||f.geoArt&&f.conceptLayout==='artwork'),l.id);
   for(const f of l.stages.find(s=>s.id==='apply').frames)if(f.sourceCard)assert.ok(f.geoDisplay||f.conceptLayout==='artwork'&&f.geoArt?.contain,l.id);
   assert.ok(!l.stages.find(s=>s.id==='teach').frames.some(f=>f.title.startsWith('Read the investigation source')),l.id);
-  assert.ok(l.stages.at(-1).frames.filter(f=>!f.final).every(f=>f.mode==='think'&&f.lines.length<=3),l.id);
+  assert.ok(l.stages.at(-1).frames.filter(f=>!f.final).every(f=>f.mode==='listen'&&f.lines.length<=3),l.id);
  }
 });

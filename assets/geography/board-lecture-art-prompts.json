@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-20",
+  "mode": "built-in image_gen",
+  "outputs": ["enquiry-evidence.png", "town-network.png", "glacier-motion-retreat.png"],
+  "town_network_edit": "Extend the central closed bridge all the way across the river and join both bank roads. Preserve the northern open bridge, homes, school, clinic, closure barrier and the rest of the illustration.",
+  "prompts": [
+    [
+      "enquiry-evidence",
+      "Scientific educational classroom illustration, landscape 3:2, three equal panels painted clean textbook style. Imaginary school enquiry: LEFT observer with clipboard counts two separate doorway queues, one visibly longer than other; MIDDLE same two doors viewed again with observer and clock emphasizing repeat observations; RIGHT teacher compares two simple tally record sheets with students. No text, no digits, no illegible pseudo writing, no decorative detective props. Doors consistent across first two panels. Purpose demonstrate observation, repeat comparable counts, compare evidence. Clear readable figures and large uncluttered scenes."
+    ],
+    [
+      "town-network",
+      "Scientific educational bird's eye town diagram as beautifully painted educational illustration, wide landscape. One continuous blue river vertically through centre. Exactly two bridges crossing river: central bridge with red closure barrier and northern bridge open. Homes bottom left, school top right, clinic bottom right recognizable by medical cross. Continuous connected roads link homes north along west bank over northern bridge then south along east bank to school and clinic; central road reaches closed bridge. Clearly show why central bridge closure leaves a longer alternative route using northern bridge. No labels or text. No geographic accuracy claim; imaginary town. Prioritize unambiguous connections, sparse buildings, flat diagram perspective."
+    ],
+    [
+      "glacier-motion-retreat",
+      "Scientific educational two-panel diagram in clean realistic geography textbook illustration style, wide landscape 3:2. Same mountain valley identical fixed camera in both panels. LEFT title 'Earlier', valley glacier reaches down to a large fixed brown reference boulder beside valley bottom. RIGHT title 'Later', glacier snout ends considerably farther upslope leaving bare rock and a meltwater stream below, same reference boulder fixed at same spot. In BOTH panels three dark blue arrows painted on ice point DOWNHILL toward bottom of valley, never uphill. A thin dashed orange line at the OLD snout position in both panels. Short bottom caption verbatim 'Ice flows downhill. The front can retreat.' No other text. Make difference between flow direction and front position unmistakable. Do not show ice moving uphill."
+    ]
+  ]
+}

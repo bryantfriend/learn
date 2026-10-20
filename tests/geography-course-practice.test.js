@@ -2,25 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {lessons} from '../src/lessons.js';
 import {conceptVocabulary} from '../src/lessons/geography-concept-vocabulary.js';
-
-test('Course practice has ten distinct binary questions, balanced answers and whole-lesson coverage',()=>{
- for(const l of lessons.filter(l=>l.geoRedesign&&!l.schoolExhibit)){
-  const practice=l.stages.find(s=>s.id==='apply').frames;
-  if(l.courseModelVersion){
-   assert.ok(practice.some(f=>f.independentTask),l.id);assert.ok(practice.some(f=>f.revisionTask),l.id);
-   assert.ok(practice.every(f=>!f.fingerPractice&&!f.choices&&f.sourceCard&&f.teacherScript),l.id);
-   for(const m of l.workshopMissions)assert.ok(practice.some(f=>f.discussionId===`course-investigation-${m.code}-${m.index}`),l.id);
-   const checks=l.stages.find(s=>s.id==='check').frames;assert.equal(checks.length,2);
-   for(const f of checks){assert.ok(f.answerText&&f.allowHideAnswer&&f.explanation&&!f.choices&&!f.options);assert.equal(f.expectedSeconds,150);}
-   continue;
-  }
-  assert.equal(practice.length,10,l.id);
-  assert.equal(new Set(practice.map(f=>f.title)).size,10,l.id);
-  assert.equal(practice.filter(f=>f.answerText.startsWith('1 finger')).length,5,l.id);
-  for(const f of practice){assert.ok(f.fingerPractice&&f.allowHideAnswer&&f.explanation,l.id);assert.equal(f.choices.length,2);assert.notEqual(f.choices[0].split(' · ')[1],f.choices[1].split(' · ')[1]);assert.ok(!f.options);assert.equal(f.expectedSeconds,60);}
-  if(l.id!=='g7b-geo-w01-2')for(const code of new Set(l.bookSections))assert.ok(practice.some(f=>f.kicker.endsWith('· '+code)),`${l.id}: missing ${code}`);
-  const checks=l.stages.find(s=>s.id==='check').frames;assert.equal(checks.length,2);
-  for(const f of checks){assert.ok(f.answerText&&f.allowHideAnswer&&f.explanation&&!f.choices&&!f.options);assert.equal(f.expectedSeconds,150);}
+test('Classroom application consists of sourced teacher demonstrations and brief spoken checks',()=>{
+ for(const l of lessons.filter(l=>l.geoRedesign)){
+  const cases=l.stages.find(s=>s.id==='apply').frames;
+  assert.ok(cases.every(f=>f.mode==='listen'&&f.sourceCard&&f.teacherScript&&!f.fingerPractice&&!f.independentTask),l.id);
+  assert.ok(cases.some(f=>f.changedExample),l.id);
+  for(const check of l.stages.find(s=>s.id==='check').frames)assert.ok(check.allowHideAnswer&&check.explanation&&!check.choices&&!check.options,l.id);
  }
 });
 test('Every vocabulary card supplies English meaning and Chinese/Russian support',()=>{

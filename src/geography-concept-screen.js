@@ -45,6 +45,10 @@ export function createConceptScreen(lesson,stage,frame,copy,evidence){
  const body=node('div',null,'concept-body');root.append(body);copy.classList.add('concept-copy');
  const tools=node('details',null,'concept-tools');tools.append(node('summary','Teaching aids'));
  for(const control of [...copy.querySelectorAll(':scope > .text-button,:scope > .geo-frame-actions,:scope > .question-bank-button,:scope > .board-work-button,:scope > .geo-enlarge')])tools.append(control);
+ if(lesson.boardLecture&&frame.teacherScript){
+  const script=tools.querySelector('[data-action="slide-teaching-notes"]');
+  if(script){script.textContent='Read teaching script';script.classList.add('lecture-script-button');copy.append(script);}
+ }
  if(tools.children.length>1)copy.append(tools);
  if(frame.vocabularyCards){
   const grid=node('div',null,'concept-vocabulary');
@@ -68,6 +72,7 @@ export function createConceptScreen(lesson,stage,frame,copy,evidence){
   const useArt=frame.conceptLayout==='artwork'||frame.conceptLayout!=='evidence'&&(['begin','goal','finish','assessment'].includes(frame.conceptSection)||!frame.geoDisplay);
   const visual=useArt?art(frame.geoArt):evidence();
   if(useArt){
+   if(lesson.boardLecture)visual.classList.add('lecture-art');
    const enlarge=node('button','Enlarge illustration ⛶','text-button geo-enlarge');enlarge.type='button';enlarge.setAttribute('aria-haspopup','dialog');
    // Clone only the figure so the modal has one close control, not an active copy of its trigger.
    enlarge.onclick=()=>{const figure=visual.cloneNode(true);figure.querySelector('.geo-enlarge')?.remove();enlargeIllustration(figure,frame.title,enlarge);};

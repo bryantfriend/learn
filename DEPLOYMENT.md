@@ -1,5 +1,12 @@
 # Learn deployment
 
+## Version 2.7.0 — board-led Geography across the course
+
+Rebuilds all 86 Geography teaching and review lessons around full subject explanations, worked examples, explained scheduled and changed cases, and brief spoken checks. Adds 42 concrete topic stories, direct Read teaching script access, three new teaching illustrations, an updated printable teaching guide and optional sourced worksheets. Students do not need to copy notes. Existing lesson IDs and timetable topics are retained; all ten assessments keep independent conditions.
+
+Validation: all 96 Geography sessions pass the content audit; 4,736 classroom screens and answer reveals pass at 1280×720 and 1920×1080 without overflow or browser errors. Direct script dialogs and worksheet links work for all 86 lessons. Every lesson worksheet prints at one A4 page per case. The broad unit run has four unrelated failures also reproduced in the previous release: Viking extra-time, Viking illustration, student-study catalog and Viking worksheet expectations. Updated Geography checks pass. Publish through main/root GitHub Pages; unrelated pending workspace changes are excluded.
+
+
 ## Version 2.6.20 — The Boundary Detective
 
 Rebuilds 7B Geography Week 3 Lesson 2 as a 40-minute board-led lesson with 14 screens, detailed teacher explanations, real-outline UK maps, an original three-panel landscape illustration, concealed oral checks and an optional matching printable worksheet. No pupil copying is required.

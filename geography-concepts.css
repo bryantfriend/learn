@@ -123,3 +123,7 @@
 .concept-illustration-dialog::backdrop {background:#102c4cbf;}
 .concept-illustration-dialog .concept-art {margin:12px 0 0;}
 .concept-illustration-dialog .concept-art img {width:100%;height:76dvh;object-fit:contain;}
+/* Direct script access for the board-led teaching route. */
+#app .lecture-script-button{background:#173d59;color:#fff;border:0;border-radius:10px;padding:11px 16px;font:600 17px/1.25 system-ui;min-height:44px;margin:10px 0 0;}
+body:has(.geography-concept-player) .slide-teacher-script{font-size:clamp(19px,2vw,26px);line-height:1.65;max-width:72ch;}
+#app .lecture-art .geo-enlarge{position:static;align-self:flex-end;flex-shrink:0;margin:4px 6px;padding:5px 10px;min-height:32px;font-size:14px;}

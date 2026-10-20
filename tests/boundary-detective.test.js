@@ -8,7 +8,6 @@ test('Boundary Detective is a complete board-led lesson with optional matching w
  assert.equal(l.stages.reduce((n,s)=>n+s.durationMinutes,0),40);
  const frames=l.stages.flatMap(s=>s.frames);assert.ok(frames.length>=14);
  for(const f of frames){assert.ok(f.teacherScript.length>100);assert.ok(existsSync('assets/'+f.geoArt.image));assert.ok(!f.homework);assert.notEqual(f.mode,'pair');}
- const sheet=worksheetFor(l,'lesson',lessons);assert.equal(sheet.pages.length,1);assert.equal(sheet.pages[0].sections.length,4);
+ const sheet=worksheetFor(l,'lesson',lessons);assert.equal(sheet.pages.length,1);assert.equal(sheet.pages[0].sections.length,3);
  assert.ok(frames.filter(f=>f.type==='question').every(f=>f.explanation&&f.answerText));
 });
-
