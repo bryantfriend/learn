@@ -7,7 +7,7 @@ const geo=lessons.filter(l=>l.catalog?.subjectId==='geography');
 test('The course model teaches all 42 topics through board-led explanations',()=>{
  assert.deepEqual(Object.keys(courseMethods).sort(),Object.keys(workshops).sort());
  for(const code of Object.keys(courseMethods)){assert.equal(courseMethods[code].criteria.length,3);assert.equal(courseWordExamples[code].length,3);}
- const teaching=geo.filter(l=>!l.examId);assert.equal(teaching.length,86);
+ const teaching=geo.filter(l=>!l.examId&&!l.specialLesson);assert.equal(teaching.length,86);
  for(const l of teaching){assert.ok(l.boardLecture&&l.courseModelVersion===2,l.id);const cases=l.stages.find(s=>s.id==='apply').frames;assert.ok(cases.every(f=>f.teacherDemonstration&&f.sourceCard&&!f.independentTask));}
 });
 test('Runoff and visitor cases retain their corrected evidence',()=>{

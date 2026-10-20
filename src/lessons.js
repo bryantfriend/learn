@@ -18,6 +18,7 @@ import { grade7BLessons } from './lessons/grade7b.js';
 import { grade7Lessons } from './lessons/grade7a.js';
 import { gpLessons } from './lessons/grade8-gp.js';
 import { practiceLesson } from './lessons/system-practice.js';
+import { paddingtonGeographyLesson } from './lessons/paddington-geography.js';
 /**
  * A lesson contains stages; each stage contains teacher-controlled frames.
  * A frame has a title, short instruction lines, a mode, and optional visual,
@@ -122,6 +123,7 @@ export const lesson = {
 
 export const lessons = [...[lesson, practiceLesson, ...gpLessons, ...grade7Lessons, ...grade7BLessons].map(redesignGeography).map(styleGeographyAssessment).map(strengthenPacing).map(illustrateExamples).map(supportEnglish), ...workbookTrialLessons, ...researchFollowOnLessons, ...workbookResearch2Lessons, ...sevenAResearch2Lessons, ...grade8Research2Lessons,...english7BLessons].map(addExtraTime).map(enhanceGlobalPerspectives);
 lessons.push(vikingReligionLesson);
+lessons.push(paddingtonGeographyLesson);
 lessons.push(...ieltsLessons);
 let lessonStorage; try { lessonStorage = globalThis.localStorage; } catch {}
 registerLessons(lessons, lessonStorage);

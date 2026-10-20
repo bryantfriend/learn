@@ -6,10 +6,10 @@ import {geographySections} from '../src/lessons/geography-concept-flow.js';
 import {conceptVocabulary} from '../src/lessons/geography-concept-vocabulary.js';
 import {workshops} from '../src/lessons/geography-workshops.js';
 test('All Geography lessons have local art, and assessment conditions stay separate',()=>{
- const geo=lessons.filter(l=>l.catalog?.subjectId==='geography');assert.equal(geo.length,96);
+ const geo=lessons.filter(l=>l.catalog?.subjectId==='geography');assert.equal(geo.length,97);
  for(const l of geo){assert.ok(l.geoConcept,l.id);for(const f of l.stages.flatMap(s=>s.frames))assert.ok(existsSync(new URL('../assets/'+f.geoArt.image,import.meta.url)),l.id);
   if(l.examId){assert.deepEqual(l.stages.map(s=>s.id),['prepare','test','reflect','finish']);assert.ok(l.stages.flatMap(s=>s.frames).some(f=>f.printExam));assert.ok(!l.stages.some(s=>s.id==='vocabulary'));}
-  else{assert.deepEqual(l.stages.map(s=>s.id),geographySections.map(s=>s[0]));assert.equal(l.stages.reduce((n,s)=>n+s.durationMinutes,0),40);}
+  else{if(!l.specialLesson)assert.deepEqual(l.stages.map(s=>s.id),geographySections.map(s=>s[0]));assert.equal(l.stages.reduce((n,s)=>n+s.durationMinutes,0),40);}
  }
 });
 test('Every topic has vocabulary, success criteria, practice evidence and a concealed checkpoint',()=>{
