@@ -28,6 +28,22 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
     const frame=lesson.stages[si].frames[fi];const label=`${viewport.width} ${si}:${fi} ${frame.title}`;
     await page.locator('.concept-art img').evaluateAll(imgs=>Promise.all(imgs.map(img=>img.decode())));
     await fit(label);
+    if(si===1&&fi===0){
+     const map=page.locator('.geo-concept-content .paddington-map'),svg=map.locator('svg');
+     const initial=await svg.getAttribute('viewBox');
+     await map.getByRole('button',{name:'Zoom in +',exact:true}).click();assert.notEqual(await svg.getAttribute('viewBox'),initial);
+     await map.getByRole('button',{name:'Peru',exact:true}).click();const peru=await svg.getAttribute('viewBox');
+     await svg.focus();await page.keyboard.press('ArrowRight');assert.notEqual(await svg.getAttribute('viewBox'),peru);
+     const beforeDrag=await svg.getAttribute('viewBox'),box=await svg.boundingBox();
+     await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.down();await page.mouse.move(box.x+box.width/2+50,box.y+box.height/2+20,{steps:5});await page.mouse.up();assert.notEqual(await svg.getAttribute('viewBox'),beforeDrag);
+     await map.getByRole('button',{name:'London',exact:true}).click();assert.equal(await svg.getByText('London',{exact:true}).isVisible(),true);
+     const londonView=await svg.getAttribute('viewBox');
+     await page.getByRole('button',{name:'Enlarge map',exact:false}).click();const large=page.locator('dialog[open] .paddington-map');assert.equal(await large.locator('svg').getAttribute('viewBox'),londonView);
+     await large.getByRole('button',{name:'Reset world',exact:true}).click();assert.equal(await large.locator('svg').getAttribute('viewBox'),initial);
+     await page.keyboard.press('Escape');assert.equal(await page.locator('.geo-concept-content .paddington-map svg').getAttribute('viewBox'),initial);
+     await map.getByRole('button',{name:'Place names',exact:true}).click();assert.equal(await map.getByRole('button',{name:'Place names',exact:true}).getAttribute('aria-pressed'),'false');
+     await fit(label+' map controls');
+    }
     assert.equal(await page.locator('.concept-rehearsal,.response-hint').count(),0,label);
     if(frame.vocabularyCards){
      assert.equal(await page.locator('.concept-word').count(),3);await page.locator('.concept-word').first().press('Enter');assert.equal(await page.locator('dialog[open]').count(),1);await page.locator('dialog[open] button').click();
@@ -48,5 +64,6 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   assert.deepEqual(errors,[]);console.log('PASS: every Paddington slide at 1280×720 and 1920×1080, loaded pictures, hidden/revealed answers, illustration enlargement, mobile width and no JavaScript/HTTP errors.');
  }finally{if(browser)await browser.close();server.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
+
 
 

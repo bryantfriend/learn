@@ -80,7 +80,7 @@ export function createConceptScreen(lesson,stage,frame,copy,evidence){
   }
   if(frame.enlargeMapButton){
    const enlarge=copy.querySelector('.geo-enlarge');
-   if(enlarge&&!useArt){enlarge.textContent=frame.geoDisplay?.atlas?'Enlarge map ⛶':'Enlarge diagram ⛶';enlarge.setAttribute('aria-haspopup','dialog');enlarge.setAttribute('aria-controls','panel');visual.prepend(enlarge);}
+   if(enlarge&&!useArt){enlarge.textContent=frame.geoDisplay?.atlas||frame.geoDisplay?.paddingtonMap?'Enlarge map ⛶':'Enlarge diagram ⛶';enlarge.setAttribute('aria-haspopup','dialog');enlarge.setAttribute('aria-controls','panel');visual.prepend(enlarge);}
   }
   body.append(visual,copy);
  }

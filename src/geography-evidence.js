@@ -3,8 +3,10 @@ import {createAtlas,atlasArt} from './geography-atlas.js';
 import {workpadArt} from './geography-workpads.js';
 import {createJourneyVisual} from './journey-visual.js';
 import {openCoastalGame} from './coastal-connections.js';
+import {createPaddingtonMap} from './paddington-map.js';
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text)n.textContent=text;if(cls)n.className=cls;return n;};
 export function createGeographyEvidence(spec,onChange=()=>{}){
+ if(spec.paddingtonMap)return createPaddingtonMap(spec.paddingtonMap,state=>onChange({...spec,paddingtonMap:state}));
  if(spec.transportConnections){
   const root=el('figure',null,'geography-evidence transport-connections');
   root.append(el('h3','Different transport for land and sea'));
