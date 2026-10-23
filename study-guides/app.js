@@ -10,16 +10,20 @@ const languages={en:['English',en],ru:['Русский',ru],tr:['Türkçe',tr],z
 export const guideSections={geo7a:['map','compass','scale','features'],geo7b:['countries','uk','weather','snow','vortex'],gp7a:['question','methods','case','mainIdea','notes','summary','feedback','reflection'],gp7b:['question','methods','case','mainIdea','notes','summary','feedback','reflection'],gp8:['question','methods','case','perspectives','mainIdea','notes','summary','feedback','reflection']};
 for(const [code,[,data]] of Object.entries(languages)){data.extra=extra[code];data.posters=posterCopy[code];}
 const caseFor={gp7a:'7a',gp7b:'7b',gp8:'8'};
-const state=new URLSearchParams(location.search);let lang=languages[state.get('lang')]?state.get('lang'):'en',guide=guideSections[state.get('guide')]?state.get('guide'):null;
+const classPaths={gp7a:'7a-global-perspectives',gp7b:'7b-global-perspectives',gp8:'8-global-perspectives',geo7a:'7a-geography',geo7b:'7b-geography'};
+const guideRoot=new URL('./',import.meta.url).pathname;
+let assetBase=document.querySelector('base');if(!assetBase){assetBase=document.createElement('base');document.head.prepend(assetBase);}assetBase.href=new URL('./',import.meta.url).href;
+function currentGuide(params){return guideSections[params.get('guide')]?params.get('guide'):Object.keys(classPaths).find(id=>location.pathname===`${guideRoot}${classPaths[id]}/`)||null;}
+const state=new URLSearchParams(location.search);let lang=languages[state.get('lang')]?state.get('lang'):'en',guide=currentGuide(state);
 let englishTerms=false;try{englishTerms=localStorage.getItem('learn-guide-english')==='yes';}catch{}
 const app=document.querySelector('#app');
-function url(g,l=lang){const p=new URLSearchParams({lang:l});if(g)p.set('guide',g);return`?${p}`;}
+function url(g,l=lang){const path=guideRoot+(g?classPaths[g]+'/':'');return path+(l==='en'?'':`?lang=${encodeURIComponent(l)}`);}
 function loadProgress(){try{return JSON.parse(localStorage.getItem(`learn-guide-progress-${guide}`)||'[]').filter(k=>guideSections[guide]?.includes(k));}catch{return[];}}
 let progress=loadProgress();
 function saveProgress(){try{localStorage.setItem(`learn-guide-progress-${guide}`,JSON.stringify(progress));}catch{}updateProgress();}
 function updateProgress(){document.querySelectorAll('[data-progress]').forEach(n=>n.textContent=`${progress.length} / ${guideSections[guide]?.length||0} ${languages[lang][1].ui.progress}`);document.querySelectorAll('[data-progress-bar]').forEach(n=>n.style.width=`${100*progress.length/(guideSections[guide]?.length||1)}%`);document.querySelectorAll('[data-understood]').forEach(b=>{const done=progress.includes(b.dataset.understood);b.setAttribute('aria-pressed',done);b.textContent=done?`✓ ${languages[lang][1].ui.completed}`:languages[lang][1].ui.complete;});}
 function navigate(g,l=lang){guide=g;lang=l;history.pushState({},'',url(guide,lang));progress=loadProgress();render();window.scrollTo(0,0);}
-addEventListener('popstate',()=>{const p=new URLSearchParams(location.search);guide=guideSections[p.get('guide')]?p.get('guide'):null;lang=languages[p.get('lang')]?p.get('lang'):'en';progress=loadProgress();render();});
+addEventListener('popstate',()=>{const p=new URLSearchParams(location.search);guide=currentGuide(p);lang=languages[p.get('lang')]?p.get('lang'):'en';progress=loadProgress();render();});
 function guideLink(g){const a=el('a',{href:url(g),class:'guide-card'},[el('span',{class:'number'},[g.startsWith('geo')?'◈':'◎']),el('strong',{},[languages[lang][1].guides[g][0]]),el('p',{},[languages[lang][1].guides[g][1]]),el('span',{class:'guide-poster-count'},[languages[lang][1].posters.count+' →'])]);a.onclick=e=>{e.preventDefault();navigate(g);};return a;}
 function quiz(id,d){const c=d.topics[id].check,u=d.ui,w=el('div',{class:'quiz'}),fieldset=el('fieldset',{},[el('legend',{},[c.question])]),result=el('p',{class:'result','aria-live':'polite',hidden:true}),button=el('button',{type:'button'},[u.reveal]);c.choices.forEach((s,i)=>fieldset.append(el('label',{},[el('input',{type:'radio',name:`quiz-${id}`,value:i}),s])));button.onclick=()=>{const selected=fieldset.querySelector('input:checked');result.hidden=false;result.textContent=!selected?u.tryFirst:`${Number(selected.value)===c.answer?u.correct:u.retry} ${c.explanation}`;};w.append(el('h3',{},[u.check]),fieldset,button,result);return w;}
 function model(title,paragraphs){return el('details',{class:'model'},[el('summary',{},[title]),el('div',{class:'answer'},(Array.isArray(paragraphs)?paragraphs:[paragraphs]).map(s=>el('p',{},[s])))]);}

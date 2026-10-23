@@ -1,0 +1,37 @@
+[
+  {
+    "guide": "gp7a",
+    "slug": "7a-global-perspectives",
+    "title": "7A Global Perspectives",
+    "description": "Book 8: research questions, methods, main ideas and paragraph summaries.",
+    "url": "https://bryantfriend.github.io/learn/study-guides/7a-global-perspectives/"
+  },
+  {
+    "guide": "gp7b",
+    "slug": "7b-global-perspectives",
+    "title": "7B Global Perspectives",
+    "description": "Book 7: finding information, taking notes and summarising a complete text.",
+    "url": "https://bryantfriend.github.io/learn/study-guides/7b-global-perspectives/"
+  },
+  {
+    "guide": "gp8",
+    "slug": "8-global-perspectives",
+    "title": "Grade 8 Global Perspectives",
+    "description": "Book 9: predictions, evidence, perspectives and proposed actions.",
+    "url": "https://bryantfriend.github.io/learn/study-guides/8-global-perspectives/"
+  },
+  {
+    "guide": "geo7a",
+    "slug": "7a-geography",
+    "title": "7A Geography",
+    "description": "Map, key, ruler, compass rose, directions and simple scale.",
+    "url": "https://bryantfriend.github.io/learn/study-guides/7a-geography/"
+  },
+  {
+    "guide": "geo7b",
+    "slug": "7b-geography",
+    "title": "7B Geography",
+    "description": "UK countries and capitals, Great Britain and basic weather.",
+    "url": "https://bryantfriend.github.io/learn/study-guides/7b-geography/"
+  }
+]
