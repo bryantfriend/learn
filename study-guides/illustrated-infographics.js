@@ -1,5 +1,5 @@
 import {el,infographic} from './infographics.js';
-import {studyImage} from './study-image.js?v=image-fix-1';
+import {studyImage} from './study-image.js?v=compact-1';
 
 // The five posters are selected by guide, never by a shared Geography list.
 export const posterPlans={

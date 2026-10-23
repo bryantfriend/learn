@@ -1,10 +1,10 @@
 // Resolve against this module, independently of the current class URL or <base>.
-export function studyImage(id,attrs={}){
+export function studyImage(id,attrs={},preview=false){
  const image=document.createElement('img');
  for(const [name,value] of Object.entries(attrs))image.setAttribute(name,String(value));
  image.loading='eager';
  image.decoding='async';
- const source=new URL(`./assets/illustrated/${id}.webp`,import.meta.url);
+ const source=new URL(`./assets/illustrated/${preview?'thumbs/':''}${id}.webp?v=compact-1`,import.meta.url);
  let retries=0;
  image.addEventListener('error',()=>{
   if(retries>=2)return;

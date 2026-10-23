@@ -14,7 +14,8 @@ const fs=require('node:fs');
    await page.goto(root+site.slug+'/');
    await page.locator('.poster-image').first().waitFor();
    await page.locator('img').evaluateAll(imgs=>Promise.all(imgs.map(i=>i.decode())));
-   assert.equal(await page.locator('img').evaluateAll(imgs=>imgs.filter(i=>i.complete&&i.naturalWidth>=1024).length),10);
+   assert.equal(await page.locator('.poster-image').evaluateAll(imgs=>imgs.filter(i=>i.complete&&i.naturalWidth>=1024).length),5);
+   assert.equal(await page.locator('.poster-gallery img').evaluateAll(imgs=>imgs.filter(i=>i.complete&&i.naturalWidth>=384).length),5);
    images+=10;
    const buttons=page.locator('[data-enlarge]');
    for(let i=0;i<5;i++){
@@ -25,12 +26,12 @@ const fs=require('node:fs');
    }
   }
   let interrupted=0;
-  await page.route('**/assets/illustrated/gp8-perspectives.webp',async route=>{interrupted++;await route.abort();});
+  await page.route('**/assets/illustrated/gp8-perspectives.webp*',async route=>{if(new URL(route.request().url()).searchParams.has('retry'))return route.continue();interrupted++;await route.abort();});
   await page.goto(root+'8-global-perspectives/#poster-gp8-perspectives');
   await page.waitForFunction(()=>Array.from(document.querySelectorAll('img')).length===10&&Array.from(document.querySelectorAll('img')).every(i=>i.complete&&i.naturalWidth>0));
   assert.ok(interrupted>0,'test must interrupt the original image request');
   assert.ok(await page.locator('#poster-gp8-perspectives img').getAttribute('src').then(s=>s.includes('retry=')));
-  await page.unroute('**/assets/illustrated/gp8-perspectives.webp');
+  await page.unroute('**/assets/illustrated/gp8-perspectives.webp*');
   await page.locator('header select').selectOption('ru');
   await page.locator('img').evaluateAll(imgs=>Promise.all(imgs.map(i=>i.decode())));
   fs.mkdirSync('output/playwright/study-image-fix',{recursive:true});
