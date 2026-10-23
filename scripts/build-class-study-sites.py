@@ -25,9 +25,9 @@ for guide, slug, title, description, colour in sites:
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <base href="../"><meta name="theme-color" content="{colour}"><title>{title} | Exam study guide</title>
 <meta name="description" content="{description}"><link rel="canonical" href="{url}">
-<link rel="stylesheet" href="./styles.css?v=class-sites-1"></head>
+<link rel="stylesheet" href="./styles.css?v=image-fix-1"></head>
 <body><div id="app"></div><noscript>Enable JavaScript to explore this class study guide.</noscript>
-<script type="module" src="./app.js?v=class-sites-1"></script></body></html>
+<script type="module" src="./app.js?v=image-fix-1"></script></body></html>
 ''', encoding='utf-8')
     code = QrCodeWidget(url, barLevel='M')
     code.qr.make()

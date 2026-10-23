@@ -1,4 +1,5 @@
 import {el,infographic} from './infographics.js';
+import {studyImage} from './study-image.js?v=image-fix-1';
 
 // The five posters are selected by guide, never by a shared Geography list.
 export const posterPlans={
@@ -47,7 +48,7 @@ export function posterTitle(id,d,c){return copy(id,d,c).title;}
 export function illustratedInfographic(id,d,guide,c){
  const index=posterPlans[guide].findIndex(p=>p[0]===id);if(index<0)throw Error('Infographic belongs to another class');
  const topicId=posterPlans[guide][index][1],p=copy(id,d,c);
- const image=el('img',{src:`./assets/illustrated/${id}.webp`,alt:p.title,width:1536,height:1024,loading:'lazy',decoding:'async',class:'poster-image'});
+ const image=studyImage(id,{alt:p.title,width:1536,height:1024,class:'poster-image'});
  const imagePanel=el('div',{class:'poster-illustration'},[image]);
  const points=el('ol',{class:'poster-callouts points-'+p.points.length},p.points.map(([title,body])=>el('li',{},[el('strong',{},[title]),el('p',{},[body])])));
  const content=el('div',{class:'poster-body'},[imagePanel,points]);
