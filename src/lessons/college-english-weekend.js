@@ -1,3 +1,5 @@
+import { weekendQuestionRounds } from './college-english-question-rounds.js';
+
 const frame = (title, lines, seconds, extra = {}) => ({
   title, mode: 'pair', lines, timerSeconds: seconds, expectedSeconds: seconds, ...extra
 });
@@ -12,10 +14,10 @@ export const collegeEnglishWeekendLesson = {
   id: 'college-english-weekend-rescue',
   title: 'Weekend Rescue: Talk, Plan, Change!',
   eyebrow: 'College English · Speaking · A2–B2 · Lesson 2',
-  durationMinutes: 60, coreMinutes: 60, contentRevision: 1,
+  durationMinutes: 120, coreMinutes: 120, contentRevision: 2,
   classroomOnly: true, customVisuals: true,
   catalog: { subjectId: 'college-english', grades: [7, 8], unit: 'Speaking · Plans and problem-solving', order: 2 },
-  openingScript: 'Today you will keep conversations going, explain preferences and negotiate a plan when something changes. You need a board and scrap paper, with no devices or worksheets. Most work happens in pairs or groups of four at the same time. Aim for every student to speak in every round. The timers are teacher-controlled planning guides.',
+  openingScript: 'A two-hour speaking lesson: impossible weekends, silly choices, unexpected stories and a ridiculous day out, alongside partner interviews and a planning challenge. The teacher walks around asking students questions during four dedicated 15-minute rounds. Use follow-ups and invite classmates to react. Everyone rehearses briefly with a neighbour before a public answer. You need only a board and scrap paper. All timings are teacher-controlled guides. For two separate classes, stop after the role-plays at minute 60 and resume with Story trouble.',
   stages: [
     stage('speed-chat', 'Speed chat: keep it going', 8, 0,
       'Model the three-turn exchange in the first minute. Each two-minute round: A speaks and B asks follow-ups for one minute, then swap for one minute. Signal the swap halfway. Change partners between rounds, or move one row if space permits; seated partner changes are fine. Use the final minute for pairs to recall something they learned. No whole-class reporting queue.', [
@@ -36,7 +38,8 @@ export const collegeEnglishWeekendLesson = {
         'Your partner adds one more detail.'
       ], 60)
     ]),
-    stage('detective', 'Find the surprising connection', 10, 8,
+    weekendQuestionRounds[0],
+    stage('detective', 'Find the surprising connection', 10, 23,
       'New pairs: one minute to choose questions, then four minutes of interviewing with two minutes per person. Give the swap signal. Allow three minutes to discover a connection beyond a one-word match, then two minutes to tell another pair. Students may use invented details and need not disclose private information.', [
       frame('Choose three questions', [
         'What activity makes you forget the time?',
@@ -64,7 +67,8 @@ export const collegeEnglishWeekendLesson = {
         '“Were you surprised?” / “Could all four of us enjoy that?”'
       ], 120)
     ]),
-    stage('roleplay', 'Say it another way', 12, 18,
+    weekendQuestionRounds[1],
+    stage('roleplay', 'Say it another way', 12, 48,
       'Same pairs. Take one minute to model a polite invitation, refusal and alternative. Each three-minute role-play has a fresh situation; swap the inviter halfway so both students practise both roles. Give the swap signal at 90 seconds. A refusal should lead to a new suggestion rather than end the conversation. Use the last two minutes to repeat one exchange more fluently.', [
       frame('Invite, respond, suggest', [
         '“Would you like to …?” / “How about …?”',
@@ -97,7 +101,8 @@ export const collegeEnglishWeekendLesson = {
         'Finish with a clear agreement: what, where and when?'
       ], 120)
     ]),
-    stage('plan', 'The weekend challenge', 15, 30,
+    weekendQuestionRounds[2],
+    stage('plan', 'The weekend challenge', 15, 75,
       'Groups of four; groups of three combine roles C and D. Assign A–D aloud; preferences are public, so there are no secret cards to copy. Give one minute to read, then one minute per person to explain their preference. During seven-minute negotiation, everyone must ask a question and propose a compromise. Allow three minutes to rehearse the plan. Each member explains a different part. All prices and travel conditions are fictional.', [
       frame('Four friends, one afternoon', [
         'Plan Saturday from 12:00 to 16:00. Budget: 15 credits per person.',
@@ -127,7 +132,7 @@ export const collegeEnglishWeekendLesson = {
         'Challenge: which alternative did you reject, and why?'
       ], 180)
     ]),
-    stage('rescue', 'Rescue the plan', 10, 45,
+    stage('rescue', 'Rescue the plan', 10, 90,
       'Reveal only the first change initially. Groups have four minutes to negotiate a replacement plan. Then reveal the second change and give three minutes; use any spare time for breaks or conversation, but keep the time window, two activities and public preferences. Finally pair groups: each has one minute to explain its rescue and 30 seconds for a listener question. Keep everyone involved; avoid a single reporter.', [
       frame('Change 1: the weather turns', [
         'It will rain all afternoon. Park games are unavailable.',
@@ -149,7 +154,8 @@ export const collegeEnglishWeekendLesson = {
         'Does the new plan fit the time, budget and different preferences?'
       ], 180)
     ]),
-    stage('finish', 'Speak again and notice progress', 5, 55,
+    weekendQuestionRounds[3],
+    stage('finish', 'Speak again and notice progress', 5, 115,
       'New partners: one minute per student to explain the rescue without a script; partner asks one follow-up. Then use two minutes for two useful expressions and two anonymous corrections collected during the lesson. The final minute is a spoken exit, 30 seconds each. Praise specific communication moves such as inviting someone in or asking a real follow-up.', [
       frame('One-minute story: no script', [
         'Tell a new partner: what was your plan, what changed, and how did you solve it?',
