@@ -1,6 +1,7 @@
 import { vikingReligionLesson } from './lessons/viking-religion.js';
 import { ieltsLessons } from './lessons/ielts.js';
 import { collegeEnglishLesson } from './lessons/college-english.js';
+import { collegeEnglishWeekendLesson } from './lessons/college-english-weekend.js';
 import { enhanceGlobalPerspectives } from './lessons/gp-enhancements.js';
 import { redesignGeography } from './lessons/geography-redesign.js';
 import { styleGeographyAssessment } from './lessons/geography-concept-flow.js';
@@ -127,6 +128,7 @@ lessons.push(vikingReligionLesson);
 lessons.push(paddingtonGeographyLesson);
 lessons.push(...ieltsLessons);
 lessons.push(collegeEnglishLesson);
+lessons.push(collegeEnglishWeekendLesson);
 let lessonStorage; try { lessonStorage = globalThis.localStorage; } catch {}
 registerLessons(lessons, lessonStorage);
 export function getLesson(id) {
