@@ -444,7 +444,7 @@ function showPicker(focusSelector) {
             element('h3', {}, ['3 · Lesson']),
             ...(['7a','7b'].includes(picker.classId) && ['geography','global-perspectives'].includes(picker.subjectId) ? [button(getClass(picker.classId).label+' weekly plan · '+(picker.subjectId === 'geography' ? (picker.classId==='7a'?'1':'2')+' Geography lesson(s)/week' : (picker.classId==='7a'?'2':'3')+' GP lessons/week'), 'g7-plan', 'plan-link')] : []),
             ...(picker.subjectId==='english'?[element('p',{className:'panel-hint'},['7B · Two 40-minute lessons per week · Start with Week 1 below. Tap underlined vocabulary for Simplified Chinese and pinyin.'])]:[]),
-            ...(['8','7a','7b'].includes(picker.classId) && ['geography','global-perspectives'].includes(picker.subjectId) ? [element('div', { className: 'picker-options quarter-options', 'aria-label': 'Lesson quarter' }, schoolCalendar.quarters.map(function(q) { return button(q.id, 'lesson-quarter', planQuarter === q.id ? 'selected' : '', { 'data-quarter': q.id, 'aria-pressed': String(planQuarter === q.id) }); }))] : []),
+            ...(['8','7a','7b'].includes(picker.classId) && ['geography','global-perspectives','global-perspectives-books'].includes(picker.subjectId) ? [element('div', { className: 'picker-options quarter-options', 'aria-label': 'Lesson quarter' }, schoolCalendar.quarters.map(function(q) { return button(q.id, 'lesson-quarter', planQuarter === q.id ? 'selected' : '', { 'data-quarter': q.id, 'aria-pressed': String(planQuarter === q.id) }); }))] : []),
             ...(picker.classId === '8' && picker.subjectId === 'global-perspectives' ? [button('2026–2027 year plan & calendar · 43 playable lessons and assessments', 'year-plan', 'plan-link')] : []),
             ...storage.unassigned().map(function(value) { return button('Resume earlier unassigned lesson: ' + getLesson(value.lessonId).title, 'resume-earlier', 'subtle', { 'data-lesson': value.lessonId }); }),
             ...(!ready ? [element('p', { className: 'empty-curriculum' }, ['Choose a class and subject to see lessons.'])] : [
@@ -928,3 +928,4 @@ function showExtensions(index=0,roundIndex=0,revealed=false,hideSource=false) {
   element('details',{className:'extra-running-notes'},[element('summary',{},['How to run this for five minutes']),...task.lines.map(line=>element('p',{},[line])),element('p',{},[task.outcome])])
  ]);panel.classList.add('reserve-panel','extra-time-panel');markVocabulary(panel,lesson.vocabulary);
 }
+
