@@ -151,7 +151,7 @@ function renderHome() {
                 element('h1', {}, ['Clear routines.', element('br'), element('em', {}, ['Active learning.'])]),
                 element('p', { className: 'home-intro' }, ['A shared screen. A fresh start. A whole class ready to think.']),
                 element('div', { className: 'lesson-card' }, [
-                    element('div', { className: 'lesson-picker-row' }, [element('p', { className: 'eyebrow' }, ['YOUR CLASSROOM']), element('span', { className: 'catalog-count' }, ['3 classes · 5 categories'])]),
+                    element('div', { className: 'lesson-picker-row' }, [element('p', { className: 'eyebrow' }, ['YOUR CLASSROOM']), element('span', { className: 'catalog-count' }, [classes.length + ' classes'])]),
                     element('h2', {}, [session ? contextLabel(session) : 'Where are we learning today?']),
                     element('p', { className: 'lesson-subtitle' }, [session ? lesson.title : '7A · 7B · 8th Grade']),
                     element('p', { className: 'meta' }, ['Geography · Global Perspectives · Conversational English']),
@@ -412,7 +412,7 @@ function chooseLesson() {
 }
 function showPicker(focusSelector) {
     const availableSubjects = subjectsFor(picker.classId);
-    if (!availableSubjects.some(function(item) { return item.id === picker.subjectId; })) picker.subjectId = availableSubjects.length === 1 ? availableSubjects[0].id : null;
+    if (!availableSubjects.some(function(item) { return item.id === picker.subjectId; })) picker.subjectId = null;
     const available = lessonsFor(picker.classId, picker.subjectId).filter(function(item) { return !item.catalog?.quarter || item.catalog.quarter === planQuarter; });
     if (!available.some(function(item) { return item.id === picker.lessonId; })) picker.lessonId = null;
     const saved = picker.lessonId ? storage.find(picker) : null;
@@ -436,15 +436,16 @@ function showPicker(focusSelector) {
     const ready = !!picker.classId && !!picker.subjectId;
     openPanel('Choose class & lesson', [
         element('p', { className: 'panel-hint' }, ['A quick start for every class. Saved progress stays with its class, subject, and lesson.']),
+        element('div', { className: 'picker-body' }, [
         element('div', { className: 'picker-context' }, [
             group('1 · Class', classes, 'classId', 'select-class'),
-            group('2 · Subject', availableSubjects, 'subjectId', 'select-subject')
+            ...(picker.classId ? [group('2 · Subject', availableSubjects, 'subjectId', 'select-subject')] : [])
         ]),
         element('section', { className: 'picker-lessons', 'aria-label': '3 · Lesson' }, [
             element('h3', {}, ['3 · Lesson']),
             ...(['7a','7b'].includes(picker.classId) && ['geography','global-perspectives'].includes(picker.subjectId) ? [button(getClass(picker.classId).label+' weekly plan · '+(picker.subjectId === 'geography' ? (picker.classId==='7a'?'1':'2')+' Geography lesson(s)/week' : (picker.classId==='7a'?'2':'3')+' GP lessons/week'), 'g7-plan', 'plan-link')] : []),
             ...(picker.subjectId==='english'?[element('p',{className:'panel-hint'},['7B · Two 40-minute lessons per week · Start with Week 1 below. Tap underlined vocabulary for Simplified Chinese and pinyin.'])]:[]),
-            ...(['8','7a','7b'].includes(picker.classId) && ['geography','global-perspectives'].includes(picker.subjectId) ? [element('div', { className: 'picker-options quarter-options', 'aria-label': 'Lesson quarter' }, schoolCalendar.quarters.map(function(q) { return button(q.id, 'lesson-quarter', planQuarter === q.id ? 'selected' : '', { 'data-quarter': q.id, 'aria-pressed': String(planQuarter === q.id) }); }))] : []),
+            ...(['8','7a','7b'].includes(picker.classId) && ['geography','global-perspectives','global-perspectives-books'].includes(picker.subjectId) ? [element('div', { className: 'picker-options quarter-options', 'aria-label': 'Lesson quarter' }, schoolCalendar.quarters.map(function(q) { return button(q.id, 'lesson-quarter', planQuarter === q.id ? 'selected' : '', { 'data-quarter': q.id, 'aria-pressed': String(planQuarter === q.id) }); }))] : []),
             ...(picker.classId === '8' && picker.subjectId === 'global-perspectives' ? [button('2026–2027 year plan & calendar · 43 playable lessons and assessments', 'year-plan', 'plan-link')] : []),
             ...storage.unassigned().map(function(value) { return button('Resume earlier unassigned lesson: ' + getLesson(value.lessonId).title, 'resume-earlier', 'subtle', { 'data-lesson': value.lessonId }); }),
             ...(!ready ? [element('p', { className: 'empty-curriculum' }, ['Choose a class and subject to see lessons.'])] : [
@@ -452,8 +453,9 @@ function showPicker(focusSelector) {
                 ...(shared.length ? [element('p', { className: 'eyebrow' }, ['SHARED STARTER LESSONS']), ...shared.map(lessonButton)] : [])
             ])
         ]),
+        ]),
         element('div', { className: 'picker-footer' }, [
-            element('p', { className: 'picker-status', role: 'status' }, [saved ? contextLabel(saved) + ' · Stage ' + (saved.stage + 1) + ', step ' + (saved.steps[saved.stage] + 1) + ' · Timer paused' : ready ? contextLabel(picker) + (picker.lessonId ? ' · Ready to begin' : ' · Choose a lesson to begin') : 'Three classes. One familiar lesson player.']),
+            element('p', { className: 'picker-status', role: 'status' }, [saved ? contextLabel(saved) + ' · Stage ' + (saved.stage + 1) + ', step ' + (saved.steps[saved.stage] + 1) + ' · Timer paused' : ready ? contextLabel(picker) + (picker.lessonId ? ' · Ready to begin' : ' · Choose a lesson to begin') : 'Choose a class to get started.']),
             element('div', { className: 'dialog-actions' }, [
                 ...(saved ? [button('Resume lesson →', 'picker-resume', 'primary')] : []),
                 button('Edit lesson text', 'edit-lesson', 'subtle', picker.lessonId ? {} : { disabled: '' }),
@@ -740,7 +742,7 @@ function handleAction(event) {
     else if (action === 'back-picker') showPicker();
     else if (action === 'switch-class') { home(); chooseLesson(); }
     else if (action === 'select-class' && dialogKind === 'picker') {
-        picker.classId = target.dataset.id; showPicker('[data-action="select-class"][data-id="' + picker.classId + '"]');
+        if (picker.classId !== target.dataset.id) { picker.classId = target.dataset.id; picker.subjectId = null; picker.lessonId = null; } showPicker('[data-action="select-class"][data-id="' + picker.classId + '"]');
     } else if (action === 'select-subject' && dialogKind === 'picker') {
         picker.subjectId = target.dataset.id; showPicker('[data-action="select-subject"][data-id="' + picker.subjectId + '"]');
     } else if (action === 'select-lesson' && dialogKind === 'picker') {
@@ -928,3 +930,4 @@ function showExtensions(index=0,roundIndex=0,revealed=false,hideSource=false) {
   element('details',{className:'extra-running-notes'},[element('summary',{},['How to run this for five minutes']),...task.lines.map(line=>element('p',{},[line])),element('p',{},[task.outcome])])
  ]);panel.classList.add('reserve-panel','extra-time-panel');markVocabulary(panel,lesson.vocabulary);
 }
+

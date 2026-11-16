@@ -57,3 +57,5 @@ root.addEventListener('change',e=>{const el=e.target;if(el.id==='language'){setL
 root.addEventListener('input',e=>{const el=e.target;if(el.id==='search'){query=el.value;document.querySelector('#results').innerHTML=libraryCards();}if(el.id==='notebook'){record().note=el.value;const ok=persist();document.querySelector('#note-status').textContent=t(ok?'savedNote':'storageError');}if(el.dataset.response){const r=record();r.answers??={};r.answers[el.dataset.response]={...r.answers[el.dataset.response],text:el.value};persist();}});
 window.addEventListener('popstate',()=>{const id=new URL(location.href).searchParams.get('lesson');if(id)openLesson(id,false);else{current=null;render();}});
 try{const r=await fetch('./lessons.json');if(!r.ok)throw Error();lessons=await r.json();if(!['7a','7b','8'].includes(saved.classId))saved.classId='7a';current=lessons.find(x=>x.id===url.searchParams.get('lesson'))||null;if(current&&!current.classes.includes(saved.classId))saved.classId=current.classes[0];await setLanguage(lang);}catch{root.innerHTML=`<main class="empty"><h1>${t('loadError')}</h1><a href="">${t('retry')}</a></main>`;}
+
+

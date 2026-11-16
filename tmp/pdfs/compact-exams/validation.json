@@ -1,0 +1,55 @@
+{
+  "student_papers": 102,
+  "student_pages": 204,
+  "questions_checked": 2040,
+  "minimum_answer_distances": {
+    "gp7a": 12,
+    "geo7a": 12,
+    "gp7b": 12,
+    "geo7b": 12,
+    "gp8": 12
+  },
+  "packs": {
+    "7A_Global_Perspectives_20Q.pdf": {
+      "papers": 23,
+      "pages": 46,
+      "min_content_y": 123.65
+    },
+    "7A_Geography_20Q.pdf": {
+      "papers": 23,
+      "pages": 46,
+      "min_content_y": 77.83
+    },
+    "7B_Group1_Global_Perspectives_20Q.pdf": {
+      "papers": 11,
+      "pages": 22,
+      "min_content_y": 90.94
+    },
+    "7B_Group1_Geography_20Q.pdf": {
+      "papers": 11,
+      "pages": 22,
+      "min_content_y": 100.92
+    },
+    "7B_Group2_Global_Perspectives_20Q.pdf": {
+      "papers": 4,
+      "pages": 8,
+      "min_content_y": 146.04
+    },
+    "7B_Group2_Geography_20Q.pdf": {
+      "papers": 4,
+      "pages": 8,
+      "min_content_y": 157.41
+    },
+    "Grade8_Class1_Global_Perspectives_20Q.pdf": {
+      "papers": 14,
+      "pages": 28,
+      "min_content_y": 89.55
+    },
+    "Grade8_Class2_Global_Perspectives_20Q.pdf": {
+      "papers": 12,
+      "pages": 24,
+      "min_content_y": 89.55
+    }
+  },
+  "teacher_key_pages": 33
+}

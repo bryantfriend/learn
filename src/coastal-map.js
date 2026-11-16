@@ -1,5 +1,6 @@
+import {drawRivers} from './coastal-rivers.js';
 import {regionShapes} from './coastal-boundaries.js';
-import {regions,project,waterways,rivers,worldId} from './coastal-geography.js';
+import {regions,project,waterways,worldId} from './coastal-geography.js';
 import {landmarkLayout,landmarkImage} from './coastal-landmarks.js';
 import {drawLandmarkArt} from './coastal-landmark-art.js';
 import {kgLakes,kgPasses} from './coastal-kyrgyzstan-data.js';
@@ -16,7 +17,8 @@ export function drawGeography(c,state,time){const zoom=state.camera.zoom,visible
   c.strokeStyle='#fff0ce';c.lineWidth=8;c.stroke(path);c.fillStyle=r.colour;c.fill(path);c.strokeStyle='#789984';c.lineWidth=1.5;c.stroke(path);
  }
  if(worldId==='kyrgyzstan'){for(const l of kgLakes){if(state.round<(l.name==='Issyk-Kul'?4:l.name==='Song-Kol'?8:10))continue;c.beginPath();l.points.forEach(([x,y],i)=>{const p=project(x,y);c[i?'lineTo':'moveTo'](p.x,p.y);});c.closePath();c.fillStyle='#92cbd8';c.fill();c.strokeStyle='#68a6bd';c.lineWidth=2;c.stroke();}for(const [index,pass] of kgPasses.entries()){if(state.round<[6,8,10,22][index])continue;const a=project(...pass.a),b=project(...pass.b);c.strokeStyle='#b3a082';c.lineWidth=14;c.setLineDash([10,5]);c.beginPath();c.moveTo(a.x,a.y);c.lineTo(b.x,b.y);c.stroke();c.setLineDash([]);label(c,t('Mountain pass')+' · '+t(pass.name),(a.x+b.x)/2,a.y-12,10,'#776347');}}
- for(const river of rivers){if(!visible.has(river.region))continue;c.strokeStyle='#6aafc6';c.lineWidth=3;c.beginPath();river.points.forEach(([lon,lat],i)=>{const p=project(lon,lat);c[i?'lineTo':'moveTo'](p.x,p.y);});c.stroke();const p=project(...river.points[0]);label(c,'River '+river.name,p.x,p.y-6,12,'#337b94');}
+ const riverLand=new Path2D();for(const region of visible)riverLand.addPath(countryPath(region));
+ drawRivers(c,state,riverLand,visible);
  for(const [name,lon,lat,round]of waterways)if(state.round>=round){const p=project(lon,lat);label(c,name,p.x,p.y,14/zoom,'#397e99');}
  for(const r of regions)if(visible.has(r.id)){const p=project(...r.label);label(c,r.name.toUpperCase(),p.x,p.y,16/zoom,'#4c786b');}
  for(const place of landmarkLayout(state)){c.save();c.strokeStyle='#68765c99';c.lineWidth=1/zoom;c.setLineDash([2/zoom,3/zoom]);c.beginPath();c.moveTo(place.x,place.y);c.lineTo(place.drawX,place.drawY);c.stroke();c.setLineDash([]);c.translate(place.drawX,place.drawY);c.scale(1/zoom,1/zoom);if(worldId==='kyrgyzstan'){const image=picture(place);if(image.complete&&image.naturalWidth){c.fillStyle='#fff8e7';c.fillRect(-place.size-2,-place.size*.72-2,place.size*2+4,place.size*1.44+4);c.drawImage(image,-place.size,-place.size*.72,place.size*2,place.size*1.44);}}else drawLandmarkArt(c,place.kind,0,0,place.size);if(place.label){c.font='600 10px system-ui';const words=t(place.name).split(' '),lines=[''];for(const word of words){const i=lines.length-1;if(c.measureText(lines[i]+' '+word).width>116&&lines[i])lines.push(word);else lines[i]+=(lines[i]?' ':'')+word;}c.textAlign='center';c.strokeStyle='#f9f5de';c.lineWidth=3;for(const [i,line]of lines.slice(0,3).entries()){c.strokeText(t(line),0,place.size+2+i*11);c.fillStyle='#3d665c';c.fillText(t(line),0,place.size+2+i*11);}}c.restore();}

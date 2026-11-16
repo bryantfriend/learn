@@ -1,0 +1,59 @@
+{
+  "7B_Group1_Global_Perspectives_Student_Exams.pdf": {
+    "papers": 11,
+    "pages": 44,
+    "languages": {
+      "en": 10,
+      "ru": 1
+    },
+    "lowest_content_y": 75.24
+  },
+  "7B_Group1_Geography_Student_Exams.pdf": {
+    "papers": 11,
+    "pages": 44,
+    "languages": {
+      "en": 10,
+      "ru": 1
+    },
+    "lowest_content_y": 75.24
+  },
+  "7B_Group2_Global_Perspectives_Student_Exams.pdf": {
+    "papers": 4,
+    "pages": 16,
+    "languages": {
+      "zh": 4
+    },
+    "lowest_content_y": 75.24
+  },
+  "7B_Group2_Geography_Student_Exams.pdf": {
+    "papers": 4,
+    "pages": 16,
+    "languages": {
+      "zh": 4
+    },
+    "lowest_content_y": 75.24
+  },
+  "Grade8_Class1_Global_Perspectives_Student_Exams.pdf": {
+    "papers": 14,
+    "pages": 56,
+    "languages": {
+      "en": 9,
+      "ru": 5
+    },
+    "lowest_content_y": 75.24
+  },
+  "Grade8_Class2_Global_Perspectives_Student_Exams.pdf": {
+    "papers": 12,
+    "pages": 48,
+    "languages": {
+      "en": 9,
+      "zh": 1,
+      "ru": 2
+    },
+    "lowest_content_y": 75.24
+  },
+  "gp7b_minimum_answer_distance": 14,
+  "geo7b_minimum_answer_distance": 14,
+  "gp8_minimum_answer_distance": 14,
+  "teacher_pages": 39
+}

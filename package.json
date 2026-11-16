@@ -24,5 +24,8 @@
     "test:students:catalog": "node tests/students-catalog-browser.cjs",
     "audit:student-translations": "node scripts/audit-student-translations.mjs",
     "test:pacing": "node tests/pacing-browser.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.59.1"
   }
 }

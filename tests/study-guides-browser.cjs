@@ -51,7 +51,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   assert.match(await page.locator('.country-output').first().textContent(),/Belfast/);
   await page.locator('.country-controls').first().locator('button').nth(1).click();assert.match(await page.locator('.country-output').first().textContent(),/not on Great Britain/);
   await page.goto(root+'?lang=tr');assert.equal(await page.locator('.guide-card').count(),5);
-  await page.locator('.guide-card').first().click();assert.ok(page.url().includes('guide=geo7a'));
+  await page.locator('.guide-card').first().click();assert.ok(page.url().includes('/7a-geography/'));
   const base=root.replace('study-guides/','');await page.goto(base,{waitUntil:'domcontentloaded'});
   await page.locator('a[href="./study-guides/"]').click();await page.locator('.guide-card').first().waitFor();
   await page.setViewportSize({width:390,height:844});

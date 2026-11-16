@@ -12,7 +12,7 @@ const frame = (title, lines, name, mode='listen', extra={}) => ({title, lines, m
 const question = (title, choices, answer, explanation, name) => frame(title, ['Think first. Show A, B or C when invited. Explain your reason.'], name, 'think', {type:'question', options:choices.map((label,i)=>({id:'ABC'[i],label})), answer, explanation});
 export const vikingReligionLesson = {
  id:'viking-religion-v1', title:'Viking Religion: Gods, Stories and Evidence', durationMinutes:40,
- catalog:{subjectId:'religion',grades:[7,8],unit:'Substitute lessons',order:1},
+ catalog:{subjectId:'religion',grades:[7,8,'substitution'],unit:'Substitute lessons',order:1},
  stages:[
   {id:'starter',title:'Look closely',durationMinutes:4,timeRange:'0–4 min',notes:'No preparation or student devices needed. Use the shared screen. Students may speak, point, or write in an existing notebook. Begin with 30 seconds of looking, then partner talk and two responses. The picture is a modern illustration: it cannot prove what a particular Viking believed. Teach respectfully about beliefs; students need not share their own religion.',frames:[
    frame('What might matter to this community?', ['Notice three things in the picture.','What might people hope for, or worry about?'], 'village','think',{timerSeconds:30}),

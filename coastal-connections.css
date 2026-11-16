@@ -140,3 +140,22 @@
  .coastal-passport-shop .coastal-passport-continue{padding:9px 18px;font-size:17px;margin:3px auto}
  .coastal-passport-footer small{margin-top:4px}
 }
+.coastal-profile-start,.coastal-profile-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:#245966}
+.coastal-profile-start{background:#fffaf0;border:1px solid #d8cba6;border-radius:16px;padding:12px 16px;margin-bottom:16px}
+.coastal-profile-start>span,.coastal-profile-toolbar>span{font-weight:700}
+.coastal-profile-toolbar{margin-left:auto}.coastal-profile-toolbar button{font-size:12px;padding:7px 10px}
+.coastal-profile-status{font-size:12px;color:#52796e;overflow-wrap:anywhere}
+.coastal-profile-dialog{max-width:660px;width:calc(100vw - 32px);box-sizing:border-box;padding:24px;color:#245966}
+.coastal-profile-dialog h2{font-family:Georgia,serif;margin:12px 0;font-size:30px}.coastal-profile-dialog h3{margin-bottom:12px}
+.coastal-profile-dialog>button:first-child{float:right}.coastal-profile-eyebrow{font-size:11px;letter-spacing:2px;color:#946f2d}
+.coastal-profile-identity{display:flex;gap:14px;align-items:center;background:#f1e8d1;border-radius:14px;padding:14px}
+.coastal-profile-avatar{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#147f86;color:#fff;font-weight:800;font-size:20px}
+.coastal-profile-dialog>label{display:grid;gap:6px;margin:16px 0}.coastal-profile-dialog select,.coastal-profile-dialog input{font:inherit;border:1px solid #c6d4cf;border-radius:9px;padding:10px;min-width:0;background:#fffdf8;color:#245966}
+.coastal-profile-create{display:flex;gap:8px;margin:16px 0}.coastal-profile-create input{flex:1;width:0}
+.coastal-profile-dialog button,.coastal-profile-start button{font:600 14px system-ui;color:#17636a;background:#e4f2ed;border:1px solid #bfd9d0;border-radius:10px;padding:10px 14px;cursor:pointer}
+.coastal-profile-dialog button:hover,.coastal-profile-start button:hover{background:#d4e9e2}.coastal-profile-dialog button:focus-visible,.coastal-profile-start button:focus-visible{outline:3px solid #dfa629;outline-offset:2px}
+.coastal-profile-create button,.coastal-profile-journey button{background:#147f86;color:#fff;border-color:#147f86}.coastal-profile-create button:hover,.coastal-profile-journey button:hover{background:#10646b}
+.coastal-profile-journey{display:flex;gap:14px;padding:12px;border:1px solid #d9ceb1;border-radius:14px;margin:12px 0;background:#fffaf0}
+.coastal-profile-journey img{width:110px;object-fit:cover;border-radius:10px}.coastal-profile-journey>div{display:grid;gap:7px;flex:1}.coastal-profile-journey small{font-size:11px;color:#687e77}
+.coastal-profile-reset{margin:18px 0 0;color:#a44036!important;border-color:#d9aaa1!important;background:#fff0e8!important}.coastal-profile-confirm{background:#fff0e8;border:1px solid #d9aaa1;border-radius:12px;padding:15px;margin-top:16px}.coastal-profile-confirm button{margin:4px}
+@media(max-width:600px){.coastal-profile-dialog{padding:16px}.coastal-profile-create{flex-wrap:wrap}.coastal-profile-create input{flex-basis:100%}.coastal-profile-journey img{width:70px}.coastal-profile-toolbar{margin-left:0}}

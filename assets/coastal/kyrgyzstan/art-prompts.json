@@ -263,5 +263,11 @@
     "id": "northern-train",
     "subject": "Kyrgyzstan northern railway passenger train",
     "prompt": "Create one polished educational game vehicle portrait of a Kyrgyzstan northern railway passenger train: a green and cream diesel locomotive with two passenger carriages, realistic Central Asian railway, three-quarter view, mountain foothills far behind, warm hand-painted gouache and delicate ink, teal blue sage green and golden daylight. Landscape postcard, no text or logos or invented high-speed railway. Match a bright geography transport game."
+  },
+  {
+    "id": "manas-ordo-memorial",
+    "replaces": "city-9",
+    "subject": "Manas Ordo Memorial near Talas, Kyrgyzstan",
+    "prompt": "Landscape educational game postcard of Manas Ordo Memorial: warm fired-brick Manas Gumbez mausoleum, ornamental rectangular portal with pointed-arch entrance, terracotta relief bands and small ribbed pointed dome; paved approach, balbal sculptures, cultural park, Karool Choku foothills and distant Talas mountains. Warm hand-painted gouache and ink, sage green, teal sky and golden daylight. No minarets, turquoise domes, legible lettering or watermark."
   }
 ]

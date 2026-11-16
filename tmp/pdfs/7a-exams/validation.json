@@ -1,0 +1,26 @@
+{
+  "gp": {
+    "papers": 23,
+    "pages": 92,
+    "languages": {
+      "English": 17,
+      "Russian": 5,
+      "Turkish": 1
+    },
+    "minimum_answer_distance": 14,
+    "lowest_content_y": 48.24,
+    "sunflower_version": "7A-GP-17"
+  },
+  "geo": {
+    "papers": 23,
+    "pages": 92,
+    "languages": {
+      "English": 17,
+      "Russian": 5,
+      "Turkish": 1
+    },
+    "minimum_answer_distance": 14,
+    "lowest_content_y": 48.24,
+    "sunflower_version": "7A-GE-17"
+  }
+}

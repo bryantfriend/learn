@@ -1,3 +1,4 @@
+import {ukRivers} from './coastal-river-data.js';
 import {shapeCollection,stationShape} from './coastal-shapes.js';
 export let worldId='uk';
 export function setWorldProjection(id){worldId=id;}
@@ -36,14 +37,7 @@ export function discoveryForRound(round,seed){const newly=regions.filter(r=>r.ro
 export const waterways=[
  ['North Sea',3,55,1],['English Channel',-.5,50.2,1],['Atlantic Ocean',-11,54,1],['Bristol Channel',-4.5,51.35,4],['Irish Sea',-4.95,53.8,4],['Celtic Sea',-8,50,10],['North Channel',-5.5,55.15,10],['Bay of Biscay',-5.3,46.9,16],['Strait of Dover',1.75,51.0,16],['Mediterranean Sea',5,43.1,16],['Baltic Sea',13.7,55.4,25]
 ];
-export const rivers=[
- {name:'Thames',region:'england',points:[[-1.8,51.65],[-1.25,51.55],[-.6,51.5],[-.1,51.5],[.8,51.5]]},
- {name:'Severn',region:'wales',points:[[-3.75,52.48],[-2.8,52.7],[-2.25,52.2],[-2.5,51.65],[-3.1,51.45]]},
- {name:'Clyde',region:'scotland',points:[[-3.65,55.4],[-4.25,55.85],[-4.8,55.98]]},
- {name:'Liffey',region:'ireland',points:[[-6.75,53.15],[-6.55,53.35],[-6.25,53.35]]},
- {name:'Seine',region:'france',points:[[3.6,47.5],[2.35,48.86],[1.3,49.1],[.1,49.45]]},
- {name:'Rhine',region:'germany',points:[[8.2,48.8],[7.6,50],[6.95,50.94],[6.1,51.85],[4.4,51.9]]}
-];
+export const rivers=structuredClone(ukRivers);
 export const landmarks=[
  ['Big Ben',-.12,51.50,'england','clock'],['Stonehenge',-1.83,51.18,'england','stones'],['White Cliffs of Dover',1.37,51.13,'england','cliffs'],['Lake District',-3.1,54.45,'england','mountain'],
  ['Cardiff Castle',-3.18,51.48,'wales','castle'],['Eryri / Snowdonia',-4.07,53.07,'wales','mountain'],

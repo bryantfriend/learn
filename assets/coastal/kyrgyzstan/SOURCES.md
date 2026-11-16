@@ -14,3 +14,7 @@ The 53 postcard illustrations were individually generated with OpenAI image gene
 Vehicles: marshrutka, mountain bus (upgraded marshrutka portrait), mountain 4×4, northern passenger train, domestic plane, express coach and tunnel shuttle. Kyrgyzstan has no ferry or high-speed railway service in this campaign. Northern trains are restricted to the northern corridor. Surface routes cannot cross the illustrated lakes.
 
 Wikipedia links in the atlas and questions provide further reading. Illustrations are artistic educational interpretations, rather than photographs or exact architectural surveys.
+
+Manas stop (ID 9) is now Manas Ordo Memorial, with its existing schematic station anchor retained to keep it separated from Talas; the real memorial is east of Talas, as described in the Visit Silk Road memorial guide. New generated artwork is `manas-ordo-memorial.jpg`; the former farmland image remains preserved. The station and landmark use the Manas Ordo Wikipedia article.
+- https://visitsilkroad.org/destination/manas-ordo-memorial/
+- https://whc.unesco.org/en/tentativelists/5518/

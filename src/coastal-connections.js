@@ -1,3 +1,4 @@
+import {installProfiles} from './coastal-profiles.js';
 import {createCoastalArtwork,trainStationVisual} from './coastal-art.js';
 import {cardArtwork} from './coastal-card-art.js';
 import {goodCards,badCards,drawCards,chooseCard,migrateRefundCards} from './coastal-cards.js';
@@ -24,7 +25,7 @@ import {expedition,recordDelivery,reverseAtStop,departureHeld} from './coastal-e
 import {installExpedition} from './coastal-expedition-ui.js';
 import {activateWorld,kgRouteAllowed,kgTerrainSpeed,kgAsset,worldLabel} from './coastal-world.js';
 import {startScreen} from './coastal-start-screen.js';
-import {installLocalization,t} from './coastal-i18n.js';
+import {installLocalization,t,currentLanguage} from './coastal-i18n.js';
 export const stops=geoStops;
 const waterwaysForText=round=>waterways.filter(w=>w[3]<=round).map(w=>w[0]);
 const colours={road:'#137c83',rail:'#df7154',ferry:'#dca438',flight:'#8261ae',highspeed:'#346cb7',tunnel:'#9b6699'};
@@ -297,7 +298,7 @@ function createWorldGame(saved,onRestore){
  button('↶ Undo',()=>{removeRoute(state,state.links.length-1);refresh();});
  const remove=button('Remove routes',()=>{removing=!removing;state.selected=null;message.textContent=removing?'Tap a section between two cities to remove only that section for a full refund.':'Drag from an end to extend your line.';refresh();});
  function removeSection(index,section){const link=state.links[index];if(!link)return;const edge=lineSegments(link)[section],result=removeRouteSection(state,index,section);if(!result)return;removing=false;routes.closest('dialog')?.close();feedback(stops[edge.a].name+' ↔ '+stops[edge.b].name+' removed · +'+result.refund+' 💷',result.loop?'Loop opened. Drag from either open end to rebuild.':result.remaining===2?'Line split into two colours. Select either colour, then drag from an open end.':'Remaining sections kept. Drag from an open end to rebuild.','success');refresh();}
- button('↻ Reset',()=>{Object.assign(state,createGameState(undefined,state.mode,state.world,state.language));completionShown=false;celebration.hidden=true;inspected=null;toast.hidden=true;rejected=null;message.textContent='Start with a 20-💷 bus between London and Oxford.';fitMap();refresh();features.chooseMode();});
+ button('↻ Reset',()=>{Object.assign(state,createGameState(undefined,state.mode,state.world,state.language),{profileId:state.profileId});completionShown=false;celebration.hidden=true;inspected=null;toast.hidden=true;rejected=null;message.textContent='Start with a 20-💷 bus between London and Oxford.';fitMap();refresh();features.chooseMode();});
  const speed=button('1× speed',()=>{state.speed=state.speed===1?2:1;refresh();});
  const fullscreen=button('⛶ Fullscreen',toggleFullscreen);fullscreen.title='Toggle fullscreen (F)';fullscreen.setAttribute('aria-pressed','false');
  const fullscreenChanged=()=>{const active=document.fullscreenElement===root;fullscreen.textContent=active?'⛶ Exit fullscreen':'⛶ Fullscreen';fullscreen.setAttribute('aria-pressed',String(active));draw();};document.addEventListener('fullscreenchange',fullscreenChanged);
@@ -307,7 +308,7 @@ function createWorldGame(saved,onRestore){
   state.ferryClosed=!state.ferryClosed;
   message.textContent=state.ferryClosed?'The ferry is cancelled! Its passengers wait onboard. Build an airport route or reopen it.':'The ferry is open again.';refresh();
  };controls.append(challenge);
- const attribution=node('small',null,'coastal-map-attribution');attribution.append(document.createTextNode(state.world==='kyrgyzstan'?'Map: geoBoundaries · © ':'Map: Eurostat / geoBoundaries · © '));const osm=node('a','OpenStreetMap contributors');osm.href='https://www.openstreetmap.org/copyright';osm.target='_blank';osm.rel='noopener';attribution.append(osm);if(state.world!=='kyrgyzstan')attribution.append(document.createTextNode(' · Natural Earth'));
+ const attribution=node('small',null,'coastal-map-attribution');attribution.append(document.createTextNode(state.world==='kyrgyzstan'?'Map: geoBoundaries · © ':'Map: Eurostat / geoBoundaries · © '));const osm=node('a','OpenStreetMap contributors');osm.href='https://www.openstreetmap.org/copyright';osm.target='_blank';osm.rel='noopener';attribution.append(osm);attribution.append(document.createTextNode(' · Natural Earth'));
  body.append(map,side);root.append(body,controls,node('p','★ Capital · Bus / trains: land · Boat: sea · Flight: air · Tunnel: Channel · North is up · Zoom in for city and landmark labels','coastal-legend'),attribution);
  const tutorialUI=installTutorial({root,map,side,controls,state,node,refresh});
  function connect(a,b){
@@ -419,16 +420,18 @@ function createWorldGame(saved,onRestore){
  shapeFilterUI=installShapeFilter({side,state,stops,node,draw});
  lineDock=installLineDock({map,tools,state,node,refresh,inspect:index=>features.inspectLine(index),vehicleLabels,onSelect:()=>{removing=false;rejected=null;toast.hidden=true;message.textContent="Drag from a line end to extend, or choose a grey circle for a new line.";}});
  journal=installTravelJournal({root,side,state,node,mission,count,bar,task,wallet,pressure,message,routes,mapKey,runCards,learningUI,vehiclePicture,refresh,roundDuration,stationStats,draw});
- expeditionUI=installExpedition({root,side,controls,state,node,refresh,engine:{lineStops,passengerJourney,vehicleStats},restore:saved=>{if(saved.world!==state.world||saved.language!==state.language){onRestore(saved);return;}activateWorld(saved.world??'uk',saved.language??'en');for(const key of Object.keys(state))delete state[key];Object.assign(state,saved,{running:false});inspected=null;state.selected=null;dragStart=null;pointer=null;pointers.clear();rejected=null;completionShown=Boolean(state.complete);celebration.hidden=true;routeListKey='';fleetKey='';stationTierKey='';previousPassengers.clear();stationBirth.clear();effects.length=0;atlasList.dataset.round='';history.dataset.key='';refresh();}});
+ expeditionUI=installExpedition({root,side,controls,state,node,refresh,engine:{lineStops,passengerJourney,vehicleStats},restore:saved=>{saved.profileId=state.profileId;if(saved.world!==state.world||saved.language!==state.language){onRestore(saved);return;}activateWorld(saved.world??'uk',saved.language??'en');for(const key of Object.keys(state))delete state[key];Object.assign(state,saved,{running:false});inspected=null;state.selected=null;dragStart=null;pointer=null;pointers.clear();rejected=null;completionShown=Boolean(state.complete);celebration.hidden=true;routeListKey='';fleetKey='';stationTierKey='';previousPassengers.clear();stationBirth.clear();effects.length=0;atlasList.dataset.round='';history.dataset.key='';refresh();}});
  if(!state.cameraReady){if(state.round===1&&state.world==='kyrgyzstan'){const centre=stops[1];state.camera={zoom:2.2,x:500-centre.x*2.2,y:290-centre.y*2.2};state.cameraReady=true;}else if(state.round===1)fitMap();else{const latest=Math.max(...state.activeStops.map(id=>stops[id].round));state.camera=cameraForNewStops(state.camera,stops.filter(s=>s.round===latest));state.cameraReady=true;}}refresh();features.start();
  const localization=installLocalization(root,state,text=>worldLabel(state,text));
  return {element:root,state,destroy(){features?.destroy?.();localization.destroy();alive=false;tutorialUI.destroy();cancelAnimationFrame(animation);document.removeEventListener('keydown',key);document.removeEventListener('fullscreenchange',fullscreenChanged);window.render_game_to_text=oldText;window.advanceTime=oldAdvance;}};
 }
 export function createCoastalGame(saved){
  const host=node('section',null,'coastal-world-host');let active=null,pending=saved??null;
- const launch=state=>{active?.destroy();active=createWorldGame(state,launch);host.replaceChildren(active.element);};
- if(saved)launch(saved);else host.append(startScreen({node,onStart:settings=>launch(createGameState(undefined,settings.mode,settings.world,settings.language))}));
- return {element:host,get state(){return active?.state??pending;},destroy(){active?.destroy();}};
+ const profiles=installProfiles({node,getGame:()=>active,launch:state=>launch(state),showStart:()=>showStart()});
+ const launch=state=>{active?.destroy();state.profileId=profiles.store.selected().id;active=createWorldGame(state,launch);host.replaceChildren(active.element);profiles.attach(active.element);profiles.save();};
+ function showStart(){active?.destroy();active=null;pending=null;const screen=startScreen({node,initial:{language:currentLanguage()},onRender:screen=>profiles.attach(screen,true),onStart:settings=>profiles.start(settings,()=>createGameState(undefined,settings.mode,settings.world,settings.language))});host.replaceChildren(screen);}
+ if(saved)launch(saved);else showStart();
+ return {element:host,get state(){return active?.state??pending;},destroy(){profiles.destroy();active?.destroy();}};
 }
 export function openCoastalGame(saved,onClose=()=>{}){
  const game=createCoastalGame(saved),dialog=node('dialog',null,'coastal-dialog'),close=node('button','Close game ×','coastal-close');close.type='button';close.onclick=()=>dialog.close();

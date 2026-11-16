@@ -10,11 +10,16 @@ function session(classId = '7a', subjectId = 'geography') {
  seenFrames:{'0:0':true}, attentionReturns:{}, discussedQuestions:[], startedAt:1000, finishedAt:null };
 }
 function backing() { const values=new Map(); return {getItem:key=>values.get(key)||null,setItem:(key,value)=>values.set(key,value),removeItem:key=>values.delete(key)}; }
-test('all fourteen class/subject combinations expose starters; future lessons filter by grade and subject',()=>{
- assert.equal(classes.flatMap(c=>subjectsFor(c.id)).length,14);
- assert.deepEqual(subjectsFor('8').map(s=>s.id),['religion','global-perspectives','global-perspectives-books']);
+test('class/subject combinations expose starters; future lessons filter by grade and subject',()=>{
+ assert.equal(classes.flatMap(c=>subjectsFor(c.id)).length,20);
+ assert.deepEqual(subjectsFor('8').map(s=>s.id),['college-english','religion','global-perspectives','global-perspectives-books']);
  assert.deepEqual(lessonsFor('8','geography'),[]);
- for(const c of classes)for(const s of subjectsFor(c.id))assert.equal(lessonsFor(c.id,s.id).length,s.id==='ielts'?32:s.id==='religion'?3:s.id==='global-perspectives-books'?8:s.id==='english'?4:c.id==='8'?45:c.id==='7a'?(s.id==='geography'?36:64):(s.id==='geography'?66:95));
+ assert.deepEqual(subjectsFor(null), []);
+ assert.deepEqual(subjectsFor('9').map(s=>s.id), ['ict']);
+ assert.deepEqual(subjectsFor('college').map(s=>s.id), ['college-english']);
+ assert.deepEqual(subjectsFor('substitution').map(s=>s.id), ['religion']);
+ assert.ok(lessonsFor('college','college-english').some(l=>l.catalog));
+ assert.ok(lessonsFor('substitution','religion').some(l=>l.catalog));
  const source=[{id:'shared'}, {id:'geo7',catalog:{subjectId:'geography',grades:[7]}}, {id:'gp8',catalog:{subjectId:'global-perspectives',grades:[8]}}];
  assert.deepEqual(lessonsFor('7a','geography',source).map(x=>x.id),['shared','geo7']);
  assert.deepEqual(lessonsFor('7b','geography',source).map(x=>x.id),['shared','geo7']);
@@ -23,14 +28,14 @@ test('all fourteen class/subject combinations expose starters; future lessons fi
 });
 test('class, subject and lesson checkpoints survive reload and clearing only one slot',()=>{
  const disk=backing(), store=createStorage(()=>disk);
- for(const c of classes)for(const s of subjectsFor(c.id))store.save({...session(c.id,s.id),stars:c.grade+(s.id==='geography'?0:10)});
+ for(const c of classes)for(const s of subjectsFor(c.id))store.save({...session(c.id,s.id),stars:classes.indexOf(c)+10});
  const loaded=createStorage(()=>disk); loaded.load();
- for(const c of classes)for(const s of subjectsFor(c.id))assert.equal(loaded.find(session(c.id,s.id)).stars,c.grade+(s.id==='geography'?0:10));
+ for(const c of classes)for(const s of subjectsFor(c.id))assert.equal(loaded.find(session(c.id,s.id)).stars,classes.indexOf(c)+10);
  loaded.clear(session());
  assert.equal(loaded.find(session()),null);
- assert.equal(createStorage(()=>disk).find(session('7b')).stars,7);
+ assert.equal(createStorage(()=>disk).find(session('7b')).stars,11);
  const copy=loaded.find(session('7b')); copy.stars=99;
- assert.equal(loaded.find(session('7b')).stars,7);
+ assert.equal(loaded.find(session('7b')).stars,11);
 });
 test('old progress migrates to unassigned without being attributed to a class',()=>{
  const disk=backing(), old={...session(),schemaVersion:2,stage:2,stars:3};

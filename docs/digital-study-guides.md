@@ -1,5 +1,19 @@
 # Digital study guides
 
+## Permanent class sites and QR codes
+
+Each class has its own direct GitHub Pages address and colour theme. Open [the QR cards](https://bryantfriend.github.io/learn/study-guides/qr/) to print the five labelled cards or download individual PNG codes. Codes are generated locally, have a four-module quiet zone and point directly to the class site; no QR service or account is needed.
+
+| Class | Direct site |
+| --- | --- |
+| 7A Global Perspectives | https://bryantfriend.github.io/learn/study-guides/7a-global-perspectives/ |
+| 7B Global Perspectives | https://bryantfriend.github.io/learn/study-guides/7b-global-perspectives/ |
+| Grade 8 Global Perspectives | https://bryantfriend.github.io/learn/study-guides/8-global-perspectives/ |
+| 7A Geography | https://bryantfriend.github.io/learn/study-guides/7a-geography/ |
+| 7B Geography | https://bryantfriend.github.io/learn/study-guides/7b-geography/ |
+
+Regenerate entry pages and QR codes with `scripts/build-class-study-sites.py` using the bundled Python runtime (ReportLab and Pillow). Verify direct links with `node tests/class-study-sites-browser.cjs` alongside the existing guide checks. Earlier query links remain supported.
+
 Open https://bryantfriend.github.io/learn/study-guides/ or choose **Digital study guides** on the classroom home screen. The student library also links to the guides and preserves its selected language.
 
 Five self-contained guides are available in English, Russian, Turkish and Simplified Chinese. Every language includes the explanations, labelled infographics, complete classroom sources, model answers and explained self-checks. Students can answer aloud; no copying, printing or account is required.

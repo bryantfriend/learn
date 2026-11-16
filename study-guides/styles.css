@@ -11,4 +11,6 @@ output.big-equation{display:block;width:100%}
 
 .poster-art-caption{font-size:.76rem;color:#5a726d;margin:0;padding:.5rem 1.25rem .8rem;font-style:italic}
 
+body[data-guide=gp7a]{--teal:#7247a6;--ink:#36284c;background:#f6f3fa}body[data-guide=gp7b]{--teal:#a54361;--ink:#492637;background:#faf2f5}body[data-guide=gp8]{--teal:#ad5d20;--ink:#483222;background:#faf5ed}body[data-guide=geo7a]{--teal:#246b42;--ink:#203d2b;background:#f1f7f0}body[data-guide=geo7b]{--teal:#27658d;--ink:#203b52;background:#f0f6fb}body[data-guide^=gp] .section-head,body[data-guide^=gp] .eyebrow{color:var(--teal)}body[data-guide^=gp] .class-focus{background:white;border-color:var(--teal)}body[data-guide^=gp] .illustrated-poster figcaption{background:var(--ink)}
+
 .section .poster-note{max-width:none;width:100%}.poster-callouts.points-4{grid-template-columns:repeat(4,minmax(0,1fr))}@media(max-width:1100px){.poster-callouts.points-4{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.poster-callouts.points-4{grid-template-columns:1fr}}
