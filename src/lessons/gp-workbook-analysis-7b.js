@@ -1,0 +1,49 @@
+const f=(title,mode,lines,extra={})=>({title,mode,lines,...extra});
+const book=(page,activity,lines,extra={})=>f(activity,'think',lines,{bookTask:{page,activity},footnote:`WRITE IN YOUR BOOK · p. ${page} · ${activity}`,...extra});
+const art=(name,alt)=>({illustration:{image:`analysis-7b/${name}.png`,alt,caption:'Imagined classroom illustration · distinguish what you see from what you infer.'}});
+const answer=(title,lines,explanation)=>f(title,'think',lines,{type:'question',answerText:'Compare a possible answer',explanation});
+const s=(id,title,durationMinutes,notes,frames)=>({id,title,durationMinutes,notes,frames});
+const sources=[
+ 'Source A — Classroom case card, “Morning at Cedar School”, teacher-created, 16 November 2026. At 8:15, an observer saw a queue of cars by the gate. Some adults stopped to drop children off. A bus waited behind the queue. Two pupils waited at the crossing. This is a fictional case, not a survey of a real school.',
+ 'Source B — Classroom case card, “Travel choices”, teacher-created, 16 November 2026. In this fictional case, some families live far away or need a car before work. The entrance road is narrow. When many vehicles arrive together, a queue can form. A waiting bus may arrive late and people crossing may have to wait longer. These are possibilities in the case, not proof about every school.'
+];
+const sourceFrames=()=>sources.map((x,i)=>f(`Read evidence ${String.fromCharCode(65+i)}`,'listen',[x],art(i?'responses':'traffic','Illustration of a fictional school travel situation.')));
+function build(part,title,stages){let elapsed=0;for(const st of stages){st.timeRange=`${elapsed}–${elapsed+st.durationMinutes} min`;elapsed+=st.durationMinutes;st.notes+=' Support: read aloud, explain vocabulary, rehearse with a partner and allow short notes. Stretch: distinguish evidence from inference and explain a limitation.';let seconds=st.durationMinutes*60;st.frames.forEach((fr,i)=>{const n=i===st.frames.length-1?seconds:Math.floor(st.durationMinutes*60/st.frames.length/15)*15;seconds-=n;fr.expectedSeconds=n;fr.timerSeconds=n;fr.kicker=`7B · Book 7 · Analysis Lesson 1 · Part ${part}`;});}return {id:`gp-books-7b-analysis-1-part-${part}`,title:`Analysis Lesson 1 · Part ${part} · ${title}`,durationMinutes:40,coreMinutes:40,contentRevision:1,gp:true,bookTrial:true,customVisuals:true,summary:true,bookNumber:7,workbookLesson:'Starting with analysis skills: Lesson 1',bookPages:'54–58',eyebrow:`7B · Book 7 · Analysis Lesson 1 · Part ${part}`,catalog:{subjectId:'global-perspectives-books',grades:[7],classes:['7b'],unit:'Quarter 2 · Lesson 1 · Analysis · pp. 54–58',quarter:'Q2',order:part / 10},openingScript:'Bring Book 7, pencil and notebook. Two 40-minute lessons use an imagined school traffic case. The case cards are teacher-created evidence, not real research. No student internet is required. Students should complete the printed workbook tasks; models are possible answers.',pacingNote:'40-minute classroom lesson; times include discussion and writing.',stages};}
+export const sevenBAnalysisLessons=[
+ build(1,'Observe and explain',[
+ s('start','Goals and picture',7,'Read p. 54 goals. Analysis means breaking an issue into parts and examining how they connect. Keep the picture visible; do not claim it proves causes.',[
+ book(54,'Learning goals',['Read the three learning goals. What does analysis mean to you?']),
+ book(55,'Prior learning 1',['Look closely at the imagined school entrance. With a partner, list as many words and phrases as you can in two minutes.'],art('school','Cars queue near a school while pupils walk, cycle and wait at a crossing.')),
+ book(55,'Prior learning 2',['Join another pair. Add new words or phrases to your list.'])]),
+ s('teach','Observation, cause and consequence',10,'Ask what is visible and what needs evidence. A cause is a reason something happens; a consequence is an effect. A picture alone cannot establish why vehicles arrived.',[
+ f('Three parts of an analysis','listen',['ISSUE: what is happening?','CAUSE: why might it happen?','CONSEQUENCE: what could happen as a result?'],art('traffic','Four views of traffic and people affected.')),
+ answer('See or infer?',['“Cars are in a queue.” “Families live far away.” Which can you see?'],'The queue is visible. Where families live is an inference; ask or consult evidence before presenting it as a fact.'),
+ f('Build a chain','pair',['Many vehicles arrive together → a queue may form → a bus may be delayed.','Point to the cause, issue and possible consequence.'],art('school','Fictional school traffic scene.'))]),
+ s('starter','Complete the starter',10,'Invite varied ideas. Qualify unverified causes with might; consequences are possible, not established by the image.',[
+ book(55,'Starter activity a–c',['Use your list to finish all three sentences with a partner.','a The picture shows …','b This situation is due to …','c As a result of the action in the picture, …'],art('school','Fictional school entrance with a traffic queue.')),
+ answer('Compare your sentences',['Read your sentences before revealing.'],'Possible answers: a) The picture shows vehicles queuing near a school. b) The queue might be due to many vehicles arriving together. c) As a result, a bus might be delayed. The picture alone does not prove why the queue formed.')]),
+ s('research','Choose a research question',9,'Groups of up to five choose different questions; each pupil researches one. The source cards are fictional and can be revisited. Explain reference fields and n.d. if no date is supplied.',[
+ f('Choose one question each','group',['1 What is happening at the school gate?','2 What might cause the queue?','3 How might the queue affect bus passengers?','4 How might people crossing be affected?','5 Why might some families use cars?'],art('traffic','Four views of the fictional school traffic situation.')),
+ ...sourceFrames(),
+ book(56,'Main activity 1 · question and notes',['Write your chosen question. Read the two case cards again.','Write up to six short, relevant notes in your own words.','Record author, date, title and source: teacher-created classroom case card.'])]),
+ s('finish','Share and check',4,'Pupils may continue notes next lesson. No achievement tick is compulsory.',[
+ book(56,'Main activity 2 · group share',['Share one useful note with your group. Explain which source supports it.']),
+ book(54,'Learning goals · progress check',['Tick honestly and add an example if ready.'],{final:true})])]),
+ build(2,'Share a commentary',[
+ s('retrieve','Revisit the evidence',6,'Reopen the source cards for pupils who need them. Complete p. 56 notes and references before commentary.',[
+ f('Recall the case',['think'][0],['What is the issue? Give one possible cause and one possible consequence.'],art('school','Fictional school entrance at arrival time.')),...sourceFrames(),
+ book(56,'Finish notes and references',['Complete your question, notes and references. Share your findings with your group.'])]),
+ s('model','Plan a commentary',9,'A commentary describes and explains the picture for a listener. Model the connection without treating conjecture as proven fact.',[
+ f('A commentary has four parts','listen',['1 Describe the situation.','2 Explain a possible cause.','3 Explain consequences for others.','4 Mention evidence and what is still uncertain.'],art('traffic','Four illustrated effects of school traffic.')),
+ answer('Listen to a possible commentary',['Which words show that a cause or effect is uncertain?'],'At Cedar School, cars are queuing near the gate. The case card says some adults are dropping children off, and many vehicles arriving together might cause a queue. The bus could be delayed and pupils at the crossing may wait longer. We would need more observations to know how often this happens.'),
+ f('Practise aloud','pair',['Use: The picture shows … / One possible cause is … / As a result … / We still need to know …'],art('responses','Illustrated travel choices that could be discussed.'))]),
+ s('write','Write and record',12,'Students write their own commentary in p. 57, task 3, then record it with an available device. If recording is unavailable, deliver it live to a group; record later when equipment is available.',[
+ book(57,'Main activity 3 · commentary',['Write your commentary using your notes and the picture.','Explain a cause and consequences for other people; mention evidence and uncertainty.','Practise, then record it.'],art('school','School entrance and traffic queue.')),
+ f('Check before recording','pair',['Can the listener identify the issue, cause and consequence?','Have you used “might” where the evidence is uncertain?'])]),
+ s('listen','Listen and make notes',9,'Each group member presents their different question or viewpoint. The table has five rows: record up to five commentaries; if fewer speakers, leave unused rows blank. Do not invent presentations.',[
+ book(57,'Main activity 4 · listening table',['Listen to each group commentary.','For each speaker, enter the situation/issue, cause(s), consequence(s) and other relevant information.','Use short notes in your own words.'],art('traffic','Illustrated views of the same imagined traffic issue.')),
+ answer('Check one possible row',['Which detail belongs under each heading?'],'Issue: queue at school gate. Cause: many vehicles arriving together (possible). Consequences: bus may be delayed; pupils may wait to cross. Other information: fictional case card A reports an observation at 8:15.')]),
+ s('reflect','Reflect and check learning',4,'Use p. 58 reflection and return to p. 54 learning goals. Ask pupils to provide examples from their work and tick honestly.',[
+ book(58,'Independent reflection',['Which part was most difficult? Why?','What other skills did you use today?']),book(54,'Check your learning',['Tick Not there yet or Achieved for each goal. Add an example from your work.'],{final:true})])])
+];
+
