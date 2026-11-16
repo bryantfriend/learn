@@ -169,6 +169,8 @@ function renderHome() {
         ])
     ]));
 }
+const ictBryantImages = new Set(['teacher','hiking','netflix','military','exit','goodbye','help','password','question3','question4','report','story2','story4']);
+function ictImage(name) { return './assets/ict-welcome/' + name + (ictBryantImages.has(name) ? '-bryant' : '') + '.webp'; }
 function renderPlayer() {
     const stage = currentStage();
     const frame = currentFrame();
@@ -186,7 +188,7 @@ function renderPlayer() {
         element('div', { className: 'header-right' }, [
             button(contextLabel(session) + ' ▾', 'switch-class', 'class-label', { 'aria-label': 'Switch class or lesson' }),
             ...(session.preferences.starsVisible ? [button('★ Class stars · ' + session.stars, 'tools', 'star-count')] : []),
-            element('span', { className: 'teacher-name' }, ['Mr. Friend'])
+            element('span', { className: 'teacher-name' }, [lesson.id === 'ict-9-welcome' ? 'Mr. Bryant' : 'Mr. Friend'])
         ])
     ]);
     const heading = element('section', { className: 'stage-heading' }, [
@@ -205,6 +207,10 @@ function renderPlayer() {
     if (frame.quote) copy.append(element('blockquote', {}, [frame.quote]));
     if (frame.choices) copy.append(element('ol', { className: 'opening-choices' + (frame.choiceLayout === 'grid' ? ' choice-grid' : '') }, frame.choices.map(function(choice) { return element('li', {}, [choice]); })));
     if (frame.lines && !(frame.hideInstructionsOnReveal && response().revealed)) copy.append(element('div', { className: 'instructions' }, (graphic?.intro && !frame.expectedSeconds ? [graphic.prompt] : frame.lines).map(function(line) { return element('p', {}, [line]); })));
+    if (frame.ictAnswers) copy.append(element('div', {className:'ict-answers'}, frame.ictAnswers.map((item, i) => element('details', {className:'ict-answer'}, [element('summary', {}, ['Reveal: ' + item.question]), element('p', {}, [item.answer]), element('img', {src:ictImage(item.image), alt:item.answer})]))));
+    if (frame.ictStory) copy.append(button('Open a learning story ⛶', 'ict-story', 'question-bank-button', {'data-index':'0'}));
+    if (frame.ictRoutine) copy.append(element('div', {className:'ict-routine'}, frame.ictRoutine.map(item => element('details', {}, [element('summary', {}, [item.label]), element('p', {}, [item.text])]))));
+    if (frame.ictCards) copy.append(element('div', {className:'ict-cards'}, frame.ictCards.map(item => element('article', {}, [element('img', {src:ictImage(item.image),alt:'',loading:'lazy'}), element('p', {}, [item.text])]))));
     if (frame.footnote) copy.append(element('p', { className: 'footnote' }, [frame.footnote]));
     if (frame.questionBank?.length) {
         const bankButton = button('Show all questions ⛶', 'question-bank', 'question-bank-button');
@@ -238,6 +244,13 @@ function renderPlayer() {
     if (frame.printExam) copy.append(examLink('Open printable student paper', false));
     if (lesson.vocabulary) markVocabulary(copy,lesson.vocabulary);
     const content = element('section', { className: 'teaching-content' + (graphic || scene ? ' illustrated' : '') + (scene ? ' scene-layout' : '') + (frame.visual || answerPanel ? ' split' : '') + (lesson.summary ? ' practice-content' : '') + (lesson.gp ? ' gp-content' : '') + (lesson.geoRedesign ? ' geo-workshop' : '') + (lesson.teacherLed ? ' teacher-led-geography' : '') + (frame.type === 'question' ? ' quiz' : ''), 'aria-labelledby': 'student-title' }, [copy]);
+    if (frame.ictGallery) {
+        content.classList.add('ict-gallery-layout');
+        if (frame.ictFullImage) content.classList.add('ict-full-image');
+        content.append(element('div', {className:'ict-gallery' + (frame.ictPhotos ? ' ict-photos' : '')}, frame.ictGallery.map(name => element('img', {src:ictImage(name),alt:({'teacher':'Mr. Bryant, illustrated as a teacher','military':'Military teamwork','netflix':'Enjoying a show','food':'Food away from computers','games':'Keep games aside during lessons','task':'Use class materials','spill':'A spill near a keyboard','distraction':'Students distracted by a game','useful':'A student using a homework planner','risky':'Considering privacy in an app','exit':'A student explains a rule','goodbye':'Students say goodbye to their teacher'})[name] || '',loading:'lazy'}))));
+    }
+    if (frame.ictCards) content.classList.add('ict-card-layout');
+    if (frame.ictAnswers) content.classList.add('ict-answer-layout');
     if (graphic) content.append(createVisual(graphic));
     if (frame.geoDisplay && !lesson.geoConcept) {content.classList.add('geography-visual-layout');content.append(createFrameEvidence());}
     if (scene) content.append(element('figure', {className:'lesson-scene'},[
@@ -716,6 +729,18 @@ function handleAction(event) {
     if (!target || target.disabled) return;
     const action = target.dataset.action;
     if (action === 'choose-lesson' && !inLesson) chooseLesson();
+    else if (action === 'ict-story') {
+        const pages = [
+            'A student faces a new computer challenge and feels unsure.',
+            'A teacher encourages the student to start with one small step.',
+            'The student practises, makes mistakes and tries again.',
+            'A discovery! The student and teacher notice what worked.',
+            'The student shares a project and sees how much they have learned.'
+        ];
+        const index = Math.max(0, Math.min(pages.length - 1, Number(target.dataset.index) || 0));
+        openPanel('A learning story · ' + (index + 1) + ' / 5', [element('p', {className:'panel-hint'}, ['An imagined story about learning together.']), element('img', {className:'ict-story-image',src:ictImage('story'+(index+1)),alt:''}), element('p', {className:'ict-story-text'}, [pages[index]]), element('div', {className:'dialog-actions'}, [button('← Previous', 'ict-story', 'subtle', {'data-index':String(index-1), ...(index === 0 ? {disabled:''} : {})}), button('Next →', 'ict-story', 'primary', {'data-index':String(index+1), ...(index === pages.length-1 ? {disabled:''} : {})})])], 'ict-story');
+        panel.classList.add('ict-story-panel');
+    }
     else if (action === 'g7-plan') showGrade7Plan();
     else if (action === 'slide-teaching-notes') {
         const frame=currentFrame();
