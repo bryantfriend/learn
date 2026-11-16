@@ -9,11 +9,11 @@ Students describe scenes, speculate, ask follow-up questions, explain opinions a
 | 0–10 minutes | Warm-up: Would you rather? |
 | 10–20 minutes | Useful language and mini-practice |
 | 20–50 minutes | Five picture conversations |
-| 50–60 minutes | Picture detectives |
-| 60–70 minutes | Break |
-| 70–85 minutes | The story behind the picture |
-| 85–100 minutes | Role-play: This is getting weird |
-| 100–115 minutes | Agree, disagree, or it depends |
+| 50–65 minutes | Teacher-led conversation around the room |
+| 65–75 minutes | Break |
+| 75–90 minutes | The story behind the picture |
+| 90–105 minutes | Role-play: This is getting weird |
+| 105–115 minutes | Agree, disagree, or it depends |
 | 115–120 minutes | Exit ticket |
 
 ## Warm-up: Would you rather? — 10 minutes
@@ -123,9 +123,15 @@ Spend about six minutes per picture: 30 seconds to look silently, about four min
 9. Imagine the cashier’s job interview. What questions were asked?
 10. Create a short advertisement for the supermarket.
 
-## Picture detectives — 10 minutes
+## Teacher-led conversation around the room — 15 minutes
 
-In pairs, choose a picture and write three things you can definitely see, two things that might be true and one question for someone in the picture. Join another pair and read your statements and question aloud; the other pair guesses the picture. Extra challenge: use “might,” “could” and “because.”
+Spend three minutes on each topic. Give everyone 15 seconds to rehearse with a neighbor. Ask three to five students from different parts of the room, ask a follow-up after each answer, then invite a classmate to respond. In the last 30 seconds, partners compare answers. Students may say “come back to me”; return after they have rehearsed.
+
+1. **A penguin joins the class.** What would you ask it? What would it be good at? What funny rule might it suggest? Ask: “What makes you think that?”
+2. **The strange restaurant.** What is the strangest restaurant you can imagine? What is on the menu? Would you take a friend? Ask: “Who would order something different?”
+3. **Small enough for a suitcase.** Where would you explore? Which ordinary object would be useful? What might be dangerous or funny? Ask: “How would you solve that?”
+4. **A robot in your life.** What job would you give a robot? What should it never do for you? What if it misunderstood an instruction? Ask: “Does anyone have a different idea?”
+5. **Eight arms for a day.** What would you do? Which job would become easier? What funny mistake could you make? Ask: “Would you keep the eight arms? Why?”
 
 ## Break — 10 minutes
 
@@ -161,7 +167,7 @@ In pairs, choose a situation, prepare for three minutes and perform for another 
 
 Useful phrases: “Excuse me, but could you explain…?” “I understand, but there’s a problem.” “What if we…?” “That could work.” “I have a better idea.”
 
-## Agree, disagree, or it depends — 15 minutes
+## Agree, disagree, or it depends — 10 minutes
 
 Read a statement. Students choose agree, disagree or it depends, discuss their reasons in small groups, and share different viewpoints. Encourage them to respond to one another.
 
