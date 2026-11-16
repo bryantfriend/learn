@@ -16,7 +16,7 @@ export const collegeEnglishWeekendLesson = {
   eyebrow: 'College English · Speaking · A2–B2 · Lesson 2',
   durationMinutes: 120, coreMinutes: 120, contentRevision: 2,
   classroomOnly: true, customVisuals: true,
-  catalog: { subjectId: 'college-english', grades: [7, 8], unit: 'Speaking · Plans and problem-solving', order: 2 },
+  catalog: { subjectId: 'college-english', grades: [7, 8, 'college'], unit: 'Speaking · Plans and problem-solving', order: 2 },
   openingScript: 'A two-hour speaking lesson: impossible weekends, silly choices, unexpected stories and a ridiculous day out, alongside partner interviews and a planning challenge. The teacher walks around asking students questions during four dedicated 15-minute rounds. Use follow-ups and invite classmates to react. Everyone rehearses briefly with a neighbour before a public answer. You need only a board and scrap paper. All timings are teacher-controlled guides. For two separate classes, stop after the role-plays at minute 60 and resume with Story trouble.',
   stages: [
     stage('speed-chat', 'Speed chat: keep it going', 8, 0,

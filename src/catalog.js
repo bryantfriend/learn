@@ -3,12 +3,16 @@ import { lessons } from './lessons.js';
 export const classes = [
     { id: '7a', label: '7A', grade: 7 },
     { id: '7b', label: '7B', grade: 7 },
-    { id: '8', label: '8th Grade', grade: 8 }
+    { id: '8', label: '8th Grade', grade: 8 },
+    { id: '9', label: '9th Grade', grade: 9 },
+    { id: 'college', label: 'College', grade: 'college' },
+    { id: 'substitution', label: 'Substitution', grade: 'substitution' }
 ];
 export const subjects = [
-    { id: 'college-english', label: 'College English', grades: [7, 8] },
+    { id: 'college-english', label: 'College English', grades: [7, 8, 'college'] },
+    { id: 'ict', label: 'ICT', grades: [9] },
     { id: 'ielts', label: 'IELTS Preparation', grades: [7], classes: ['7a', '7b'] },
-    { id: 'religion', label: 'Religion · Substitute lessons', grades: [7, 8] },
+    { id: 'religion', label: 'Religion · Substitute lessons', grades: [7, 8, 'substitution'] },
     { id: 'geography', label: 'Geography', grades: [7] },
     { id: 'global-perspectives', label: 'Global Perspectives', grades: [7, 8] },
     { id: 'global-perspectives-books', label: 'Global Perspectives · Workbook trial', grades: [7, 8] },

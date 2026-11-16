@@ -13,7 +13,7 @@ export const collegeEnglishLesson = {
   eyebrow: 'College English · Speaking · A2–B2',
   durationMinutes: 60, coreMinutes: 60, contentRevision: 1,
   classroomOnly: true, customVisuals: true,
-  catalog: { subjectId: 'college-english', grades: [7, 8], unit: 'Speaking · A2–B2', order: 1 },
+  catalog: { subjectId: 'college-english', grades: [7, 8, 'college'], unit: 'Speaking · A2–B2', order: 1 },
   openingScript: 'Today we will give opinions, ask follow-up questions and make a group decision. We will design a school event and persuade classmates to choose it. You need only the board and paper. Every student should speak during each activity.',
   stages: [
     stage('choices', 'Quick choices', 8, 0,
