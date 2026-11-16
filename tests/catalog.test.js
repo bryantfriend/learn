@@ -11,8 +11,9 @@ function session(classId = '7a', subjectId = 'geography') {
 }
 function backing() { const values=new Map(); return {getItem:key=>values.get(key)||null,setItem:(key,value)=>values.set(key,value),removeItem:key=>values.delete(key)}; }
 test('class/subject combinations expose starters; future lessons filter by grade and subject',()=>{
- assert.equal(classes.flatMap(c=>subjectsFor(c.id)).length,20);
- assert.deepEqual(subjectsFor('8').map(s=>s.id),['college-english','religion','global-perspectives','global-perspectives-books']);
+ assert.equal(classes.flatMap(c=>subjectsFor(c.id)).length,12);
+ for (const id of ['7a','7b']) assert.deepEqual(subjectsFor(id).map(s=>s.id), ['ielts','geography','global-perspectives-books','english']);
+ assert.deepEqual(subjectsFor('8').map(s=>s.id),['global-perspectives-books']);
  assert.deepEqual(lessonsFor('8','geography'),[]);
  assert.deepEqual(subjectsFor(null), []);
  assert.deepEqual(subjectsFor('9').map(s=>s.id), ['ict']);
@@ -23,7 +24,11 @@ test('class/subject combinations expose starters; future lessons filter by grade
  const source=[{id:'shared'}, {id:'geo7',catalog:{subjectId:'geography',grades:[7]}}, {id:'gp8',catalog:{subjectId:'global-perspectives',grades:[8]}}];
  assert.deepEqual(lessonsFor('7a','geography',source).map(x=>x.id),['shared','geo7']);
  assert.deepEqual(lessonsFor('7b','geography',source).map(x=>x.id),['shared','geo7']);
- assert.deepEqual(lessonsFor('8','global-perspectives',source).map(x=>x.id),['shared','gp8']);
+ assert.deepEqual(lessonsFor('8','global-perspectives',source), []);
+ assert.deepEqual(lessonsFor('8','global-perspectives',source,true).map(x=>x.id),['shared','gp8']);
+ assert.ok(validateSession(session('8','global-perspectives')));
+ assert.ok(validateSession(session('7a','religion')));
+ assert.ok(validateSession(session('7a','college-english')));
  assert.equal(lessonsFor('missing','geography').length,0);
 });
 test('class, subject and lesson checkpoints survive reload and clearing only one slot',()=>{

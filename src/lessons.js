@@ -1,3 +1,4 @@
+import { ictWelcomeLesson } from './lessons/ict-9-welcome.js';
 import { vikingReligionLesson } from './lessons/viking-religion.js';
 import { ieltsLessons } from './lessons/ielts.js';
 import { collegeEnglishLesson } from './lessons/college-english.js';
@@ -125,6 +126,7 @@ export const lesson = {
 };
 
 export const lessons = [...[lesson, practiceLesson, ...gpLessons, ...grade7Lessons, ...grade7BLessons].map(redesignGeography).map(styleGeographyAssessment).map(strengthenPacing).map(illustrateExamples).map(supportEnglish), ...workbookTrialLessons, ...researchFollowOnLessons, ...workbookResearch2Lessons, ...sevenAResearch2Lessons, sevenACreditLesson, ...grade8Research2Lessons,...english7BLessons].map(addExtraTime).map(enhanceGlobalPerspectives);
+lessons.push(ictWelcomeLesson);
 lessons.push(vikingReligionLesson);
 lessons.push(paddingtonGeographyLesson);
 lessons.push(...ieltsLessons);

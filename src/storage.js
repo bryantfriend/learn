@@ -45,7 +45,7 @@ export function validateSession(value, now = Date.now()) {
     const retired = value.classId === '8' && value.subjectId === 'geography';
     const classId = value.schemaVersion < 3 || retired ? null : value.classId;
     const subjectId = value.schemaVersion < 3 || retired ? null : value.subjectId;
-    if (!(classId === null && subjectId === null) && (!getClass(classId) || !getSubject(subjectId) || !lessonsFor(classId, subjectId).some(function(item) { return item.id === lesson.id; }))) return null;
+    if (!(classId === null && subjectId === null) && (!getClass(classId) || !getSubject(subjectId) || !lessonsFor(classId, subjectId, undefined, true).some(function(item) { return item.id === lesson.id; }))) return null;
     const timer = value.timer;
     if (!timer || !Number.isFinite(timer.durationMs) || timer.durationMs <= 0 || timer.durationMs > 3600000 ||
         !Number.isFinite(timer.remainingMs) || timer.remainingMs < 0 || timer.remainingMs > 86400000 ||
