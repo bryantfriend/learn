@@ -10,6 +10,8 @@ import { addExtraTime } from './lessons/extra-time.js';
 import {english7BLessons} from './lessons/english-7b.js';
 import { workbookTrialLessons } from './lessons/gp-workbook-trial.js';
 import { researchFollowOnLessons } from './lessons/gp-research-follow-on.js';
+import { grade8AnalysisLessons } from './lessons/gp-workbook-analysis-8.js';
+import { sevenAAnalysisLessons } from './lessons/gp-workbook-analysis-7a.js';
 import { sevenBAnalysisLessons } from './lessons/gp-workbook-analysis-7b.js';
 import { workbookResearch2Lessons } from './lessons/gp-workbook-research-2.js';
 import { sevenAResearch2Lessons } from './lessons/gp-workbook-research-2-7a.js';
@@ -126,7 +128,7 @@ export const lesson = {
     ]
 };
 
-export const lessons = [...[lesson, practiceLesson, ...gpLessons, ...grade7Lessons, ...grade7BLessons].map(redesignGeography).map(styleGeographyAssessment).map(strengthenPacing).map(illustrateExamples).map(supportEnglish), ...workbookTrialLessons, ...researchFollowOnLessons, ...workbookResearch2Lessons, ...sevenBAnalysisLessons, ...sevenAResearch2Lessons, sevenACreditLesson, ...grade8Research2Lessons,...english7BLessons].map(addExtraTime).map(enhanceGlobalPerspectives);
+export const lessons = [...[lesson, practiceLesson, ...gpLessons, ...grade7Lessons, ...grade7BLessons].map(redesignGeography).map(styleGeographyAssessment).map(strengthenPacing).map(illustrateExamples).map(supportEnglish), ...workbookTrialLessons, ...researchFollowOnLessons, ...workbookResearch2Lessons, ...sevenBAnalysisLessons, ...sevenAAnalysisLessons, ...grade8AnalysisLessons, ...sevenAResearch2Lessons, sevenACreditLesson, ...grade8Research2Lessons,...english7BLessons].map(addExtraTime).map(enhanceGlobalPerspectives);
 lessons.push(ictWelcomeLesson);
 lessons.push(vikingReligionLesson);
 lessons.push(paddingtonGeographyLesson);
@@ -147,5 +149,7 @@ export function questionOptions(frame) {
         { id: 'B', label: 'Inference: a possible explanation.' }
     ];
 }
+
+
 
 

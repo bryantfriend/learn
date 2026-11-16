@@ -10,7 +10,7 @@ test('trial exposes two separate lessons per assigned class and preserves origin
   assert.equal(new Set(lessons.map(l => l.id)).size, lessons.length);
   for (const [classId, count] of [['7b',95], ['7a',64], ['8',45]]) {
     const trial = lessonsFor(classId, workbookSubjectId).filter(l => l.catalog);
-    assert.equal(trial.length, classId === '7b' ? 8 : classId === '7a' ? 7 : 6);
+    assert.equal(trial.length, classId === '7b' ? 8 : classId === '7a' ? 9 : 8);
     assert.ok(trial.every(l => l.bookTrial && l.catalog.classes.includes(classId)));
     assert.equal(lessonsFor(classId, 'global-perspectives', lessons, true).length, count);
     assert.ok(lessonsFor(classId, 'global-perspectives', lessons, true).every(l => !l.bookTrial));
@@ -36,6 +36,8 @@ test('all trials have a timed 40-minute core, optional practice, page tasks and 
     }
   }
 });
+
+
 
 
 
