@@ -241,6 +241,8 @@ function renderPlayer() {
         const item = diagrams[frame.diagram];
         copy.append(element('img', {src:'./assets/'+item[0]+'.svg',alt:item[1],className:'gp-diagram'}));
     }
+    if (frame.worksheetLink && lesson.worksheet) copy.append(element('a', {href:lesson.worksheet,target:'_blank',rel:'noopener',className:'exam-link'}, ['Open printable Your Turn worksheet ↗']));
+    if (frame.worksheetLink && lesson.worksheetTranslations) for (const [label, href] of lesson.worksheetTranslations) copy.append(element('a', {href,target:'_blank',rel:'noopener',className:'exam-link'}, [label+' worksheet ↗']));
     if (frame.printExam) copy.append(examLink('Open printable student paper', false));
     if (lesson.vocabulary) markVocabulary(copy,lesson.vocabulary);
     const content = element('section', { className: 'teaching-content' + (graphic || scene ? ' illustrated' : '') + (scene ? ' scene-layout' : '') + (frame.visual || answerPanel ? ' split' : '') + (lesson.summary ? ' practice-content' : '') + (lesson.gp ? ' gp-content' : '') + (lesson.geoRedesign ? ' geo-workshop' : '') + (lesson.teacherLed ? ' teacher-led-geography' : '') + (frame.type === 'question' ? ' quiz' : ''), 'aria-labelledby': 'student-title' }, [copy]);
@@ -616,6 +618,8 @@ function showGPGuide() {
 function showTools() {
     openPanel('Teacher tools', [
         ...(lesson.examId ? [examLink('Print student paper', false), examLink('Teacher answer key', true)] : []),
+        ...(lesson.worksheet ? [element('a', {href:lesson.worksheet,target:'_blank',rel:'noopener',className:'exam-link'}, ['Print Your Turn worksheet ↗'])] : []),
+        ...(lesson.worksheetTranslations || []).map(([label, href]) => element('a', {href,target:'_blank',rel:'noopener',className:'exam-link'}, ['Print '+label+' worksheet ↗'])),
         element('section', { className: 'optional-worksheets' }, [
             element('h3', {}, ['Optional worksheets']),
             element('p', {}, ['Print only if useful. These sheets are not required to teach or finish the lesson.']),
@@ -955,4 +959,6 @@ function showExtensions(index=0,roundIndex=0,revealed=false,hideSource=false) {
   element('details',{className:'extra-running-notes'},[element('summary',{},['How to run this for five minutes']),...task.lines.map(line=>element('p',{},[line])),element('p',{},[task.outcome])])
  ]);panel.classList.add('reserve-panel','extra-time-panel');markVocabulary(panel,lesson.vocabulary);
 }
+
+
 
