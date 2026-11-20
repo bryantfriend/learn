@@ -44,7 +44,7 @@ export function createConceptScreen(lesson,stage,frame,copy,evidence){
  root.append(node('h2',stage.title,'concept-section-title'));
  const body=node('div',null,'concept-body');root.append(body);copy.classList.add('concept-copy');
  const tools=node('details',null,'concept-tools');tools.append(node('summary','Teaching aids'));
- for(const control of [...copy.querySelectorAll(':scope > .text-button,:scope > .geo-frame-actions,:scope > .question-bank-button,:scope > .board-work-button,:scope > .geo-enlarge')])tools.append(control);
+ for(const control of [...copy.querySelectorAll(':scope > .text-button,:scope > .geo-frame-actions,:scope > .question-bank-button,:scope > .board-work-button,:scope > .geo-enlarge')]) if(!(frame.boardActivityPrimary && control.dataset.action==='geography-board')) tools.append(control);
  if(lesson.boardLecture&&frame.teacherScript){
   const script=tools.querySelector('[data-action="slide-teaching-notes"]');
   if(script){script.textContent='Read teaching script';script.classList.add('lecture-script-button');copy.append(script);}
@@ -93,3 +93,4 @@ export function createConceptScreen(lesson,stage,frame,copy,evidence){
  if(frame.recallCue)root.append(node('p',frame.recallCue,'concept-rehearsal'));
  return root;
 }
+

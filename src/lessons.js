@@ -29,6 +29,7 @@ import { grade7BLessons } from './lessons/grade7b.js';
 import { grade7Lessons } from './lessons/grade7a.js';
 import { gpLessons } from './lessons/grade8-gp.js';
 import { practiceLesson } from './lessons/system-practice.js';
+import { geographyKitLesson } from './lessons/geography-kit.js';
 import { welcomeGeographyLesson } from './lessons/welcome-geography.js';
 import { paddingtonGeographyLesson } from './lessons/paddington-geography.js';
 /**
@@ -136,7 +137,7 @@ export const lesson = {
 export const lessons = [...[lesson, practiceLesson, ...gpLessons, ...grade7Lessons, ...grade7BLessons].map(redesignGeography).map(styleGeographyAssessment).map(strengthenPacing).map(illustrateExamples).map(supportEnglish), ...workbookTrialLessons, ...researchFollowOnLessons, ...workbookResearch2Lessons, ...sevenBAnalysisLessons, ...sevenAAnalysisLessons, ...grade8AnalysisLessons, ...sevenAResearch2Lessons, sevenACreditLesson, ...grade8Research2Lessons,...english7BLessons].map(addExtraTime).map(enhanceGlobalPerspectives);
 lessons.push(ictWelcomeLesson);
 lessons.push(vikingReligionLesson);
-lessons.push(paddingtonGeographyLesson, welcomeGeographyLesson);
+lessons.push(paddingtonGeographyLesson, welcomeGeographyLesson, geographyKitLesson);
 lessons.push(...ieltsLessons);
 lessons.push(collegeEnglishLesson);
 lessons.push(collegeEnglishWeekendLesson);
@@ -146,7 +147,7 @@ lessons.push(collegeSeoulLesson);
 lessons.push(collegeJapanLesson);
 // The lesson picker groups the existing Year 7 geography library in Q1.
 for (const item of lessons) {
-    if (item.catalog?.subjectId === 'geography' && item.id !== welcomeGeographyLesson.id && item.catalog.grades.includes(7)) item.catalog.quarter = 'Q1';
+    if (item.catalog?.subjectId === 'geography' && ![welcomeGeographyLesson.id, geographyKitLesson.id].includes(item.id) && item.catalog.grades.includes(7)) item.catalog.quarter = 'Q1';
 }
 let lessonStorage; try { lessonStorage = globalThis.localStorage; } catch {}
 registerLessons(lessons, lessonStorage);
@@ -162,6 +163,7 @@ export function questionOptions(frame) {
         { id: 'B', label: 'Inference: a possible explanation.' }
     ];
 }
+
 
 
 
