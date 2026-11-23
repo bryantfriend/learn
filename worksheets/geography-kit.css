@@ -1,0 +1,24 @@
+* { box-sizing: border-box; }
+body { max-width: 800px; margin: 24px auto; padding: 0 24px; color: #182d34; font: 16px/1.4 system-ui, "Microsoft YaHei", sans-serif; }
+nav { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 18px; }
+nav a { color: #175d59; }
+nav a[aria-current] { font-weight: 700; }
+button { border: 0; border-radius: 4px; padding: 8px 12px; background: #175d59; color: #fff; font: inherit; cursor: pointer; }
+.course { margin: 0 0 2px; color: #175d59; font-size: .85em; font-weight: 700; }
+h1 { font-size: 1.65em; line-height: 1.15; margin: 0; }
+h2 { font-size: 1.05em; margin: 3px 0 10px; }
+.identity { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-bottom: 12px; }
+.identity i { display: inline-block; width: 110px; border-bottom: 1px solid #75878a; }
+ol { margin: 0; padding-inline-start: 1.55em; }
+li { padding-inline-start: .25em; margin-bottom: 9px; break-inside: avoid; }
+li::marker { font-weight: 700; }
+.rule { height: 21px; border-bottom: 1px solid #95a2a4; }
+.rule + div:not(.rule) { margin-top: 5px; }
+.rank { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 5px; }
+.rank span { border-bottom: 1px solid #95a2a4; }
+@media print {
+  @page { size: A4; margin: 12mm; }
+  body { max-width: none; margin: 0; padding: 0; font-size: 11pt; color: #111; }
+  nav { display: none; }
+  li { margin-bottom: 7px; }
+}

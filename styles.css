@@ -511,6 +511,37 @@ dialog.lesson-editor{width:min(1200px,96vw);max-width:96vw}.lesson-editor textar
 .solution-check:has(.explanation) .instructions{display:none;}
 
 .solution-check .board-round-routine{display:none;}
+
+/* Keep the Geography Kit cards and categories close together on the board. */
+.geo-board.geo-board-compact { max-width: 1200px; font-size: 17px; }
+.geo-board-compact .board-prompt { font-size: 18px; margin: 0 0 12px; }
+.geo-board-compact .board-move-layout { gap: 10px; }
+.geo-board-compact .board-move-layout .board-tray,
+.geo-board-compact .board-move-layout .board-bins {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 8px;
+}
+.geo-board-compact .board-tray { min-height: 70px; align-items: start; }
+.geo-board-compact .board-bin { min-height: 120px; padding: 6px; }
+.geo-board-compact button { min-width: 0; min-height: 44px; padding: 7px 9px; font-size: 16px; line-height: 1.2; }
+.geo-board-compact .board-card { width: 100%; }
+.geo-board-compact .board-card.placed { margin-top: 6px; }
+.geo-board-compact .board-card-picture { margin-right: 6px; flex-shrink: 0; }
+.geo-board-compact .board-card-picture svg { width: 26px; height: 22px; }
+.geo-board-compact .board-actions { gap: 8px; margin: 12px 0 8px; }
+.geo-board-compact .board-feedback,
+.geo-board-compact .board-reason { margin: 8px 0; padding: 8px 12px; }
+.geo-board-compact .board-reason h3,
+.geo-board-compact .board-reason p { margin: 4px 0; }
+@media (max-width: 850px) {
+    .geo-board-compact .board-move-layout .board-tray,
+    .geo-board-compact .board-move-layout .board-bins { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .geo-board-compact .board-bin { min-height: 108px; }
+}
+@media (max-width: 480px) {
+    .geo-board-compact .board-move-layout .board-tray,
+    .geo-board-compact .board-move-layout .board-bins { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 .player .geography-visual-layout .solution-check h1{font-size:26px;}
 
 /* Illustrated, interactive ICT welcome lesson */

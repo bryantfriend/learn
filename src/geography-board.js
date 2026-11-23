@@ -22,6 +22,7 @@ export function evaluateBoard(spec,state){
 }
 export function createGeographyBoard(spec,state=initialBoardState(spec)){
  const root=el('section',undefined,'geo-board');
+ if(spec.compact)root.classList.add('geo-board-compact');
  let focusLabel=null;
  const act=(label,fn,cls)=>{const b=el('button',label,cls);b.type='button';b.dataset.boardFocus=label;b.addEventListener('click',()=>{focusLabel=label;fn();});return b;};
  const change=fn=>{fn();state.checked=false;state.reveal=false;render();};
@@ -29,7 +30,7 @@ export function createGeographyBoard(spec,state=initialBoardState(spec)){
  const showReason=()=>{const box=el('div',undefined,'board-reason');box.append(el('h3','Explain the reasoning'),el('p',spec.type==='decision'?questionFor(spec,state).explanation:spec.rationale),el('p',spec.challenge));if(spec.type==='pin')box.append(el('p',`Target message: ${spec.square[0]}${spec.target[0]}${spec.square[1]}${spec.target[1]}. Keep the easting and its tenths together, then the northing and its tenths.`));return box;};
  function render(){
   root.replaceChildren();
-  root.append(el('p',spec.facilitation,'board-instructions'));
+  if(!spec.compact)root.append(el('p',spec.facilitation,'board-instructions'));
   if(spec.visual){const reference=el('aside',undefined,'board-reference');reference.append(el('h3','Use the visual evidence'),createGeographyEvidence(spec.visual));root.append(reference);}
   const q=questionFor(spec,state);
   if(spec.type==='decision'&&spec.rounds?.length>1)root.append(el('p',`Case ${state.round+1} of ${spec.rounds.length} · ${state.round?'A condition has changed. Reconsider the evidence.':'Make and defend a prediction.'}`,'board-case'));
