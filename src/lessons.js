@@ -7,6 +7,7 @@ import { collegeEnglishWeirdLesson } from './lessons/college-english-weird.js';
 import { collegeFloridaWeatherLesson } from './lessons/college-florida-weather.js';
 import { collegeSeoulLesson } from './lessons/college-seoul.js';
 import { collegeJapanLesson } from './lessons/college-japan.js';
+import { collegeChinaLesson } from './lessons/college-china.js';
 import { enhanceGlobalPerspectives } from './lessons/gp-enhancements.js';
 import { redesignGeography } from './lessons/geography-redesign.js';
 import { styleGeographyAssessment } from './lessons/geography-concept-flow.js';
@@ -145,6 +146,7 @@ lessons.push(collegeEnglishWeirdLesson);
 lessons.push(collegeFloridaWeatherLesson);
 lessons.push(collegeSeoulLesson);
 lessons.push(collegeJapanLesson);
+lessons.push(collegeChinaLesson);
 // The lesson picker groups the existing Year 7 geography library in Q1.
 for (const item of lessons) {
     if (item.catalog?.subjectId === 'geography' && ![welcomeGeographyLesson.id, geographyKitLesson.id].includes(item.id) && item.catalog.grades.includes(7)) item.catalog.quarter = 'Q1';
